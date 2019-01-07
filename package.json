@@ -1,0 +1,50 @@
+{
+  "name": "webpack-tut",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "start": "webpack-dev-server --config ./webpack/webpack.config.js --mode development --open",
+    "build": "webpack --mode production",
+    "dev:build-client": "webpack --config ./webpack/webpack.server.client.js --mode development -w",
+    "dev:build-server": "NODE_ENV=development webpack --config ./webpack/webpack.server.js --mode=development -w",
+    "dev:start": "nodemon ./compiled/index.js",
+    "dev": "npm-run-all --parallel dev:build-client dev:build-server dev:start"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^8.6.4",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "clean-webpack-plugin": "^0.1.19",
+    "css-loader": "^0.28.11",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^1.1.11",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.11.0",
+    "nodemon": "^1.18.7",
+    "npm-run-all": "^4.1.5",
+    "postcss-loader": "^2.1.5",
+    "sass-loader": "^7.0.3",
+    "style-loader": "^0.21.0",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.26.1",
+    "webpack-cli": "^3.1.2",
+    "webpack-dev-server": "^3.1.14",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "dependencies": {
+    "bootstrap": "^4.1.3",
+    "express": "^4.16.4",
+    "lodash": "^4.17.10",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-router": "^4.3.1",
+    "react-router-config": "^4.4.0-beta.6",
+    "react-router-dom": "^4.3.1"
+  }
+}

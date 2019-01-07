@@ -1,0 +1,22 @@
+// UTILITY CLASSES
+
+@include breakpoint(desktop-above) {
+  .hidden-md-up {
+    display: none;
+  }
+}
+
+@include breakpoint(desktop-below) {
+  .hidden-sm-down {
+    display: none;
+  }
+}
+
+.hidden {
+  display: none !important;
+}
+
+.btn-icon {
+  padding: 15px;
+  font-size: 25px;
+}
