@@ -1,8 +1,10 @@
+
+import AppUrls from './appConstants/appUrls';
 import App from './pages/App';
 import HomePage from './pages/HomePage';
 import AboutusPage from './pages/AboutUsPage';
 import ContactUsPage from './pages/ContactUsPage';
-import AppUrls from './appConstants/appUrls';
+import ErrorPage from './pages/ErrorPage';
 
 export default [
     {
@@ -10,8 +12,13 @@ export default [
         component: App,
         routes: [
             {
+                path: AppUrls.ROOT,
+                exact: true,
+                component: HomePage
+            },
+            {
                 path: AppUrls.HOME,
-                exact: false,
+                exact: true,
                 component: HomePage
             },
             {
@@ -22,9 +29,14 @@ export default [
                     {
                         path: AppUrls.CONTACTUS,
                         component: ContactUsPage,
-                        exact: false,
+                        exact: true,
                     }
                 ]
+            },
+            {
+                path: '*',
+                exact: false,
+                component: ErrorPage
             }
         ]
     }
