@@ -3,11 +3,11 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, withRouter } from 'react-router-dom';
 import { renderRoutes, matchRoutes } from 'react-router-config';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import  store  from './store/configureStore';
+import  configureStore  from './store/configureStore';
 
 import Routes from './routes.jsx';
-
+const initialState = window.__INITIAL_STATE__;
+const store = configureStore(initialState);
 /* const RouteDataLoader = withRouter(class extends React.Component {
     constructor(props) {
         super();

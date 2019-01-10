@@ -3,6 +3,7 @@ import { matchRoutes } from 'react-router-config';
 
 import pageRenderer from './pageRenderer';
 import { preRenderMiddleware } from './preRenderMiddleware';
+import  configureStore  from '../app/store/configureStore';
 
 /*
  * Export render function to be used in server/config/routes.js
@@ -14,7 +15,10 @@ export default function render(req, res) {
     const reqURL = req.url;
 
     const history = {};
-    const html = pageRenderer(req, res);
+    const initialState = {};
+    const store = configureStore(initialState);
+
+    const html = pageRenderer(store,req, res);
     res.status(200).send(html);
     /* const branch = matchRoutes(routes, req.url);
     preRenderMiddleware(

@@ -1,18 +1,21 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
+import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import routes from '../app/routes.jsx';
 
 import staticAssets from './static';
 const context = {}
-const createApp = (url) => renderToString(
-  <StaticRouter
-    location={url}
-    context={context}
-    >
-    {renderRoutes(routes)}
-  </StaticRouter>
+const createApp = (store, url) => renderToString(
+  <Provider store={store}>
+    <StaticRouter
+      location={url}
+      context={context}
+      >
+      {renderRoutes(routes)}
+    </StaticRouter>
+  </Provider>
 );
 
 const buildPage = ({ componentHTML, initialState }) => `
@@ -36,9 +39,9 @@ const buildPage = ({ componentHTML, initialState }) => `
   </body>
 </html>`;
 
-export default (req) => {
+export default (store, req) => {
   const initialState = { 'hello': 'hello world' };
-  const componentHTML = createApp(req.url);
+  const componentHTML = createApp(store, req.url);
   return buildPage({
     componentHTML, initialState
   });
