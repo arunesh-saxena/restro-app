@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, withRouter } from 'react-router-dom';
 import { renderRoutes, matchRoutes } from 'react-router-config';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import  store  from './store/configureStore';
 
 import Routes from './routes.jsx';
 
@@ -29,10 +32,12 @@ import Routes from './routes.jsx';
 }); */
 
 ReactDOM.hydrate(
-    <BrowserRouter>
-        {/* <RouteDataLoader routes={Routes}> */}
-        {renderRoutes(Routes)}
-        {/* </RouteDataLoader> */}
-    </BrowserRouter>,
+    <Provider store={store}>
+        <BrowserRouter>
+            {/* <RouteDataLoader routes={Routes}> */}
+            {renderRoutes(Routes)}
+            {/* </RouteDataLoader> */}
+        </BrowserRouter>
+    </Provider>,
     document.getElementById('app')
 );

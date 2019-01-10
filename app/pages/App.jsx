@@ -7,6 +7,7 @@ class App extends React.Component {
     }
     componentDidMount() {
         console.log('-----csr app.jsx------');
+        console.log(process.env.NODE_ENV);
     }
     render() {
         const props = this.props;
