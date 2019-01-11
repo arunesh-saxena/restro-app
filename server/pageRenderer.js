@@ -12,7 +12,7 @@ const createApp = (store, url) => renderToString(
     <StaticRouter
       location={url}
       context={context}
-      >
+    >
       {renderRoutes(routes)}
     </StaticRouter>
   </Provider>
@@ -25,13 +25,13 @@ const buildPage = ({ componentHTML, initialState }) => `
     <title>Restro</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Restaurant Self Serive">
+    <meta name="description" content="Restaurant Self Service">
     <meta name="keywords" content="Restaurant">
     ${staticAssets.createBootstrapCSS()}
     ${staticAssets.createAppCSS()}
   </head>
   <body>
-    <div id="app">server side render<br/>
+    <div id="app">Loading...
     ${componentHTML}
     </div>
     <script>window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}</script>
