@@ -31,16 +31,14 @@ const buildPage = ({ componentHTML, initialState }) => `
     ${staticAssets.createAppCSS()}
   </head>
   <body>
-    <div id="app">Loading...
-    ${componentHTML}
-    </div>
+    <div id="app">${componentHTML}</div>
     <script>window.__INITIAL_STATE__ = ${JSON.stringify(initialState)}</script>
     ${staticAssets.createAppScript()}
   </body>
 </html>`;
 
 export default (store, req) => {
-  const initialState = { 'hello': 'hello world' };
+  const initialState = {};
   const componentHTML = createApp(store, req.url);
   return buildPage({
     componentHTML, initialState

@@ -12,7 +12,7 @@ export default function configureStore(initialState, history) {
             applyMiddleware(...middleware),
             typeof window === 'object' &&
                 typeof window.devToolsExtension !== 'undefined'
-                ? window.devToolsExtension()
+                ? window.__REDUX_DEVTOOLS_EXTENSION__()
                 : f => f
         )
     );
