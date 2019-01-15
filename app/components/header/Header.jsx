@@ -23,7 +23,7 @@ class Header extends Component {
                     {/* <div className="row">
                         <div className="col-12"> */}
                             <div className="app-logo">
-                                <img src="https://dummyimage.com/200x50/000/fff" alt="logo" />
+                                <img src="./assets/images/logo.png" alt="logo" />
                             </div>
                             <button type="button" className="icon-paragraph-justify mob-menu btn-icon" onClick={this.toggleMainMenu} />
                             <div className={`navigation ${hideMobMenu}`}>

@@ -5,11 +5,14 @@
   "main": "",
   "scripts": {
     "start": "webpack-dev-server --config ./webpack/webpack.config.js --mode development --open",
-    "build": "webpack --mode production",
+    "build": "npm run clean && npm run copy && webpack --config ./webpack/webpack.config.js --mode production",
     "dev:build-client": "webpack --config ./webpack/webpack.server.client.js --mode development -w",
     "dev:build-server": "NODE_ENV=development webpack --config ./webpack/webpack.server.js --mode=development -w",
     "dev:start": "nodemon ./compiled/index.js",
-    "dev": "npm-run-all --parallel dev:build-client dev:build-server dev:start"
+    "dev": "npm-run-all --parallel dev:build-client dev:build-server dev:start",
+    "setup": "npm run clean && npm run copy",
+    "clean": "rimraf public && rimraf compiled",
+    "copy": "copyfiles -f ./app/fonts/*.* ./public/assets/fonts && copyfiles -f ./app/images/*.* ./public/assets/images"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +24,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
+    "copyfiles": "^2.1.0",
     "css-loader": "^0.28.11",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "file-loader": "^1.1.11",

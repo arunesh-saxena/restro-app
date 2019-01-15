@@ -64,9 +64,16 @@ module.exports = {
                 use: "babel-loader"
             },
             {
-                test: /\.(png|jpg|jpeg|gif|svg|ico|woff|woff2|eot|ttf)$/,
-                loader: 'url-loader',
-                options: { name: 'images/[name].[ext]', limit: 10000 },
+                test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|eot|ttf)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            name: 'images/[name].[ext]',
+                            limit: 10000
+                        },
+                    },
+                ],
                 include: path.resolve(CURRENT_WORKING_DIR, 'app')
             }
         ]

@@ -16,7 +16,7 @@ module.exports = {
     context: path.resolve(CURRENT_WORKING_DIR, 'app'),
     entry: { app: './index.jsx', style: "./styles/app.scss", bootstrap: './styles/bootstrap.scss' },
     output: {
-        path: path.resolve('dist'),
+        path: path.resolve(CURRENT_WORKING_DIR, "public", "assets"),
         filename: '[name].js',
         publicPath: '/'
     },
@@ -64,9 +64,16 @@ module.exports = {
                 use: "babel-loader"
             },
             {
-                test: /\.(png|jpg|jpeg|gif|svg|ico|woff|woff2|eot|ttf)$/,
-                loader: 'url-loader',
-                options: { name: 'images/[name].[ext]', limit: 10000 },
+                test: /\.(png|jpg|jpeg|gif|svg|woff|woff2|eot|ttf)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            name: '[path][name].[ext]',
+                            limit: 10000
+                        },
+                    },
+                ],
                 include: path.resolve(CURRENT_WORKING_DIR, 'app')
             }
         ]
