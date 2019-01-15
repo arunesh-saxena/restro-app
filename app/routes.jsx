@@ -4,6 +4,8 @@ import App from './pages/App';
 import HomePage from './pages/HomePage';
 import AboutusPage from './pages/AboutUsPage';
 import ContactUsPage from './pages/ContactUsPage';
+import LoginPage from './pages/login/LoginPage';
+import SignUpPage from './pages/signUp/SignUpPage';
 import ErrorPage from './pages/ErrorPage';
 
 export default [
@@ -32,6 +34,16 @@ export default [
                         exact: true,
                     }
                 ]
+            },
+            {
+                path: AppUrls.LOGIN,
+                exact: true,
+                component: LoginPage
+            },
+            {
+                path: AppUrls.SIGN_UP,
+                exact: true,
+                component: SignUpPage
             },
             {
                 path: '*',

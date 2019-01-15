@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import AppUrls from '../../appConstants/appUrls';
 class Header extends Component {
     constructor(props) {
         super(props);
@@ -29,15 +30,15 @@ class Header extends Component {
                                 <button type="button" className="icon-cross cross-menu btn-icon" onClick={this.toggleMainMenu} />
                                 <div className="nav-menu">
                                     <ul className="nav-bar">
-                                        <li><Link to="/">Root</Link></li>
+                                        <li><Link to={`${AppUrls.ROOT}`}>Root</Link></li>
                                         <li><Link to="/home">Home</Link></li>
                                         <li><Link to="/aboutUs">aboutUs</Link></li>
                                         <li><Link to="/aboutUs/contactUs">contactUs</Link></li>
                                     </ul>
                                     <div className="login-nav">
                                         <ul className="nav-bar">
-                                            <li><Link to="/">Login</Link></li>
-                                            <li><Link to="/home">SignUp</Link></li>
+                                            <li><Link to="/login">Login</Link></li>
+                                            <li><Link to="/singUp">SignUp</Link></li>
                                         </ul>
                                     </div>
                                 </div>
