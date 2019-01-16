@@ -4,7 +4,9 @@
   @include breakpoint(desktop-below) {
     justify-content: space-between;
   }
-
+  @include breakpoint(desktop-above){
+    background: whitesmoke;
+  }
   .mob-menu {
     align-self: flex-end;
     padding-right: 0;
@@ -17,7 +19,7 @@
 
     @include breakpoint(desktop-above) {
       flex-grow: 1;
-      flex-basis: 100%;
+      flex-basis: 80%;
     }
     @include breakpoint(desktop-below) {
       height: 100vh;
@@ -34,13 +36,13 @@
       }
     }
     .nav-menu {
-      background: whitesmoke;
       display: flex;
       flex-direction: row;
       @include breakpoint(desktop-above) {
         justify-content: space-between;
       }
       @include breakpoint(desktop-below) {
+        background: whitesmoke;
         flex-direction: column;
         flex-grow: 1;
       }
@@ -48,7 +50,7 @@
     .cross-menu {
       align-self: flex-start;
       padding: 15px;
-      background: antiquewhite;
+      // background: antiquewhite;
       position: relative;
       &:focus {
         outline: none;
@@ -86,12 +88,25 @@
   }
 }
 .app-logo {
+  display: flex;
+  align-items: center;
+  height: 54px;
+  // border: 1px solid;
+  flex-basis: 40%;
+  overflow: hidden;
+  a{
+    height: 100%;
+  }
   @include breakpoint(desktop-below) {
     display: inline;
   }
+  @include breakpoint(desktop-above) {
+    flex-basis: 20%;
+  }
   img {
     height: 100%;
+    width: 100%;
     max-width: 100%;
-    display: inline-block;
+    // display: inline-block;
   }
 }

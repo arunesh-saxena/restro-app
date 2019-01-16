@@ -22,28 +22,29 @@ class Header extends Component {
                 <header className="header container">
                     {/* <div className="row">
                         <div className="col-12"> */}
-                            <div className="app-logo">
-                                <img src="./assets/images/logo.png" alt="logo" />
+                    <div className="app-logo">
+                        <Link to={`${AppUrls.ROOT}`}>
+                            <img src="./assets/images/logo.png" alt="logo" />
+                        </Link>
+
+                    </div>
+                    <button type="button" className="icon-paragraph-justify mob-menu btn-icon" onClick={this.toggleMainMenu} />
+                    <div className={`navigation ${hideMobMenu}`}>
+                        <button type="button" className="icon-cross cross-menu btn-icon" onClick={this.toggleMainMenu} />
+                        <div className="nav-menu">
+                            <ul className="nav-bar">
+                                <li><Link to="/aboutUs">aboutUs</Link></li>
+                                <li><Link to="/aboutUs/contactUs">contactUs</Link></li>
+                            </ul>
+                            <div className="login-nav">
+                                <ul className="nav-bar">
+                                    <li><Link to="/login">Login</Link></li>
+                                    <li><Link to="/singUp">SignUp</Link></li>
+                                </ul>
                             </div>
-                            <button type="button" className="icon-paragraph-justify mob-menu btn-icon" onClick={this.toggleMainMenu} />
-                            <div className={`navigation ${hideMobMenu}`}>
-                                <button type="button" className="icon-cross cross-menu btn-icon" onClick={this.toggleMainMenu} />
-                                <div className="nav-menu">
-                                    <ul className="nav-bar">
-                                        <li><Link to={`${AppUrls.ROOT}`}>Root</Link></li>
-                                        <li><Link to="/home">Home</Link></li>
-                                        <li><Link to="/aboutUs">aboutUs</Link></li>
-                                        <li><Link to="/aboutUs/contactUs">contactUs</Link></li>
-                                    </ul>
-                                    <div className="login-nav">
-                                        <ul className="nav-bar">
-                                            <li><Link to="/login">Login</Link></li>
-                                            <li><Link to="/singUp">SignUp</Link></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        {/* </div>
+                        </div>
+                    </div>
+                    {/* </div>
                     </div> */}
                 </header>
             </div>
