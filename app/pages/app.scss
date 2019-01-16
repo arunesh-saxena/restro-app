@@ -4,5 +4,9 @@
   min-height: 100vh;
   .page-container {
     flex-grow: 1;
+    padding-top: 20px;
+    @include breakpoint(desktop-above){
+      padding-top: 100px;
+    }
   }
 }
