@@ -1,0 +1,8 @@
+.app-container {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+  .page-container {
+    flex-grow: 1;
+  }
+}

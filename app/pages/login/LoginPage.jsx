@@ -1,10 +1,19 @@
 import React from 'react';
+import LoginContainer from '../../containers/login/LoginContainer'
 
 export default class LoginPage extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleSignInSubmit = this.handleSignInSubmit.bind(this);
+    }
+    handleSignInSubmit(e) {
+        e.preventDefault();
+        console.log('handleSignInSubmit');
+    }
     render() {
         return (
             <div>
-                <h1>Login Page</h1>
+                <LoginContainer handleSignInSubmit={this.handleSignInSubmit} />
             </div>
         );
     }
