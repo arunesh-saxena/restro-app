@@ -4,7 +4,7 @@ import path from 'path';
 
 import renderMiddleware from './middleware';
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3030;
 const app = express();
 
 /* assets n public path */

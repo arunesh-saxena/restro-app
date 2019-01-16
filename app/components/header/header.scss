@@ -4,7 +4,7 @@
   @include breakpoint(desktop-below) {
     justify-content: space-between;
   }
-  @include breakpoint(desktop-above){
+  @include breakpoint(desktop-above) {
     background: whitesmoke;
   }
   .mob-menu {
@@ -86,7 +86,14 @@
     margin: 0;
     padding: 0;
   }
+  .login-nav {
+    @include breakpoint(desktop-below) {
+      border-top: 1px solid;
+      margin-top: 30px;
+    }
+  }
 }
+
 .app-logo {
   display: flex;
   align-items: center;
@@ -94,7 +101,7 @@
   // border: 1px solid;
   flex-basis: 40%;
   overflow: hidden;
-  a{
+  a {
     height: 100%;
   }
   @include breakpoint(desktop-below) {

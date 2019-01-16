@@ -11,7 +11,6 @@ import  configureStore  from '../app/store/configureStore';
  * and pass it into the Router.run function.
  */
 export default function render(req, res) {
-    console.log(`------${req.url}--------`);
     const reqURL = req.url;
 
     const history = {};
