@@ -16,14 +16,14 @@ class SignUpPage extends React.Component {
     render() {
         return (
             <div>
-                <SignUpContainer handleSignUpSubmit={this.handleSignUpSubmit} />
+                <SignUpContainer handleSignUpSubmit={this.handleSignUpSubmit} formInfo={this.props.formInfo}/>
             </div>
         );
     }
 };
 
 const mapStateToProps = state => ({
-    formInfo: state.form && state.form.signUp && state.form.signUp.values
+    formInfo: state.form && state.form.signUp && state.form.signUp
 
 });
 

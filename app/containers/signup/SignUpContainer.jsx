@@ -1,41 +1,80 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+const validate = values => {
+    const errors = {};
+    if (!values.username) {
+        errors.username = 'Required'
+    } else if (values.username.length > 15) {
+        errors.username = 'Must be 15 characters or less'
+    }
+    if (!values.email) {
+        errors.email = 'Required'
+    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+        errors.email = 'Invalid email address'
+    }
+    if (!values.userPassword) {
+        errors.userPassword = 'Required'
+    }
 
+    if (!values.confirmPassword) {
+        errors.confirmPassword = 'Required'
+    } else if (values.confirmPassword !== values.userPassword) {
+        errors.confirmPassword = 'Mismatch with password'
+    }
+    return errors
+};
+const renderField = ({
+    input,
+    id,
+    placeholder,
+    type,
+    className,
+    meta: { touched, error, warning }
+}) => (
+        <div>
+            <input {...input} id={id} placeholder={placeholder} type={type} className={className} />
+            {touched &&
+                ((error && <span className="error-message">{error}</span>) ||
+                    (warning && <span>{warning}</span>))}
+        </div>
+    )
 let SignUpContainer = (props) => {
     const {
         handleSignUpSubmit,
+        pristine,
+        submitting,
+        formInfo
     } = props;
+
     let getLoginHeading = () => {
         return (
-            <h1
-                className="form-heading h2"
-            >
+            <h1 className="form-heading h2">
                 Sign Up
             </h1>
         );
     };
-    
+
     let renderLoginForm = () => {
         return (
             <form onSubmit={handleSignUpSubmit}>
                 <div className="form-group">
-                    <label htmlFor="username">Username</label>
-                    <Field component="input" name="username" type="text" className="form-control" id="username" placeholder="Enter username" />
+                    <label htmlFor="username">Username<sup>*</sup></label>
+                    <Field name="username" type="text" component={renderField} className="form-control" id="username" placeholder="Enter username" />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="email">Email address</label>
-                    <Field component="input" name="email" type="email" className="form-control" id="email" placeholder="Enter email" />
+                    <label htmlFor="email">Email address<sup>*</sup></label>
+                    <Field component={renderField} name="email" type="email" className="form-control" id="email" placeholder="Enter email" />
                     <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="userPassword">Password</label>
-                    <Field component="input" name="userPassword" type="password" className="form-control" id="userPassword" placeholder="Password" />
+                    <label htmlFor="userPassword">Password<sup>*</sup></label>
+                    <Field component={renderField} name="userPassword" type="password" className="form-control" id="userPassword" placeholder="Password" />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="confirmPassword">Confirm password</label>
-                    <Field component="input" name="confirmPassword" type="confirmPassword" className="form-control" id="confirmPassword" placeholder="Confirm password" />
+                    <label htmlFor="confirmPassword">Confirm password<sup>*</sup></label>
+                    <Field component={renderField} name="confirmPassword" type="password" className="form-control" id="confirmPassword" placeholder="Confirm password" />
                 </div>
-                <button type="submit" className="col btn btn-primary">Submit</button>
+                <button type="submit" disabled={pristine || submitting || formInfo.syncErrors } className="col btn btn-primary">Submit</button>
             </form>
         );
     };
@@ -51,6 +90,7 @@ let SignUpContainer = (props) => {
     )
 };
 SignUpContainer = reduxForm({
-    form: 'signUp'
+    form: 'signUp',
+    validate, // <--- validation function given to redux-form
 })(SignUpContainer);
 export default SignUpContainer;
