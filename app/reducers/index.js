@@ -2,6 +2,8 @@
 import { combineReducers } from 'redux';
 import app from '../reducers/appReducers';
 import cart from '../reducers/cartReducer'; 
+import signUp from '../reducers/signUpReducers'; 
+
 import { reducer as formReducer } from 'redux-form';
 
 
@@ -10,6 +12,7 @@ import { reducer as formReducer } from 'redux-form';
 const rootReducer = combineReducers({
     app,
     cart,
+    signUp,
     form: formReducer
 });
 export default rootReducer;

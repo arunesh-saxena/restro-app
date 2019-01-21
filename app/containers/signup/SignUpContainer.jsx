@@ -32,12 +32,13 @@ const renderField = ({
     meta: { touched, error, warning }
 }) => (
         <div>
-            <input {...input} id={id} placeholder={placeholder} type={type} className={className} />
+            <input {...input} id={id} placeholder={placeholder} type={type} className={className} autoComplete="off" />
             {touched &&
                 ((error && <span className="error-message">{error}</span>) ||
                     (warning && <span>{warning}</span>))}
         </div>
-    )
+    );
+
 let SignUpContainer = (props) => {
     const {
         handleSignUpSubmit,
@@ -59,7 +60,7 @@ let SignUpContainer = (props) => {
             <form onSubmit={handleSignUpSubmit}>
                 <div className="form-group">
                     <label htmlFor="username">Username<sup>*</sup></label>
-                    <Field name="username" type="text" component={renderField} className="form-control" id="username" placeholder="Enter username" />
+                    <Field name="username" type="text" component={renderField} className="form-control" id="username" placeholder="Enter username"/>
                 </div>
                 <div className="form-group">
                     <label htmlFor="email">Email address<sup>*</sup></label>
@@ -74,7 +75,7 @@ let SignUpContainer = (props) => {
                     <label htmlFor="confirmPassword">Confirm password<sup>*</sup></label>
                     <Field component={renderField} name="confirmPassword" type="password" className="form-control" id="confirmPassword" placeholder="Confirm password" />
                 </div>
-                <button type="submit" disabled={pristine || submitting || formInfo.syncErrors } className="col btn btn-primary">Submit</button>
+                <button type="submit" disabled={pristine || submitting || formInfo.syncErrors} className="col btn btn-primary">Submit</button>
             </form>
         );
     };

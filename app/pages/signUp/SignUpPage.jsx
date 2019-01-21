@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { submitSignUp } from '../../actions/signUpAction';
 
 import SignUpContainer from '../../containers/signup/SignUpContainer';
 class SignUpPage extends React.Component {
@@ -10,13 +11,17 @@ class SignUpPage extends React.Component {
     }
     handleSignUpSubmit(e, v) {
         e.preventDefault();
-        console.log(this.props.formInfo);
-        console.log('handleSignUpSubmit');
+        const formInfo = this.props.formInfo;
+
+        if (formInfo && !formInfo.syncErrors) {
+            const formData = formInfo.values;
+            this.props.submitSignUp(formData);
+        }
     }
     render() {
         return (
             <div>
-                <SignUpContainer handleSignUpSubmit={this.handleSignUpSubmit} formInfo={this.props.formInfo}/>
+                <SignUpContainer handleSignUpSubmit={this.handleSignUpSubmit} formInfo={this.props.formInfo} />
             </div>
         );
     }
@@ -29,7 +34,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch =>
     bindActionCreators({
-        
+        submitSignUp
     }, dispatch);
 
 export default connect(
