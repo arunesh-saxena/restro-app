@@ -1,10 +1,11 @@
 import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
 import rootReducer from '../reducers/index';
 
 
 export default function configureStore(initialState, history) {
-    const middleware = [];
-
+    const middleware = [thunk];
+    
     const store = createStore(
         rootReducer,
         initialState,
