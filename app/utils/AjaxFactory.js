@@ -1,20 +1,12 @@
 import axios from 'axios';
-import { resolve } from 'path';
 
 const AjaxFactory = {
     triggerServerRequest(options) {
-        /*  const config = {
-             method: 'post',
-             url: '/user/12345',
-             data: {
-                 firstName: 'Fred',
-                 lastName: 'Flintstone'
-             }
-         } */
         const config = {
             method: options.method,
-            url: `api/${options.url}`,
-            responseType: options.responseType || 'json'// default
+            url: options.url,
+            responseType: options.responseType || 'json',// default
+            data: options.data
         };
         // console.log(config);
         // Object.assign(config, options);
@@ -42,7 +34,6 @@ const AjaxFactory = {
                 return responseObject;
             }
         );
-
     }
 };
 

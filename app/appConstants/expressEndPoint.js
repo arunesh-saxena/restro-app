@@ -1,8 +1,11 @@
 const expressConstants = {
     TEST_API: {
         url: '/api/testApi',
-        method: 'GET',
-        responseType: 'json'
+        method: 'GET'
+    },
+    SIGN_UP: {
+        url: '/api/singup',
+        method: 'POST'
     }
 };
 

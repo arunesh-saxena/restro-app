@@ -1,4 +1,5 @@
 import AjaxFactory from '../../app/utils/AjaxFactory';
+import expressConstants from '../appConstants/expressEndPoint';
 
 export const signUp = (data) => ({
     type: 'signUp',
@@ -6,12 +7,14 @@ export const signUp = (data) => ({
 });
 
 export const submitSignUp = (formData) => {
+    const api = expressConstants.SIGN_UP;
     const option = {
-        method: 'GET',
-        url: 'testApi',
+        method: api.method,
+        url: api.url,
+        data: formData
     };
+    
     return dispatch => AjaxFactory.triggerServerRequest(option).then(response => {
-        console.log(response);
         const data = response.data.data;
         dispatch(signUp(data));
     });

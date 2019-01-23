@@ -13,7 +13,7 @@ app.use(express.static(path.join(process.cwd(), 'public')));
   * server to server api calls
  */
 
-app.use('/api', router);
+app.use('/', router);
 
 /*
 	* This is where the magic happens. Server side render goes here
