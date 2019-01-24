@@ -5,6 +5,19 @@ export const signUp = (data) => ({
     type: 'signUp',
     data
 });
+const submitFormDataSuccess = (dispatch) => (value) => {
+    console.log(value);
+    const success = value.data.success;
+    if (success) {
+        dispatch(signUp(value));
+    } else {
+        
+    }
+};
+
+const submitLoginFormDataFailure = (dispatch) => (value) => {
+
+};
 
 export const submitSignUp = (formData) => {
     const api = expressConstants.SIGN_UP;
@@ -13,9 +26,12 @@ export const submitSignUp = (formData) => {
         url: api.url,
         data: formData
     };
-    
-    return dispatch => AjaxFactory.triggerServerRequest(option).then(response => {
-        const data = response.data.data;
-        dispatch(signUp(data));
-    });
+    // const success = submitFormDataSuccess(dispatch, props);
+    return dispatch => {
+        const success = submitFormDataSuccess(dispatch);
+        const failure = submitLoginFormDataFailure(dispatch);
+        AjaxFactory.triggerServerRequest(option)
+            .then(success)
+            .catch(failure);
+    }
 };
