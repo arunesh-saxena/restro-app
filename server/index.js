@@ -1,4 +1,5 @@
 import express from 'express';
+import bodyParser from 'body-parser';
 import path from 'path';
 import renderMiddleware from './middleware';
 import router from './router';
@@ -12,6 +13,9 @@ app.use(express.static(path.join(process.cwd(), 'public')));
 /* 
   * server to server api calls
  */
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', router);
 
