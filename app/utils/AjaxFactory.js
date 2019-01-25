@@ -14,14 +14,20 @@ const AjaxFactory = {
             (response) => {
                 // console.log(response);
                 const responseObject = {
-                    data: response.data || null,
+                    data: response.data || [],
                     status: response.status,
                     statusText: response.statusText,
                     ajaxRequestStatus: 'success'
                 };
-                return responseObject;
+                if (!response.data.hasOwnProperty('errorCode')) {
+                    responseObject.ajaxRequestStatus = 'success';
+                } else {
+                    responseObject.ajaxRequestStatus = 'failure';
+                }
+                return {body:responseObject};
             },
             (error) => {
+                
                 const responseObject = {
                     ajaxRequestStatus: 'failure',
                     errorCode:
@@ -31,7 +37,8 @@ const AjaxFactory = {
                             (error.response && error.response.data)) ||
                         null
                 };
-                return responseObject;
+                // console.log(responseObject);
+                return {body:responseObject};
             }
         );
     }

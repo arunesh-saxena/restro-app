@@ -96,7 +96,7 @@ let SignUpContainer = (props) => {
             msg = 'Thank you for signUp';
         }else {
             className+=' alert-dark'
-            msg = 'userData.user.message';
+            msg = userData.user.body && userData.user.body.message;
         }
         return (
             <p className={className}>{msg}</p>

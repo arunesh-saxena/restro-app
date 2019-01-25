@@ -7,11 +7,11 @@ export const signUp = (data) => ({
 });
 const submitFormDataSuccess = (dispatch) => (value) => {
     console.log(value);
-    const success = value.data.success;
+    const success = value.body.data.success;
     if (success) {
-        dispatch(signUp(value.data));
+        dispatch(signUp(value.body.data));
     } else {
-        dispatch(signUp(value.data));
+        dispatch(signUp(value.body.data));
     }
 };
 

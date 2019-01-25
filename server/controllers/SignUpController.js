@@ -1,6 +1,7 @@
 
 import axios from 'axios';
 import service from '../config/dev-config';
+// import AjaxFactory from '../../app/utils/AjaxFactory';
 
 export default (req, res, next) => {
     const endPoint = service.signUp.default;
@@ -8,7 +9,7 @@ export default (req, res, next) => {
     const payLoad = {
         "username": body.username,
         "email": body.email,
-        "password":body.username
+        "password": body.username
     }
     const config = {
         method: endPoint.method,
@@ -16,20 +17,27 @@ export default (req, res, next) => {
         data: payLoad
     };
 
+    // AjaxFactory.triggerServerRequest(config).then(
     axios(config).then(
         (response) => {
             const responseObj = response.data;
+            console.log('______________');
+            // console.log(response.data)
             res.json(responseObj);
-        },
-        (error) => {
-            const err = error.response
-            // console.log(error);
-            const errorObj = {
-                status: err.status,
-                statusText: err.statusText,
-                data: err.data
-            }
-            res.json(errorObj);
         }
-    );
+    )
+        .catch(error => {
+            const err = error.response
+            console.log('#############');
+            const errorObj = {
+                status: err && err.status || null,
+                statusText: err && err.statusText || null,
+                data: {
+                    data: err && err.data || null,
+                    errorCode: err && err.status
+                }
+            };
+            // console.log(errorObj)
+            res.send(errorObj);
+        });
 };
