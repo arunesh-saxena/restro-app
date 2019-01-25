@@ -21,15 +21,15 @@ class SignUpPage extends React.Component {
     render() {
         return (
             <div>
-                <SignUpContainer handleSignUpSubmit={this.handleSignUpSubmit} formInfo={this.props.formInfo} />
+                <SignUpContainer handleSignUpSubmit={this.handleSignUpSubmit} formInfo={this.props.formInfo} userData={this.props.signUp}/>
             </div>
         );
     }
 };
 
 const mapStateToProps = state => ({
-    formInfo: state.form && state.form.signUp && state.form.signUp
-
+    formInfo: state.form && state.form.signUp && state.form.signUp,
+    signUp: state.signUp
 });
 
 const mapDispatchToProps = dispatch =>

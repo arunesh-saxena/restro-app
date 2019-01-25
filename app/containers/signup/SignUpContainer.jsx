@@ -56,35 +56,59 @@ let SignUpContainer = (props) => {
     };
 
     let renderLoginForm = () => {
-        return (
-            <form onSubmit={handleSignUpSubmit}>
-                <div className="form-group">
-                    <label htmlFor="username">Username<sup>*</sup></label>
-                    <Field name="username" type="text" component={renderField} className="form-control" id="username" placeholder="Enter username"/>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="email">Email address<sup>*</sup></label>
-                    <Field component={renderField} name="email" type="email" className="form-control" id="email" placeholder="Enter email" />
-                    <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
-                </div>
-                <div className="form-group">
-                    <label htmlFor="userPassword">Password<sup>*</sup></label>
-                    <Field component={renderField} name="userPassword" type="password" className="form-control" id="userPassword" placeholder="Password" />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="confirmPassword">Confirm password<sup>*</sup></label>
-                    <Field component={renderField} name="confirmPassword" type="password" className="form-control" id="confirmPassword" placeholder="Confirm password" />
-                </div>
-                <button type="submit" disabled={pristine || submitting || formInfo.syncErrors} className="col btn btn-primary">Submit</button>
-            </form>
-        );
+        const userData = props.userData;
+        if (!Object.keys(userData).length || userData && userData.user && !userData.user.success) {
+            return (
+                <form onSubmit={handleSignUpSubmit}>
+                    <div className="form-group">
+                        <label htmlFor="username">Username<sup>*</sup></label>
+                        <Field name="username" type="text" component={renderField} className="form-control" id="username" placeholder="Enter username" />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="email">Email address<sup>*</sup></label>
+                        <Field component={renderField} name="email" type="email" className="form-control" id="email" placeholder="Enter email" />
+                        <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="userPassword">Password<sup>*</sup></label>
+                        <Field component={renderField} name="userPassword" type="password" className="form-control" id="userPassword" placeholder="Password" />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="confirmPassword">Confirm password<sup>*</sup></label>
+                        <Field component={renderField} name="confirmPassword" type="password" className="form-control" id="confirmPassword" placeholder="Confirm password" />
+                    </div>
+                    <button type="submit" disabled={pristine || submitting || formInfo.syncErrors} className="col btn btn-primary">Submit</button>
+                </form>
+            );
+            return '';
+        }
     };
+    const successMsg = () => {
+        const userData = props.userData;
+
+        if(!Object.keys(userData).length){
+            return '';
+        }
+        let msg = '';
+        let className = 'alert';
+        if (userData && userData.user && userData.user.success) {
+            className+=' alert-success'
+            msg = 'Thank you for signUp';
+        }else {
+            className+=' alert-dark'
+            msg = 'userData.user.message';
+        }
+        return (
+            <p className={className}>{msg}</p>
+        );;
+    }
     return (
         <div className="sign-form-container">
             <div className="row justify-content-md-center">
                 <div className="col-xs-12 col-md-6">
                     {getLoginHeading()}
                     {renderLoginForm()}
+                    {successMsg()}
                 </div>
             </div>
         </div>

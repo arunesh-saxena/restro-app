@@ -18,11 +18,7 @@ export default (req, res, next) => {
 
     axios(config).then(
         (response) => {
-            const responseObj = {
-                status: response.status,
-                statusText: response.statusText,
-                data: response.data
-            }
+            const responseObj = response.data;
             res.json(responseObj);
         },
         (error) => {

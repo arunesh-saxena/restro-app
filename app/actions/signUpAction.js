@@ -9,14 +9,14 @@ const submitFormDataSuccess = (dispatch) => (value) => {
     console.log(value);
     const success = value.data.success;
     if (success) {
-        dispatch(signUp(value));
+        dispatch(signUp(value.data));
     } else {
-        
+        dispatch(signUp(value.data));
     }
 };
 
 const submitLoginFormDataFailure = (dispatch) => (value) => {
-
+    console.log(value);
 };
 
 export const submitSignUp = (formData) => {
