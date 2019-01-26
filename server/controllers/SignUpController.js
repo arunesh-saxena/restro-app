@@ -22,22 +22,33 @@ export default (req, res, next) => {
         (response) => {
             const responseObj = response.data;
             console.log('______________');
-            // console.log(response.data)
+            // console.log(responseObj)
             res.json(responseObj);
         }
     )
         .catch(error => {
             const err = error.response
             console.log('#############');
-            const errorObj = {
-                status: err && err.status || null,
-                statusText: err && err.statusText || null,
-                data: {
-                    data: err && err.data || null,
-                    errorCode: err && err.status
-                }
-            };
-            // console.log(errorObj)
+            let errorObj = {};
+            if (!!err) {
+                /* 500, 404 */
+                errorObj = {
+                    status: err && err.status || null,
+                    statusText: err && err.statusText || null,
+                    errorCode: err && err.status,
+                    data: err && { message: err.statusText || err.data || null },
+                };
+            } else {
+                /* server is not availables */
+                errorObj = {
+                    status: error && error.errno || null,
+                    statusText: error && error.code || null,
+                    errorCode: error && error.errno,
+                    data: error && error.data || { message: 'server is unavailable' },
+
+                };
+            }
+            // console.log(errorObj);
             res.send(errorObj);
         });
 };

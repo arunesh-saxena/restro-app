@@ -38,7 +38,7 @@ const AjaxFactory = {
                         null
                 };
                 // console.log(responseObject);
-                return {body:responseObject};
+                return responseObject;
             }
         );
     }

@@ -94,9 +94,9 @@ let SignUpContainer = (props) => {
         if (userData && userData.user && userData.user.success) {
             className+=' alert-success'
             msg = 'Thank you for signUp';
-        }else {
+        }else if(userData && userData.user && userData.user.success === false) {
             className+=' alert-dark'
-            msg = userData.user.body && userData.user.body.message;
+            msg = userData.user.data && userData.user.data.message;
         }
         return (
             <p className={className}>{msg}</p>

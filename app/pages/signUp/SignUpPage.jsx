@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { submitSignUp } from '../../actions/signUpAction';
+import { submitSignUp, signUp } from '../../actions/signUpAction';
 
 import SignUpContainer from '../../containers/signup/SignUpContainer';
 class SignUpPage extends React.Component {
     constructor(props) {
         super(props);
         this.handleSignUpSubmit = this.handleSignUpSubmit.bind(this);
+    }
+    componentWillUnmount() {
+        this.props.signUp({});
     }
     handleSignUpSubmit(e, v) {
         e.preventDefault();
@@ -21,7 +24,7 @@ class SignUpPage extends React.Component {
     render() {
         return (
             <div>
-                <SignUpContainer handleSignUpSubmit={this.handleSignUpSubmit} formInfo={this.props.formInfo} userData={this.props.signUp}/>
+                <SignUpContainer handleSignUpSubmit={this.handleSignUpSubmit} formInfo={this.props.formInfo} userData={this.props.userData} />
             </div>
         );
     }
@@ -29,12 +32,13 @@ class SignUpPage extends React.Component {
 
 const mapStateToProps = state => ({
     formInfo: state.form && state.form.signUp && state.form.signUp,
-    signUp: state.signUp
+    userData: state.signUp
 });
 
 const mapDispatchToProps = dispatch =>
     bindActionCreators({
-        submitSignUp
+        submitSignUp,
+        signUp
     }, dispatch);
 
 export default connect(
