@@ -1,7 +1,6 @@
 
 import axios from 'axios';
 import service from '../config/dev-config';
-// import AjaxFactory from '../../app/utils/AjaxFactory';
 
 export default (req, res, next) => {
     const endPoint = service.signUp.default;
@@ -17,7 +16,6 @@ export default (req, res, next) => {
         data: payLoad
     };
 
-    // AjaxFactory.triggerServerRequest(config).then(
     axios(config).then(
         (response) => {
             const responseObj = response.data;
