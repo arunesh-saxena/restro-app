@@ -1,7 +1,5 @@
-
-import axios from 'axios';
 import service from '../config/dev-config';
-import commonUtils from '../utils/commonUtils';
+import ServiceFactory from '../utils/ServiceFactory';
 
 export default (req, res, next) => {
     const endPoint = service.signUp.default;
@@ -17,15 +15,11 @@ export default (req, res, next) => {
         data: payLoad
     };
 
-    axios(config).then(
+    ServiceFactory.triggerserviceRequest(config).then(
         (response) => {
-            const responseObj = response.data;
-            console.log('______________');
-            // console.log(responseObj)
-            res.json(responseObj);
+            res.json(response);
         }
     ).catch(error => {
-        console.log('#############');
-        res.send(commonUtils.sendError(error));
+        res.send(error);
     });
 };
