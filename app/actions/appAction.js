@@ -1,4 +1,7 @@
+
+import * as types from '../utils/types';
+
 export const setLanguage = data => ({
-    type: 'SET_LANGUAGE',
+    type: types.SET_LANGUAGE,
     data
 });

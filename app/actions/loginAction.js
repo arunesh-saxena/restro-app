@@ -1,17 +1,17 @@
-import AjaxFactory from '../utils/AjaxFactory';
+import AjaxFactory from '../../app/utils/AjaxFactory';
 import expressConstants from '../appConstants/expressEndPoint';
 import * as types from '../utils/types';
 
-export const signUp = (data) => ({
-    type: types.SIGN_UP,
+export const login = (data) => ({
+    type: types.LOGIN,
     data
 });
 const submitFormDataSuccess = (dispatch) => (value) => {
     const success = value.body.data.success;
     if (success) {
-        dispatch(signUp(value.body.data));
+        dispatch(login(value.body.data));
     } else {
-        dispatch(signUp(value.body.data));
+        dispatch(login(value.body.data));
     }
 };
 
@@ -19,7 +19,7 @@ const submitLoginFormDataFailure = (dispatch) => (value) => {
     console.log(value);
 };
 
-export const submitSignUp = (formData) => {
+export const submitLogin = (formData) => {
     const api = expressConstants.SIGN_UP;
     const option = {
         method: api.method,
