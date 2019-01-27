@@ -5,7 +5,6 @@ const AjaxFactory = {
         const config = {
             method: options.method,
             url: options.url,
-            responseType: options.responseType || 'json',// default
             data: options.data
         };
         // console.log(config);
@@ -24,10 +23,10 @@ const AjaxFactory = {
                 } else {
                     responseObject.ajaxRequestStatus = 'failure';
                 }
-                return {body:responseObject};
+                return { body: responseObject };
             },
             (error) => {
-                
+
                 const responseObject = {
                     ajaxRequestStatus: 'failure',
                     errorCode:

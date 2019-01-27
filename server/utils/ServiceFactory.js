@@ -6,8 +6,11 @@ const ServiceFactory = {
             method: options.method,
             url: options.url,
             data: options.data,
-            responseType: options.responseType || 'json'// default
+            headers: options.header
         };
+        if (!options.headers) {
+            delete options.headers;
+        }
         // Object.assign(config, options);
         return axios(config).then(
             (response) => {

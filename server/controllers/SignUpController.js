@@ -1,5 +1,6 @@
-import service from '../config/dev-config';
 import ServiceFactory from '../utils/ServiceFactory';
+
+const service = require('../config/dev-config.json');
 
 export default (req, res, next) => {
     const endPoint = service.signUp.default;

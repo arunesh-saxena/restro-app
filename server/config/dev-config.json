@@ -1,0 +1,22 @@
+{
+    "signUp": {
+        "default": {
+            "module": "SIGN_UP",
+            "url": "http://localhost:3000/api/singup",
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
+    },
+    "default": {
+        "login": {
+            "module": "LOGIN",
+            "url": "http://localhost:3000/api/login",
+            "method": "POST"
+        },
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}
