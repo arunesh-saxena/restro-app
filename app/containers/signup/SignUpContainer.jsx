@@ -101,7 +101,7 @@ let SignUpContainer = (props) => {
         }
         return (
             <p className={className}>{msg}</p>
-        );;
+        );
     }
     return (
         <div className="sign-form-container">

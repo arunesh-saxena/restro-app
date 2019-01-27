@@ -60,12 +60,32 @@ let LoginContainer = (props) => {
             </form>
         );
     };
+    const successMsg = () => {
+        const login = props.login;
+
+        if(!Object.keys(login).length){
+            return '';
+        }
+        let msg = '';
+        let className = 'alert';
+        if (login && login.loginStatus ) {
+            className+=' alert-success'
+            msg = 'Thank you for signUp';
+        }else {
+            className+=' alert-dark'
+            msg = 'Somthing went wrong todp handle this';
+        }
+        return (
+            <p className={className}>{msg}</p>
+        );
+    }
     return (
         <div className="login-form-container">
             <div className="row justify-content-md-center">
                 <div className="col-xs-12 col-md-6">
                     {getLoginHeading()}
                     {renderLoginForm()}
+                    {successMsg()}
                 </div>
             </div>
         </div>

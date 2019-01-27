@@ -4,7 +4,11 @@ const expressConstants = {
         method: 'GET'
     },
     SIGN_UP: {
-        url: '/api/singup',
+        url: '/api/signup',
+        method: 'POST'
+    },
+    LOGIN: {
+        url: '/api/login',
         method: 'POST'
     }
 };

@@ -1,6 +1,5 @@
 const commonUtils = {
     sendError: (err) => {
-        console.log('#############');
         const error = err.response
         let responseObject = {};
         let errorCode = null;
