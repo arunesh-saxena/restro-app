@@ -26,12 +26,12 @@ export const submitLogin = (formData) => {
         url: api.url,
         data: formData
     };
-    // const success = submitFormDataSuccess(dispatch, props);
-    return dispatch => {
-        const success = submitFormDataSuccess(dispatch);
-        const failure = submitLoginFormDataFailure(dispatch);
-        AjaxFactory.triggerServerRequest(option)
-            .then(success)
-            .catch(failure);
-    }
+    console.log(option);
+    // return dispatch => {
+    //     const success = submitFormDataSuccess(dispatch);
+    //     const failure = submitLoginFormDataFailure(dispatch);
+    //     AjaxFactory.triggerServerRequest(option)
+    //         .then(success)
+    //         .catch(failure);
+    // }
 };

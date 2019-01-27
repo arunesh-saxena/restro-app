@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { submitSignUp, signUp } from '../../actions/signUpAction';
@@ -31,7 +31,7 @@ class SignUpPage extends React.Component {
 };
 
 const mapStateToProps = state => ({
-    formInfo: state.form && state.form.signUp && state.form.signUp,
+    formInfo: state.form && state.form.signUp,
     userData: state.signUp
 });
 

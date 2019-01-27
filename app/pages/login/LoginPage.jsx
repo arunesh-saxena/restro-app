@@ -1,20 +1,48 @@
 import React from 'react';
-import LoginContainer from '../../containers/login/LoginContainer'
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-export default class LoginPage extends React.Component {
+import LoginContainer from '../../containers/login/LoginContainer'
+import { submitLogin } from '../../actions/loginAction';
+
+class LoginPage extends React.Component {
     constructor(props) {
         super(props);
         this.handleSignInSubmit = this.handleSignInSubmit.bind(this);
     }
+    componentWillUnmount() {
+        // this.props.signUp({});
+    }
     handleSignInSubmit(e) {
         e.preventDefault();
         console.log('handleSignInSubmit');
+        const formInfo = this.props.formInfo;
+
+        if (formInfo && !formInfo.syncErrors) {
+            const formData = formInfo.values;
+            this.props.submitLogin(formData);
+        }
     }
     render() {
         return (
             <div>
-                <LoginContainer handleSignInSubmit={this.handleSignInSubmit} />
+                <LoginContainer handleSignInSubmit={this.handleSignInSubmit} formInfo={this.props.formInfo} />
             </div>
         );
     }
 };
+
+const mapStateToProps = state => ({
+    formInfo: state.form && state.form.loginForm,
+
+});
+
+const mapDispatchToProps = dispatch =>
+    bindActionCreators({
+        submitLogin
+    }, dispatch);
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(LoginPage);
