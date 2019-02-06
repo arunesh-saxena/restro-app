@@ -8,6 +8,7 @@ class Header extends Component {
         this.state = {
             isMainMenuOpen: false
         };
+        this.labels = props.labels.common;
     }
     toggleMainMenu(event) {
         console.log('toggleMainMenu');
@@ -33,13 +34,13 @@ class Header extends Component {
                         <button type="button" className="btn icon-cross cross-menu btn-icon" onClick={this.toggleMainMenu} />
                         <div className="nav-menu">
                             <ul className="nav-bar">
-                                <li><Link onClick={this.toggleMainMenu} to="/aboutUs">AboutUs</Link></li>
-                                <li><Link onClick={this.toggleMainMenu} to="/aboutUs/contactUs">ContactUs</Link></li>
+                                <li><Link onClick={this.toggleMainMenu} to="/aboutUs">{this.labels.aboutUs}</Link></li>
+                                <li><Link onClick={this.toggleMainMenu} to="/aboutUs/contactUs">{this.labels.contactUs}</Link></li>
                             </ul>
                             <div className="login-nav">
                                 <ul className="nav-bar">
-                                    <li><Link onClick={this.toggleMainMenu} to="/login">Login</Link></li>
-                                    <li><Link onClick={this.toggleMainMenu} to="/singUp">SignUp</Link></li>
+                                    <li><Link onClick={this.toggleMainMenu} to="/login">{this.labels.login}</Link></li>
+                                    <li><Link onClick={this.toggleMainMenu} to="/singUp">{this.labels.signUp}</Link></li>
                                 </ul>
                             </div>
                         </div>

@@ -1,19 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-
-
-const validate = values => {
-    const errors = {};
-    if (!values.username) {
-        errors.username = 'Required'
-    } else if (values.username.length > 15) {
-        errors.username = 'Must be 15 characters or less'
-    }
-    if (!values.password) {
-        errors.password = 'Required'
-    }
-    return errors
-};
+import formValidate from '../../utils/formValidation';
 
 const renderField = ({
     input,
@@ -36,11 +23,13 @@ let LoginContainer = (props) => {
         handleSignInSubmit,
         pristine,
         submitting,
-        formInfo
+        formInfo,
     } = props;
+    const { common: labels } = props.labels;
+
     let getLoginHeading = () => {
         return (
-            <h1 className="form-heading h2"> Log In </h1>
+            <h1 className="form-heading h2">{labels.login}</h1>
         );
     };
 
@@ -48,31 +37,31 @@ let LoginContainer = (props) => {
         return (
             <form onSubmit={handleSignInSubmit}>
                 <div className="form-group">
-                    <label htmlFor="username">Username<sup>*</sup></label>
+                    <label htmlFor="username">{labels.username}<sup>*</sup></label>
                     {/* <input type="text" className="form-control" id="username" placeholder="username" /> */}
-                    <Field name="username" type="text" component={renderField} className="form-control" id="username" placeholder="Enter username" />
+                    <Field name="username" type="text" component={renderField} className="form-control" id="username" placeholder={labels.enterUsername} />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="password">Password<sup>*</sup></label>
-                    <Field name="password" type="password" component={renderField} className="form-control" id="password" placeholder="Password" />
+                    <label htmlFor="password">{labels.password}<sup>*</sup></label>
+                    <Field name="password" type="password" component={renderField} className="form-control" id="password" placeholder={labels.password} />
                 </div>
-                <button type="submit" disabled={pristine || submitting || formInfo.syncErrors} className="col btn btn-primary">Submit</button>
+                <button type="submit" disabled={pristine || submitting || formInfo.syncErrors} className="col btn btn-primary">{labels.submit}</button>
             </form>
         );
     };
     const successMsg = () => {
         const login = props.login;
 
-        if(!Object.keys(login).length){
+        if (!Object.keys(login).length) {
             return '';
         }
         let msg = '';
         let className = 'alert';
-        if (login && login.loginStatus ) {
-            className+=' alert-success'
+        if (login && login.loginStatus) {
+            className += ' alert-success'
             msg = 'Thank you for signUp';
-        }else {
-            className+=' alert-dark'
+        } else {
+            className += ' alert-dark'
             msg = 'Somthing went wrong todp handle this';
         }
         return (
@@ -94,6 +83,6 @@ let LoginContainer = (props) => {
 
 LoginContainer = reduxForm({
     form: 'loginForm',
-    validate
+    validate:formValidate
 })(LoginContainer);
 export default LoginContainer;

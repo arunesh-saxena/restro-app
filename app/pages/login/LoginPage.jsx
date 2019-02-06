@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import LoginContainer from '../../containers/login/LoginContainer'
 import { submitLogin } from '../../actions/loginAction';
+import appConstants from '../../appConstants/appConstants';
 
 class LoginPage extends React.Component {
     constructor(props) {
@@ -26,7 +27,7 @@ class LoginPage extends React.Component {
     render() {
         return (
             <div>
-                <LoginContainer handleSignInSubmit={this.handleSignInSubmit} formInfo={this.props.formInfo} login={this.props.login} />
+                <LoginContainer handleSignInSubmit={this.handleSignInSubmit} formInfo={this.props.formInfo} login={this.props.login} labels={appConstants.labels}/>
             </div>
         );
     }

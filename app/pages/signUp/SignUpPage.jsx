@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { submitSignUp, signUp } from '../../actions/signUpAction';
 
 import SignUpContainer from '../../containers/signup/SignUpContainer';
+import appConstants from '../../appConstants/appConstants';
 class SignUpPage extends React.Component {
     constructor(props) {
         super(props);
@@ -24,7 +25,11 @@ class SignUpPage extends React.Component {
     render() {
         return (
             <div>
-                <SignUpContainer handleSignUpSubmit={this.handleSignUpSubmit} formInfo={this.props.formInfo} userData={this.props.userData} />
+                <SignUpContainer
+                    handleSignUpSubmit={this.handleSignUpSubmit}
+                    formInfo={this.props.formInfo}
+                    userData={this.props.userData}
+                    labels={appConstants.labels} />
             </div>
         );
     }

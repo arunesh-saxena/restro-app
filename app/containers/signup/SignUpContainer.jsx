@@ -1,29 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import formValidate from '../../utils/formValidation';
 
-const validate = values => {
-    const errors = {};
-    if (!values.username) {
-        errors.username = 'Required'
-    } else if (values.username.length > 15) {
-        errors.username = 'Must be 15 characters or less'
-    }
-    if (!values.email) {
-        errors.email = 'Required'
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-        errors.email = 'Invalid email address'
-    }
-    if (!values.userPassword) {
-        errors.userPassword = 'Required'
-    }
-
-    if (!values.confirmPassword) {
-        errors.confirmPassword = 'Required'
-    } else if (values.confirmPassword !== values.userPassword) {
-        errors.confirmPassword = 'Mismatch with password'
-    }
-    return errors
-};
 const renderField = ({
     input,
     id,
@@ -47,11 +25,12 @@ let SignUpContainer = (props) => {
         submitting,
         formInfo
     } = props;
+    const { common: labels, signUp: labelsSignUp } = props.labels;
 
     let getLoginHeading = () => {
         return (
             <h1 className="form-heading h2">
-                Sign Up
+                {labels.signUp}
             </h1>
         );
     };
@@ -62,23 +41,23 @@ let SignUpContainer = (props) => {
             return (
                 <form onSubmit={handleSignUpSubmit}>
                     <div className="form-group">
-                        <label htmlFor="username">Username<sup>*</sup></label>
-                        <Field name="username" type="text" component={renderField} className="form-control" id="username" placeholder="Enter username" />
+                        <label htmlFor="username">{labels.username}<sup>*</sup></label>
+                        <Field name="username" type="text" component={renderField} className="form-control" id="username" placeholder={labels.enterUserName} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="email">Email address<sup>*</sup></label>
-                        <Field component={renderField} name="email" type="email" className="form-control" id="email" placeholder="Enter email" />
-                        <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+                        <label htmlFor="email">{labels.emailAddress}<sup>*</sup></label>
+                        <Field component={renderField} name="email" type="email" className="form-control" id="email" placeholder={labels.enterEmail} />
+                        <small id="emailHelp" className="form-text text-muted">{labelsSignUp.emailConfidentialMsg}</small>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="userPassword">Password<sup>*</sup></label>
-                        <Field component={renderField} name="userPassword" type="password" className="form-control" id="userPassword" placeholder="Password" />
+                        <label htmlFor="userPassword">{labels.password}<sup>*</sup></label>
+                        <Field component={renderField} name="userPassword" type="password" className="form-control" id="userPassword" placeholder={labels.password} />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="confirmPassword">Confirm password<sup>*</sup></label>
-                        <Field component={renderField} name="confirmPassword" type="password" className="form-control" id="confirmPassword" placeholder="Confirm password" />
+                        <label htmlFor="confirmPassword">{labels.confirmPassword}<sup>*</sup></label>
+                        <Field component={renderField} name="confirmPassword" type="password" className="form-control" id="confirmPassword" placeholder={labels.confirmPassword} />
                     </div>
-                    <button type="submit" disabled={pristine || submitting || formInfo.syncErrors} className="col btn btn-primary">Submit</button>
+                    <button type="submit" disabled={pristine || submitting || formInfo.syncErrors} className="col btn btn-primary">{labels.submit}</button>
                 </form>
             );
             return '';
@@ -87,16 +66,16 @@ let SignUpContainer = (props) => {
     const successMsg = () => {
         const userData = props.userData;
 
-        if(!Object.keys(userData).length){
+        if (!Object.keys(userData).length) {
             return '';
         }
         let msg = '';
         let className = 'alert';
         if (userData && userData.user && userData.user.success) {
-            className+=' alert-success'
-            msg = 'Thank you for signUp';
-        }else if(userData && userData.user && userData.user.success === false) {
-            className+=' alert-dark'
+            className += ' alert-success'
+            msg = labelsSignUp.successMsg;
+        } else if (userData && userData.user && userData.user.success === false) {
+            className += ' alert-dark'
             msg = userData.user.data && userData.user.data.message;
         }
         return (
@@ -117,6 +96,6 @@ let SignUpContainer = (props) => {
 };
 SignUpContainer = reduxForm({
     form: 'signUp',
-    validate, // <--- validation function given to redux-form
+    validate:formValidate, // <--- validation function given to redux-form
 })(SignUpContainer);
 export default SignUpContainer;
