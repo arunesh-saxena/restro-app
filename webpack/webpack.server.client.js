@@ -16,9 +16,9 @@ module.exports = {
     context: path.resolve(CURRENT_WORKING_DIR, 'app'),
     entry: { app: './index.jsx', style: "./styles/app.scss", bootstrap: './styles/bootstrap.scss' },
     output: {
-        path: path.resolve('public', 'assets'),
+        path: path.resolve(CURRENT_WORKING_DIR, 'public', 'assets'),
         filename: '[name].js',
-        publicPath: '/'
+        publicPath: '/assets/',
     },
     devServer: {
         historyApiFallback: true,

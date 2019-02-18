@@ -1,10 +1,14 @@
 import React from 'react';
+import Loadable from 'react-Loadable';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { submitSignUp, signUp } from '../../actions/signUpAction';
-
-import SignUpContainer from '../../containers/signup/SignUpContainer';
 import appConstants from '../../appConstants/appConstants';
+
+const SignUpContainer = Loadable({
+    loader: () => import(/* webpackChunkName: "SignUpContainer" */ '../../containers/signup/SignUpContainer'),
+    loading: () => <strong>Loading...</strong>,
+});
 class SignUpPage extends React.Component {
     constructor(props) {
         super(props);

@@ -1,12 +1,12 @@
-
+import React from 'react';
+import Loadable from 'react-Loadable';
 import AppUrls from './appConstants/appUrls';
 import App from './pages/App';
-import HomePage from './pages/HomePage';
-import AboutusPage from './pages/AboutUsPage';
-import ContactUsPage from './pages/ContactUsPage';
-import LoginPage from './pages/login/LoginPage';
-import SignUpPage from './pages/signUp/SignUpPage';
-import ErrorPage from './pages/ErrorPage';
+
+const HomePage = Loadable({
+    loader: () => import(/* webpackChunkName: "HomePage" */ './pages/HomePage'),
+    loading: () => <strong>Loading...</strong>,
+});
 
 export default [
     {
@@ -25,30 +25,45 @@ export default [
             },
             {
                 path: AppUrls.ABOUTUS,
-                component: AboutusPage,
                 exact: false,
+                component: Loadable({
+                    loader: () => import(/* webpackChunkName: "AboutusPage" */ './pages/AboutUsPage'),
+                    loading: () => <strong>Loading...</strong>,
+                }),
                 routes: [
                     {
                         path: AppUrls.CONTACTUS,
-                        component: ContactUsPage,
                         exact: true,
+                        component: Loadable({
+                            loader: () => import(/* webpackChunkName: "ContactUsPage" */ './pages/ContactUsPage'),
+                            loading: () => <strong>Loading...</strong>,
+                        })
                     }
                 ]
             },
             {
                 path: AppUrls.LOGIN,
                 exact: true,
-                component: LoginPage
+                component: Loadable({
+                    loader: () => import(/* webpackChunkName: "LoginPage" */ './pages/login/LoginPage'),
+                    loading: () => <strong>Loading...</strong>,
+                })
             },
             {
                 path: AppUrls.SIGN_UP,
                 exact: true,
-                component: SignUpPage
+                component: Loadable({
+                    loader: () => import(/* webpackChunkName: "SignUpPage" */ './pages/signUp/SignUpPage'),
+                    loading: () => <strong>Loading...</strong>,
+                })
             },
             {
                 path: '*',
                 exact: false,
-                component: ErrorPage
+                component: Loadable({
+                    loader: () => import(/* webpackChunkName: "ErrorPage" */ './pages/ErrorPage'),
+                    loading: () => <strong>Loading...</strong>,
+                })
             }
         ]
     }
