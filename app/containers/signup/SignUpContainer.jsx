@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import formValidate from '../../utils/formValidation';
+import { signUpValidate as formValidate } from '../../utils/formValidation';
 
 const renderField = ({
     input,

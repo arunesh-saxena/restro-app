@@ -1,6 +1,7 @@
 import appConstants from '../appConstants/appConstants';
-const {error} = appConstants.labels;
-const formValidate = values => {
+const { error } = appConstants.labels;
+
+export const signUpValidate = values => {
     const errors = {};
     if (!values.username) {
         errors.username = error.required;
@@ -19,12 +20,20 @@ const formValidate = values => {
     if (!values.confirmPassword) {
         errors.confirmPassword = error.required;
     } else if (values.confirmPassword !== values.userPassword) {
-        errors.confirmPassword = error.invalidEmail;
+        errors.confirmPassword = error.misMatchWithPassword;
+    }
+    return errors
+};
+
+export const loginValidate = values => {
+    const errors = {};
+    if (!values.username) {
+        errors.username = error.required;
+    } else if (values.username.length > 15) {
+        errors.username = error.charactersLess;
     }
     if (!values.password) {
         errors.password = error.required;
     }
     return errors
 };
-
-export default formValidate;

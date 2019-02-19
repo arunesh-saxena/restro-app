@@ -1,6 +1,6 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
-import formValidate from '../../utils/formValidation';
+import { loginValidate } from '../../utils/formValidation';
 
 const renderField = ({
     input,
@@ -83,6 +83,6 @@ let LoginContainer = (props) => {
 
 LoginContainer = reduxForm({
     form: 'loginForm',
-    validate:formValidate
+    validate: loginValidate
 })(LoginContainer);
 export default LoginContainer;
