@@ -1,10 +1,12 @@
 import * as types from '../utils/types';
 
-export default function login(state = {}, action) {
+ const login = (state = {}, action) => {
     switch (action.type) {
         case types.SET_LOGIN_DATA_STATUS: {
             return Object.assign({}, state, {
-                loginStatus: action.data
+                isLogin: !!action.data.username,
+                username: action.data.username,
+                errorMsg: action.data.msg
             });
         }
 
@@ -13,3 +15,5 @@ export default function login(state = {}, action) {
         }
     }
 }
+
+export default login;

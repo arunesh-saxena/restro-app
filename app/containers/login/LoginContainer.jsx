@@ -50,19 +50,19 @@ let LoginContainer = (props) => {
         );
     };
     const successMsg = () => {
-        const login = props.login;
+        const loginData = props.loginData;
 
-        if (!Object.keys(login).length) {
+        if (!Object.keys(loginData).length) {
             return '';
         }
         let msg = '';
         let className = 'alert';
-        if (login && login.loginStatus) {
+        if (loginData && loginData.username) {
             className += ' alert-success'
-            msg = 'Thank you for signUp';
+            msg = 'Thank you for login';
         } else {
             className += ' alert-dark'
-            msg = 'Somthing went wrong todp handle this';
+            msg = `${loginData.errorMsg}`;
         }
         return (
             <p className={className}>{msg}</p>

@@ -27,7 +27,7 @@ class LoginPage extends React.Component {
     render() {
         return (
             <div>
-                <LoginContainer handleSignInSubmit={this.handleSignInSubmit} formInfo={this.props.formInfo} login={this.props.login} labels={appConstants.labels}/>
+                <LoginContainer handleSignInSubmit={this.handleSignInSubmit} formInfo={this.props.formInfo} loginData={this.props.login} labels={appConstants.labels}/>
             </div>
         );
     }
@@ -35,7 +35,7 @@ class LoginPage extends React.Component {
 
 const mapStateToProps = state => ({
     formInfo: state.form && state.form.loginForm,
-    login: state.login || {}
+    login: state.user || {}
 
 });
 

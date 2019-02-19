@@ -1,6 +1,7 @@
 import AjaxFactory from '../../app/utils/AjaxFactory';
 import expressConstants from '../appConstants/expressEndPoint';
 import * as types from '../utils/types';
+import commonUtils from '../utils/commonUtils';
 import { setAccountInfo } from './myAccountAction';
 
 export const setLoginDataStatus = (data) => ({
@@ -11,9 +12,12 @@ export const setLoginDataStatus = (data) => ({
 const submitFormDataSuccess = (dispatch) => (value) => {
     const success = value.body.data.success;
     if (success) {
-        dispatch(setLoginDataStatus(true));
+        const username = value.body.data && value.body.data.data && value.body.data.data.username || null;
+        dispatch(setLoginDataStatus({ username, msg: null }));
+        commonUtils.setCookie('username', username);
     } else {
-        dispatch(setLoginDataStatus(false));
+        dispatch(setLoginDataStatus({ username: null, msg: value.body.data.message }));
+        commonUtils.setCookie('username', username, -1);
     }
 };
 
