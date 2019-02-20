@@ -16,6 +16,34 @@ class Header extends Component {
             isMainMenuOpen: !this.state.isMainMenuOpen
         })
     }
+    navBar() {
+        return (
+            <ul className="nav-bar">
+                <li><Link onClick={this.toggleMainMenu} to="/aboutUs">{this.labels.aboutUs}</Link></li>
+                <li><Link onClick={this.toggleMainMenu} to="/aboutUs/contactUs">{this.labels.contactUs}</Link></li>
+            </ul>
+        )
+    }
+    loginNav() {
+        const isLogin = this.props.user.isLogin;
+        return (
+            <div className="login-nav">
+                <ul className="nav-bar">
+                    {!isLogin &&
+                        <React.Fragment>
+                            <li><Link onClick={this.toggleMainMenu} to="/login">{this.labels.login}</Link></li>
+                            <li><Link onClick={this.toggleMainMenu} to="/singUp">{this.labels.signUp}</Link></li>
+                        </React.Fragment>
+                    }
+                    {isLogin &&
+                        <li onClick={this.props.handleLogout} ><Link onClick={this.toggleMainMenu} to="#">
+                            {this.labels.logout}
+                        </Link></li>
+                    }
+                </ul>
+            </div>
+        )
+    }
     render() {
         const hideMobMenu = this.state.isMainMenuOpen ? '' : 'hideMobMenu';
         return (
@@ -33,16 +61,8 @@ class Header extends Component {
                     <div className={`navigation ${hideMobMenu}`}>
                         <button type="button" className="btn icon-cross cross-menu btn-icon" onClick={this.toggleMainMenu} />
                         <div className="nav-menu">
-                            <ul className="nav-bar">
-                                <li><Link onClick={this.toggleMainMenu} to="/aboutUs">{this.labels.aboutUs}</Link></li>
-                                <li><Link onClick={this.toggleMainMenu} to="/aboutUs/contactUs">{this.labels.contactUs}</Link></li>
-                            </ul>
-                            <div className="login-nav">
-                                <ul className="nav-bar">
-                                    <li><Link onClick={this.toggleMainMenu} to="/login">{this.labels.login}</Link></li>
-                                    <li><Link onClick={this.toggleMainMenu} to="/singUp">{this.labels.signUp}</Link></li>
-                                </ul>
-                            </div>
+                            {this.navBar()}
+                            {this.loginNav()}
                         </div>
                     </div>
                     {/* </div>

@@ -2,15 +2,10 @@ import ServiceFactory from '../utils/ServiceFactory';
 const service = require('../config/dev-config.json');
 
 export default (req, res, next) => {
-    const endPoint = service.login.default;
-    const body = req.body;
+    const endPoint = service.logout.default;
     const config = {
         method: endPoint.method,
-        url: endPoint.url,
-        data: {
-            "username": body.username,
-            "password": body.password
-        }
+        url: endPoint.url
     };
 
     ServiceFactory.triggerserviceRequest(config).then(

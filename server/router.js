@@ -3,6 +3,7 @@ var routes = express.Router();
 import expressConstants from '../app/appConstants/expressEndPoint';
 import SignUpController from './controllers/SignUpController';
 import LoginController from './controllers/LoginController';
+import LogOutController from './controllers/LogOutController';
 
 /* testing */
 routes.get(expressConstants.TEST_API.url, function (req, res) {
@@ -14,6 +15,7 @@ routes.get(expressConstants.TEST_API.url, function (req, res) {
 
 routes.post(expressConstants.SIGN_UP.url, SignUpController);
 routes.post(expressConstants.LOGIN.url, LoginController);
+routes.post(expressConstants.LOGOUT.url, LogOutController);
 
 
 

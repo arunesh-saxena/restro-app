@@ -16,7 +16,6 @@ class LoginPage extends React.Component {
     }
     handleSignInSubmit(e) {
         e.preventDefault();
-        console.log('handleSignInSubmit');
         const formInfo = this.props.formInfo;
 
         if (formInfo && !formInfo.syncErrors) {

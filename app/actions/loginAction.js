@@ -2,7 +2,6 @@ import AjaxFactory from '../../app/utils/AjaxFactory';
 import expressConstants from '../appConstants/expressEndPoint';
 import * as types from '../utils/types';
 import commonUtils from '../utils/commonUtils';
-import { setAccountInfo } from './myAccountAction';
 
 export const setLoginDataStatus = (data) => ({
     type: types.SET_LOGIN_DATA_STATUS,
@@ -32,7 +31,7 @@ export const submitLogin = (formData) => {
         url: api.url,
         data: formData
     };
-    console.log(option);
+
     return dispatch => {
         const success = submitFormDataSuccess(dispatch);
         const failure = submitLoginFormDataFailure(dispatch);

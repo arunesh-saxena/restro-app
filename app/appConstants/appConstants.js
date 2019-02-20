@@ -4,6 +4,7 @@ const appConstants = {
             aboutUs: 'About Us',
             contactUs: 'Contact Us',
             login: 'Login',
+            logout: 'Log out',
             signUp: 'Sign Up',
             username: 'Username',
             enterUserName: 'Enter username',
