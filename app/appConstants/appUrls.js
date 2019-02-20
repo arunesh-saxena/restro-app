@@ -1,8 +1,9 @@
 export default {
     ROOT: '/',
     HOME: '/home',
-    ABOUTUS: '/aboutUs',
-    CONTACTUS: '/aboutUs/contactUs',
+    ABOUT_US: '/aboutUs',
+    CONTACT_US: '/aboutUs/contactUs',
     LOGIN: '/login',
-    SIGN_UP: '/singup'
+    SIGN_UP: '/signUp',
+    MENU_LIST: '/menuList'
 };

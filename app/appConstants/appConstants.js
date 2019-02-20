@@ -12,7 +12,9 @@ const appConstants = {
             submit: 'Submit',
             emailAddress: 'Email Address',
             enterEmail: 'Enter Email',
-            confirmPassword: 'Confirm Password'
+            confirmPassword: 'Confirm Password',
+            menuList: 'Menu List',
+            upLoadMenu: 'Upload Menu'
         },
         error: {
             required: 'Required',

@@ -19,8 +19,11 @@ class Header extends Component {
     navBar() {
         return (
             <ul className="nav-bar">
-                <li><Link onClick={this.toggleMainMenu} to="/aboutUs">{this.labels.aboutUs}</Link></li>
-                <li><Link onClick={this.toggleMainMenu} to="/aboutUs/contactUs">{this.labels.contactUs}</Link></li>
+                <li><Link onClick={this.toggleMainMenu} to={AppUrls.ABOUT_US}>{this.labels.aboutUs}</Link></li>
+                <li><Link onClick={this.toggleMainMenu} to={AppUrls.CONTACT_US}>{this.labels.contactUs}</Link></li>
+                {this.props.user.isLogin &&
+                    <li><Link onClick={this.toggleMainMenu} to={AppUrls.MENU_LIST}>{this.labels.menuList}</Link></li>
+                }
             </ul>
         )
     }
@@ -31,8 +34,8 @@ class Header extends Component {
                 <ul className="nav-bar">
                     {!isLogin &&
                         <React.Fragment>
-                            <li><Link onClick={this.toggleMainMenu} to="/login">{this.labels.login}</Link></li>
-                            <li><Link onClick={this.toggleMainMenu} to="/singUp">{this.labels.signUp}</Link></li>
+                            <li><Link onClick={this.toggleMainMenu} to={AppUrls.LOGIN}>{this.labels.login}</Link></li>
+                            <li><Link onClick={this.toggleMainMenu} to={AppUrls.SIGN_UP}>{this.labels.signUp}</Link></li>
                         </React.Fragment>
                     }
                     {isLogin &&

@@ -24,7 +24,7 @@ export default [
                 component: HomePage
             },
             {
-                path: AppUrls.ABOUTUS,
+                path: AppUrls.ABOUT_US,
                 exact: false,
                 component: Loadable({
                     loader: () => import(/* webpackChunkName: "AboutusPage" */ './pages/AboutUsPage'),
@@ -32,7 +32,7 @@ export default [
                 }),
                 routes: [
                     {
-                        path: AppUrls.CONTACTUS,
+                        path: AppUrls.CONTACT_US,
                         exact: true,
                         component: Loadable({
                             loader: () => import(/* webpackChunkName: "ContactUsPage" */ './pages/ContactUsPage'),
@@ -54,6 +54,14 @@ export default [
                 exact: true,
                 component: Loadable({
                     loader: () => import(/* webpackChunkName: "SignUpPage" */ './pages/signUp/SignUpPage'),
+                    loading: () => <strong>Loading...</strong>,
+                })
+            },
+            {
+                path: AppUrls.MENU_LIST,
+                exact: true,
+                component: Loadable({
+                    loader: () => import(/* webpackChunkName: "MenuListPage" */ './pages/MenuList/MenuListPage'),
                     loading: () => <strong>Loading...</strong>,
                 })
             },
