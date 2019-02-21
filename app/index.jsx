@@ -5,9 +5,10 @@ import { renderRoutes, matchRoutes } from 'react-router-config';
 import { Provider } from 'react-redux';
 import  configureStore  from './store/configureStore';
 
-import Routes from './routes';
+import createRoutes from './routes';
 const initialState = window.__INITIAL_STATE__;
 const store = configureStore(initialState);
+const Routes = createRoutes(store);
 /* const RouteDataLoader = withRouter(class extends React.Component {
     constructor(props) {
         super();

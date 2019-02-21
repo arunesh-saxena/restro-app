@@ -16,7 +16,7 @@ export const logOutAction = (formData) => {
                 const {success,message} = res.body.data;
                 if (success) {
                     dispatch(setLoginDataStatus({ username: null, msg: message }));
-                    commonUtils.setCookie('username', username, -1);
+                    commonUtils.setCookie('username', null, -1);
                 } else {
                     console.log(res);
                 }

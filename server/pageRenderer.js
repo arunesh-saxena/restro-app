@@ -3,17 +3,18 @@ import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
 import { StaticRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
-import routes from '../app/routes.jsx';
+import createRoutes from '../app/routes.jsx';
 
 import staticAssets from './static';
-const context = {}
+const context = {};
+const Routes = createRoutes;
 const createApp = (store, url) => renderToString(
   <Provider store={store}>
     <StaticRouter
       location={url}
       context={context}
     >
-      {renderRoutes(routes)}
+      {renderRoutes(Routes(store))}
     </StaticRouter>
   </Provider>
 );

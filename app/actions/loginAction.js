@@ -16,7 +16,7 @@ const submitFormDataSuccess = (dispatch) => (value) => {
         commonUtils.setCookie('username', username);
     } else {
         dispatch(setLoginDataStatus({ username: null, msg: value.body.data.message }));
-        commonUtils.setCookie('username', username, -1);
+        commonUtils.setCookie('username', null, -1);
     }
 };
 

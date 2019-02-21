@@ -21,7 +21,7 @@ class Header extends Component {
             <ul className="nav-bar">
                 <li><Link onClick={this.toggleMainMenu} to={AppUrls.ABOUT_US}>{this.labels.aboutUs}</Link></li>
                 <li><Link onClick={this.toggleMainMenu} to={AppUrls.CONTACT_US}>{this.labels.contactUs}</Link></li>
-                {this.props.user.isLogin &&
+                {
                     <li><Link onClick={this.toggleMainMenu} to={AppUrls.MENU_LIST}>{this.labels.menuList}</Link></li>
                 }
             </ul>
