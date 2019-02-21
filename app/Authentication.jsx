@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 /**
  * Higher-order component (HOC) to wrap restricted pages
  */
-const BaseComponent = (ParsedComponent, rest) => {
+const BaseComponent = (ParsedComponent, store) => {
     class Authentication extends Component {
         componentWillMount() {
             this.checkAuthentication(this.props);
@@ -17,8 +17,7 @@ const BaseComponent = (ParsedComponent, rest) => {
 
         checkAuthentication(params) {
             const { history } = params;
-            console.log( rest.getState());
-            const user = rest.getState().user
+            const user = store.getState().user
             /**
              * Here we need to validate state as logged-in from store object.
              * if User is logged-in component will get render
