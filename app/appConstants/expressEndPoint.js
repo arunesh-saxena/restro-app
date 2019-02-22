@@ -14,6 +14,10 @@ const expressConstants = {
     LOGOUT: {
         url: '/api/logout',
         method: 'POST'
+    },
+    ISLOGIN: {
+        url: '/api/isLogin',
+        method: 'POST'
     }
 };
 

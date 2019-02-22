@@ -5,7 +5,7 @@ const AjaxFactory = {
         const config = {
             method: options.method,
             url: options.url,
-            data: options.data
+            data: options.data || {},
         };
         // console.log(config);
         // Object.assign(config, options);
