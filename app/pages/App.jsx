@@ -4,11 +4,15 @@ import { bindActionCreators } from 'redux';
 import AppContainer from '../containers/AppContainer';
 import appConstants from '../appConstants/appConstants';
 import { logOutAction } from '../actions/logOutAction';
+import { checkIsLogin } from '../actions/appAction';
 
 class App extends React.Component {
     constructor() {
         super();
         this.handleLogout = this.handleLogout.bind(this);
+    }
+    componentWillMount(){
+        this.props.checkIsLogin();
     }
     handleLogout() {
         this.props.logOutAction();
@@ -32,7 +36,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch =>
     bindActionCreators({
-        logOutAction
+        logOutAction,
+        checkIsLogin
     }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
