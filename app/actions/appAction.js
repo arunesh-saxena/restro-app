@@ -14,7 +14,7 @@ export const checkIsLogin = () => {
     const api = expressConstants.ISLOGIN;
     const option = {
         method: api.method,
-        url: 'http://localhost:3000/api/isLogin'
+        url: api.url
     };
     return dispatch => {
         AjaxFactory.triggerServerRequest(option)

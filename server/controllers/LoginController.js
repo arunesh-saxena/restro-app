@@ -7,6 +7,7 @@ export default (req, res, next) => {
     const config = {
         method: endPoint.method,
         url: endPoint.url,
+        headers: endPoint.headers,
         data: {
             "username": body.username,
             "password": body.password

@@ -10,6 +10,7 @@ class App extends React.Component {
     constructor() {
         super();
         this.handleLogout = this.handleLogout.bind(this);
+        this.checkIsLogin = this.checkIsLogin.bind(this);
     }
     componentWillMount(){
         this.props.checkIsLogin();
@@ -17,10 +18,14 @@ class App extends React.Component {
     handleLogout() {
         this.props.logOutAction();
     }
+    checkIsLogin() {
+        this.props.checkIsLogin();
+    }
     render() {
         const props = Object.assign({}, this.props, {
             labels: appConstants.labels,
-            handleLogout: this.handleLogout
+            handleLogout: this.handleLogout,
+            checkIsLogin: this.checkIsLogin
         });
 
         return (

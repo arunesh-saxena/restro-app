@@ -6,8 +6,14 @@ const AjaxFactory = {
             method: options.method,
             url: options.url,
             data: options.data || {},
+            withCredentials: true
         };
-        // console.log(config);
+
+        if (typeof document !== 'undefined') {
+            let token = document && sessionStorage.getItem('token') || null;
+            config.data.token = token;
+        }
+
         // Object.assign(config, options);
         return axios(config).then(
             (response) => {

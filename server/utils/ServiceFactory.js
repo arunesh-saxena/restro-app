@@ -7,7 +7,8 @@ const ServiceFactory = {
             method: options.method,
             url: options.url,
             data: options.data,
-            headers: options.header
+            headers: options.headers,
+            withCredentials: true
         };
         if (!options.headers) {
             delete options.headers;

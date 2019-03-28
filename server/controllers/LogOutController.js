@@ -5,7 +5,8 @@ export default (req, res, next) => {
     const endPoint = service.logout.default;
     const config = {
         method: endPoint.method,
-        url: endPoint.url
+        url: endPoint.url,
+        headers: endPoint.headers,
     };
 
     ServiceFactory.triggerserviceRequest(config).then(

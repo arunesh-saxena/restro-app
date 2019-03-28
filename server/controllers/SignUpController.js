@@ -12,7 +12,8 @@ export default (req, res, next) => {
     const config = {
         method: endPoint.method,
         url: endPoint.url,
-        data: payLoad
+        data: payLoad,
+        headers: endPoint.headers,
     };
 
     ServiceFactory.triggerserviceRequest(config).then(

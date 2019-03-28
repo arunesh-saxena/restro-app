@@ -12,15 +12,19 @@ const submitFormDataSuccess = (dispatch) => (value) => {
     const success = value.body.data.success;
     if (success) {
         const username = value.body.data && value.body.data.data && value.body.data.data.username || null;
+        const token = value.body.data && value.body.data.data && value.body.data.data.token || null;
+        sessionStorage.setItem("token", token);
         dispatch(setLoginDataStatus({ username, msg: null }));
         commonUtils.setCookie('username', username);
     } else {
+        sessionStorage.removeItem("token");
         dispatch(setLoginDataStatus({ username: null, msg: value.body.data.message }));
         commonUtils.setCookie('username', null, -1);
     }
 };
 
 const submitLoginFormDataFailure = (dispatch) => (value) => {
+    sessionStorage.removeItem("token");
     console.log(value);
 };
 
@@ -29,7 +33,8 @@ export const submitLogin = (formData) => {
     const option = {
         method: api.method,
         url: api.url,
-        data: formData
+        data: formData,
+        token: sessionStorage.getItem("token")
     };
 
     return dispatch => {

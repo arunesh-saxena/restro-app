@@ -12,7 +12,8 @@ export const logOutAction = (formData) => {
     return dispatch => {
         AjaxFactory.triggerServerRequest(option)
             .then(res => {
-                const {success,message} = res.body.data;
+                const { success, message } = res.body.data;
+                sessionStorage.removeItem("token");
                 if (success) {
                     dispatch(setLoginDataStatus({ username: null, msg: message }));
                     commonUtils.setCookie('username', null, -1);
