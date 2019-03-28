@@ -16,7 +16,7 @@ class App extends React.Component {
         this.props.checkIsLogin();
     }
     handleLogout() {
-        this.props.logOutAction();
+        this.props.logOutAction(this.props);
     }
     checkIsLogin() {
         this.props.checkIsLogin();

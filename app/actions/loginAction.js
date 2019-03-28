@@ -1,25 +1,25 @@
 import AjaxFactory from '../../app/utils/AjaxFactory';
 import expressConstants from '../appConstants/expressEndPoint';
 import * as types from '../utils/types';
-import commonUtils from '../utils/commonUtils';
+import appUrls from '../appConstants/appUrls';
 
 export const setLoginDataStatus = (data) => ({
     type: types.SET_LOGIN_DATA_STATUS,
     data
 });
 
-const submitFormDataSuccess = (dispatch) => (value) => {
+const submitFormDataSuccess = (dispatch, props) => (value) => {
     const success = value.body.data.success;
     if (success) {
         const username = value.body.data && value.body.data.data && value.body.data.data.username || null;
         const token = value.body.data && value.body.data.data && value.body.data.data.token || null;
         sessionStorage.setItem("token", token);
         dispatch(setLoginDataStatus({ username, msg: null }));
-        commonUtils.setCookie('username', username);
+        props.history.push(appUrls.MENU_LIST);
+        
     } else {
         sessionStorage.removeItem("token");
         dispatch(setLoginDataStatus({ username: null, msg: value.body.data.message }));
-        commonUtils.setCookie('username', null, -1);
     }
 };
 
@@ -28,7 +28,7 @@ const submitLoginFormDataFailure = (dispatch) => (value) => {
     console.log(value);
 };
 
-export const submitLogin = (formData) => {
+export const submitLogin = (formData, props) => {
     const api = expressConstants.LOGIN;
     const option = {
         method: api.method,
@@ -38,8 +38,8 @@ export const submitLogin = (formData) => {
     };
 
     return dispatch => {
-        const success = submitFormDataSuccess(dispatch);
-        const failure = submitLoginFormDataFailure(dispatch);
+        const success = submitFormDataSuccess(dispatch, props);
+        const failure = submitLoginFormDataFailure(dispatch, props);
         AjaxFactory.triggerServerRequest(option)
             .then(success)
             .catch(failure);

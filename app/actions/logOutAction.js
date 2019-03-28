@@ -1,9 +1,9 @@
 import AjaxFactory from '../utils/AjaxFactory';
 import expressConstants from '../appConstants/expressEndPoint';
-import commonUtils from '../utils/commonUtils';
+import appUrls from '../appConstants/appUrls';
 import { setLoginDataStatus } from './loginAction';
 
-export const logOutAction = (formData) => {
+export const logOutAction = (props) => {
     const api = expressConstants.LOGOUT;
     const option = {
         method: api.method,
@@ -16,7 +16,7 @@ export const logOutAction = (formData) => {
                 sessionStorage.removeItem("token");
                 if (success) {
                     dispatch(setLoginDataStatus({ username: null, msg: message }));
-                    commonUtils.setCookie('username', null, -1);
+                    props.history.push(appUrls.LOGIN);
                 } else {
                     console.log(res);
                 }

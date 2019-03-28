@@ -19,14 +19,13 @@ export const checkIsLogin = () => {
     return dispatch => {
         AjaxFactory.triggerServerRequest(option)
             .then(value => {
-                const { success, message } = value.body.data;
+                const  success  = value.body && value.body.data || null;
+                const  message  = value.body && value.body.data && value.body.data.message || null;
                 if (success) {
-                    const username = value.body.data && value.body.data.data && value.body.data.data.username || null;
-                    // dispatch(setLoginDataStatus({ username, msg: null }));
-                    // commonUtils.setCookie('username', username);
+                    const username = value.body && value.body.data && value.body.data.data && value.body.data.data.username || null;
+                    dispatch(setLoginDataStatus({ username, msg: null }));
                 } else {
-                    // dispatch(setLoginDataStatus({ username: null, msg: value.body.data.message }));
-                    // commonUtils.setCookie('username', null, -1);
+                    dispatch(setLoginDataStatus({ username: null, msg: message }));
                 }
             })
             .catch(error => {

@@ -43,9 +43,6 @@ class Header extends Component {
                             {this.labels.logout}
                         </Link></li>
                     }
-                    <li onClick={this.props.checkIsLogin} ><Link onClick={this.toggleMainMenu} to="#">
-                            checkIsLogin
-                        </Link></li>
                 </ul>
             </div>
         )
