@@ -1,22 +1,22 @@
 const expressConstants = {
     TEST_API: {
-        url: '/api/testApi',
+        url: '/testApi',
         method: 'GET'
     },
     SIGN_UP: {
-        url: '/api/signup',
+        url: '/signup',
         method: 'POST'
     },
     LOGIN: {
-        url: '/api/login',
+        url: '/login',
         method: 'POST'
     },
     LOGOUT: {
-        url: '/api/logout',
+        url: '/logout',
         method: 'POST'
     },
     ISLOGIN: {
-        url: '/api/isLogin',
+        url: '/isLogin',
         method: 'POST'
     }
 };
