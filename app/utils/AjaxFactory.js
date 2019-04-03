@@ -6,7 +6,10 @@ const AjaxFactory = {
             method: options.method,
             url: options.url,
             data: options.data || {},
-            withCredentials: true
+            withCredentials: true,
+            proxy: {
+                port: 3030,
+            }
         };
 
         if (typeof document !== 'undefined') {
@@ -14,7 +17,6 @@ const AjaxFactory = {
             config.data.token = token;
         }
 
-        // Object.assign(config, options);
         return axios(config).then(
             (response) => {
                 // console.log(response);
@@ -32,7 +34,6 @@ const AjaxFactory = {
                 return { body: responseObject };
             },
             (error) => {
-
                 const responseObject = {
                     ajaxRequestStatus: 'failure',
                     errorCode:
