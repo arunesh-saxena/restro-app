@@ -13,7 +13,7 @@ export const logOutAction = (props) => {
         AjaxFactory.triggerServerRequest(option)
             .then(res => {
                 const { success, message } = res.body.data;
-                sessionStorage.removeItem("token");
+                document.cookie = `_token=;expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/`;
                 if (success) {
                     dispatch(setLoginDataStatus({ username: null, msg: message }));
                     props.history.push(appUrls.LOGIN);

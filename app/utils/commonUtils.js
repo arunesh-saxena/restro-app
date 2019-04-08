@@ -7,6 +7,22 @@ const commonUtil = {
             return null;
         }
         document.cookie = `${cname}=${cvalue};${expires};path=/`;
+    },
+    splitCookies(rc) {
+        const list = {};
+        rc &&
+            rc.split(';').forEach((cookie) => {
+                const parts = cookie.split('=');
+                list[parts.shift().trim()] = decodeURI(parts.join('='));
+            });
+        return list;
+    },
+    parseCookies(request) {
+        const rc =
+            (request && request.headers && request.headers.cookie) ||
+            (typeof request === 'string' && request) ||
+            null;
+        return this.splitCookies(rc);
     }
 };
 export default commonUtil;

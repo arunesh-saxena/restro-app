@@ -40,7 +40,7 @@ const buildPage = ({ componentHTML, initialState }) => `
 </html>`;
 
 export default (store, req) => {
-  const initialState = {};
+  const initialState = store.getState();
   const componentHTML = createApp(store, req.url);
   return buildPage({
     componentHTML, initialState

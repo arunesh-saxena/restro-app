@@ -12,19 +12,21 @@ const submitFormDataSuccess = (dispatch, props) => (value) => {
     const success = value.body.data.success;
     if (success) {
         const username = value.body.data && value.body.data.data && value.body.data.data.username || null;
-        const token = value.body.data && value.body.data.data && value.body.data.data.token || null;
-        sessionStorage.setItem("token", token);
+        const _token = value.body.data && value.body.data.data && value.body.data.data.token || null;
+        const now = new Date();
+        now.setTime(now.getTime() + 60 * 60 * 1000);
+        document.cookie = `_token=${_token};expires=${now.toUTCString()}; path=/`;
         dispatch(setLoginDataStatus({ username, msg: null }));
         props.history.push(appUrls.MENU_LIST);
-        
+
     } else {
-        sessionStorage.removeItem("token");
+        document.cookie = `_token=;expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/`;
         dispatch(setLoginDataStatus({ username: null, msg: value.body.data.message }));
     }
 };
 
 const submitLoginFormDataFailure = (dispatch) => (value) => {
-    sessionStorage.removeItem("token");
+    document.cookie = `_token=;expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/`;
     console.log(value);
 };
 
@@ -33,8 +35,7 @@ export const submitLogin = (formData, props) => {
     const option = {
         method: api.method,
         url: api.url,
-        data: formData,
-        token: sessionStorage.getItem("token")
+        data: formData
     };
 
     return dispatch => {

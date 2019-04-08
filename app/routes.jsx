@@ -4,6 +4,8 @@ import AppUrls from './appConstants/appUrls';
 import App from './pages/App';
 import Authentication from './Authentication';
 
+import { checkIsLogin } from './actions/appAction';
+
 const HomePage = Loadable({
     loader: () => import(/* webpackChunkName: "HomePage" */ './pages/HomePage'),
     loading: () => <strong>Loading...</strong>,
@@ -19,6 +21,7 @@ export default (store) => {
         {
             path: AppUrls.ROOT,
             component: App,
+            need: [checkIsLogin],
             routes: [
                 {
                     path: AppUrls.ROOT,

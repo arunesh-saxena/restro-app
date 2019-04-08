@@ -12,11 +12,6 @@ const AjaxFactory = {
             }
         };
 
-        if (typeof document !== 'undefined') {
-            let token = document && sessionStorage.getItem('token') || null;
-            config.data.token = token;
-        }
-
         return axios(config).then(
             (response) => {
                 // console.log(response);
