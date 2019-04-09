@@ -6,4 +6,8 @@ sever side render
 #client side render
 #https://blog.hellojs.org/importing-images-in-react-c76f0dfcb552
 > copy images/** to ./assets/images
+> npm run start:spa
+
+# For production build
+> npm run build
 > npm run start
