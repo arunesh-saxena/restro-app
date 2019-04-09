@@ -1,0 +1,23 @@
+{
+    "apps": [
+        {
+            "name": "restro-app",
+            "script": "./compiled/index.js",
+            "watch": true,
+            "env": {
+                "NODE_ENV": "production",
+                "BUILD": "PRODUCTION",
+                "PORT": "3030"
+            },
+            "env_development": {
+                "BUILD": "development"
+            },
+            "env_production": {
+                "BUILD": "production"
+            },
+            "env_qa": {
+                "BUILD": "QA"
+            }
+        }
+    ]
+}
