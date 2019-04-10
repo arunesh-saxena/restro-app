@@ -1,5 +1,5 @@
 {
-  "name": "webpack-tut",
+  "name": "restro_app",
   "version": "1.0.0",
   "description": "restro app demo",
   "main": "",
@@ -18,6 +18,9 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": ">=8.x"
+  },
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.41",
     "@babel/core": "^7.0.0-beta.41",

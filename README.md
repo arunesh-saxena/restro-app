@@ -12,6 +12,7 @@
 - npm run start:spa
 
 # For production build
+- npm run install
 - npm run build
 - npm run start
 
