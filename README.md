@@ -17,15 +17,33 @@
 - npm run start
 
 
-> pm2 config
+# pm2 config
 - npm build
 - copy foldes/files to some other folder compiled, public, package.json, package-lock.json, pm2.config.json 
 - npm install -g babel-cli (this is one time)
 - npm install -g pm2 (this is one time)
 - npm install
-- pm2 start --env "production" pm2.config.json / pm2 start --env "developement" pm2.config.json / pm2 start --env "qa" pm2.config.json
+- pm2 start --env "production/developement/QA" pm2.config.json 
+- pm2 stop/delete <pmID>
 
 > pm2 commands
 - pm2 logs
 - pm2 status
 - pm2 stop/delete all
+
+
+# docker 
+```docker build -t <image name>:<version> .
+docker run -p <port to access>:<node port> <imageID>
+docker run -d -p <port to be exposed>:4002 --name <container name> --cap-add=SYS_ADMIN <image name>
+```
+
+> docker usefull commonds
+
+```
+docker exec -it <container id> sh[/bin/bash]
+docker rm/stop/start <container id>
+docker ps -a/-aq
+docker rmi <images id>
+docker rm $(docker images -aq)
+```
