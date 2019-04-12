@@ -14,6 +14,7 @@ const appConstants = {
             enterEmail: 'Enter Email',
             confirmPassword: 'Confirm Password',
             menuList: 'Menu List',
+            addMenu: 'Add Menu',
             upLoadMenu: 'Upload Menu'
         },
         error: {

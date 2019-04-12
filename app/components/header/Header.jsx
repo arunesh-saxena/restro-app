@@ -17,12 +17,14 @@ class Header extends Component {
         })
     }
     navBar() {
+        const isLogin = this.props.user.isLogin;
         return (
             <ul className="nav-bar">
                 <li><Link onClick={this.toggleMainMenu} to={AppUrls.ABOUT_US}>{this.labels.aboutUs}</Link></li>
                 <li><Link onClick={this.toggleMainMenu} to={AppUrls.CONTACT_US}>{this.labels.contactUs}</Link></li>
-                {
-                    <li><Link onClick={this.toggleMainMenu} to={AppUrls.MENU_LIST}>{this.labels.menuList}</Link></li>
+                <li><Link onClick={this.toggleMainMenu} to={AppUrls.MENU_LIST}>{this.labels.menuList}</Link></li>
+                {isLogin &&
+                    <li><Link onClick={this.toggleMainMenu} to={AppUrls.ADD_MENU}>{this.labels.addMenu}</Link></li>
                 }
             </ul>
         )

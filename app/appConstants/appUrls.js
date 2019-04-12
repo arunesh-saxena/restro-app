@@ -5,5 +5,6 @@ export default {
     CONTACT_US: '/aboutUs/contactUs',
     LOGIN: '/login',
     SIGN_UP: '/signUp',
-    MENU_LIST: '/menuList'
+    MENU_LIST: '/menuList',
+    ADD_MENU: '/addmenu'
 };
