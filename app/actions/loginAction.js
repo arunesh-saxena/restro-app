@@ -8,6 +8,11 @@ export const setLoginDataStatus = (data) => ({
     data
 });
 
+export const setErrorMsg = (data) => ({
+    type: types.SET_LOGIN_ERROR_MSG,
+    data
+});
+
 const submitFormDataSuccess = (dispatch, props) => (value) => {
     const success = value.body.data.success;
     if (success) {

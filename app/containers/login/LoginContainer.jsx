@@ -52,7 +52,7 @@ let LoginContainer = (props) => {
     const successMsg = () => {
         const loginData = props.loginData;
 
-        if (!Object.keys(loginData).length) {
+        if (!Object.keys(loginData).length || !loginData.errorMsg) {
             return '';
         }
         let msg = '';

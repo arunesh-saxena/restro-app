@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import LoginContainer from '../../containers/login/LoginContainer'
-import { submitLogin } from '../../actions/loginAction';
+import { submitLogin, setErrorMsg } from '../../actions/loginAction';
 import appConstants from '../../appConstants/appConstants';
 import appUrls from '../../appConstants/appUrls';
 
@@ -12,14 +12,16 @@ class LoginPage extends React.Component {
         super(props);
         this.handleSignInSubmit = this.handleSignInSubmit.bind(this);
     }
-    componentDidMount(){
+    componentDidMount() {
         const loginData = this.props.login;
         if (loginData && loginData.username) {
             this.props.history.push(appUrls.MENU_LIST);
         }
     }
+
     componentWillUnmount() {
-        // this.props.signUp({});
+        this.props.setErrorMsg({ msg: null });
+        console.log('componentDidMount');
     }
     handleSignInSubmit(e) {
         e.preventDefault();
@@ -33,7 +35,7 @@ class LoginPage extends React.Component {
     render() {
         return (
             <div>
-                <LoginContainer handleSignInSubmit={this.handleSignInSubmit} formInfo={this.props.formInfo} loginData={this.props.login} labels={appConstants.labels}/>
+                <LoginContainer handleSignInSubmit={this.handleSignInSubmit} formInfo={this.props.formInfo} loginData={this.props.login} labels={appConstants.labels} />
             </div>
         );
     }
@@ -47,7 +49,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch =>
     bindActionCreators({
-        submitLogin
+        submitLogin,
+        setErrorMsg
     }, dispatch);
 
 export default connect(
