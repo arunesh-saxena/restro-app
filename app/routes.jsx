@@ -1,5 +1,5 @@
 import React from 'react';
-import Loadable from 'react-Loadable';
+import Loadable from 'react-loadable';
 import AppUrls from './appConstants/appUrls';
 import App from './pages/App';
 import Authentication from './Authentication';
@@ -11,7 +11,7 @@ const HomePage = Loadable({
     loading: () => <strong>Loading...</strong>,
 });
 const menuList = Loadable({
-    loader: () => import(/* webpackChunkName: "MenuListPage" */ './pages/MenuList/MenuListPage'),
+    loader: () => import(/* webpackChunkName: "MenuListPage" */ './pages/menuList/MenuListPage'),
     loading: () => <strong>Loading...</strong>,
 });
 

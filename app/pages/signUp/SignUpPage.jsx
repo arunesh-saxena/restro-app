@@ -1,5 +1,5 @@
 import React from 'react';
-import Loadable from 'react-Loadable';
+import Loadable from 'react-loadable';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { submitSignUp, signUp } from '../../actions/signUpAction';
