@@ -42,8 +42,9 @@ docker run -d -p <port to be exposed>:4002 --name <container name> --cap-add=SYS
 
 ```
 docker exec -it <container id> sh[/bin/bash]
-docker rm/stop/start <container id>
+docker rm/stop/restart <container id>
 docker ps -a/-aq
 docker rmi <images id>
 docker rm $(docker images -aq)
+docker log <container id>
 ```
