@@ -14,10 +14,6 @@ const menuList = Loadable({
     loader: () => import(/* webpackChunkName: "MenuListPage" */ './pages/menuList/MenuListPage'),
     loading: () => <strong>Loading...</strong>,
 });
-const MenuUploadPage = Loadable({
-    loader: () => import(/* webpackChunkName: "MenuUploadPage" */ './pages/menuList/MenuUploadPage'),
-    loading: () => <strong>Loading...</strong>,
-});
 
 export default (store) => {
 
@@ -79,7 +75,10 @@ export default (store) => {
                 {
                     path: AppUrls.ADD_MENU,
                     exact: true,
-                    component: Authentication(MenuUploadPage, store), // Example of authentication....
+                    component: Loadable({
+                        loader: () => import(/* webpackChunkName: "MenuUploadPage" */ './pages/menuList/MenuUploadPage'),
+                        loading: () => <strong>Loading...</strong>,
+                    })
                 },
                 {
                     path: '*',

@@ -37,3 +37,9 @@ export const loginValidate = values => {
     }
     return errors
 };
+
+export const menuUploadValidate = values => {
+    const errors = {};
+    
+    return errors
+};

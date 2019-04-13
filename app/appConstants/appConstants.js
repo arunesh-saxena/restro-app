@@ -15,7 +15,14 @@ const appConstants = {
             confirmPassword: 'Confirm Password',
             menuList: 'Menu List',
             addMenu: 'Add Menu',
-            upLoadMenu: 'Upload Menu'
+            upLoadMenu: 'Upload Menu',
+            itemName: 'Item Name',
+            enterItemName: 'Enter Item Name',
+            description: 'Description',
+            image: 'Image',
+            price:'Price',
+            unit:'Unit',
+            currency:'Currency'
         },
         error: {
             required: 'Required',

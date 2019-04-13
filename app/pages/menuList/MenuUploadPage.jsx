@@ -1,15 +1,43 @@
 import React from 'react';
-import { renderRoutes } from 'react-router-config';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-export default class MenuUploadPage extends React.Component {
-    componentDidMount(){
-        console.log('-----MenuUploadPage------');
+import MenuUploadContainer from '../../containers/menu/MenuUploadContainer';
+import appConstants from '../../appConstants/appConstants';
+class MenuUploadPage extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleMenuUploadSubmit = this.handleMenuUploadSubmit.bind(this);
+    }
+    handleMenuUploadSubmit(e, file) {
+        e.preventDefault();
+        const formInfo = this.props.formInfo;
+        console.log(formInfo);
+        if (formInfo && !formInfo.syncErrors) {
+            const formData = formInfo.values;
+            // this.props.submitLogin(formData, this.props);
+        }
     }
     render() {
         return (
-            <div style={{ textAlign: 'center' }}>
-                <h1>MenuUploadPage</h1>
-                {renderRoutes(this.props.route.routes)}
-            </div>);
+            <div>
+                <MenuUploadContainer handleMenuUploadSubmit={this.handleMenuUploadSubmit} formInfo={this.props.formInfo} labels={appConstants.labels} />
+            </div>
+        );
     }
 };
+
+
+const mapStateToProps = state => ({
+    formInfo: state.form && state.form.menuUpload
+
+});
+const mapDispatchToProps = dispatch =>
+    bindActionCreators({
+
+    }, dispatch);
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(MenuUploadPage);
