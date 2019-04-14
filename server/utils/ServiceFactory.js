@@ -22,6 +22,8 @@ const ServiceFactory = {
             }
         ).catch(error => {
             console.log('******** Error *********')
+            console.log( error.response.data);
+            console.log('******** Error *********')
             return commonUtils.sendError(error);
         });
     }
