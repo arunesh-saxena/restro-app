@@ -1,3 +1,5 @@
+import { UPLOAD_MENU } from "../utils/types";
+
 const expressConstants = {
     TEST_API: {
         url: '/testApi',
@@ -17,6 +19,10 @@ const expressConstants = {
     },
     ISLOGIN: {
         url: '/isLogin',
+        method: 'POST'
+    },
+    UPLOAD_MENU: {
+        url: '/UPLOAD_MENU',
         method: 'POST'
     }
 };

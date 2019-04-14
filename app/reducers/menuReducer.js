@@ -1,11 +1,13 @@
-export default function cart(
+import * as types from '../utils/types';
+
+export default function menu(
     state = {},
     action
 ) {
     switch (action.type) {
-        case 'ADD_TO_CART': {
+        case types.UPLOAD_MENU: {
             return Object.assign({}, state, {
-                cart: action.data
+                menu: action.data
             });
         }
         default: {

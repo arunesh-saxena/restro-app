@@ -8,3 +8,5 @@ export const SET_USER_DATA = 'SET_USER_DATA';
 export const SET_ACCOUNT_INFO = 'SET_ACCOUNT_INFO';
 
 export const SET_LANGUAGE = 'SET_LANGUAGE';
+
+export const UPLOAD_MENU = 'UPLOAD_MENU';

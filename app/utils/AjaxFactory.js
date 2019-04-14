@@ -11,7 +11,9 @@ const AjaxFactory = {
                 port: 3030,
             }
         };
-
+        // if (options.headers) {
+        //      config.headers = options.headers;
+        // }
         return axios(config).then(
             (response) => {
                 // console.log(response);

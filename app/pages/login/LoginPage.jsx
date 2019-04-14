@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import LoginContainer from '../../containers/login/LoginContainer'
+import LoginContainer from '../../containers/login/LoginContainer';
 import { submitLogin, setErrorMsg } from '../../actions/loginAction';
 import appConstants from '../../appConstants/appConstants';
 import appUrls from '../../appConstants/appUrls';
@@ -21,7 +21,6 @@ class LoginPage extends React.Component {
 
     componentWillUnmount() {
         this.props.setErrorMsg({ msg: null });
-        console.log('componentDidMount');
     }
     handleSignInSubmit(e) {
         e.preventDefault();

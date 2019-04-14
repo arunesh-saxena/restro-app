@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import MenuUploadContainer from '../../containers/menu/MenuUploadContainer';
 import appConstants from '../../appConstants/appConstants';
+import { uploadMenuAction } from '../../actions/menuAction';
 class MenuUploadPage extends React.Component {
     constructor(props) {
         super(props);
@@ -12,10 +13,25 @@ class MenuUploadPage extends React.Component {
     handleMenuUploadSubmit(e, file) {
         e.preventDefault();
         const formInfo = this.props.formInfo;
-        console.log(formInfo);
         if (formInfo && !formInfo.syncErrors) {
             const formData = formInfo.values;
-            // this.props.submitLogin(formData, this.props);
+            /* let menu = {
+                itemName: formData.itemName,
+                description: formData.description,
+                price: formData.price,
+                unit: formData.unit,
+                currency: formData.currency,
+                imageURL: file
+            } */
+            let data = new FormData();
+            data.append('itemName', formData.itemName);
+            data.append('description', formData.description);
+            data.append('price', formData.price);
+            data.append('unit', formData.unit);
+            data.append('currency', formData.currency);
+            data.append('imageURL', file);
+
+            this.props.uploadMenuAction(data);
         }
     }
     render() {
@@ -34,7 +50,7 @@ const mapStateToProps = state => ({
 });
 const mapDispatchToProps = dispatch =>
     bindActionCreators({
-
+        uploadMenuAction
     }, dispatch);
 
 export default connect(

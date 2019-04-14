@@ -11,7 +11,7 @@ const renderField = ({
     meta: { touched, error, warning }
 }) => (
         <div>
-            <input {...input} id={id} placeholder={placeholder} type={type} className={className} autoComplete="off" />
+            <input {...input} id={id} placeholder={placeholder} type={type} className={className} autoComplete="on" />
             {touched &&
                 ((error && <span className="error-message">{error}</span>) ||
                     (warning && <span>{warning}</span>))}

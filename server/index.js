@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+var cookieParser = require('cookie-parser');
 import path from 'path';
 import renderMiddleware from './middleware';
 import router from './router';
@@ -16,6 +17,7 @@ app.use(express.static(path.join(process.cwd(), 'public')));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
 
 app.use('/', router);
 
