@@ -37,7 +37,6 @@ let MenuUploadContainer = (props) => {
     };
     const submitForm = (e) => {
         const file = !!fileInput.files.length && fileInput.files[0];
-        console.log(file);
         handleMenuUploadSubmit(e, file)
     };
     const renderMenuUploadForm = () => {
@@ -83,8 +82,17 @@ let MenuUploadContainer = (props) => {
         );
     };
     const successMsg = () => {
-        let msg = 'MSG';
+        const msg = props.menu && props.menu.msg;
+        const success  = props.menu && props.menu.success;
+        if(!msg && !success){
+            return '';
+        }
         let className = 'alert';
+        if (success && msg && msg.length) {
+            className += ' alert-success'
+        } else {
+            className += ' alert-dark'
+        }
         return (
             <p className={className}>{msg}</p>
         );
@@ -95,6 +103,7 @@ let MenuUploadContainer = (props) => {
                 <div className="col-xs-12 col-md-6">
                     {getLoginHeading()}
                     {renderMenuUploadForm()}
+                    {successMsg()}
 
                 </div>
             </div>

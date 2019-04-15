@@ -7,7 +7,7 @@ export default function menu(
     switch (action.type) {
         case types.UPLOAD_MENU: {
             return Object.assign({}, state, {
-                menu: action.data
+                menuUpload: action.data
             });
         }
         default: {

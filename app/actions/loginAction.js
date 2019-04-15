@@ -14,7 +14,7 @@ export const setErrorMsg = (data) => ({
 });
 
 const submitFormDataSuccess = (dispatch, props) => (value) => {
-    const success = value.body.data.success;
+    const success = value.body && value.body.data && value.body.data.success || null;
     if (success) {
         const username = value.body.data && value.body.data.data && value.body.data.data.username || null;
         const _token = value.body.data && value.body.data.data && value.body.data.data.token || null;
