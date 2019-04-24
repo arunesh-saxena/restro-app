@@ -45,5 +45,15 @@
             "url": "http://localhost:3000/api/menu/add",
             "method": "POST"
         }
+    },
+    "menuList": {
+        "default": {
+            "module": "menuList",
+            "url": "http://localhost:3000/api/menu/list",
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
     }
 }

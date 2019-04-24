@@ -10,6 +10,11 @@ export default function menu(
                 menuUpload: action.data
             });
         }
+        case types.MENU_LIST: {
+            return Object.assign({}, state, {
+                menuList: action.data
+            });
+        }
         default: {
             return state;
         }

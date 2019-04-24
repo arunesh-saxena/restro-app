@@ -10,3 +10,4 @@ export const SET_ACCOUNT_INFO = 'SET_ACCOUNT_INFO';
 export const SET_LANGUAGE = 'SET_LANGUAGE';
 
 export const UPLOAD_MENU = 'UPLOAD_MENU';
+export const MENU_LIST = 'MENU_LIST';

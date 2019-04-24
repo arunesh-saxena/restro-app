@@ -19,7 +19,7 @@ import SignUpController from './controllers/SignUpController';
 import LoginController from './controllers/LoginController';
 import LogOutController from './controllers/LogOutController';
 import MyAccountController from './controllers/MyAccountController';
-import MenuController from './controllers/MenuController';
+import { uploadMenu, menuList } from './controllers/MenuController';
 
 /* testing */
 routes.get(expressConstants.TEST_API.url, function (req, res) {
@@ -33,7 +33,8 @@ routes.post(expressConstants.SIGN_UP.url, SignUpController);
 routes.post(expressConstants.LOGIN.url, LoginController);
 routes.post(expressConstants.LOGOUT.url, LogOutController);
 routes.post(expressConstants.ISLOGIN.url, MyAccountController);
-routes.post(expressConstants.UPLOAD_MENU.url, upload, MenuController);
+routes.post(expressConstants.UPLOAD_MENU.url, upload, uploadMenu);
+routes.post(expressConstants.MENU_LIST.url, menuList);
 
 
 
