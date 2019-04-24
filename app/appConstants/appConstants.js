@@ -22,7 +22,12 @@ const appConstants = {
             image: 'Image',
             price:'Price',
             unit:'Unit',
-            currency:'Currency'
+            currency:'Currency',
+            menuList:'Menu List',
+            empty:'Empty',
+            list: 'List',
+            rate: 'Rate',
+            lastUpdate:'Last Update'
         },
         error: {
             required: 'Required',

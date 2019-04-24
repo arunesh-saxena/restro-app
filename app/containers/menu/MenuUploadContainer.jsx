@@ -28,9 +28,9 @@ let MenuUploadContainer = (props) => {
     const { common: labels } = props.labels;
     let fileInput = '';
 
-    const getLoginHeading = () => {
+    const renderHeading = () => {
         return (
-            <h1 className="form-heading h2">
+            <h1 className="form-heading ">
                 {labels.addMenu}
             </h1>
         );
@@ -101,7 +101,7 @@ let MenuUploadContainer = (props) => {
         <div className="menu-upload-form-container">
             <div className="row justify-content-md-center">
                 <div className="col-xs-12 col-md-6">
-                    {getLoginHeading()}
+                    {renderHeading()}
                     {renderMenuUploadForm()}
                     {successMsg()}
 

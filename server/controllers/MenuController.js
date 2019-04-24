@@ -4,7 +4,7 @@ import ServiceFactory from '../utils/ServiceFactory';
 const service = require('../config/dev-config.json');
 
 
-export default (req, res, next) => {
+export const uploadMenu = (req, res, next) => {
     const endPoint = service.menuUpload.default;
     const body = req.body;
     let data = new FormData();
@@ -44,3 +44,21 @@ export default (req, res, next) => {
     });
 
 };
+
+export const menuList = (req, res, next) => {
+    const endPoint = service.menuList.default;
+    const config = {
+        method: endPoint.method,
+        url: endPoint.url,
+        headers: endPoint.headers
+    };
+
+    ServiceFactory.triggerserviceRequest(config).then(
+        (response) => {
+            res.json(response);
+        }
+    ).catch(error => {
+        console.log(error);
+        res.send(error);
+    });
+}

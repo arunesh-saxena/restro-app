@@ -24,6 +24,10 @@ const expressConstants = {
     UPLOAD_MENU: {
         url: '/UPLOAD_MENU',
         method: 'POST'
+    },
+    MENU_LIST: {
+        url: '/MENU_LIST',
+        method: 'POST'
     }
 };
 

@@ -5,6 +5,7 @@ import App from './pages/App';
 import Authentication from './Authentication';
 
 import { checkIsLogin } from './actions/appAction';
+import { getMenuList } from './actions/menuAction';
 
 const HomePage = Loadable({
     loader: () => import(/* webpackChunkName: "HomePage" */ './pages/HomePage'),
@@ -70,6 +71,7 @@ export default (store) => {
                 {
                     path: AppUrls.MENU_LIST,
                     exact: true,
+                    need: [getMenuList],
                     component: Authentication(menuList, store), // Example of authentication....
                 },
                 {

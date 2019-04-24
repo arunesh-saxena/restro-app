@@ -11,12 +11,17 @@ import configureStore from '../app/store/configureStore';
  * and pass it into the Router.run function.
  */
 const loadData = (dispatch, branch, req, res) => {
-    return Promise.all([dispatch(branch.route.need[0](req.headers, res))]);
+    const promises = branch.map(({ route, match }) => {
+        if (typeof route.need != 'undefined') {
+            return dispatch(route.need[0](req.headers, res))
+        }
+    })
+
+    return Promise.all(promises)
 }
 export default function render(req, res) {
     /* todo: usefull for env config */
     // console.log(`process.env.NODE_ENV : ${process.env.NODE_ENV} | process.env.BUILD : ${process.env.BUILD}`);
-    const reqURL = req.url;
     const history = {};
     const initialState = {};
     const store = configureStore(initialState);
@@ -24,7 +29,7 @@ export default function render(req, res) {
     /* --------START------- */
     const ROUTES = routes();
     const branch = matchRoutes(ROUTES, req.url);
-    loadData(store.dispatch, branch[0], req, res).then((v) => {
+    loadData(store.dispatch, branch, req, res).then((v) => {
         // console.log('================Promise=========', store.getState());
         const html = pageRenderer(store, req, res);
         res.status(200).send(html);

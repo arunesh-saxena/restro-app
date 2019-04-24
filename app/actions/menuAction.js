@@ -6,7 +6,10 @@ export const setMenuUploadAction = data => ({
     type: types.UPLOAD_MENU,
     data
 });
-
+export const setMenuList = data => ({
+    type: types.MENU_LIST,
+    data
+})
 export const uploadMenuAction = (formData) => {
     const api = expressConstants.UPLOAD_MENU;
     const option = {
@@ -19,7 +22,6 @@ export const uploadMenuAction = (formData) => {
             const success = value.body && value.body.data && value.body.data.success || null;
             const message = value.body && value.body.data && value.body.data.message || null;
             const data = success && value.body.data.data;
-            console.log(value);
             if (success) {
                 dispatch(setMenuUploadAction({ success, msg: `${data.itemName} uploaded seccessfully` }));
             } else {
@@ -30,3 +32,21 @@ export const uploadMenuAction = (formData) => {
             console.log(error);
         });
 };
+
+export const getMenuList = () => {
+    const api = expressConstants.MENU_LIST;
+    const option = {
+        method: api.method,
+        url: api.url
+    };
+    return dispatch => AjaxFactory.triggerServerRequest(option)
+        .then(value => {
+            const success = value.body && value.body.data && value.body.data.success || null;
+            const message = value.body && value.body.data && value.body.data.message || null;
+            const list = success && value.body.data.data || [];
+            dispatch(setMenuList(list));
+        })
+        .catch(error => {
+            console.log(error);
+        });
+}
