@@ -1,13 +1,28 @@
 import React from 'react';
-import { renderRoutes } from 'react-router-config';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import MenuListContainer from '../../containers/menu/MenuListContainer';
+import appConstants from '../../appConstants/appConstants';
 
-export default class MenuListPage extends React.Component {
-    
+class MenuListPage extends React.Component {
+
     render() {
         return (
-            <div style={{ textAlign: 'center' }}>
-                <h1>MenuListPage</h1>
-                {renderRoutes(this.props.route.routes)}
+            <div>
+                <MenuListContainer labels={appConstants.labels} menuList={this.props.menuList} />
             </div>);
     }
 };
+
+
+const mapStateToProps = state => ({
+    menuList: state.menu && state.menu.menuList || []
+
+});
+const mapDispatchToProps = dispatch =>
+    bindActionCreators({}, dispatch);
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(MenuListPage);

@@ -22,7 +22,6 @@ const loadData = (dispatch, branch, req, res) => {
 export default function render(req, res) {
     /* todo: usefull for env config */
     // console.log(`process.env.NODE_ENV : ${process.env.NODE_ENV} | process.env.BUILD : ${process.env.BUILD}`);
-    const reqURL = req.url;
     const history = {};
     const initialState = {};
     const store = configureStore(initialState);

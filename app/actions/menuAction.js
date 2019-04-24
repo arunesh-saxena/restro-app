@@ -43,12 +43,8 @@ export const getMenuList = () => {
         .then(value => {
             const success = value.body && value.body.data && value.body.data.success || null;
             const message = value.body && value.body.data && value.body.data.message || null;
-            const list = success && value.body.data.data;
-            if (success) {
-                dispatch(setMenuList(list));
-            } else {
-                // dispatch(setMenuUploadAction({ success, msg: success ? message : message.message }));
-            }
+            const list = success && value.body.data.data || [];
+            dispatch(setMenuList(list));
         })
         .catch(error => {
             console.log(error);

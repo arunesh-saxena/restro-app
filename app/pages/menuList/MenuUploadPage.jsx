@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 
 import MenuUploadContainer from '../../containers/menu/MenuUploadContainer';
 import appConstants from '../../appConstants/appConstants';
-import { uploadMenuAction,setMenuUploadAction } from '../../actions/menuAction';
+import { uploadMenuAction, setMenuUploadAction } from '../../actions/menuAction';
 class MenuUploadPage extends React.Component {
     constructor(props) {
         super(props);
