@@ -27,9 +27,9 @@ let LoginContainer = (props) => {
     } = props;
     const { common: labels } = props.labels;
 
-    let getLoginHeading = () => {
+    let renderHeading = () => {
         return (
-            <h1 className="form-heading h2">{labels.login}</h1>
+            <h1 className="form-heading">{labels.login}</h1>
         );
     };
 
@@ -72,7 +72,7 @@ let LoginContainer = (props) => {
         <div className="login-form-container">
             <div className="row justify-content-md-center">
                 <div className="col-xs-12 col-md-6">
-                    {getLoginHeading()}
+                    {renderHeading()}
                     {renderLoginForm()}
                     {successMsg()}
                 </div>

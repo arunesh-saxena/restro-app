@@ -27,9 +27,9 @@ let SignUpContainer = (props) => {
     } = props;
     const { common: labels, signUp: labelsSignUp } = props.labels;
 
-    let getLoginHeading = () => {
+    let redemderHeading = () => {
         return (
-            <h1 className="form-heading h2">
+            <h1 className="form-heading">
                 {labels.signUp}
             </h1>
         );
@@ -86,7 +86,7 @@ let SignUpContainer = (props) => {
         <div className="sign-form-container">
             <div className="row justify-content-md-center">
                 <div className="col-xs-12 col-md-6">
-                    {getLoginHeading()}
+                    {redemderHeading()}
                     {renderLoginForm()}
                     {successMsg()}
                 </div>
