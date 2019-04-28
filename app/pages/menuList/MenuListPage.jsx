@@ -3,9 +3,12 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import MenuListContainer from '../../containers/menu/MenuListContainer';
 import appConstants from '../../appConstants/appConstants';
+import { getMenuList } from '../../actions/menuAction';
 
 class MenuListPage extends React.Component {
-
+    componentDidMount() {
+        this.props.getMenuList();
+    }
     render() {
         return (
             <div>
@@ -20,7 +23,7 @@ const mapStateToProps = state => ({
 
 });
 const mapDispatchToProps = dispatch =>
-    bindActionCreators({}, dispatch);
+    bindActionCreators({getMenuList}, dispatch);
 
 export default connect(
     mapStateToProps,

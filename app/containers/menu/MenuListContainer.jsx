@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 import AppUrls from '../../appConstants/appUrls';
+import MenuItem from '../../components/menuItem/MenuItem';
 
 const renderHeading = (labels) => {
     return (
@@ -21,13 +22,7 @@ const renderMenuList = (menuList, labels) => {
         return (
             <li key={index}
                 className='list-group-item'>
-                {item.itemName} ({item.itemCode})
-                <br />
-                {labels.rate} {item.price} {item.unit}
-                <br />
-                {labels.description}: {item.description}
-                <br />
-                {labels.lastUpdate}: {item.updatedAt}
+                <MenuItem labels={labels} item={item} />
             </li>
         );
     });

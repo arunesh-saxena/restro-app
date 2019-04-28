@@ -23,6 +23,12 @@ const commonUtil = {
             (typeof request === 'string' && request) ||
             null;
         return this.splitCookies(rc);
+    },
+    getDate(ISODate) {
+        let d = new Date(ISODate);
+        let min = ISODate.split(':')[1];
+        let finalData = `${d.getDate()}/${d.getMonth()}/${d.getFullYear()} ${d.getHours()}:${min}`;
+        return finalData;
     }
 };
 export default commonUtil;
