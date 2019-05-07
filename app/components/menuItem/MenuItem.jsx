@@ -1,5 +1,7 @@
 import React from 'react';
-import commonUtil from '../../utils/commonUtils'
+import { Link } from 'react-router-dom';
+import commonUtil from '../../utils/commonUtils';
+import AppUrls from '../../appConstants/appUrls';
 
 const MenuItem = (props) => {
     return (
@@ -19,6 +21,7 @@ const MenuItem = (props) => {
 
             <div className="item-info">
                 {props.item.itemName} <span className='code'>{props.item.itemCode}</span>
+                <span><Link to={`${AppUrls.EDIT_MENU}/${props.item.id}`}>Edit</Link></span>
                 <br />
                 {props.labels.rate} {props.item.price} {props.item.unit}
                 <br />

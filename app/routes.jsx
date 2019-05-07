@@ -83,6 +83,14 @@ export default (store) => {
                     })
                 },
                 {
+                    path: `${AppUrls.EDIT_MENU}/:itemId`,
+                    exact: true,
+                    component: Loadable({
+                        loader: () => import(/* webpackChunkName: "MenuEditPage" */ './pages/menuList/MenuEditPage'),
+                        loading: () => <strong>Loading...</strong>,
+                    })
+                },
+                {
                     path: '*',
                     exact: false,
                     component: Loadable({
