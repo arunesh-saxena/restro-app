@@ -16,13 +16,22 @@ const menuList = Loadable({
     loading: () => <strong>Loading...</strong>,
 });
 
+const menuUploadPage = Loadable({
+    loader: () => import(/* webpackChunkName: "MenuUploadPage" */ './pages/menuList/MenuUploadPage'),
+    loading: () => <strong>Loading...</strong>,
+});
+const menuEditPage = Loadable({
+    loader: () => import(/* webpackChunkName: "MenuEditPage" */ './pages/menuList/MenuEditPage'),
+    loading: () => <strong>Loading...</strong>,
+});
+
 export default (store) => {
 
     return [
         {
             path: AppUrls.ROOT,
             component: App,
-            need: [checkIsLogin],
+            need: [checkIsLogin, getMenuList],
             routes: [
                 {
                     path: AppUrls.ROOT,
@@ -77,18 +86,12 @@ export default (store) => {
                 {
                     path: AppUrls.ADD_MENU,
                     exact: true,
-                    component: Loadable({
-                        loader: () => import(/* webpackChunkName: "MenuUploadPage" */ './pages/menuList/MenuUploadPage'),
-                        loading: () => <strong>Loading...</strong>,
-                    })
+                    component: menuUploadPage
                 },
                 {
                     path: `${AppUrls.EDIT_MENU}/:itemID`,
                     exact: true,
-                    component: Loadable({
-                        loader: () => import(/* webpackChunkName: "MenuEditPage" */ './pages/menuList/MenuEditPage'),
-                        loading: () => <strong>Loading...</strong>,
-                    })
+                    component: menuEditPage
                 },
                 {
                     path: '*',
