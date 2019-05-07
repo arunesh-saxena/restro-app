@@ -23,7 +23,7 @@ const mapStateToProps = state => ({
 
 });
 const mapDispatchToProps = dispatch =>
-    bindActionCreators({getMenuList}, dispatch);
+    bindActionCreators({ getMenuList }, dispatch);
 
 export default connect(
     mapStateToProps,

@@ -10,8 +10,8 @@ const MenuItem = (props) => {
                 <div className="img-container">
 
                     <picture>
-                        <source media="(min-width: 992px)" srcset={`http://localhost:3000/${props.item.imageURL}`} />
-                        <source media="(max-width: 991px)" srcset={`http://localhost:3000/${props.item.imageURL}`} />
+                        <source media="(min-width: 992px)" srcSet={`http://localhost:3000/${props.item.imageURL}`} />
+                        <source media="(max-width: 991px)" srcSet={`http://localhost:3000/${props.item.imageURL}`} />
                         <img src={`http://localhost:3000/${props.item.imageURL}`} alt={props.item.itemName} title={props.item.itemName} />
                     </picture>
 
