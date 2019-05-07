@@ -62,3 +62,23 @@ export const menuList = (req, res, next) => {
         res.send(error);
     });
 }
+
+
+export const menuItem = (req, res, next) => {
+    const itemId = req.params.itemID ;
+    const endPoint = service.menuItem.default;
+    const config = {
+        method: endPoint.method,
+        url: `${endPoint.url}${itemId}`,
+        headers: endPoint.headers
+    };
+
+    ServiceFactory.triggerserviceRequest(config).then(
+        (response) => {
+            res.json(response);
+        }
+    ).catch(error => {
+        console.log(error);
+        res.send(error);
+    });
+}

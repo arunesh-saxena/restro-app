@@ -55,5 +55,15 @@
                 "Content-Type": "application/json"
             }
         }
+    },
+    "menuItem": {
+        "default": {
+            "module": "menuItem",
+            "url": "http://localhost:3000/api/menu/getMenuItem/",
+            "method": "GET",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
     }
 }

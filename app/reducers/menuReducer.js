@@ -15,6 +15,11 @@ export default function menu(
                 menuList: action.data
             });
         }
+        case types.MENU_ITEM: {
+            return Object.assign({}, state, {
+                menuItem: action.data
+            });
+        }
         default: {
             return state;
         }
