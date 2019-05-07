@@ -31,7 +31,7 @@ export default (store) => {
         {
             path: AppUrls.ROOT,
             component: App,
-            need: [checkIsLogin, getMenuList],
+            need: [checkIsLogin],
             routes: [
                 {
                     path: AppUrls.ROOT,
