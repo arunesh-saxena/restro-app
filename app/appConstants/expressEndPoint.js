@@ -32,6 +32,10 @@ const expressConstants = {
     MENU_ITEM: {
         url: '/MENU_ITEM',
         method: 'GET'
+    },
+    MENU_ITEM_UPDATE: {
+        url: '/MENU_ITEM_UPDATE',
+        method: 'POST'
     }
 };
 

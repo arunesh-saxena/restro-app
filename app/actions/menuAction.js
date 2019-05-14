@@ -72,3 +72,28 @@ export const getMenuItem = (itemID) => {
             console.log(error);
         });
 }
+
+
+export const updateMenuItem = (formData) => {
+    const api = expressConstants.MENU_ITEM_UPDATE;
+    const option = {
+        method: api.method,
+        url: api.url,
+        data: formData,
+    };
+    console.log(option)
+    return dispatch => AjaxFactory.triggerServerRequest(option)
+        .then(value => {
+            const success = value.body && value.body.data && value.body.data.success || null;
+            const message = value.body && value.body.data && value.body.data.message || null;
+            const data = success && value.body.data.data;
+            if (success) {
+                dispatch(setMenuUploadAction({ success, msg: `${data.itemName} uploaded seccessfully` }));
+            } else {
+                dispatch(setMenuUploadAction({ success, msg: success ? message : message.message }));
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+};

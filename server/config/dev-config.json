@@ -65,5 +65,15 @@
                 "Content-Type": "application/json"
             }
         }
+    },
+    "menuItemUpdate": {
+        "default": {
+            "module": "updateMenuItem",
+            "url": "http://localhost:3000/api/menu/updateMenuItem/",
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
     }
 }
