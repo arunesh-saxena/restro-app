@@ -11,9 +11,14 @@ import configureStore from '../app/store/configureStore';
  * and pass it into the Router.run function.
  */
 const loadData = (dispatch, branch, req, res) => {
-    const promises = branch.map(({ route, match }) => {
+    // todo: need more refine use es6
+    const promises = [];
+    const promisesArray = branch.map(({ route, match }) => {
         if (typeof route.need != 'undefined') {
-            return dispatch(route.need[0](req.headers, res))
+            // return dispatch(route.need[0](req.headers, res))
+            return route.need.map(need => {
+                promises.push(dispatch(need(req.headers, res)));
+            });
         }
     })
 
