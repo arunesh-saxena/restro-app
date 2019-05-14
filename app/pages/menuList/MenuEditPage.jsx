@@ -12,17 +12,17 @@ class MenuEditPage extends React.Component {
         this.props.getMenuItem(itemID);
     }
     render() {
-        const itemID = this.props.match.params.itemID;
         return (
             <div>
-                <MenuEditContainer labels={appConstants.labels} menuItem={this.props.menuItem} />
+                <MenuEditContainer labels={appConstants.labels} menuItem={this.props.menuItem} formInfo={this.props.formInfo} />
             </div>);
     }
 };
 
 
 const mapStateToProps = state => ({
-    menuItem: state.menu && state.menu.menuItem || null
+    menuItem: state.menu && state.menu.menuItem || null,
+    formInfo: state.form && state.form.menuEditForm,
 });
 const mapDispatchToProps = dispatch =>
     bindActionCreators({ getMenuItem }, dispatch);

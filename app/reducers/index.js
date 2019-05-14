@@ -15,6 +15,6 @@ const rootReducer = combineReducers({
     menu,
     signUp,
     user,
-    myAccount,
+    myAccount
 });
 export default rootReducer;
