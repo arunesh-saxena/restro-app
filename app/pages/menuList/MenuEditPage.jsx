@@ -4,17 +4,38 @@ import { bindActionCreators } from 'redux';
 
 import MenuEditContainer from '../../containers/menu/MenuEditContainer';
 import appConstants from '../../appConstants/appConstants';
-import { getMenuItem } from '../../actions/menuAction';
+import { getMenuItem, updateMenuItem } from '../../actions/menuAction';
 
 class MenuEditPage extends React.Component {
     componentWillMount() {
         const itemID = this.props.match.params.itemID;
         this.props.getMenuItem(itemID);
     }
+    handleMenuEditSubmit(file) {
+        const formInfo = this.props.formInfo;
+        if (formInfo && !formInfo.syncErrors) {
+            const itemId = this.props.menuItem.id;
+            const formData = formInfo.values;
+            let data = new FormData();
+            data.append('itemName', formData.itemName);
+            data.append('description', formData.description);
+            data.append('price', formData.price);
+            data.append('unit', formData.unit);
+            data.append('currency', formData.currency);
+            data.append('imageURL', file);
+            data.append('itemId', itemId);
+
+            this.props.updateMenuItem(data);
+        }
+    }
     render() {
         return (
             <div>
-                <MenuEditContainer labels={appConstants.labels} menuItem={this.props.menuItem} formInfo={this.props.formInfo} />
+                <MenuEditContainer
+                    labels={appConstants.labels}
+                    menuItem={this.props.menuItem}
+                    formInfo={this.props.formInfo}
+                    handleMenuEditSubmit={() => { this.handleMenuEditSubmit() }} />
             </div>);
     }
 };
@@ -25,7 +46,10 @@ const mapStateToProps = state => ({
     formInfo: state.form && state.form.menuEditForm,
 });
 const mapDispatchToProps = dispatch =>
-    bindActionCreators({ getMenuItem }, dispatch);
+    bindActionCreators({
+        getMenuItem,
+        updateMenuItem
+    }, dispatch);
 
 export default connect(
     mapStateToProps,
