@@ -2,7 +2,7 @@ import React from 'react';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Field, reduxForm } from 'redux-form';
+import { reduxForm } from 'redux-form';
 import MenuForm from '../../components/form/MenuForm';
 
 let MenuEditContainer = (props) => {
@@ -13,7 +13,7 @@ let MenuEditContainer = (props) => {
         submitting,
         formInfo
     } = props;
-    
+
     const { common: labels } = props.labels;
 
     let fileInput = '';
@@ -52,13 +52,13 @@ MenuEditContainer = reduxForm({
 })(MenuEditContainer);
 
 const mapStateToProps = state => ({
-    initialValues: state.menu && state.menu.menuItem, // pull initial values from account reducer
+    initialValues: state.menu && state.menu.menuInitialItem, 
 });
 const matchDispatchToProps = dispatch => bindActionCreators({}, dispatch);
 
 MenuEditContainer = connect(
     mapStateToProps,
-    matchDispatchToProps, // bind account loading action creator
+    matchDispatchToProps,
 )(MenuEditContainer);
 
 export default MenuEditContainer;

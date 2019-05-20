@@ -20,6 +20,11 @@ export default function menu(
                 menuItem: action.data
             });
         }
+        case types.MENU_INITIAL_ITEM: {
+            return Object.assign({}, state, {
+                menuInitialItem: action.data
+            });
+        }
         default: {
             return state;
         }

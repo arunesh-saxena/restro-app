@@ -14,6 +14,10 @@ export const setMenuItem = data => ({
     type: types.MENU_ITEM,
     data
 })
+export const setInitialMenuItem = data => ({
+    type: types.MENU_INITIAL_ITEM,
+    data
+})
 export const uploadMenuAction = (formData) => {
     const api = expressConstants.UPLOAD_MENU;
     const option = {
@@ -66,7 +70,7 @@ export const getMenuItem = (itemID) => {
             const success = value.body && value.body.data && value.body.data.success || null;
             const message = value.body && value.body.data && value.body.data.message || null;
             const list = success && value.body.data.data || [];
-            dispatch(setMenuItem(list));
+            dispatch(setInitialMenuItem(list));
         })
         .catch(error => {
             console.log(error);
