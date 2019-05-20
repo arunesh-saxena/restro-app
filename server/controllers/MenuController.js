@@ -79,7 +79,7 @@ export const updateMenuItem = (req, res, next) => {
         (response) => {
             res.json(response);
         }
-    ).catch(error => {console.log('+++++++++')
+    ).catch(error => {
         console.log(error);
         res.send(error);
     });
