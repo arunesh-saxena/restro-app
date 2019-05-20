@@ -7,7 +7,6 @@ import MenuForm from '../../components/form/MenuForm';
 
 let MenuEditContainer = (props) => {
     const {
-        menuItem,
         handleMenuEditSubmit,
         pristine,
         submitting,
@@ -26,7 +25,7 @@ let MenuEditContainer = (props) => {
     const renderHeading = () => {
         return (
             <h1>
-                {menuItem && menuItem.itemName}
+                {props && props.initialValues && props.initialValues.itemName}
             </h1>
         );
     };

@@ -33,7 +33,6 @@ class MenuEditPage extends React.Component {
             <div>
                 <MenuEditContainer
                     labels={appConstants.labels}
-                    menuItem={this.props.menuItem}
                     formInfo={this.props.formInfo}
                     handleMenuEditSubmit={() => { this.handleMenuEditSubmit() }} />
             </div>);
@@ -42,7 +41,7 @@ class MenuEditPage extends React.Component {
 
 
 const mapStateToProps = state => ({
-    menuItem: state.menu && state.menu.menuItem || null,
+    menuItem: state.menu && state.menu.menuInitialItem || null,
     formInfo: state.form && state.form.menuEditForm,
 });
 const mapDispatchToProps = dispatch =>
