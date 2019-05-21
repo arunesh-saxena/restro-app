@@ -1,7 +1,7 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { reduxForm } from 'redux-form';
 import MenuForm from '../../components/form/MenuForm';
-import { menuUploadValidate } from '../../utils/formValidation';
+import appConstants from '../../appConstants/appConstants';
 
 let MenuUploadContainer = (props) => {
     const {
@@ -20,15 +20,15 @@ let MenuUploadContainer = (props) => {
             </h1>
         );
     };
-    const submitForm = ( fileInput) => {
+    const submitForm = (fileInput) => {
         const file = !!fileInput.files.length && fileInput.files[0];
-        handleMenuUploadSubmit( file);
+        handleMenuUploadSubmit(file);
     };
-    
+
     const successMsg = () => {
         const msg = props.menu && props.menu.msg;
-        const success  = props.menu && props.menu.success;
-        if(!msg && !success){
+        const success = props.menu && props.menu.success;
+        if (!msg && !success) {
             return '';
         }
         let className = 'alert';
@@ -59,6 +59,6 @@ let MenuUploadContainer = (props) => {
     )
 };
 MenuUploadContainer = reduxForm({
-    form: 'menuUpload'
+    form: appConstants.form.menuUpload
 })(MenuUploadContainer);
 export default MenuUploadContainer;

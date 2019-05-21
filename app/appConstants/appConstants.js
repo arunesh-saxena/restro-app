@@ -20,14 +20,14 @@ const appConstants = {
             enterItemName: 'Enter Item Name',
             description: 'Description',
             image: 'Image',
-            price:'Price',
-            unit:'Unit',
-            currency:'Currency',
-            menuList:'Menu List',
-            empty:'Empty',
+            price: 'Price',
+            unit: 'Unit',
+            currency: 'Currency',
+            menuList: 'Menu List',
+            empty: 'Empty',
             list: 'List',
             rate: 'Rate',
-            lastUpdate:'Last Update'
+            lastUpdate: 'Last Update'
         },
         error: {
             required: 'Required',
@@ -39,6 +39,10 @@ const appConstants = {
             emailConfidentialMsg: "We'll never share your email with anyone else.",
             successMsg: 'Thank you for signUp'
         }
+    },
+    form: {
+        menuUpload: 'menuUpload',
+        menuEditForm: 'menuEditForm'
     }
 };
 

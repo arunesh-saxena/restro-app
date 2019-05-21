@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { reduxForm } from 'redux-form';
 import MenuForm from '../../components/form/MenuForm';
+import appConstants from '../../appConstants/appConstants';
 
 let MenuEditContainer = (props) => {
     const {
@@ -67,7 +68,7 @@ let MenuEditContainer = (props) => {
 };
 
 MenuEditContainer = reduxForm({
-    form: 'menuEditForm'
+    form: appConstants.form.menuEditForm
 })(MenuEditContainer);
 
 const mapStateToProps = state => ({

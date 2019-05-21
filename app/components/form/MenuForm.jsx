@@ -1,22 +1,6 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
-
-
-const renderField = ({
-    input,
-    id,
-    placeholder,
-    type,
-    className,
-    meta: { touched, error, warning }
-}) => (
-        <div>
-            <input {...input} id={id} placeholder={placeholder} type={type} className={className} autoComplete="on" />
-            {touched &&
-                ((error && <span className="error-message">{error}</span>) ||
-                    (warning && <span>{warning}</span>))}
-        </div>
-    );
+import FormField from './renderFormField/FormField';
+import { required, maxLength15 } from '../../utils/formValidation';
 
 let MenuForm = (props) => {
     const {
@@ -27,21 +11,76 @@ let MenuForm = (props) => {
 
     let fileInput = '';
 
-    const submitHandler = (e) =>{
+    const submitHandler = (e) => {
         e.preventDefault();
         submitForm(fileInput);
-    }
+    };
+
+    const formField = [
+        {
+            label: labels.itemName,
+            id: 'itemName',
+            fieldName: 'itemName',
+            placeholder: labels.enterItemName,
+            type: 'text',
+            className: '',
+            isRequired: true,
+            validate: [required, maxLength15]
+        },
+        {
+            label: labels.description,
+            id: 'description',
+            fieldName: 'description',
+            placeholder: labels.description,
+            type: 'text',
+            className: '',
+            isRequired: true,
+            validate: [required]
+        },
+        {
+            label: labels.price,
+            id: 'price',
+            fieldName: 'price',
+            placeholder: labels.price,
+            type: 'text',
+            className: '',
+            isRequired: true,
+            validate: [required]
+        },
+        {
+            label: labels.unit,
+            id: 'unit',
+            fieldName: 'unit',
+            placeholder: labels.unit,
+            type: 'text',
+            className: '',
+            isRequired: true,
+            validate: [required]
+        },
+        {
+            label: labels.currency,
+            id: 'currency',
+            fieldName: 'currency',
+            placeholder: labels.currency,
+            type: 'text',
+            className: '',
+            isRequired: true,
+            validate: [required]
+        }
+    ];
+
+    const renderFormFields = () => {
+        const formFields = formField.map((file, key) => {
+            return <div className="form-group" key={key}>
+                <FormField {...file} />
+            </div>;
+        });
+        return formFields;
+    };
     return (
         <div className="menu-form">
             <form onSubmit={submitHandler}>
-                <div className="form-group">
-                    <label htmlFor="itemName">{labels.itemName}<sup>*</sup></label>
-                    <Field name="itemName" type="text" component={renderField} className="form-control" id="itemName" placeholder={labels.enterItemName} />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="description">{labels.description}<sup>*</sup></label>
-                    <Field name="description" type="text" component={renderField} className="form-control" id="description" placeholder={labels.description} />
-                </div>
+                {renderFormFields()}
                 <div className="form-group">
                     <label htmlFor="image">{labels.image}<sup>*</sup></label>
                     {/* <Field name="image" type="file" component={uploadFile} className="form-control" id="image" placeholder={labels.image}  /> */}
@@ -55,19 +94,6 @@ let MenuForm = (props) => {
                     >
                     </input>
                 </div>
-                <div className="form-group">
-                    <label htmlFor="price">{labels.price}<sup>*</sup></label>
-                    <Field name="price" type="text" component={renderField} className="form-control" id="price" placeholder={labels.price} />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="unit">{labels.unit}<sup>*</sup></label>
-                    <Field name="unit" type="text" component={renderField} className="form-control" id="unit" placeholder={labels.unit} />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="currency">{labels.currency}<sup>*</sup></label>
-                    <Field name="currency" type="text" component={renderField} className="form-control" id="currency" placeholder={labels.currency} />
-                </div>
-                
                 <button type="submit" disabled={disabled} className="col btn btn-primary">{labels.submit}</button>
             </form>
         </div>

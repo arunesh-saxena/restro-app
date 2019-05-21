@@ -22,7 +22,7 @@ export const signUpValidate = values => {
     } else if (values.confirmPassword !== values.userPassword) {
         errors.confirmPassword = error.misMatchWithPassword;
     }
-    return errors
+    return errors;
 };
 
 export const loginValidate = values => {
@@ -35,11 +35,16 @@ export const loginValidate = values => {
     if (!values.password) {
         errors.password = error.required;
     }
-    return errors
+    return errors;
 };
 
-export const menuUploadValidate = values => {
-    const errors = {};
-    
-    return errors
-};
+/* form field level validation */
+
+const maxLength = max => value =>
+    value && value.length > max
+        ? error.charactersLess
+        : undefined;
+export const required = value => (value ? undefined : error.required);
+
+
+export const maxLength15 = maxLength(15);
