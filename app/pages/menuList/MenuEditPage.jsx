@@ -34,7 +34,7 @@ class MenuEditPage extends React.Component {
                 <MenuEditContainer
                     labels={appConstants.labels}
                     formInfo={this.props.formInfo}
-                    handleMenuEditSubmit={() => { this.handleMenuEditSubmit() }} />
+                    handleMenuEditSubmit={(file) => { this.handleMenuEditSubmit(file) }} />
             </div>);
     }
 };

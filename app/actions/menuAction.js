@@ -85,7 +85,7 @@ export const updateMenuItem = (formData) => {
         url: api.url,
         data: formData,
     };
-    console.log(option)
+
     return dispatch => AjaxFactory.triggerServerRequest(option)
         .then(value => {
             const success = value.body && value.body.data && value.body.data.success || null;

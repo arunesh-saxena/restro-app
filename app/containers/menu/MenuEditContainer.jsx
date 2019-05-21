@@ -51,7 +51,8 @@ MenuEditContainer = reduxForm({
 })(MenuEditContainer);
 
 const mapStateToProps = state => ({
-    initialValues: state.menu && state.menu.menuInitialItem, 
+    initialValues: state.menu && state.menu.menuInitialItem,
+    enableReinitialize: true
 });
 const matchDispatchToProps = dispatch => bindActionCreators({}, dispatch);
 
