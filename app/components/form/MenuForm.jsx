@@ -28,7 +28,8 @@ let MenuForm = (props) => {
     let fileInput = '';
 
     const submitHandler = (e) =>{
-        submitForm(e, fileInput);
+        e.preventDefault();
+        submitForm(fileInput);
     }
     return (
         <div className="menu-form">

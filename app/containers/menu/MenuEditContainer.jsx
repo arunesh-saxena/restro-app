@@ -7,6 +7,7 @@ import MenuForm from '../../components/form/MenuForm';
 
 let MenuEditContainer = (props) => {
     const {
+        menu,
         handleMenuEditSubmit,
         pristine,
         submitting,
@@ -17,8 +18,7 @@ let MenuEditContainer = (props) => {
 
     let fileInput = '';
 
-    const submitForm = (e, fileInput) => {
-        e.preventDefault();
+    const submitForm = (fileInput) => {
         const file = !!fileInput.files.length && fileInput.files[0];
         handleMenuEditSubmit(file);
     };
@@ -27,6 +27,25 @@ let MenuEditContainer = (props) => {
             <h1>
                 {props && props.initialValues && props.initialValues.itemName}
             </h1>
+        );
+    };
+    const successMsg = () => {
+        const menuUpload = menu && menu.menuUpload && menu.menuUpload || {};
+        const {
+            msg, success
+        } = menuUpload;
+
+        if (!msg && !success) {
+            return '';
+        }
+        let className = 'alert';
+        if (success && msg && msg.length) {
+            className += ' alert-success'
+        } else {
+            className += ' alert-dark'
+        }
+        return (
+            <p className={className}>{msg}</p>
         );
     };
 
@@ -40,6 +59,7 @@ let MenuEditContainer = (props) => {
                         labels={labels}
                         fileInput={fileInput}
                         disabled={pristine || submitting || formInfo.syncErrors} />
+                    {successMsg()}
                 </div>
             </div>
         </div>

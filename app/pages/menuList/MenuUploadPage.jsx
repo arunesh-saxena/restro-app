@@ -10,11 +10,10 @@ class MenuUploadPage extends React.Component {
         super(props);
         this.handleMenuUploadSubmit = this.handleMenuUploadSubmit.bind(this);
     }
-    componentWillUnmount() {
+    componentWillMount() {
         this.props.setMenuUploadAction({ success: null, msg: null });
     }
-    handleMenuUploadSubmit(e, file) {
-        e.preventDefault();
+    handleMenuUploadSubmit(file) {
         const formInfo = this.props.formInfo;
         if (formInfo && !formInfo.syncErrors) {
             const formData = formInfo.values;
@@ -40,7 +39,11 @@ class MenuUploadPage extends React.Component {
     render() {
         return (
             <div>
-                <MenuUploadContainer handleMenuUploadSubmit={this.handleMenuUploadSubmit} formInfo={this.props.formInfo} labels={appConstants.labels} menu={this.props.menu} />
+                <MenuUploadContainer
+                    handleMenuUploadSubmit={this.handleMenuUploadSubmit}
+                    formInfo={this.props.formInfo}
+                    labels={appConstants.labels}
+                    menu={this.props.menu} />
             </div>
         );
     }
