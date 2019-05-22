@@ -19,7 +19,7 @@ const renderField = ({
     )
 };
 
-const RenderFormField = ({
+const FormField = ({
     label,
     id,
     fieldName,
@@ -42,11 +42,11 @@ const RenderFormField = ({
         </div>
     );
 
-RenderFormField.propTypes = {
+FormField.propTypes = {
     // id: PropTypes.string.isRequired,
     // type: PropTypes.string.isRequired,
     // className: PropTypes.string,
     // label: PropTypes.string,
     // placeholder: PropTypes.string
 };
-export default RenderFormField
+export default FormField;

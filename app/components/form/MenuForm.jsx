@@ -1,5 +1,5 @@
 import React from 'react';
-import FormField from './renderFormField/FormField';
+import FormField from './FormField/FormField';
 import { required, maxLength15 } from '../../utils/formValidation';
 
 let MenuForm = (props) => {
