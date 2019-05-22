@@ -29,7 +29,7 @@ class NumberSelector extends Component {
         });
         this.setDisableButton(selectedNumber);
 
-        this.props.quantityHandler(selectedNumber);
+        this.props.changeNumberHandler(selectedNumber);
     }
     incrementNumber() {
         let selectedNumber = this.state.selectedNumber;
@@ -39,7 +39,7 @@ class NumberSelector extends Component {
         });
         this.setDisableButton(selectedNumber);
 
-        this.props.quantityHandler(selectedNumber);
+        this.props.changeNumberHandler(selectedNumber);
     }
     render() {
         const selectedNumberValue = this.state.selectedNumber;

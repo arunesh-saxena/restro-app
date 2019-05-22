@@ -48,6 +48,7 @@ export const uploadMenu = (req, res, next) => {
 export const updateMenuItem = (req, res, next) => {
     const endPoint = service.menuItemUpdate.default;
     const body = req.body;
+    console.log(body)
     let data = new FormData();
     body.itemName != 'undefined' && data.append('itemName', body.itemName);
     body.description != 'undefined' && data.append('description', body.description);
@@ -124,4 +125,29 @@ export const menuItem = (req, res, next) => {
         console.log(error);
         res.send(error);
     });
-}
+};
+
+// TODO: put update item quantity serive call
+export const changeMenuItemQuantity = (req, res, next) => {
+    const endPoint = service.menuItemUpdate.default;
+    const body = req.body;
+    console.log(body)
+
+
+    const config = {
+        method: endPoint.method,
+        url: endPoint.url,
+        headers: endPoint.headers,
+        data: 'data need to change server with update   api'
+    };
+    res.json(config);
+    // ServiceFactory.triggerserviceRequest(config, true).then(
+    //     (response) => {
+    //         res.json(response);
+    //     }
+    // ).catch(error => {
+    //     console.log(error);
+    //     res.send(error);
+    // });
+
+};

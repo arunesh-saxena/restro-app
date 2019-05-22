@@ -3,14 +3,18 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import MenuListContainer from '../../containers/menu/MenuListContainer';
 import appConstants from '../../appConstants/appConstants';
-import { getMenuList } from '../../actions/menuAction';
+import { getMenuList, changeMenuItemQuantity } from '../../actions/menuAction';
 
 class MenuListPage extends React.Component {
     componentDidMount() {
         this.props.getMenuList();
     }
-    changeProductQuantity(selectedNumber) {
-        // console.log('-------quantityHandler------', selectedNumber);
+    changeProductQuantity(item) {
+        const itemData = {
+            itemId: item.itemId,
+            quantity: item.quantity
+        };
+        this.props.changeMenuItemQuantity(itemData);
     }
     render() {
         return (
@@ -18,7 +22,7 @@ class MenuListPage extends React.Component {
                 <MenuListContainer
                     labels={appConstants.labels}
                     menuList={this.props.menuList}
-                    quantityHandler={(selectedNumber) => { this.changeProductQuantity(selectedNumber) }} />
+                    quantityHandler={(itemData) => { this.changeProductQuantity(itemData) }} />
             </div>);
     }
 };
@@ -29,7 +33,10 @@ const mapStateToProps = state => ({
 
 });
 const mapDispatchToProps = dispatch =>
-    bindActionCreators({ getMenuList }, dispatch);
+    bindActionCreators({
+        getMenuList,
+        changeMenuItemQuantity
+    }, dispatch);
 
 export default connect(
     mapStateToProps,

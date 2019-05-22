@@ -5,6 +5,14 @@ import AppUrls from '../../appConstants/appUrls';
 import NumberSelector from '../NumberSelector/NumberSelector';
 
 const MenuItem = (props) => {
+
+    const quantityHandler = (selectedNumber) => {
+        const itemData = {
+            itemId: props.item.id,
+            quantity: selectedNumber
+        };
+        props.quantityHandler(itemData)
+    };
     return (
         <div className='menu-item'>
             <div className='heading'>
@@ -38,7 +46,7 @@ const MenuItem = (props) => {
                     <div className='row-value quantity-selector-container'>
                         <NumberSelector
                             number={props.item.quantity}
-                            quantityHandler={props.quantityHandler} />
+                            changeNumberHandler={quantityHandler} />
                     </div>
                 </div>
 
