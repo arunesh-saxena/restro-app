@@ -1,10 +1,16 @@
 .menu-item {
   .heading {
     display: flex;
+    @include breakpoint(desktop-below){
+      flex-direction: column;
+    }
     .img-container {
-      height: 200px;
+      height: auto;
+      @include breakpoint(desktop-above){
+        height: 200px;
+      }
       overflow: hidden;
-      border-radius: 0 5px 5px 0;
+      border-radius: 5px;
       flex: 1 0;
       display: flex;
       align-items: center;
@@ -20,10 +26,30 @@
     }
     p {
       flex: 2 0;
-      padding-left: 10px;
+      @include breakpoint(desktop-above){
+        padding-left: 10px; 
+      }
     }
   }
   .item-info {
+    .info-row {
+      display: flex;
+      margin: 5px 0;
+      &:first-child {
+        margin-top: 0;
+      }
+      &:last-child {
+        margin-bottom: 0;
+      }
+      .row-header{
+        flex-basis: 100px;
+        flex-wrap: nowrap;
+
+      }
+      .row-value {
+        // flex-grow: 1;
+      }
+    }
     padding-top: 10px;
     .code {
       background: greenyellow;
@@ -31,4 +57,8 @@
       border-radius: 20px;
     }
   }
+
+  // .quantity-selector-container{
+  //   display: inline-block;
+  // }
 }
