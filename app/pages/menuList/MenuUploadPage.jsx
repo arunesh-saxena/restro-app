@@ -28,6 +28,7 @@ class MenuUploadPage extends React.Component {
             let data = new FormData();
             data.append('itemName', formData.itemName);
             data.append('description', formData.description);
+            data.append('quantity', formData.quantity);
             data.append('price', formData.price);
             data.append('unit', formData.unit);
             data.append('currency', formData.currency);

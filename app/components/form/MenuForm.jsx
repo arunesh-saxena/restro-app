@@ -28,6 +28,16 @@ let MenuForm = (props) => {
             validate: [required, maxLength15]
         },
         {
+            label: labels.quantity,
+            id: 'quantity',
+            fieldName: 'quantity',
+            placeholder: labels.quantity,
+            type: 'text',
+            className: '',
+            isRequired: true,
+            validate: [required, maxLength15]
+        },
+        {
             label: labels.description,
             id: 'description',
             fieldName: 'description',

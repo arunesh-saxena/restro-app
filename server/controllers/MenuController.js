@@ -9,6 +9,7 @@ export const uploadMenu = (req, res, next) => {
     let data = new FormData();
     body.itemName != 'undefined' && data.append('itemName', body.itemName);
     body.description != 'undefined' && data.append('description', body.description);
+    body.quantity != 'undefined' && data.append('quantity', body.quantity);
     body.price != 'undefined' && data.append('price', body.price);
     body.unit != 'undefined' && data.append('unit', body.unit);
     body.currency != 'undefined' && data.append('currency', body.currency);
@@ -50,6 +51,7 @@ export const updateMenuItem = (req, res, next) => {
     let data = new FormData();
     body.itemName != 'undefined' && data.append('itemName', body.itemName);
     body.description != 'undefined' && data.append('description', body.description);
+    body.quantity != 'undefined' && data.append('quantity', body.quantity);
     body.price != 'undefined' && data.append('price', body.price);
     body.unit != 'undefined' && data.append('unit', body.unit);
     body.currency != 'undefined' && data.append('currency', body.currency);

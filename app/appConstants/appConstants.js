@@ -27,7 +27,8 @@ const appConstants = {
             empty: 'Empty',
             list: 'List',
             rate: 'Rate',
-            lastUpdate: 'Last Update'
+            lastUpdate: 'Last Update',
+            quantity: 'Quantity'
         },
         error: {
             required: 'Required',
