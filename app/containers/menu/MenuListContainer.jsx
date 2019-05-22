@@ -11,7 +11,7 @@ const renderHeading = (labels) => {
         </h1>
     );
 };
-const renderMenuList = (menuList, labels) => {
+const renderMenuList = (menuList, labels, quantityHandler) => {
     if (!menuList || !menuList.length) {
         return (
             <p>{labels.empty} {labels.list} <Link to={AppUrls.ADD_MENU}>{labels.addMenu}</Link></p>
@@ -22,7 +22,7 @@ const renderMenuList = (menuList, labels) => {
         return (
             <li key={index}
                 className='list-group-item'>
-                <MenuItem labels={labels} item={item} />
+                <MenuItem labels={labels} item={item} quantityHandler={quantityHandler}/>
             </li>
         );
     });
@@ -34,6 +34,7 @@ const renderMenuList = (menuList, labels) => {
 const MenuListContainer = (props) => {
     const {
         menuList,
+        quantityHandler
     } = props;
     const { common: labels } = props.labels;
 
@@ -42,7 +43,7 @@ const MenuListContainer = (props) => {
             <div className="row justify-content-md-center">
                 <div className="col-xs-12 col-md-12">
                     {renderHeading(labels)}
-                    {renderMenuList(menuList, labels)}
+                    {renderMenuList(menuList, labels, quantityHandler)}
                 </div>
             </div>
         </div>

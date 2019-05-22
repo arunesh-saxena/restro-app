@@ -9,10 +9,16 @@ class MenuListPage extends React.Component {
     componentDidMount() {
         this.props.getMenuList();
     }
+    changeProductQuantity(selectedNumber) {
+        // console.log('-------quantityHandler------', selectedNumber);
+    }
     render() {
         return (
             <div>
-                <MenuListContainer labels={appConstants.labels} menuList={this.props.menuList} />
+                <MenuListContainer
+                    labels={appConstants.labels}
+                    menuList={this.props.menuList}
+                    quantityHandler={(selectedNumber) => { this.changeProductQuantity(selectedNumber) }} />
             </div>);
     }
 };

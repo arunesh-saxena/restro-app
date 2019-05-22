@@ -28,7 +28,7 @@ const MenuItem = (props) => {
                     <label className='row-header'>{props.labels.itemName}</label>
                     <div className='row-value'>
                         {props.item.itemName}
-                         <span className='code'>{props.item.itemCode}</span>
+                        <span className='code'>{props.item.itemCode}</span>
                         <span><Link to={`${AppUrls.EDIT_MENU}/${props.item.id}`}>Edit</Link></span>
                     </div>
                 </div>
@@ -36,7 +36,9 @@ const MenuItem = (props) => {
                 <div className='info-row'>
                     <label className='row-header'>{props.labels.quantity}</label>
                     <div className='row-value quantity-selector-container'>
-                        <NumberSelector number={props.item.quantity} />
+                        <NumberSelector
+                            number={props.item.quantity}
+                            quantityHandler={props.quantityHandler} />
                     </div>
                 </div>
 

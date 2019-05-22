@@ -3,14 +3,23 @@ class NumberSelector extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedNumber: 0
-        }
+            selectedNumber: 0,
+            isDecrementDisable: false
+        };
+
     }
-    componentWillMount() {
+    componentDidMount() {
         const selectedNumber = this.props.number;
         this.setState({
-            selectedNumber
+            selectedNumber,
+            isDecrementDisable: (selectedNumber < 1)
         });
+    }
+    setDisableButton(selectedNumber) {
+        const isDecrementDisable = (selectedNumber < 1);
+        this.setState({
+            isDecrementDisable: isDecrementDisable
+        })
     }
     decrementNumber() {
         let selectedNumber = this.state.selectedNumber;
@@ -18,7 +27,9 @@ class NumberSelector extends Component {
         this.setState({
             selectedNumber: selectedNumber
         });
-        console.log(this.state.selectedNumber)
+        this.setDisableButton(selectedNumber);
+
+        this.props.quantityHandler(selectedNumber);
     }
     incrementNumber() {
         let selectedNumber = this.state.selectedNumber;
@@ -26,16 +37,25 @@ class NumberSelector extends Component {
         this.setState({
             selectedNumber: selectedNumber
         });
-        console.log(this.state.selectedNumber)
+        this.setDisableButton(selectedNumber);
+
+        this.props.quantityHandler(selectedNumber);
     }
     render() {
         const selectedNumberValue = this.state.selectedNumber;
 
         return (
             <div className='number-selector'>
-                <button type="button" className="btn btn-primary btn-sm icon-minus" onClick={() => { this.decrementNumber() }} > </button>
+
+                <button type="button"
+                    disabled={this.state.isDecrementDisable}
+                    className="btn btn-primary btn-sm icon-minus"
+                    onClick={() => { this.decrementNumber() }} > </button>
                 <span className="number-text">{selectedNumberValue}</span>
-                <button type="button" className="btn btn-primary btn-sm icon-plus" onClick={() => { this.incrementNumber() }} > </button>
+
+                <button type="button"
+                    className="btn btn-primary btn-sm icon-plus"
+                    onClick={() => { this.incrementNumber() }} > </button>
             </div>
         )
     }
