@@ -24,7 +24,9 @@ import {
     menuList,
     menuItem,
     updateMenuItem,
-    changeMenuItemQuantity
+    changeMenuItemQuantity,
+    toggleHiddenMenuItem,
+    deleteMenuItem
 } from './controllers/MenuController';
 
 /* testing */
@@ -44,5 +46,7 @@ routes.post(expressConstants.MENU_LIST.url, menuList);
 routes.get(`${expressConstants.MENU_ITEM.url}/:itemID`, menuItem);
 routes.post(expressConstants.MENU_ITEM_UPDATE.url, upload, updateMenuItem);
 routes.post(expressConstants.MENU_ITEM_QUANITY_CHANGE.url, changeMenuItemQuantity);
+routes.post(expressConstants.MENU_ITEM_TOGGLE_HIDDEN.url, toggleHiddenMenuItem);
+routes.post(expressConstants.MENU_ITEM_DELETE.url, deleteMenuItem);
 
 module.exports = routes;

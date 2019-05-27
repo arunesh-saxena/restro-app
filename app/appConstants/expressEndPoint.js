@@ -40,6 +40,14 @@ const expressConstants = {
     MENU_ITEM_QUANITY_CHANGE: {
         url: '/MENU_ITEM_QUANITY_CHANGE',
         method: 'POST'
+    },
+    MENU_ITEM_TOGGLE_HIDDEN: {
+        url: '/MENU_ITEM_TOGGLE_HIDDEN',
+        method: 'POST'
+    },
+    MENU_ITEM_DELETE: {
+        url: '/MENU_ITEM_DELETE',
+        method: 'POST'
     }
 };
 

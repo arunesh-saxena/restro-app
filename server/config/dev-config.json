@@ -75,5 +75,35 @@
                 "Content-Type": "application/json"
             }
         }
+    },
+    "changeMenuItemQuantity": {
+        "default": {
+            "module": "changeMenuItemQuantity",
+            "url": "http://localhost:3000/api/menu/changeMenuItemQuantity/",
+            "method": "PUT",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
+    },
+    "toggleHiddenMenuItem": {
+        "default": {
+            "module": "toggleHiddenMenuItem",
+            "url": "http://localhost:3000/api/menu/toggleHiddenMenuItem/",
+            "method": "PUT",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
+    },
+    "deleteMenuItem": {
+        "default": {
+            "module": "deleteMenuItem",
+            "url": "http://localhost:3000/api/menu/deleteMenuItem/",
+            "method": "PUT",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
     }
 }

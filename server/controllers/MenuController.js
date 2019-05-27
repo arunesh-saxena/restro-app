@@ -151,3 +151,53 @@ export const changeMenuItemQuantity = (req, res, next) => {
     // });
 
 };
+
+
+export const toggleHiddenMenuItem = (req, res, next) => {
+    const endPoint = service.menuItemUpdate.default;
+    const body = req.body;
+    console.log(body)
+
+
+    const config = {
+        method: endPoint.method,
+        url: endPoint.url,
+        headers: endPoint.headers,
+        data: 'data need to change server with update   api'
+    };
+    res.json(config);
+    // ServiceFactory.triggerserviceRequest(config, true).then(
+    //     (response) => {
+    //         res.json(response);
+    //     }
+    // ).catch(error => {
+    //     console.log(error);
+    //     res.send(error);
+    // });
+
+};
+
+
+export const deleteMenuItem = (req, res, next) => {
+    const endPoint = service.menuItemUpdate.default;
+    const body = req.body;
+    console.log(body)
+
+
+    const config = {
+        method: endPoint.method,
+        url: endPoint.url,
+        headers: endPoint.headers,
+        data: 'data need to change server with update   api'
+    };
+    res.json(config);
+    // ServiceFactory.triggerserviceRequest(config, true).then(
+    //     (response) => {
+    //         res.json(response);
+    //     }
+    // ).catch(error => {
+    //     console.log(error);
+    //     res.send(error);
+    // });
+
+};
