@@ -109,7 +109,7 @@ export const menuList = (req, res, next) => {
 
 
 export const menuItem = (req, res, next) => {
-    const itemId = req.params.itemID ;
+    const itemId = req.params.itemID;
     const endPoint = service.menuItem.default;
     const config = {
         method: endPoint.method,
@@ -129,32 +129,32 @@ export const menuItem = (req, res, next) => {
 
 // TODO: put update item quantity serive call
 export const changeMenuItemQuantity = (req, res, next) => {
-    const endPoint = service.menuItemUpdate.default;
+    const endPoint = service.changeMenuItemQuantity.default;
     const body = req.body;
-    console.log(body)
-
-
+    // console.log(body)
     const config = {
         method: endPoint.method,
         url: endPoint.url,
         headers: endPoint.headers,
-        data: 'data need to change server with update   api'
+        data: {
+            itemId: body.itemId,
+            quantity: body.quantity
+        }
     };
-    res.json(config);
-    // ServiceFactory.triggerserviceRequest(config, true).then(
-    //     (response) => {
-    //         res.json(response);
-    //     }
-    // ).catch(error => {
-    //     console.log(error);
-    //     res.send(error);
-    // });
+    ServiceFactory.triggerserviceRequest(config).then(
+        (response) => {
+            res.json(response);
+        }
+    ).catch(error => {
+        console.log(error);
+        res.send(error);
+    });
 
 };
 
 
 export const toggleHiddenMenuItem = (req, res, next) => {
-    const endPoint = service.menuItemUpdate.default;
+    const endPoint = service.toggleHiddenMenuItem.default;
     const body = req.body;
     console.log(body)
 
@@ -165,8 +165,8 @@ export const toggleHiddenMenuItem = (req, res, next) => {
         headers: endPoint.headers,
         data: 'data need to change server with update   api'
     };
-    res.json(config);
-    // ServiceFactory.triggerserviceRequest(config, true).then(
+
+    // ServiceFactory.triggerserviceRequest(config).then(
     //     (response) => {
     //         res.json(response);
     //     }
@@ -179,7 +179,7 @@ export const toggleHiddenMenuItem = (req, res, next) => {
 
 
 export const deleteMenuItem = (req, res, next) => {
-    const endPoint = service.menuItemUpdate.default;
+    const endPoint = service.deleteMenuItem.default;
     const body = req.body;
     console.log(body)
 
@@ -190,8 +190,8 @@ export const deleteMenuItem = (req, res, next) => {
         headers: endPoint.headers,
         data: 'data need to change server with update   api'
     };
-    res.json(config);
-    // ServiceFactory.triggerserviceRequest(config, true).then(
+
+    // ServiceFactory.triggerserviceRequest(config).then(
     //     (response) => {
     //         res.json(response);
     //     }

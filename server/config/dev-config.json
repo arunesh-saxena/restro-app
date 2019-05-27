@@ -100,7 +100,7 @@
         "default": {
             "module": "deleteMenuItem",
             "url": "http://localhost:3000/api/menu/deleteMenuItem/",
-            "method": "PUT",
+            "method": "DELETE",
             "headers": {
                 "Content-Type": "application/json"
             }

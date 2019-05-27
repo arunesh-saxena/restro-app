@@ -102,24 +102,21 @@ export const updateMenuItem = (formData) => {
 };
 
 export const changeMenuItemQuantity = (itemData) => {
-    console.log(itemData);
     const api = expressConstants.MENU_ITEM_QUANITY_CHANGE;
     const option = {
         method: api.method,
         url: api.url,
         data: itemData,
     };
-    // TODO: put update item quantity serive call
     return dispatch => AjaxFactory.triggerServerRequest(option)
     .then(value => {
         const success = value.body && value.body.data && value.body.data.success || null;
         const message = value.body && value.body.data && value.body.data.message || null;
         const data = success && value.body.data.data;
-        console.log(data);
         if (success) {
             dispatch(getMenuList());
         } else {
-            console.log(`--------------error---------------${value}`)
+            console.log(value)
         }
     })
     .catch(error => {
