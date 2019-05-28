@@ -9,8 +9,9 @@ class ToggleButton extends React.Component {
     changeHandler(e) {
         this.setState({
             value: !this.state.value
+        }, () => {
+            this.props.toggleHandler(this.state.value);
         })
-        this.props.toggleHandler(this.state.value);
     }
     render() {
         const className = this.props.className || '';

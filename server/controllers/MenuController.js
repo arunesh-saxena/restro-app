@@ -158,22 +158,21 @@ export const toggleHiddenMenuItem = (req, res, next) => {
     const body = req.body;
     console.log(body)
 
-
     const config = {
         method: endPoint.method,
         url: endPoint.url,
         headers: endPoint.headers,
-        data: 'data need to change server with update   api'
+        data: body
     };
 
-    // ServiceFactory.triggerserviceRequest(config).then(
-    //     (response) => {
-    //         res.json(response);
-    //     }
-    // ).catch(error => {
-    //     console.log(error);
-    //     res.send(error);
-    // });
+    ServiceFactory.triggerserviceRequest(config).then(
+        (response) => {
+            res.json(response);
+        }
+    ).catch(error => {
+        console.log(error);
+        res.send(error);
+    });
 
 };
 

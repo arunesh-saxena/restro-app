@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import MenuListContainer from '../../containers/menu/MenuListContainer';
 import appConstants from '../../appConstants/appConstants';
-import { getMenuList, changeMenuItemQuantity } from '../../actions/menuAction';
+import { getMenuList, changeMenuItemQuantity, toggleHiddenMenuItem } from '../../actions/menuAction';
 
 class MenuListPage extends React.Component {
     componentDidMount() {
@@ -16,8 +16,8 @@ class MenuListPage extends React.Component {
         };
         this.props.changeMenuItemQuantity(itemData);
     }
-    toggleHandler(value){
-        console.log(value);
+    toggleHandler(data){
+        this.props.toggleHiddenMenuItem(data);
     }
     render() {
         return (
@@ -39,7 +39,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch =>
     bindActionCreators({
         getMenuList,
-        changeMenuItemQuantity
+        changeMenuItemQuantity,
+        toggleHiddenMenuItem
     }, dispatch);
 
 export default connect(

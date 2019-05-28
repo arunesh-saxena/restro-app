@@ -14,6 +14,14 @@ const MenuItem = (props) => {
         };
         props.quantityHandler(itemData)
     };
+    const toggleHiddenMenuItemHandler = (value) => {
+        const itemData = {
+            itemId: props.item.id,
+            isHidden: value
+        };
+        props.toggleHandler(itemData);
+
+    }
     return (
         <div className='menu-item'>
             <div className='heading'>
@@ -60,7 +68,7 @@ const MenuItem = (props) => {
                     <label className='row-header'>{props.labels.hidden}</label>
                     <div className='row-value'>
                         <ToggleButton
-                            toggleHandler={props.toggleHandler}
+                            toggleHandler={toggleHiddenMenuItemHandler}
                             initialValue={props.item.isHidden}
                             checkedLabel={props.labels.yes}
                             unCheckedLabel={props.labels.no} />

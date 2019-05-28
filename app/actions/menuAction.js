@@ -109,17 +109,40 @@ export const changeMenuItemQuantity = (itemData) => {
         data: itemData,
     };
     return dispatch => AjaxFactory.triggerServerRequest(option)
-    .then(value => {
-        const success = value.body && value.body.data && value.body.data.success || null;
-        const message = value.body && value.body.data && value.body.data.message || null;
-        const data = success && value.body.data.data;
-        if (success) {
-            dispatch(getMenuList());
-        } else {
-            console.log(value)
-        }
-    })
-    .catch(error => {
-        console.log(error);
-    });
+        .then(value => {
+            const success = value.body && value.body.data && value.body.data.success || null;
+            const message = value.body && value.body.data && value.body.data.message || null;
+            const data = success && value.body.data.data;
+            if (success) {
+                dispatch(getMenuList());
+            } else {
+                console.log(value)
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
 };
+
+export const toggleHiddenMenuItem = (data) => {
+    const api = expressConstants.MENU_ITEM_TOGGLE_HIDDEN;
+    const option = {
+        method: api.method,
+        url: api.url,
+        data
+    };
+    return dispatch => AjaxFactory.triggerServerRequest(option)
+        .then(value => {
+            const success = value.body && value.body.data && value.body.data.success || null;
+            const message = value.body && value.body.data && value.body.data.message || null;
+            const data = success && value.body.data.data;
+            if (success) {
+                dispatch(getMenuList());
+            } else {
+                console.log(value)
+            }
+        })
+        .catch(error => {
+            console.log(error);
+        });
+}
