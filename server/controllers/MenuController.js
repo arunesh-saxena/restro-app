@@ -131,7 +131,6 @@ export const menuItem = (req, res, next) => {
 export const changeMenuItemQuantity = (req, res, next) => {
     const endPoint = service.changeMenuItemQuantity.default;
     const body = req.body;
-    // console.log(body)
     const config = {
         method: endPoint.method,
         url: endPoint.url,
@@ -156,7 +155,6 @@ export const changeMenuItemQuantity = (req, res, next) => {
 export const toggleHiddenMenuItem = (req, res, next) => {
     const endPoint = service.toggleHiddenMenuItem.default;
     const body = req.body;
-    console.log(body)
 
     const config = {
         method: endPoint.method,
