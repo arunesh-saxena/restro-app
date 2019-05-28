@@ -58,7 +58,13 @@ const MenuItem = (props) => {
 
                 <div className='info-row'>
                     <label className='row-header'>{props.labels.hidden}</label>
-                    <div className='row-value'> <ToggleButton /></div>
+                    <div className='row-value'>
+                        <ToggleButton
+                            toggleHandler={props.toggleHandler}
+                            initialValue={props.item.isHidden}
+                            checkedLabel={props.labels.yes}
+                            unCheckedLabel={props.labels.no} />
+                    </div>
                 </div>
 
                 <div className='info-row'>

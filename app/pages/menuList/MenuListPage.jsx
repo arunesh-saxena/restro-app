@@ -16,13 +16,17 @@ class MenuListPage extends React.Component {
         };
         this.props.changeMenuItemQuantity(itemData);
     }
+    toggleHandler(value){
+        console.log(value);
+    }
     render() {
         return (
             <div>
                 <MenuListContainer
                     labels={appConstants.labels}
                     menuList={this.props.menuList}
-                    quantityHandler={(itemData) => { this.changeProductQuantity(itemData) }} />
+                    quantityHandler={(itemData) => { this.changeProductQuantity(itemData) }}
+                    toggleHandler={(value) => this.toggleHandler(value)} />
             </div>);
     }
 };

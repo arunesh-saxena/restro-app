@@ -29,7 +29,9 @@ const appConstants = {
             rate: 'Rate',
             lastUpdate: 'Last Update',
             quantity: 'Quantity',
-            hidden: 'Hidden'
+            hidden: 'Hidden',
+            yes: 'Yes',
+            no: 'No'
         },
         error: {
             required: 'Required',
