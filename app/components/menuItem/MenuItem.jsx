@@ -46,7 +46,6 @@ const MenuItem = (props) => {
                     <div className='row-value'>
                         {props.item.itemName}
                         <span className='code'>{props.item.itemCode}</span>
-                        <span><Link to={`${AppUrls.EDIT_MENU}/${props.item.id}`}>Edit</Link></span>
                     </div>
                 </div>
 
@@ -78,6 +77,13 @@ const MenuItem = (props) => {
                 <div className='info-row'>
                     <label className='row-header'>{props.labels.lastUpdate}</label>
                     <div className='row-value'>{commonUtil.getDate(props.item.updatedAt)}</div>
+                </div>
+
+                <div className='info-row'>
+                    <label className='row-header'>{props.labels.action}</label>
+                    <div className='row-value'>
+                        <span><Link to={`${AppUrls.EDIT_MENU}/${props.item.id}`}>{props.labels.edit}</Link></span>
+                    </div>
                 </div>
             </div>
 

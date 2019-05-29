@@ -31,7 +31,9 @@ const appConstants = {
             quantity: 'Quantity',
             hidden: 'Hidden',
             yes: 'Yes',
-            no: 'No'
+            no: 'No',
+            action: 'Action',
+            edit: 'Edit'
         },
         error: {
             required: 'Required',
