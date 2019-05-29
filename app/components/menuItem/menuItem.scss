@@ -34,6 +34,7 @@
   .item-info {
     display: flex;
     flex-direction: column;
+    padding-top: 10px;
     @include breakpoint(desktop-above) {
       flex-direction: row;
       justify-content: space-between;
@@ -55,17 +56,13 @@
           flex-basis: 100px;
         }
         flex-wrap: nowrap;
+        font-weight: bold;
       }
     }
-    padding-top: 10px;
     .code {
       background: greenyellow;
       padding: 0px 10px;
       border-radius: 20px;
     }
   }
-
-  // .quantity-selector-container{
-  //   display: inline-block;
-  // }
 }

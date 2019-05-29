@@ -37,7 +37,7 @@ const MenuItem = (props) => {
                     }
 
                 </div>
-                <p>{props.labels.description}: {props.item.description}</p>
+                <p><strong>{props.labels.description}:</strong> {props.item.description}</p>
             </div>
 
             <div className="item-info">
