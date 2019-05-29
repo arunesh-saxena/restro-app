@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import AppUrls from '../../appConstants/appUrls';
 import MenuItem from '../../components/menuItem/MenuItem';
+import SearchBox from '../../components/SearchBox/SearchBox';
 
 const renderHeading = (labels) => {
     return (
@@ -47,7 +48,10 @@ const MenuListContainer = (props) => {
         <div className="menu-list-container">
             <div className="row justify-content-md-center">
                 <div className="col-xs-12 col-md-12">
-                    {renderHeading(labels)}
+                    <div className="heading-section">
+                        {renderHeading(labels)}
+                        <SearchBox />
+                    </div>
                     {renderMenuList(menuList, labels, quantityHandler, toggleHandler)}
                 </div>
             </div>
