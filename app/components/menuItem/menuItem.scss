@@ -1,12 +1,12 @@
 .menu-item {
   .heading {
     display: flex;
-    @include breakpoint(desktop-below){
+    @include breakpoint(desktop-below) {
       flex-direction: column;
     }
     .img-container {
       height: auto;
-      @include breakpoint(desktop-above){
+      @include breakpoint(desktop-above) {
         height: 200px;
       }
       overflow: hidden;
@@ -26,25 +26,35 @@
     }
     p {
       flex: 2 0;
-      @include breakpoint(desktop-above){
-        padding-left: 10px; 
+      @include breakpoint(desktop-above) {
+        padding-left: 10px;
       }
     }
   }
   .item-info {
+    display: flex;
+    flex-direction: column;
+    @include breakpoint(desktop-above) {
+      flex-direction: row;
+      justify-content: space-between;
+    }
     .info-row {
       display: flex;
       margin: 5px 0;
+      @include breakpoint(desktop-above) {
+        flex-direction: column;
+      }
       &:first-child {
         margin-top: 0;
       }
       &:last-child {
         margin-bottom: 0;
       }
-      .row-header{
-        flex-basis: 100px;
+      .row-header {
+        @include breakpoint(desktop-below) {
+          flex-basis: 100px;
+        }
         flex-wrap: nowrap;
-
       }
       .row-value {
         // flex-grow: 1;
