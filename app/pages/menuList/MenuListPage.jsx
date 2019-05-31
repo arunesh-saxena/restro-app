@@ -27,7 +27,6 @@ class MenuListPage extends React.Component {
         this.props.toggleHiddenMenuItem(data);
     }
     changeSearchHandler(searchText) {
-        console.log('searchBoxHandler', searchText);
         const menuList = this.props.menuList;
         const filteredList = menuList.filter(item => item.itemName.toLowerCase().includes(searchText.toLowerCase()));
         this.setState({
