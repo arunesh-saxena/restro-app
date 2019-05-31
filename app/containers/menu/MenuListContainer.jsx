@@ -50,7 +50,8 @@ const MenuListContainer = (props) => {
                 <div className="col-xs-12 col-md-12">
                     <div className="heading-section">
                         {renderHeading(labels)}
-                        <SearchBox />
+                        <SearchBox
+                            changeHandler={props.searchBoxHandler} />
                     </div>
                     {renderMenuList(menuList, labels, quantityHandler, toggleHandler)}
                 </div>

@@ -6,6 +6,13 @@ import appConstants from '../../appConstants/appConstants';
 import { getMenuList, changeMenuItemQuantity, toggleHiddenMenuItem } from '../../actions/menuAction';
 
 class MenuListPage extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            menuList: props.menuList
+        };
+        console.log(props.menuList)
+    }
     componentDidMount() {
         this.props.getMenuList();
     }
@@ -16,17 +23,26 @@ class MenuListPage extends React.Component {
         };
         this.props.changeMenuItemQuantity(itemData);
     }
-    toggleHandler(data){
+    toggleHandler(data) {
         this.props.toggleHiddenMenuItem(data);
+    }
+    changeSearchHandler(searchText) {
+        console.log('searchBoxHandler', searchText);
+        const menuList = this.props.menuList;
+        const filteredList = menuList.filter(item => item.itemName.toLowerCase().includes(searchText.toLowerCase()));
+        this.setState({
+            menuList: filteredList
+        })
     }
     render() {
         return (
             <div>
                 <MenuListContainer
                     labels={appConstants.labels}
-                    menuList={this.props.menuList}
+                    menuList={this.state.menuList}
                     quantityHandler={(itemData) => { this.changeProductQuantity(itemData) }}
-                    toggleHandler={(value) => this.toggleHandler(value)} />
+                    toggleHandler={(value) => this.toggleHandler(value)}
+                    searchBoxHandler={(text) => { this.changeSearchHandler(text) }} />
             </div>);
     }
 };
