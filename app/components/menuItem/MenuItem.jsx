@@ -4,6 +4,7 @@ import commonUtil from '../../utils/commonUtils';
 import AppUrls from '../../appConstants/appUrls';
 import NumberSelector from '../NumberSelector/NumberSelector';
 import ToggleButton from '../toggleButton/ToggleButton';
+import Image from '../image/Image';
 
 const MenuItem = (props) => {
 
@@ -28,11 +29,10 @@ const MenuItem = (props) => {
                 <div className="img-container">
                     {
                         props.item.imageURL ?
-                            <picture>
-                                <source media="(min-width: 992px)" srcSet={`http://localhost:3000/${props.item.imageURL}`} />
-                                <source media="(max-width: 991px)" srcSet={`http://localhost:3000/${props.item.imageURL}`} />
-                                <img src={`http://localhost:3000/${props.item.imageURL}`} alt={props.item.itemName} title={props.item.itemName} />
-                            </picture>
+                            <Image
+                                imageURL={`http://localhost:3000/${props.item.imageURL}`}
+                                alt={props.item.itemName}
+                                title={props.item.itemName} />
                             : 'no image'
                     }
 
