@@ -11,7 +11,6 @@ class MenuListPage extends React.Component {
         this.state = {
             menuList: props.menuList
         };
-        console.log(props.menuList)
     }
     componentDidMount() {
         this.props.getMenuList();
