@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 class ToggleButton extends React.Component {
     constructor(props) {
         super(props);
@@ -36,11 +38,11 @@ class ToggleButton extends React.Component {
 };
 
 ToggleButton.propTypes = {
-    // toggleHandler:PropTypes.function.isRequired,
-    // initialValue:PropTypes.boolean.isRequired
-    // className: PropTypes.string,
-    // label: PropTypes.string,
-    // checkedLabel: PropTypes.string,
-    // unCheckedLabel: PropTypes.string
+    toggleHandler:PropTypes.func.isRequired,
+    initialValue: PropTypes.bool.isRequired,
+    className: PropTypes.string,
+    label: PropTypes.string,
+    checkedLabel: PropTypes.string,
+    unCheckedLabel: PropTypes.string
 };
 export default ToggleButton;

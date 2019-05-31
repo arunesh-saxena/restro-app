@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 
 const renderField = ({
@@ -43,10 +44,10 @@ const FormField = ({
     );
 
 FormField.propTypes = {
-    // id: PropTypes.string.isRequired,
-    // type: PropTypes.string.isRequired,
-    // className: PropTypes.string,
-    // label: PropTypes.string,
-    // placeholder: PropTypes.string
+    id: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    className: PropTypes.string,
+    label: PropTypes.string,
+    placeholder: PropTypes.string
 };
 export default FormField;
