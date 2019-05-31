@@ -11,7 +11,6 @@ class Header extends Component {
         this.labels = props.labels.common;
     }
     toggleMainMenu(event) {
-        console.log('toggleMainMenu');
         this.setState({
             isMainMenuOpen: !this.state.isMainMenuOpen
         })
