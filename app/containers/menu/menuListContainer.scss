@@ -1,6 +1,8 @@
 .heading-section {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
   h1 {
     margin: 0;
   }

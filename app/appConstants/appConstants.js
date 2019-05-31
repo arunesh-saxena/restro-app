@@ -33,7 +33,8 @@ const appConstants = {
             yes: 'Yes',
             no: 'No',
             action: 'Action',
-            edit: 'Edit'
+            edit: 'Edit',
+            search: 'Search'
         },
         error: {
             required: 'Required',
