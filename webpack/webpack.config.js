@@ -14,7 +14,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
     devtool: 'source-map',
     context: path.resolve(CURRENT_WORKING_DIR, 'app'),
-    entry: { app: './index.jsx', style: "./styles/app.scss", bootstrap: './styles/bootstrap.scss' },
+    entry: { app: './index.jsx', style: "./assets/styles/app.scss", bootstrap: './assets/styles/bootstrap.scss' },
     output: {
         path: path.resolve(CURRENT_WORKING_DIR, "public", "assets"),
         filename: '[name].js',
