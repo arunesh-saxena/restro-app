@@ -7,6 +7,9 @@ import configureStore from './store/configureStore';
 
 import createRoutes from './routes';
 const initialState = window.__INITIAL_STATE__;
+if (window.__INITIAL_STATE__ !== null) {
+    window.__INITIAL_STATE__ = null;
+}
 const store = configureStore(initialState,{});
 const Routes = createRoutes(store);
 const loadData = (dispatch, branch, req, res) => {
@@ -24,9 +27,7 @@ const loadData = (dispatch, branch, req, res) => {
     return Promise.all(promises)
 }
 const RouteDataLoader = withRouter(class extends React.Component {
-    constructor(props) {
-        super();
-    }
+ 
     componentWillReceiveProps(nextProps) {
         if (nextProps.location.pathname != this.props.location.pathname) {
             const branch = matchRoutes(
@@ -44,10 +45,7 @@ const RouteDataLoader = withRouter(class extends React.Component {
             };
             loadData(nextProps.dispatch, branch, req, res).then((v) => {
                 console.log('================Promise=========');
-                // const html = pageRenderer(store, req, res);
-                // res.status(200).send(html);
             });
-            // preRenderMiddleware(nextProps.dispatch, branch, req, null);
         }
     }
     render() {
