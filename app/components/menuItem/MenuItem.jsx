@@ -30,7 +30,7 @@ const MenuItem = (props) => {
                     {
                         props.item.imageURL ?
                             <Image
-                                imageURL={`http://localhost:3000/${props.item.imageURL}`}
+                                imgURL={`http://localhost:3000/${props.item.imageURL}`}
                                 alt={props.item.itemName}
                                 title={props.item.itemName} />
                             : 'no image'

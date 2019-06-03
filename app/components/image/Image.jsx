@@ -2,18 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Image = (props) => {
+    const imageURL = props.imgURL || 'http://localhost:3030/assets/images/dummy.png';
     return (
         <div className='img-section'>
             <picture>
-                <source media="(min-width: 992px)" srcSet={props.imageURL} />
-                <source media="(max-width: 991px)" srcSet={props.imageURL} />
-                <img src={props.imageURL} alt={props.alt} title={props.title} />
+                <source media="(min-width: 992px)" srcSet={imageURL} />
+                <source media="(max-width: 991px)" srcSet={imageURL} />
+                <img src={imageURL} alt={props.alt} title={props.title} />
             </picture>
         </div>
     )
 };
 Image.propTypes = {
-    imageURL: PropTypes.string.require,
+    imgURL: PropTypes.string.isRequired,
     alt: PropTypes.string,
     titile: PropTypes.string
 };
