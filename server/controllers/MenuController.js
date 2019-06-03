@@ -3,14 +3,8 @@ var fs = require('fs');
 import ServiceFactory from '../utils/ServiceFactory';
 const service = require('../config/dev-config.json');
 
-export const updateMenuItem = (req, res, next) => {
-    let endPoint = service.menuUpload.default;
+const getFormData = (req) => {
     const body = req.body;
-
-    if (body.itemId != undefined) {
-        endPoint = service.menuItemUpdate.default;
-    }
-
     let data = new FormData();
     body.itemName != undefined && data.append('itemName', body.itemName);
     body.description != undefined && data.append('description', body.description);
@@ -32,6 +26,33 @@ export const updateMenuItem = (req, res, next) => {
             });
         }, 1000);
     }
+    return data;
+}
+
+export const uploadMenu = (req, res, next) => {
+    let endPoint = service.menuUpload.default;
+    let data = getFormData(req)
+
+    const config = {
+        method: endPoint.method,
+        url: endPoint.url,
+        headers: endPoint.headers,
+        data: data
+    };
+
+    ServiceFactory.triggerserviceRequest(config, true).then(
+        (response) => {
+            res.json(response);
+        }
+    ).catch(error => {
+        console.log(error);
+        res.send(error);
+    });
+};
+
+export const updateMenuItem = (req, res, next) => {
+    const endPoint = service.menuItemUpdate.default;
+    let data = getFormData(req)
 
     const config = {
         method: endPoint.method,

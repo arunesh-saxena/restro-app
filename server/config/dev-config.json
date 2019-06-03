@@ -68,7 +68,7 @@
     },
     "menuItemUpdate": {
         "default": {
-            "module": "updateMenuItem",
+            "module": "menuItemUpdate",
             "url": "http://localhost:3000/api/menu/updateMenuItem/",
             "method": "POST",
             "headers": {
