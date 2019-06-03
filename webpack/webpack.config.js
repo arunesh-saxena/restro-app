@@ -9,7 +9,7 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 });
 
 const autoPreFixer = require('autoprefixer');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     devtool: 'source-map',
@@ -34,28 +34,32 @@ module.exports = {
         rules: [
             {
                 test: /.(sass|scss)$/,
-                use: ExtractTextPlugin.extract(
+                use: [
                     {
-                        fallback: 'style-loader',
-                        use: [{
-                            loader: "css-loader",
-                            options: {
-                                sourceMap: true
-                            }
-                        }, {
-                            loader: "postcss-loader",
-                            options: {
-                                plugins: () => [require("autoprefixer")],
-                                sourceMap: true
-                            }
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            hmr: true,
                         },
-                        {
-                            loader: "sass-loader",
-                            options: {
-                                sourceMap: true
-                            }
-                        }]
-                    }),
+                    },
+                    {
+                        loader: "css-loader",
+                        options: {
+                            sourceMap: true
+                        }
+                    }, {
+                        loader: "postcss-loader",
+                        options: {
+                            plugins: () => [require("autoprefixer")],
+                            sourceMap: true
+                        }
+                    },
+                    {
+                        loader: "sass-loader",
+                        options: {
+                            sourceMap: true
+                        }
+                    }
+                ],
                 include: path.resolve(CURRENT_WORKING_DIR, 'app'),
             },
             {
@@ -79,7 +83,12 @@ module.exports = {
         ]
     },
     plugins: [
-        new ExtractTextPlugin({ filename: 'styles/[name].css' }),
+        new MiniCssExtractPlugin({
+            // Options similar to the same options in webpackOptions.output
+            // both options are optional
+            filename: 'styles/[name].css',
+            chunkFilename: '[id].css'
+        }),
         HtmlWebpackPluginConfig
     ]
 }

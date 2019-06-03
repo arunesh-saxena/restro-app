@@ -1,7 +1,5 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
-const autoPreFixer = require('autoprefixer');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const CURRENT_WORKING_DIR = process.cwd();
 const node = { __dirname: true, __filename: true };
 

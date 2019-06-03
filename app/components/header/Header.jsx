@@ -57,7 +57,7 @@ class Header extends Component {
                         <div className="col-12"> */}
                     <div className="app-logo">
                         <Link to={`${AppUrls.ROOT}`}>
-                            <img src="./assets/images/logo.png" alt="logo" />
+                            <img src="/assets/images/logo.png" alt="logo" />
                         </Link>
 
                     </div>
