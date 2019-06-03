@@ -13,3 +13,4 @@ export const UPLOAD_MENU = 'UPLOAD_MENU';
 export const MENU_LIST = 'MENU_LIST';
 export const MENU_ITEM = 'MENU_ITEM';
 export const MENU_INITIAL_ITEM = 'MENU_INITIAL_ITEM';
+export const MENU_LIST_FILTERED = 'MENU_LIST_FILTERED';

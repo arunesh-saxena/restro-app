@@ -53,6 +53,7 @@ export const getMenuList = () => {
             const message = value.body && value.body.data && value.body.data.message || null;
             const list = success && value.body.data.data || [];
             dispatch(setMenuList(list));
+            dispatch(setMenuItemFilter(list));
         })
         .catch(error => {
             console.log(error);
@@ -75,6 +76,12 @@ export const getMenuItem = (itemID) => {
         .catch(error => {
             console.log(error);
         });
+}
+export const setMenuItemFilter = (data) => {
+    return ({
+        type: types.MENU_LIST_FILTERED,
+        data
+    });
 }
 
 export const updateMenuItem = (formData) => {
@@ -139,7 +146,7 @@ export const toggleHiddenMenuItem = (data) => {
             if (success) {
                 dispatch(getMenuList());
             } else {
-                console.log(value)
+                console.log(12,value)
             }
         })
         .catch(error => {

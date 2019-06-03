@@ -3,16 +3,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import MenuListContainer from '../../containers/menu/MenuListContainer';
 import appConstants from '../../appConstants/appConstants';
-import { getMenuList, changeMenuItemQuantity, toggleHiddenMenuItem } from '../../actions/menuAction';
+import { getMenuList, changeMenuItemQuantity, toggleHiddenMenuItem, setMenuItemFilter } from '../../actions/menuAction';
 
 class MenuListPage extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            menuList: props.menuList
-        };
-    }
-    
     changeProductQuantity(item) {
         const itemData = {
             itemId: item.itemId,
@@ -25,13 +18,14 @@ class MenuListPage extends React.Component {
     }
     changeSearchHandler(searchText) {
         const menuList = this.props.menuList;
-        const filteredList = menuList.filter(item => item.itemName.toLowerCase().includes(searchText.toLowerCase()));
-        this.setState({
-            menuList: filteredList
-        })
+        const filteredList = searchText.length ?
+            menuList.filter(item => item.itemName.toLowerCase().includes(searchText.toLowerCase())) :
+            menuList;
+        this.props.setMenuItemFilter(filteredList);
     }
+
     render() {
-        const menuList = (this.state.menuList.length) ? this.state.menuList : this.props.menuList;
+        const menuList = this.props.menuListFiltered;
         return (
             <div>
                 <MenuListContainer
@@ -46,14 +40,15 @@ class MenuListPage extends React.Component {
 
 
 const mapStateToProps = state => ({
-    menuList: state.menu && state.menu.menuList || []
-
+    menuList: state.menu && state.menu.menuList || [],
+    menuListFiltered: state.menu && state.menu.menuListFiltered || []
 });
 const mapDispatchToProps = dispatch =>
     bindActionCreators({
         getMenuList,
         changeMenuItemQuantity,
-        toggleHiddenMenuItem
+        toggleHiddenMenuItem,
+        setMenuItemFilter
     }, dispatch);
 
 export default connect(

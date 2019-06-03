@@ -48,7 +48,6 @@ export const uploadMenu = (req, res, next) => {
 export const updateMenuItem = (req, res, next) => {
     const endPoint = service.menuItemUpdate.default;
     const body = req.body;
-    console.log(body)
     let data = new FormData();
     body.itemName != 'undefined' && data.append('itemName', body.itemName);
     body.description != 'undefined' && data.append('description', body.description);
