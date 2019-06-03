@@ -9,7 +9,6 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 });
 
 const autoPreFixer = require('autoprefixer');
-// const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
@@ -50,7 +49,7 @@ module.exports = {
                     }, {
                         loader: "postcss-loader",
                         options: {
-                            plugins: () => [require("autoprefixer")],
+                            plugins: () => [autoPreFixer],
                             sourceMap: true
                         }
                     },
