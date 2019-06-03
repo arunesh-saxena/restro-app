@@ -1,5 +1,6 @@
 const path = require('path');
-
+const webpack = require('webpack');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CURRENT_WORKING_DIR = process.cwd();
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
@@ -22,6 +23,7 @@ module.exports = {
     },
     devServer: {
         historyApiFallback: true,
+        hot: true
     },
     resolve: {
         modules: [
@@ -83,12 +85,15 @@ module.exports = {
         ]
     },
     plugins: [
+        new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // both options are optional
             filename: 'styles/[name].css',
             chunkFilename: '[id].css'
         }),
+        new webpack.HotModuleReplacementPlugin(),
         HtmlWebpackPluginConfig
+
     ]
 }

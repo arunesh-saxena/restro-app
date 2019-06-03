@@ -1,5 +1,6 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
+const webpack = require('webpack');
 const CURRENT_WORKING_DIR = process.cwd();
 const node = { __dirname: true, __filename: true };
 
@@ -16,6 +17,10 @@ module.exports = {
     path: path.resolve('compiled'),
     filename: '[name].js',
     publicPath: '/'
+  },
+  devServer: {
+      historyApiFallback: true,
+      hot: true
   },
   resolve: {
     modules: [
@@ -35,7 +40,8 @@ module.exports = {
       }
     ]
   },
-  plugins: []
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()]
 };
 
 

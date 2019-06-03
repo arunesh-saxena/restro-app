@@ -21,6 +21,7 @@ module.exports = {
         publicPath: '/'
     },
     devServer: {
+        // port: 9000,
         historyApiFallback: true,
     },
     resolve: {
@@ -49,7 +50,7 @@ module.exports = {
                     }, {
                         loader: "postcss-loader",
                         options: {
-                            plugins: () => [require("autoprefixer")],
+                            plugins: () => [autoPreFixer],
                             sourceMap: true
                         }
                     },
