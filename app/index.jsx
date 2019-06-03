@@ -3,13 +3,27 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter, withRouter } from 'react-router-dom';
 import { renderRoutes, matchRoutes } from 'react-router-config';
 import { Provider } from 'react-redux';
-import  configureStore  from './store/configureStore';
+import configureStore from './store/configureStore';
 
 import createRoutes from './routes';
 const initialState = window.__INITIAL_STATE__;
-const store = configureStore(initialState);
+const store = configureStore(initialState,{});
 const Routes = createRoutes(store);
-/* const RouteDataLoader = withRouter(class extends React.Component {
+const loadData = (dispatch, branch, req, res) => {
+    // todo: need more refine use es6
+    const promises = [];
+    const promisesArray = branch.map(({ route, match }) => {
+        if (typeof route.need != 'undefined') {
+            // return dispatch(route.need[0](req.headers, res))
+            return route.need.map(need => {
+                promises.push(dispatch(need(req.headers, res)));
+            });
+        }
+    })
+
+    return Promise.all(promises)
+}
+const RouteDataLoader = withRouter(class extends React.Component {
     constructor(props) {
         super();
     }
@@ -24,20 +38,29 @@ const Routes = createRoutes(store);
                 url: nextProps.location.pathname,
                 headers: {}
             };
+            const res = {
+                url: nextProps.location.pathname,
+                headers: {}
+            };
+            loadData(nextProps.dispatch, branch, req, res).then((v) => {
+                console.log('================Promise=========');
+                // const html = pageRenderer(store, req, res);
+                // res.status(200).send(html);
+            });
             // preRenderMiddleware(nextProps.dispatch, branch, req, null);
         }
     }
     render() {
         return this.props.children;
     }
-}); */
+});
 
 ReactDOM.hydrate(
     <Provider store={store}>
         <BrowserRouter>
-            {/* <RouteDataLoader routes={Routes}> */}
-            {renderRoutes(Routes)}
-            {/* </RouteDataLoader> */}
+            <RouteDataLoader routes={Routes} dispatch={store.dispatch}>
+                {renderRoutes(Routes)}
+            </RouteDataLoader>
         </BrowserRouter>
     </Provider>,
     document.getElementById('app')

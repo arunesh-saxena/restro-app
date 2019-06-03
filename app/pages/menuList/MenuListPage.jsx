@@ -12,9 +12,7 @@ class MenuListPage extends React.Component {
             menuList: props.menuList
         };
     }
-    componentDidMount() {
-        this.props.getMenuList();
-    }
+    
     changeProductQuantity(item) {
         const itemData = {
             itemId: item.itemId,
@@ -33,11 +31,12 @@ class MenuListPage extends React.Component {
         })
     }
     render() {
+        const menuList = (this.state.menuList.length) ? this.state.menuList : this.props.menuList;
         return (
             <div>
                 <MenuListContainer
                     labels={appConstants.labels}
-                    menuList={this.state.menuList}
+                    menuList={menuList}
                     quantityHandler={(itemData) => { this.changeProductQuantity(itemData) }}
                     toggleHandler={(value) => this.toggleHandler(value)}
                     searchBoxHandler={(text) => { this.changeSearchHandler(text) }} />
