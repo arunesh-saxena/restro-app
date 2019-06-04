@@ -4,14 +4,10 @@ import { Link } from 'react-router-dom';
 import AppUrls from '../../appConstants/appUrls';
 import MenuItem from '../../components/menuItem/MenuItem';
 import SearchBox from '../../components/SearchBox/SearchBox';
+import Heading from '../../components/heading/Heading';
 
-const renderHeading = (labels) => {
-    return (
-        <h1>
-            {labels.menuList}
-        </h1>
-    );
-};
+const renderHeading = (labels) => <Heading text={labels.menuList} />;
+
 const renderMenuList = (menuList, labels, quantityHandler, toggleHandler) => {
     if (!menuList || !menuList.length) {
         return (

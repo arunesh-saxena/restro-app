@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { loginValidate } from '../../utils/formValidation';
+import Heading from '../../components/heading/Heading';
 
 const renderField = ({
     input,
@@ -27,11 +28,7 @@ let LoginContainer = (props) => {
     } = props;
     const { common: labels } = props.labels;
 
-    let renderHeading = () => {
-        return (
-            <h1 className="form-heading">{labels.login}</h1>
-        );
-    };
+    let renderHeading = () => <Heading text={labels.login} />;
 
     let renderLoginForm = () => {
         return (

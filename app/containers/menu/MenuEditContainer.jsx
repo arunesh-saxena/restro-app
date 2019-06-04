@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import { reduxForm } from 'redux-form';
 import MenuForm from '../../components/form/MenuForm';
 import appConstants from '../../appConstants/appConstants';
+import Heading from '../../components/heading/Heading';
 
 let MenuEditContainer = (props) => {
     const {
@@ -24,12 +25,10 @@ let MenuEditContainer = (props) => {
         handleMenuEditSubmit(file);
     };
     const renderHeading = () => {
-        return (
-            <h1>
-                {props && props.initialValues && props.initialValues.itemName}
-            </h1>
-        );
+        const text = props && props.initialValues && props.initialValues.itemName;
+        return <Heading text={text} />;
     };
+
     const successMsg = () => {
         const menuUpload = menu && menu.menuUpload && menu.menuUpload || {};
         const {

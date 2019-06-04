@@ -2,6 +2,7 @@ import React from 'react';
 import { reduxForm } from 'redux-form';
 import MenuForm from '../../components/form/MenuForm';
 import appConstants from '../../appConstants/appConstants';
+import Heading from '../../components/heading/Heading';
 
 let MenuUploadContainer = (props) => {
     const {
@@ -13,13 +14,8 @@ let MenuUploadContainer = (props) => {
     const { common: labels } = props.labels;
     let fileInput = '';
 
-    const renderHeading = () => {
-        return (
-            <h1 className="form-heading ">
-                {labels.addMenu}
-            </h1>
-        );
-    };
+    const renderHeading = () => <Heading text={labels.addMenu} />;
+    
     const submitForm = (fileInput) => {
         const file = !!fileInput.files.length && fileInput.files[0];
         handleMenuUploadSubmit(file);
