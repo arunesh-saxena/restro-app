@@ -1,6 +1,7 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { signUpValidate as formValidate } from '../../utils/formValidation';
+import Heading from '../../components/heading/Heading';
 
 const renderField = ({
     input,
@@ -27,13 +28,7 @@ let SignUpContainer = (props) => {
     } = props;
     const { common: labels, signUp: labelsSignUp } = props.labels;
 
-    let redemderHeading = () => {
-        return (
-            <h1 className="form-heading">
-                {labels.signUp}
-            </h1>
-        );
-    };
+    let redemderHeading = () => <Heading text={labels.signUp} />;
 
     let renderLoginForm = () => {
         const userData = props.userData;
