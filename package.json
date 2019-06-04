@@ -26,7 +26,7 @@
   },
   "lint-staged": {
     "*.{js,jsx,json,scss}": [
-      "npm run preety",
+      "pretty",
       "git add"
     ]
   },
