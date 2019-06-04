@@ -13,12 +13,22 @@
     "dev": "npm run copy && npm-run-all --parallel dev:build-client dev:build-server dev:start",
     "setup": "npm run clean && npm run copy",
     "clean": "rimraf public && rimraf compiled",
-    "copy": "copyfiles -f ./app/assets/fonts/*.* ./public/assets/fonts && copyfiles -f ./app/assets/images/*.* ./public/assets/images"
+    "copy": "copyfiles -f ./app/assets/fonts/*.* ./public/assets/fonts && copyfiles -f ./app/assets/images/*.* ./public/assets/images",
+    "lint": "npm run lint:js && npm run lint:scss",
+    "lint:js": "eslint --quiet --ext .js,.jsx app server",
+    "pretty": "prettier --write '{app,server}/**/*.{js,jsx,json,scss}'"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm echo"
+      "pre-commit": "lint-staged",
+      "pre-push": "echo pushing..... :-)"
     }
+  },
+  "lint-staged": {
+    "*.{js,jsx,json,scss}": [
+      "npm run preety",
+      "git add"
+    ]
   },
   "keywords": [],
   "author": "",
@@ -47,12 +57,13 @@
     "form-data": "^2.3.3",
     "html-webpack-plugin": "^3.2.0",
     "husky": "^2.3.0",
+    "lint-staged": "^8.1.7",
     "mini-css-extract-plugin": "^0.7.0",
     "node-sass": "^4.11.0",
     "nodemon": "^1.18.7",
     "npm-run-all": "^4.1.5",
     "postcss-loader": "^2.1.5",
-    "prettier-eslint": "^8.8.2",
+    "prettier": "^1.17.1",
     "sass-loader": "^7.0.3",
     "style-loader": "^0.21.0",
     "url-loader": "^1.1.2",
