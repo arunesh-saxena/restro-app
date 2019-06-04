@@ -12,12 +12,14 @@ class App extends React.Component {
     this.handleLogout = this.handleLogout.bind(this);
     // this.checkIsLogin = this.checkIsLogin.bind(this);
   }
+
   // componentWillMount(){
   //     this.props.checkIsLogin();
   // }
   handleLogout() {
     this.props.logOutAction(this.props);
   }
+
   // checkIsLogin() {
   //     this.props.checkIsLogin();
   // }

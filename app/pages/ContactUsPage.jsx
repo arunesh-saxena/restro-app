@@ -4,6 +4,7 @@ export default class ContactUsPage extends React.Component {
   componentDidMount() {
     console.log('-----ContactUsPage------');
   }
+
   render() {
     return (
       <div style={{ textAlign: 'center' }}>

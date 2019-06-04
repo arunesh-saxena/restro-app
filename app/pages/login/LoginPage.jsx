@@ -12,6 +12,7 @@ class LoginPage extends React.Component {
     super(props);
     this.handleSignInSubmit = this.handleSignInSubmit.bind(this);
   }
+
   componentDidMount() {
     const loginData = this.props.login;
     if (loginData && loginData.username) {
@@ -22,15 +23,17 @@ class LoginPage extends React.Component {
   componentWillUnmount() {
     this.props.setErrorMsg({ msg: null });
   }
+
   handleSignInSubmit(e) {
     e.preventDefault();
-    const formInfo = this.props.formInfo;
+    const { formInfo } = this.props;
 
     if (formInfo && !formInfo.syncErrors) {
       const formData = formInfo.values;
       this.props.submitLogin(formData, this.props);
     }
   }
+
   render() {
     return (
       <div>

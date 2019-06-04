@@ -7,7 +7,7 @@ export const signUp = data => ({
   data,
 });
 const submitFormDataSuccess = dispatch => value => {
-  const success = value.body.data.success;
+  const { success } = value.body.data;
   if (success) {
     dispatch(signUp(value.body.data));
   } else {

@@ -10,13 +10,15 @@ class Header extends Component {
     };
     this.labels = props.labels.common;
   }
+
   toggleMainMenu(event) {
     this.setState({
       isMainMenuOpen: !this.state.isMainMenuOpen,
     });
   }
+
   navBar() {
-    const isLogin = this.props.user.isLogin;
+    const { isLogin } = this.props.user;
     return (
       <ul className="nav-bar">
         <li>
@@ -44,8 +46,9 @@ class Header extends Component {
       </ul>
     );
   }
+
   loginNav() {
-    const isLogin = this.props.user.isLogin;
+    const { isLogin } = this.props.user;
     return (
       <div className="login-nav">
         <ul className="nav-bar">
@@ -74,6 +77,7 @@ class Header extends Component {
       </div>
     );
   }
+
   render() {
     const hideMobMenu = this.state.isMainMenuOpen ? '' : 'hideMobMenu';
     return (

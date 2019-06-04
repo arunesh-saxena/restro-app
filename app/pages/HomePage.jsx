@@ -8,11 +8,13 @@ class HomePage extends React.Component {
     super();
     this.onClick = this.onClick.bind(this);
   }
+
   onClick() {
     console.log('on click');
     console.log(this.props.app);
     this.props.setLanguage('en');
   }
+
   render() {
     return (
       <div style={{ textAlign: 'center' }}>

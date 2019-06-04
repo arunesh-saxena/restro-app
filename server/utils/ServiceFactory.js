@@ -1,6 +1,6 @@
 import axios from 'axios';
-const fetch = require('node-fetch');
 import commonUtils from './commonUtils';
+const fetch = require('node-fetch');
 
 const errorHandler = error => {
   console.log('******** Error *********');

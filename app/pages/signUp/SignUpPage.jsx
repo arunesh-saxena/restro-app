@@ -17,18 +17,21 @@ class SignUpPage extends React.Component {
     super(props);
     this.handleSignUpSubmit = this.handleSignUpSubmit.bind(this);
   }
+
   componentWillUnmount() {
     this.props.signUp({});
   }
+
   handleSignUpSubmit(e, v) {
     e.preventDefault();
-    const formInfo = this.props.formInfo;
+    const { formInfo } = this.props;
 
     if (formInfo && !formInfo.syncErrors) {
       const formData = formInfo.values;
       this.props.submitSignUp(formData);
     }
   }
+
   render() {
     return (
       <div>

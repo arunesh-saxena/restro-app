@@ -1,5 +1,5 @@
-import routes from '../app/routes.jsx';
 import { matchRoutes } from 'react-router-config';
+import routes from '../app/routes.jsx';
 
 import pageRenderer from './pageRenderer';
 import preRenderMiddleware from './preRenderMiddleware';

@@ -13,11 +13,13 @@ class MenuUploadPage extends React.Component {
     super(props);
     this.handleMenuUploadSubmit = this.handleMenuUploadSubmit.bind(this);
   }
+
   componentWillMount() {
     this.props.setMenuUploadAction({ success: null, msg: null });
   }
+
   handleMenuUploadSubmit(file) {
-    const formInfo = this.props.formInfo;
+    const { formInfo } = this.props;
     if (formInfo && !formInfo.syncErrors) {
       const formData = formInfo.values;
       /* let menu = {
@@ -40,6 +42,7 @@ class MenuUploadPage extends React.Component {
       this.props.uploadMenuAction(data);
     }
   }
+
   render() {
     return (
       <div>

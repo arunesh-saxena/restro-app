@@ -13,12 +13,12 @@ import {
 class MenuEditPage extends React.Component {
   componentWillMount() {
     this.props.setMenuUploadAction({ success: null, msg: null });
-    const itemID = this.props.match.params.itemID;
+    const { itemID } = this.props.match.params;
     this.props.getMenuItem(itemID);
   }
 
   handleMenuEditSubmit(file) {
-    const formInfo = this.props.formInfo;
+    const { formInfo } = this.props;
     if (formInfo && !formInfo.syncErrors) {
       const itemId = this.props.match.params.itemID;
       const formData = formInfo.values;
@@ -35,6 +35,7 @@ class MenuEditPage extends React.Component {
       this.props.updateMenuItem(data);
     }
   }
+
   render() {
     return (
       <div>

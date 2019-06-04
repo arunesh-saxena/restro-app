@@ -8,6 +8,7 @@ class ToggleButton extends React.Component {
       value: props.initialValue,
     };
   }
+
   changeHandler(e) {
     this.setState(
       {
@@ -18,6 +19,7 @@ class ToggleButton extends React.Component {
       }
     );
   }
+
   render() {
     const className = this.props.className || '';
     const checkedLabel = this.props.checkedLabel || 'Yes';

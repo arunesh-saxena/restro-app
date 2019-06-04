@@ -1,10 +1,10 @@
+import ServiceFactory from '../utils/ServiceFactory';
 var FormData = require('form-data');
 var fs = require('fs');
-import ServiceFactory from '../utils/ServiceFactory';
 const service = require('../config/dev-config.json');
 
 const getFormData = req => {
-  const body = req.body;
+  const { body } = req;
   let data = new FormData();
   body.itemName != undefined && data.append('itemName', body.itemName);
   body.description != undefined && data.append('description', body.description);
@@ -113,7 +113,7 @@ export const menuItem = (req, res, next) => {
 // TODO: put update item quantity serive call
 export const changeMenuItemQuantity = (req, res, next) => {
   const endPoint = service.changeMenuItemQuantity.default;
-  const body = req.body;
+  const { body } = req;
   const config = {
     method: endPoint.method,
     url: endPoint.url,
@@ -135,7 +135,7 @@ export const changeMenuItemQuantity = (req, res, next) => {
 
 export const toggleHiddenMenuItem = (req, res, next) => {
   const endPoint = service.toggleHiddenMenuItem.default;
-  const body = req.body;
+  const { body } = req;
 
   const config = {
     method: endPoint.method,
@@ -156,7 +156,7 @@ export const toggleHiddenMenuItem = (req, res, next) => {
 
 export const deleteMenuItem = (req, res, next) => {
   const endPoint = service.deleteMenuItem.default;
-  const body = req.body;
+  const { body } = req;
   console.log(body);
 
   const config = {

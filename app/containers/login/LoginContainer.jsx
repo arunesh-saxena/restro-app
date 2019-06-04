@@ -75,7 +75,7 @@ let LoginContainer = props => {
     );
   };
   const successMsg = () => {
-    const loginData = props.loginData;
+    const { loginData } = props;
 
     if (!Object.keys(loginData).length || !loginData.errorMsg) {
       return '';

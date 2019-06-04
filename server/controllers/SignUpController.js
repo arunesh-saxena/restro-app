@@ -3,7 +3,7 @@ const service = require('../config/dev-config.json');
 
 export default (req, res, next) => {
   const endPoint = service.signUp.default;
-  const body = req.body;
+  const { body } = req;
   const payLoad = {
     username: body.username,
     email: body.email,

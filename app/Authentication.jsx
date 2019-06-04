@@ -17,7 +17,7 @@ const BaseComponent = (ParsedComponent, store) => {
 
     checkAuthentication(params) {
       const { history } = params;
-      const user = store.getState().user;
+      const { user } = store.getState();
       /**
        * Here we need to validate state as logged-in from store object.
        * if User is logged-in component will get render

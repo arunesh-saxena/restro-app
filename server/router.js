@@ -1,6 +1,4 @@
-var express = require('express');
 var routes = express.Router();
-var multer = require('multer');
 var storage = multer.diskStorage({
   destination: function(req, file, cb) {
     cb(null, './uploads');
@@ -28,6 +26,8 @@ import {
   toggleHiddenMenuItem,
   deleteMenuItem,
 } from './controllers/MenuController';
+var multer = require('multer');
+var express = require('express');
 
 /* testing */
 routes.get(expressConstants.TEST_API.url, function(req, res) {

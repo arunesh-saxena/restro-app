@@ -18,11 +18,13 @@ class MenuListPage extends React.Component {
     };
     this.props.changeMenuItemQuantity(itemData);
   }
+
   toggleHandler(data) {
     this.props.toggleHiddenMenuItem(data);
   }
+
   changeSearchHandler(searchText) {
-    const menuList = this.props.menuList;
+    const { menuList } = this.props;
     const filteredList = searchText.length
       ? menuList.filter(item =>
           item.itemName.toLowerCase().includes(searchText.toLowerCase())

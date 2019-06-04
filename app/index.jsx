@@ -31,6 +31,7 @@ const RouteDataLoader = withRouter(
         });
       }
     }
+
     render() {
       return this.props.children;
     }

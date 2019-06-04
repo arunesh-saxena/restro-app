@@ -5,6 +5,7 @@ export default class AboutUsPage extends React.Component {
   componentDidMount() {
     console.log('-----AboutUsPage------');
   }
+
   render() {
     return (
       <div style={{ textAlign: 'center' }}>

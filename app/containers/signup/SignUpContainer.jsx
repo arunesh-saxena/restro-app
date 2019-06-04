@@ -33,7 +33,7 @@ let SignUpContainer = props => {
   let redemderHeading = () => <Heading text={labels.signUp} />;
 
   let renderLoginForm = () => {
-    const userData = props.userData;
+    const { userData } = props;
     if (
       !Object.keys(userData).length ||
       (userData && userData.user && !userData.user.success)
@@ -112,7 +112,7 @@ let SignUpContainer = props => {
     }
   };
   const successMsg = () => {
-    const userData = props.userData;
+    const { userData } = props;
 
     if (!Object.keys(userData).length) {
       return '';
