@@ -10,9 +10,10 @@ class ToggleButton extends React.Component {
   }
 
   changeHandler(e) {
+    const val = this.state.value;
     this.setState(
       {
-        value: !this.state.value,
+        value: !val,
       },
       () => {
         this.props.toggleHandler(this.state.value);
@@ -27,7 +28,7 @@ class ToggleButton extends React.Component {
     const checkStatus = this.state.value ? 'checked' : 'un-checked';
     return (
       <div className={`toggle-button ${className} ${checkStatus}`}>
-        <label className="switch">
+        <label className="switch" htmlFor="toggle-button-checkox">
           <input
             type="checkbox"
             id="toggle-button-checkox"
@@ -50,7 +51,7 @@ ToggleButton.propTypes = {
   toggleHandler: PropTypes.func.isRequired,
   initialValue: PropTypes.bool.isRequired,
   className: PropTypes.string,
-  label: PropTypes.string,
+  // label: PropTypes.string,
   checkedLabel: PropTypes.string,
   unCheckedLabel: PropTypes.string,
 };

@@ -30,6 +30,8 @@ const SearchBox = props => {
         />
         {isIconShow && (
           <span
+            role="button"
+            tabIndex="0"
             className="icon icon-cross"
             onClick={() => {
               clearText();
@@ -44,7 +46,7 @@ const SearchBox = props => {
 SearchBox.propTypes = {
   placeholder: PropTypes.string,
   searchLabel: PropTypes.string,
-  onChangeHandler: PropTypes.func,
+  // onChangeHandler: PropTypes.func,
   className: PropTypes.string,
 };
 export default SearchBox;

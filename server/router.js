@@ -1,19 +1,3 @@
-var multer = require('multer');
-var express = require('express');
-
-var routes = express.Router();
-var storage = multer.diskStorage({
-  destination: function(req, file, cb) {
-    cb(null, './uploads');
-  },
-  filename: function(req, file, cb) {
-    let info = file.originalname.split('.');
-    const ext = info[info.length - 1];
-    cb(null, `${info[0]}-${Date.now()}.${ext}`);
-  },
-});
-
-var upload = multer({ storage: storage }).single('imageURL');
 import expressConstants from '../app/appConstants/expressEndPoint';
 import SignUpController from './controllers/SignUpController';
 import LoginController from './controllers/LoginController';
@@ -29,6 +13,23 @@ import {
   toggleHiddenMenuItem,
   deleteMenuItem,
 } from './controllers/MenuController';
+
+const express = require('express');
+const multer = require('multer');
+
+const routes = express.Router();
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, './uploads');
+  },
+  filename: function(req, file, cb) {
+    let info = file.originalname.split('.');
+    const ext = info[info.length - 1];
+    cb(null, `${info[0]}-${Date.now()}.${ext}`);
+  },
+});
+
+const upload = multer({ storage: storage }).single('imageURL');
 
 /* testing */
 routes.get(expressConstants.TEST_API.url, function(req, res) {

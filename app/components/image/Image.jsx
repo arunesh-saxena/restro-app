@@ -17,6 +17,6 @@ const Image = props => {
 Image.propTypes = {
   imgURL: PropTypes.string.isRequired,
   alt: PropTypes.string,
-  titile: PropTypes.string,
+  title: PropTypes.string,
 };
 export default Image;

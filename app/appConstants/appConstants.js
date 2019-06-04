@@ -23,7 +23,6 @@ const appConstants = {
       price: 'Price',
       unit: 'Unit',
       currency: 'Currency',
-      menuList: 'Menu List',
       empty: 'Empty',
       list: 'List',
       rate: 'Rate',

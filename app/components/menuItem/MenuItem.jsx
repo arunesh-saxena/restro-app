@@ -42,7 +42,7 @@ const MenuItem = props => {
 
       <div className="item-info">
         <div className="info-row">
-          <label className="row-header">{props.labels.itemName}</label>
+          <div className="row-header">{props.labels.itemName}</div>
           <div className="row-value">
             {props.item.itemName}
             <span className="code">{props.item.itemCode}</span>
@@ -50,7 +50,7 @@ const MenuItem = props => {
         </div>
 
         <div className="info-row">
-          <label className="row-header">{props.labels.quantity}</label>
+          <div className="row-header">{props.labels.quantity}</div>
           <div className="row-value quantity-selector-container">
             <NumberSelector
               number={props.item.quantity}
@@ -60,14 +60,14 @@ const MenuItem = props => {
         </div>
 
         <div className="info-row">
-          <label className="row-header">{props.labels.rate}</label>
+          <div className="row-header">{props.labels.rate}</div>
           <div className="row-value">
             {props.item.price} {props.item.unit}
           </div>
         </div>
 
         <div className="info-row">
-          <label className="row-header">{props.labels.hidden}</label>
+          <div className="row-header">{props.labels.hidden}</div>
           <div className="row-value">
             <ToggleButton
               toggleHandler={toggleHiddenMenuItemHandler}
@@ -79,14 +79,14 @@ const MenuItem = props => {
         </div>
 
         <div className="info-row">
-          <label className="row-header">{props.labels.lastUpdate}</label>
+          <div className="row-header">{props.labels.lastUpdate}</div>
           <div className="row-value">
             {commonUtil.getDate(props.item.updatedAt)}
           </div>
         </div>
 
         <div className="info-row">
-          <label className="row-header">{props.labels.action}</label>
+          <div className="row-header">{props.labels.action}</div>
           <div className="row-value">
             <span>
               <Link to={`${AppUrls.EDIT_MENU}/${props.item.id}`}>

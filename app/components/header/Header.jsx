@@ -12,8 +12,9 @@ class Header extends Component {
   }
 
   toggleMainMenu(event) {
+    const isOpen = this.state.isMainMenuOpen;
     this.setState({
-      isMainMenuOpen: !this.state.isMainMenuOpen,
+      isMainMenuOpen: !isOpen,
     });
   }
 
@@ -22,24 +23,32 @@ class Header extends Component {
     return (
       <ul className="nav-bar">
         <li>
-          <Link onClick={this.toggleMainMenu} to={AppUrls.ABOUT_US}>
-            {this.labels.aboutUs}
+          <Link to={AppUrls.ABOUT_US}>
+            <span role="button" tabIndex="0" onClick={this.toggleMainMenu}>
+              {this.labels.aboutUs}
+            </span>
           </Link>
         </li>
         <li>
-          <Link onClick={this.toggleMainMenu} to={AppUrls.CONTACT_US}>
-            {this.labels.contactUs}
+          <Link to={AppUrls.CONTACT_US}>
+            <span role="button" tabIndex="0" onClick={this.toggleMainMenu}>
+              {this.labels.contactUs}
+            </span>
           </Link>
         </li>
         <li>
-          <Link onClick={this.toggleMainMenu} to={AppUrls.MENU_LIST}>
-            {this.labels.menuList}
+          <Link to={AppUrls.MENU_LIST}>
+            <span role="button" tabIndex="0" onClick={this.toggleMainMenu}>
+              {this.labels.menuList}
+            </span>
           </Link>
         </li>
         {isLogin && (
           <li>
-            <Link onClick={this.toggleMainMenu} to={AppUrls.ADD_MENU}>
-              {this.labels.addMenu}
+            <Link to={AppUrls.ADD_MENU}>
+              <span role="button" tabIndex="0" onClick={this.toggleMainMenu}>
+                {this.labels.addMenu}
+              </span>
             </Link>
           </li>
         )}
@@ -55,22 +64,46 @@ class Header extends Component {
           {!isLogin && (
             <React.Fragment>
               <li>
-                <Link onClick={this.toggleMainMenu} to={AppUrls.LOGIN}>
-                  {this.labels.login}
+                <Link to={AppUrls.LOGIN}>
+                  <span
+                    role="button"
+                    tabIndex="0"
+                    onClick={this.toggleMainMenu}
+                  >
+                    {this.labels.login}
+                  </span>
                 </Link>
               </li>
               <li>
-                <Link onClick={this.toggleMainMenu} to={AppUrls.SIGN_UP}>
-                  {this.labels.signUp}
+                <Link to={AppUrls.SIGN_UP}>
+                  <span
+                    role="button"
+                    tabIndex="0"
+                    onClick={this.toggleMainMenu}
+                  >
+                    {this.labels.signUp}
+                  </span>
                 </Link>
               </li>
             </React.Fragment>
           )}
           {isLogin && (
-            <li onClick={this.props.handleLogout}>
-              <Link onClick={this.toggleMainMenu} to="#">
-                {this.labels.logout}
-              </Link>
+            <li>
+              <span
+                role="button"
+                tabIndex="0"
+                onClick={this.props.handleLogout}
+              >
+                <Link to="/#">
+                  <span
+                    role="button"
+                    tabIndex="0"
+                    onClick={this.toggleMainMenu}
+                  >
+                    {this.labels.logout}
+                  </span>
+                </Link>
+              </span>
             </li>
           )}
         </ul>

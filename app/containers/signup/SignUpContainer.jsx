@@ -108,7 +108,7 @@ let SignUpContainer = props => {
           </button>
         </form>
       );
-      return '';
+      // return '';
     }
   };
   const successMsg = () => {

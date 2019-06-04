@@ -14,26 +14,24 @@ export const checkIsLogin = (headers, res) => {
     typeof document !== 'undefined'
       ? commonUtils.parseCookies(document.cookie)
       : null;
-  let _token = null;
+  let cookies = {};
+  const isAvail = !!(headers || clientCookies);
 
-  if (headers || clientCookies) {
-    let cookies;
-    if (headers && Object.keys(headers).length !== 0) {
+  if (isAvail) {
+    if (Object.keys(headers || {}).length > 0) {
       cookies = commonUtils.parseCookies(headers.cookie);
     } else if (clientCookies) {
       cookies = clientCookies;
     }
-    if (cookies && cookies.hasOwnProperty('_token')) {
-      _token = cookies._token;
-    }
   }
+  const { _token } = cookies;
 
   const api = expressConstants.ISLOGIN;
   const option = {
     method: api.method,
     url: api.url,
     data: {
-      token: _token,
+      token: _token || null,
     },
   };
   return dispatch => {

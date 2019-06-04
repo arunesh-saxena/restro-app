@@ -18,7 +18,9 @@ class HomePage extends React.Component {
   render() {
     return (
       <div style={{ textAlign: 'center' }}>
-        <button onClick={this.onClick}>On click</button>
+        <button type="button" onClick={this.onClick}>
+          On click
+        </button>
         <h1>HomePage</h1>
       </div>
     );
