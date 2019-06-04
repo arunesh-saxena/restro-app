@@ -8,16 +8,14 @@ import createRoutes from '../app/routes.jsx';
 import staticAssets from './static';
 const context = {};
 const Routes = createRoutes;
-const createApp = (store, url) => renderToString(
-  <Provider store={store}>
-    <StaticRouter
-      location={url}
-      context={context}
-    >
-      {renderRoutes(Routes(store))}
-    </StaticRouter>
-  </Provider>
-);
+const createApp = (store, url) =>
+  renderToString(
+    <Provider store={store}>
+      <StaticRouter location={url} context={context}>
+        {renderRoutes(Routes(store))}
+      </StaticRouter>
+    </Provider>
+  );
 
 const buildPage = ({ componentHTML, initialState }) => `
 <!DOCTYPE html>
@@ -43,6 +41,7 @@ export default (store, req) => {
   const initialState = store.getState();
   const componentHTML = createApp(store, req.url);
   return buildPage({
-    componentHTML, initialState
+    componentHTML,
+    initialState,
   });
 };

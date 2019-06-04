@@ -3,10 +3,8 @@ import expressConstants from '../appConstants/expressEndPoint';
 import * as types from '../utils/types';
 
 export const setAccountInfo = data => ({
-    type: types.SET_ACCOUNT_INFO,
-    data
+  type: types.SET_ACCOUNT_INFO,
+  data,
 });
 
-export const getAccountInfo = (params, url, headers, res) => {
-    
-};
+export const getAccountInfo = (params, url, headers, res) => {};

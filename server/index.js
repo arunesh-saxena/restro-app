@@ -11,8 +11,8 @@ const app = express();
 /* assets n public path */
 app.use(express.static(path.join(process.cwd(), 'public')));
 
-/* 
-  * server to server api calls
+/*
+ * server to server api calls
  */
 
 app.use(bodyParser.json());
@@ -22,8 +22,8 @@ app.use(cookieParser());
 app.use('/', router);
 
 /*
-	* This is where the magic happens. Server side render goes here
-*/
+ * This is where the magic happens. Server side render goes here
+ */
 
 app.get('/*', renderMiddleware);
 

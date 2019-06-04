@@ -1,24 +1,23 @@
 // import all the custom scss files here
 
 // Common files
-@import "common/variables";
-@import "common/breakpoints";
-@import "common/base";
+@import 'common/variables';
+@import 'common/breakpoints';
+@import 'common/base';
 @import 'common/icons';
 
 // Components
-@import "../../components/header/header";
-@import "../../components/footer/footer";
-@import "../../components/menuItem/menuItem";
-@import "../../components/NumberSelector/numberSelector";
-@import "../../components/toggleButton/ToggleButton";
-@import "../../components/SearchBox/searchBox";
-@import "../../components/image/image";
-@import "../../components/heading/heading";
+@import '../../components/header/header';
+@import '../../components/footer/footer';
+@import '../../components/menuItem/menuItem';
+@import '../../components/NumberSelector/numberSelector';
+@import '../../components/toggleButton/ToggleButton';
+@import '../../components/SearchBox/searchBox';
+@import '../../components/image/image';
+@import '../../components/heading/heading';
 
 // Container
-@import "../../containers/menu/menuListContainer";
+@import '../../containers/menu/menuListContainer';
 
 // page../
-@import "../../pages/app";
-
+@import '../../pages/app';
