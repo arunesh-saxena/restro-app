@@ -4,11 +4,13 @@
   height: 30px;
   min-width: 40px;
   min-height: 10px;
+
   .switch {
     display: inline-block;
     width: 100%;
     height: 100%;
     margin: 0;
+
     .slider {
       position: relative;
       cursor: pointer;
@@ -22,7 +24,7 @@
       align-items: center;
       padding: 0 10px;
 
-      &:before {
+      &::before {
         position: absolute;
         content: '';
         height: 80%;
@@ -30,24 +32,29 @@
         background-color: white;
         transition: 0.4s;
         transform: translate(5px, -50%);
-        left: 0px;
+        left: 0;
         top: 50%;
       }
+
       /* Rounded sliders */
+
       &.round {
         border-radius: 35px;
       }
 
-      &.round:before {
+      &.round::before {
         border-radius: 50%;
       }
+
       .first-label {
         visibility: hidden;
       }
+
       .second-label {
         visibility: visible;
       }
     }
+
     input {
       opacity: 0;
       width: 0;
@@ -56,23 +63,28 @@
       &:checked + .slider {
         background-color: #2196f3;
       }
+
       &:focus + .slider {
         box-shadow: 0 0 1px #2196f3;
       }
 
-      &:checked + .slider:before {
+      &:checked + .slider::before {
         transform: translate(-30px, -50%);
         left: 100%;
       }
     }
   }
+
   /* text label style */
+
   &.checked {
     .slider {
       justify-content: flex-start;
+
       .first-label {
         visibility: visible;
       }
+
       .second-label {
         visibility: hidden;
       }

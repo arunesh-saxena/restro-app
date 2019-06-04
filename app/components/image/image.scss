@@ -3,9 +3,11 @@
   align-items: center;
   justify-content: center;
   background: #f1e9e9;
+
   img {
     width: 100%;
     transition: all 1s;
+
     &:hover {
       transform: scale(1.1);
     }

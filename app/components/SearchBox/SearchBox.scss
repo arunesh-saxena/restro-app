@@ -3,18 +3,22 @@
     margin: 0;
     margin-right: 10px;
   }
+
   .input-wrapper {
     display: inline-block;
     border: 1px solid #f1e9e9;
     border-radius: 5px;
+
     input {
       padding: 5px 10px;
       border-radius: 5px;
       border: none;
+
       &:focus {
         outline: none;
       }
     }
+
     .icon {
       padding: 0 10px 0 0;
       cursor: pointer;
