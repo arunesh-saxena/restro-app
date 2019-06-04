@@ -1,42 +1,42 @@
 {
-  "signUp": {
-    "default": {
-      "module": "SIGN_UP",
-      "url": "http://10.203.86.80:3000/api/singup",
-      "method": "POST",
-      "headers": {
-        "Content-Type": "application/json"
-      }
+    "signUp": {
+        "default": {
+            "module": "SIGN_UP",
+            "url": "http://10.203.86.80:3000/api/singup",
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
+    },
+    "login": {
+        "default": {
+            "module": "LOGIN",
+            "url": "http://10.203.86.80:3000/api/login",
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
+    },
+    "logout": {
+        "default": {
+            "module": "LOGOUT",
+            "url": "http://10.203.86.80:3000/api/logout",
+            "method": "GET",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
+    },
+    "islogin": {
+        "default": {
+            "module": "LOGOUT",
+            "url": "http://10.203.86.80:3000/api/isLogin",
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
     }
-  },
-  "login": {
-    "default": {
-      "module": "LOGIN",
-      "url": "http://10.203.86.80:3000/api/login",
-      "method": "POST",
-      "headers": {
-        "Content-Type": "application/json"
-      }
-    }
-  },
-  "logout": {
-    "default": {
-      "module": "LOGOUT",
-      "url": "http://10.203.86.80:3000/api/logout",
-      "method": "GET",
-      "headers": {
-        "Content-Type": "application/json"
-      }
-    }
-  },
-  "islogin": {
-    "default": {
-      "module": "LOGOUT",
-      "url": "http://10.203.86.80:3000/api/isLogin",
-      "method": "POST",
-      "headers": {
-        "Content-Type": "application/json"
-      }
-    }
-  }
 }

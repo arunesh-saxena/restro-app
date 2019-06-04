@@ -1,35 +1,35 @@
 const commonUtils = {
-  sendError: err => {
-    const error = err.response;
-    let responseObject = {};
-    let errorCode = null;
-    if (error) {
-      /* 500, 404 */
-      errorCode = error.status;
-      responseObject = {
-        status: (error && error.status) || null,
-        statusText: (error && error.statusText) || null,
-        errorCode: error && error.status,
-        data: error && {
-          message: error.statusText || error.data || null,
-        },
-        success: false,
-      };
-    } else {
-      /* server is not availables */
-      errorCode = err.errno;
-      responseObject = {
-        status: (err && err.errno) || null,
-        statusText: (err && err.code) || null,
-        errorCode: err && err.errno,
-        data: (err && err.data) || {
-          message: 'server is unavailable',
-        },
-        success: false,
-      };
-    }
+    sendError: err => {
+        const error = err.response;
+        let responseObject = {};
+        let errorCode = null;
+        if (error) {
+            /* 500, 404 */
+            errorCode = error.status;
+            responseObject = {
+                status: (error && error.status) || null,
+                statusText: (error && error.statusText) || null,
+                errorCode: error && error.status,
+                data: error && {
+                    message: error.statusText || error.data || null,
+                },
+                success: false,
+            };
+        } else {
+            /* server is not availables */
+            errorCode = err.errno;
+            responseObject = {
+                status: (err && err.errno) || null,
+                statusText: (err && err.code) || null,
+                errorCode: err && err.errno,
+                data: (err && err.data) || {
+                    message: 'server is unavailable',
+                },
+                success: false,
+            };
+        }
 
-    /* switch (parseInt(errorCode, 10)) {
+        /* switch (parseInt(errorCode, 10)) {
             case 401:
                 responseObject.errorCode = 401;
                 responseObject.errorRes = 'Unauthorized';
@@ -63,8 +63,8 @@ const commonUtils = {
                 responseObject.errorRes = 'Unidentified';
                 break;
         } */
-    return responseObject;
-  },
+        return responseObject;
+    },
 };
 
 export default commonUtils;

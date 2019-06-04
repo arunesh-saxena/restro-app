@@ -9,11 +9,11 @@ import myAccount from './myAccountReducer';
 // Combine reducers with routeReducer which keeps track of
 // router state
 const rootReducer = combineReducers({
-  form: formReducer,
-  app,
-  menu,
-  signUp,
-  user,
-  myAccount,
+    form: formReducer,
+    app,
+    menu,
+    signUp,
+    user,
+    myAccount,
 });
 export default rootReducer;

@@ -11,16 +11,16 @@ import configureStore from '../app/store/configureStore';
  * and pass it into the Router.run function.
  */
 export default function render(req, res) {
-  /* todo: usefull for env config */
-  // console.log(`process.env.NODE_ENV : ${process.env.NODE_ENV} | process.env.BUILD : ${process.env.BUILD}`);
-  const history = {};
-  const initialState = {};
-  const store = configureStore(initialState);
+    /* todo: usefull for env config */
+    // console.log(`process.env.NODE_ENV : ${process.env.NODE_ENV} | process.env.BUILD : ${process.env.BUILD}`);
+    const history = {};
+    const initialState = {};
+    const store = configureStore(initialState);
 
-  const ROUTES = routes();
-  const branch = matchRoutes(ROUTES, req.url);
-  preRenderMiddleware(store.dispatch, branch, req, res).then(v => {
-    const html = pageRenderer(store, req, res);
-    res.status(200).send(html);
-  });
+    const ROUTES = routes();
+    const branch = matchRoutes(ROUTES, req.url);
+    preRenderMiddleware(store.dispatch, branch, req, res).then(v => {
+        const html = pageRenderer(store, req, res);
+        res.status(200).send(html);
+    });
 }

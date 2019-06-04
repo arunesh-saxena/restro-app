@@ -1,31 +1,31 @@
 // UTILITY CLASSES
 
 @include breakpoint(desktop-above) {
-  .hidden-md-up {
-    display: none;
-  }
+    .hidden-md-up {
+        display: none;
+    }
 }
 
 @include breakpoint(desktop-below) {
-  .hidden-sm-down {
-    display: none;
-  }
+    .hidden-sm-down {
+        display: none;
+    }
 }
 
 .hidden {
-  display: none !important;
+    display: none !important;
 }
 
 .btn-icon {
-  padding: 15px;
-  font-size: 25px;
+    padding: 15px;
+    font-size: 25px;
 }
 
 .error-message {
-  color: red;
-  font-style: italic;
+    color: red;
+    font-style: italic;
 }
 
 .alert {
-  margin-top: 20px;
+    margin-top: 20px;
 }

@@ -29,5 +29,5 @@ app.use('/', router);
 app.get('/*', renderMiddleware);
 
 app.listen(PORT, () => {
-  console.log(`😎 Server is listening on port ${PORT}`);
+    console.log(`😎 Server is listening on port ${PORT}`);
 });

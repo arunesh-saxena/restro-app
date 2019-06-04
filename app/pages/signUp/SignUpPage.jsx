@@ -6,61 +6,61 @@ import { submitSignUp, signUp } from '../../actions/signUpAction';
 import appConstants from '../../appConstants/appConstants';
 
 const SignUpContainer = Loadable({
-  loader: () =>
-    import(
-      /* webpackChunkName: "SignUpContainer" */ '../../containers/signup/SignUpContainer'
-    ),
-  loading: () => <strong>Loading...</strong>,
+    loader: () =>
+        import(
+            /* webpackChunkName: "SignUpContainer" */ '../../containers/signup/SignUpContainer'
+        ),
+    loading: () => <strong>Loading...</strong>,
 });
 class SignUpPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleSignUpSubmit = this.handleSignUpSubmit.bind(this);
-  }
-
-  componentWillUnmount() {
-    this.props.signUp({});
-  }
-
-  handleSignUpSubmit(e, v) {
-    e.preventDefault();
-    const { formInfo } = this.props;
-
-    if (formInfo && !formInfo.syncErrors) {
-      const formData = formInfo.values;
-      this.props.submitSignUp(formData);
+    constructor(props) {
+        super(props);
+        this.handleSignUpSubmit = this.handleSignUpSubmit.bind(this);
     }
-  }
 
-  render() {
-    return (
-      <div>
-        <SignUpContainer
-          handleSignUpSubmit={this.handleSignUpSubmit}
-          formInfo={this.props.formInfo}
-          userData={this.props.userData}
-          labels={appConstants.labels}
-        />
-      </div>
-    );
-  }
+    componentWillUnmount() {
+        this.props.signUp({});
+    }
+
+    handleSignUpSubmit(e, v) {
+        e.preventDefault();
+        const { formInfo } = this.props;
+
+        if (formInfo && !formInfo.syncErrors) {
+            const formData = formInfo.values;
+            this.props.submitSignUp(formData);
+        }
+    }
+
+    render() {
+        return (
+            <div>
+                <SignUpContainer
+                    handleSignUpSubmit={this.handleSignUpSubmit}
+                    formInfo={this.props.formInfo}
+                    userData={this.props.userData}
+                    labels={appConstants.labels}
+                />
+            </div>
+        );
+    }
 }
 
 const mapStateToProps = state => ({
-  formInfo: state.form && state.form.signUp,
-  userData: state.signUp,
+    formInfo: state.form && state.form.signUp,
+    userData: state.signUp,
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators(
-    {
-      submitSignUp,
-      signUp,
-    },
-    dispatch
-  );
+    bindActionCreators(
+        {
+            submitSignUp,
+            signUp,
+        },
+        dispatch
+    );
 
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+    mapStateToProps,
+    mapDispatchToProps
 )(SignUpPage);
