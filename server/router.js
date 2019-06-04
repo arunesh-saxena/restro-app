@@ -1,3 +1,6 @@
+var multer = require('multer');
+var express = require('express');
+
 var routes = express.Router();
 var storage = multer.diskStorage({
   destination: function(req, file, cb) {
@@ -11,12 +14,12 @@ var storage = multer.diskStorage({
 });
 
 var upload = multer({ storage: storage }).single('imageURL');
-
 import expressConstants from '../app/appConstants/expressEndPoint';
 import SignUpController from './controllers/SignUpController';
 import LoginController from './controllers/LoginController';
 import LogOutController from './controllers/LogOutController';
 import MyAccountController from './controllers/MyAccountController';
+
 import {
   uploadMenu,
   menuList,
@@ -26,8 +29,6 @@ import {
   toggleHiddenMenuItem,
   deleteMenuItem,
 } from './controllers/MenuController';
-var multer = require('multer');
-var express = require('express');
 
 /* testing */
 routes.get(expressConstants.TEST_API.url, function(req, res) {

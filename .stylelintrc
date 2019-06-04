@@ -5,7 +5,7 @@
     "indentation": 4,
     "selector-class-pattern": "^([a-z][a-z0-9]*)(-[a-z0-9]+)*$",
     "selector-id-pattern": "^([a-z][a-z0-9]*)(-[a-z0-9]+)*$",
-    "max-nesting-depth": 3,
+    "max-nesting-depth": 4,
     "rule-empty-line-before": [ "always-multi-line", {"except": ["first-nested"]} ],
     "declaration-block-single-line-max-declarations": 1,
     "color-no-invalid-hex": [ true, {"severity": "error"} ],

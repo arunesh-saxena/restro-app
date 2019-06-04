@@ -79,7 +79,7 @@ class Header extends Component {
   }
 
   render() {
-    const hideMobMenu = this.state.isMainMenuOpen ? '' : 'hideMobMenu';
+    const hideMobMenu = this.state.isMainMenuOpen ? '' : 'hide-mob-menu';
     return (
       <div className="header-container">
         <header className="header container">

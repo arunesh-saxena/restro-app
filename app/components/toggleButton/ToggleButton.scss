@@ -55,6 +55,22 @@
       }
     }
 
+    /* text label style */
+
+    &.checked {
+      .slider {
+        justify-content: flex-start;
+
+        .first-label {
+          visibility: visible;
+        }
+
+        .second-label {
+          visibility: hidden;
+        }
+      }
+    }
+
     input {
       opacity: 0;
       width: 0;
@@ -71,22 +87,6 @@
       &:checked + .slider::before {
         transform: translate(-30px, -50%);
         left: 100%;
-      }
-    }
-  }
-
-  /* text label style */
-
-  &.checked {
-    .slider {
-      justify-content: flex-start;
-
-      .first-label {
-        visibility: visible;
-      }
-
-      .second-label {
-        visibility: hidden;
       }
     }
   }

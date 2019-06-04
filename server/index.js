@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import path from 'path';
 import renderMiddleware from './middleware';
 import router from './router';
+
 var cookieParser = require('cookie-parser');
 
 const PORT = process.env.PORT || 3030;
