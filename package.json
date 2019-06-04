@@ -31,7 +31,7 @@
   "lint-staged": {
     "*.{js,jsx,json,scss}": [
       "npm run pretty",
-      "git add ."
+      "git add"
     ]
   },
   "keywords": [],
