@@ -24,7 +24,7 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "npm run lint:fix && echo 'done lint:fix js prettier and prettier'&& lint-staged",
+            "pre-commit": "npm run lint:fix && echo 'done lint:fix js prettier and prettier' && lint-staged",
             "pre-push": "echo pushing....."
         }
     },
