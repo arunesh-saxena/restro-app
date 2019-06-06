@@ -20,17 +20,18 @@
         "lint:fix": "npm run lint:js:fix && npm run lint:scss:fix",
         "lint:js:fix": "eslint --quiet --ext .js,.jsx app server --fix",
         "lint:scss:fix": "stylelint \"**/*.scss\" --fix",
-        "pretty": "prettier --write '{app,server}/**/*.{js,jsx,json,scss}'"
+        "pretty": "prettier --write '{app,server}/**/*.{js,jsx,json,scss}'",
+        "lint2": "eslint --fix"
     },
     "husky": {
         "hooks": {
-            "pre-commit": "npm run lint:fix && echo '<<<<<<<<<<< Done lint >>>>>>>>>>>' && lint-staged",
+            "pre-commit": "echo '<<<<<<<<<<< Done lint >>>>>>>>>>>' && lint-staged",
             "pre-push": "echo pushing....."
         }
     },
     "lint-staged": {
         "*.{js,jsx,json,scss}": [
-            "npm run pretty",
+            "prettier --write",
             "git add"
         ]
     },
