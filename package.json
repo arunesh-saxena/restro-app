@@ -13,7 +13,7 @@
         "dev": "npm run copy && npm-run-all --parallel dev:build-client dev:build-server dev:start",
         "setup": "npm run clean && npm run copy",
         "clean": "rimraf public && rimraf compiled",
-        "copy": "copyfiles -f ./app/assets/fonts/*.* ./public/assets/fonts && copyfiles -f ./app/assets/images/*.* ./public/assets/images",
+        "copy": "copyfiles -f ./app/fonts/*.* ./public/assets/fonts && copyfiles -f ./app/images/*.* ./public/assets/images",
         "lint": "npm run lint:js && npm run lint:scss",
         "lint:js": "eslint --quiet --ext .js,.jsx app server",
         "lint:scss": "stylelint --quiet \"**/*.scss\"",
