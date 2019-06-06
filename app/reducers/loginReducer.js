@@ -6,12 +6,12 @@ const login = (state = {}, action) => {
             return Object.assign({}, state, {
                 isLogin: !!action.data.username,
                 username: action.data.username,
-                errorMsg: action.data.msg,
+                errorMsg: action.data.msg
             });
         }
         case types.SET_LOGIN_ERROR_MSG: {
             return Object.assign({}, state, {
-                errorMsg: action.data.msg,
+                errorMsg: action.data.msg
             });
         }
 

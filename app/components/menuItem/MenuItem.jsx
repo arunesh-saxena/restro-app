@@ -6,18 +6,18 @@ import NumberSelector from '../NumberSelector/NumberSelector';
 import ToggleButton from '../toggleButton/ToggleButton';
 import Image from '../image/Image';
 
-const MenuItem = props => {
-    const quantityHandler = selectedNumber => {
+const MenuItem = (props) => {
+    const quantityHandler = (selectedNumber) => {
         const itemData = {
             itemId: props.item.id,
-            quantity: selectedNumber,
+            quantity: selectedNumber
         };
         props.quantityHandler(itemData);
     };
-    const toggleHiddenMenuItemHandler = value => {
+    const toggleHiddenMenuItemHandler = (value) => {
         const itemData = {
             itemId: props.item.id,
-            isHidden: value,
+            isHidden: value
         };
         props.toggleHandler(itemData);
     };

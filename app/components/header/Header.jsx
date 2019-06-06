@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import AppUrls from '../../appConstants/appUrls';
+
 class Header extends Component {
     constructor(props) {
         super(props);
         this.toggleMainMenu = this.toggleMainMenu.bind(this);
         this.state = {
-            isMainMenuOpen: false,
+            isMainMenuOpen: false
         };
         this.labels = props.labels.common;
     }
@@ -14,7 +15,7 @@ class Header extends Component {
     toggleMainMenu(event) {
         const isOpen = this.state.isMainMenuOpen;
         this.setState({
-            isMainMenuOpen: !isOpen,
+            isMainMenuOpen: !isOpen
         });
     }
 

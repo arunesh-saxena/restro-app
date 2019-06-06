@@ -9,7 +9,7 @@ const renderField = ({
     placeholder,
     type,
     className,
-    meta: { touched, error, warning },
+    meta: { touched, error, warning }
 }) => (
     <div>
         <input
@@ -26,54 +26,52 @@ const renderField = ({
     </div>
 );
 
-let LoginContainer = props => {
+let LoginContainer = (props) => {
     const { handleSignInSubmit, pristine, submitting, formInfo } = props;
     const { common: labels } = props.labels;
 
-    let renderHeading = () => <Heading text={labels.login} />;
+    const renderHeading = () => <Heading text={labels.login} />;
 
-    let renderLoginForm = () => {
-        return (
-            <form onSubmit={handleSignInSubmit}>
-                <div className="form-group">
-                    <label htmlFor="username">
-                        {labels.username}
-                        <sup>*</sup>
-                    </label>
-                    {/* <input type="text" className="form-control" id="username" placeholder="username" /> */}
-                    <Field
-                        name="username"
-                        type="text"
-                        component={renderField}
-                        className="form-control"
-                        id="username"
-                        placeholder={labels.enterUsername}
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="password">
-                        {labels.password}
-                        <sup>*</sup>
-                    </label>
-                    <Field
-                        name="password"
-                        type="password"
-                        component={renderField}
-                        className="form-control"
-                        id="password"
-                        placeholder={labels.password}
-                    />
-                </div>
-                <button
-                    type="submit"
-                    disabled={pristine || submitting || formInfo.syncErrors}
-                    className="col btn btn-primary"
-                >
-                    {labels.submit}
-                </button>
-            </form>
-        );
-    };
+    const renderLoginForm = () => (
+        <form onSubmit={handleSignInSubmit}>
+            <div className="form-group">
+                <label htmlFor="username">
+                    {labels.username}
+                    <sup>*</sup>
+                </label>
+                {/* <input type="text" className="form-control" id="username" placeholder="username" /> */}
+                <Field
+                    name="username"
+                    type="text"
+                    component={renderField}
+                    className="form-control"
+                    id="username"
+                    placeholder={labels.enterUsername}
+                />
+            </div>
+            <div className="form-group">
+                <label htmlFor="password">
+                    {labels.password}
+                    <sup>*</sup>
+                </label>
+                <Field
+                    name="password"
+                    type="password"
+                    component={renderField}
+                    className="form-control"
+                    id="password"
+                    placeholder={labels.password}
+                />
+            </div>
+            <button
+                type="submit"
+                disabled={pristine || submitting || formInfo.syncErrors}
+                className="col btn btn-primary"
+            >
+                {labels.submit}
+            </button>
+        </form>
+    );
     const successMsg = () => {
         const { loginData } = props;
 
@@ -106,6 +104,6 @@ let LoginContainer = props => {
 
 LoginContainer = reduxForm({
     form: 'loginForm',
-    validate: loginValidate,
+    validate: loginValidate
 })(LoginContainer);
 export default LoginContainer;

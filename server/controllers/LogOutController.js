@@ -1,4 +1,5 @@
 import ServiceFactory from '../utils/ServiceFactory';
+
 const service = require('../config/dev-config.json');
 
 export default (req, res, next) => {
@@ -6,14 +7,14 @@ export default (req, res, next) => {
     const config = {
         method: endPoint.method,
         url: endPoint.url,
-        headers: endPoint.headers,
+        headers: endPoint.headers
     };
 
     ServiceFactory.triggerserviceRequest(config)
-        .then(response => {
+        .then((response) => {
             res.json(response);
         })
-        .catch(error => {
+        .catch((error) => {
             console.log(error);
             res.send(error);
         });

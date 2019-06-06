@@ -1,5 +1,5 @@
 const commonUtils = {
-    sendError: err => {
+    sendError: (err) => {
         const error = err.response;
         let responseObject = {};
         let errorCode = null;
@@ -11,9 +11,9 @@ const commonUtils = {
                 statusText: (error && error.statusText) || null,
                 errorCode: error && error.status,
                 data: error && {
-                    message: error.statusText || error.data || null,
+                    message: error.statusText || error.data || null
                 },
-                success: false,
+                success: false
             };
         } else {
             /* server is not availables */
@@ -23,9 +23,9 @@ const commonUtils = {
                 statusText: (err && err.code) || null,
                 errorCode: err && err.errno,
                 data: (err && err.data) || {
-                    message: 'server is unavailable',
+                    message: 'server is unavailable'
                 },
-                success: false,
+                success: false
             };
         }
 
@@ -64,7 +64,7 @@ const commonUtils = {
                 break;
         } */
         return responseObject;
-    },
+    }
 };
 
 export default commonUtils;

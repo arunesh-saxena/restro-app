@@ -19,7 +19,7 @@ export default function render(req, res) {
 
     const ROUTES = routes();
     const branch = matchRoutes(ROUTES, req.url);
-    preRenderMiddleware(store.dispatch, branch, req, res).then(v => {
+    preRenderMiddleware(store.dispatch, branch, req, res).then((v) => {
         const html = pageRenderer(store, req, res);
         res.status(200).send(html);
     });

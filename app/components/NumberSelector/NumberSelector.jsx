@@ -5,7 +5,7 @@ class NumberSelector extends Component {
         super(props);
         this.state = {
             selectedNumber: 0,
-            isDecrementDisable: false,
+            isDecrementDisable: false
         };
     }
 
@@ -13,14 +13,14 @@ class NumberSelector extends Component {
         const selectedNumber = this.props.number;
         this.setState({
             selectedNumber,
-            isDecrementDisable: selectedNumber < 1,
+            isDecrementDisable: selectedNumber < 1
         });
     }
 
     setDisableButton(selectedNumber) {
         const isDecrementDisable = selectedNumber < 1;
         this.setState({
-            isDecrementDisable,
+            isDecrementDisable
         });
     }
 
@@ -28,7 +28,7 @@ class NumberSelector extends Component {
         let { selectedNumber } = this.state;
         selectedNumber -= 1;
         this.setState({
-            selectedNumber,
+            selectedNumber
         });
         this.setDisableButton(selectedNumber);
 
@@ -39,7 +39,7 @@ class NumberSelector extends Component {
         let { selectedNumber } = this.state;
         selectedNumber += 1;
         this.setState({
-            selectedNumber,
+            selectedNumber
         });
         this.setDisableButton(selectedNumber);
 

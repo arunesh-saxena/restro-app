@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const SearchBox = props => {
-    let searchInput = React.createRef();
+const SearchBox = (props) => {
+    const searchInput = React.createRef();
     const searchLabel = props.searchLabel || 'Search :';
     const placeholder = props.placeholder || `${searchLabel}...`;
     const className = props.className || '';
     const [isIconShow, setisIconShow] = useState(false);
-    const onChangeHandler = e => {
+    const onChangeHandler = (e) => {
         props.changeHandler(searchInput.current.value);
         setisIconShow(!!searchInput.current.value.length);
     };
@@ -47,6 +47,6 @@ SearchBox.propTypes = {
     placeholder: PropTypes.string,
     searchLabel: PropTypes.string,
     // onChangeHandler: PropTypes.func,
-    className: PropTypes.string,
+    className: PropTypes.string
 };
 export default SearchBox;

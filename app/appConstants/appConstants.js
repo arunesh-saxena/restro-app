@@ -33,24 +33,24 @@ const appConstants = {
             no: 'No',
             action: 'Action',
             edit: 'Edit',
-            search: 'Search',
+            search: 'Search'
         },
         error: {
             required: 'Required',
             invalidEmail: 'Invalid email address',
             misMatchWithPassword: 'Mismatch with password',
-            charactersLess: 'Must be 15 characters or less',
+            charactersLess: 'Must be 15 characters or less'
         },
         signUp: {
             emailConfidentialMsg:
                 "We'll never share your email with anyone else.",
-            successMsg: 'Thank you for signUp',
-        },
+            successMsg: 'Thank you for signUp'
+        }
     },
     form: {
         menuUpload: 'menuUpload',
-        menuEditForm: 'menuEditForm',
-    },
+        menuEditForm: 'menuEditForm'
+    }
 };
 
 export default appConstants;

@@ -8,24 +8,22 @@ const renderField = ({
     placeholder,
     type,
     className,
-    meta: { touched, error, warning },
-}) => {
-    return (
-        <div>
-            <input
-                {...input}
-                id={id}
-                placeholder={placeholder}
-                type={type}
-                className={className}
-                autoComplete="on"
-            />
-            {touched &&
-                ((error && <span className="error-message">{error}</span>) ||
-                    (warning && <span>{warning}</span>))}
-        </div>
-    );
-};
+    meta: { touched, error, warning }
+}) => (
+    <div>
+        <input
+            {...input}
+            id={id}
+            placeholder={placeholder}
+            type={type}
+            className={className}
+            autoComplete="on"
+        />
+        {touched &&
+            ((error && <span className="error-message">{error}</span>) ||
+                (warning && <span>{warning}</span>))}
+    </div>
+);
 
 const FormField = ({
     label,
@@ -35,7 +33,7 @@ const FormField = ({
     type,
     className,
     isRequired,
-    validate = [],
+    validate = []
 }) => (
     <div>
         <label htmlFor={id}>
@@ -59,6 +57,6 @@ FormField.propTypes = {
     type: PropTypes.string.isRequired,
     className: PropTypes.string,
     label: PropTypes.string,
-    placeholder: PropTypes.string,
+    placeholder: PropTypes.string
 };
 export default FormField;

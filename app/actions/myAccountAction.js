@@ -4,7 +4,7 @@ import * as types from '../utils/types';
 
 export const setAccountInfo = data => ({
     type: types.SET_ACCOUNT_INFO,
-    data,
+    data
 });
 
 export const getAccountInfo = (params, url, headers, res) => {};

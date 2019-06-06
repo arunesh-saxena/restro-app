@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Image = props => {
+const Image = (props) => {
     const imageURL =
         props.imgURL || 'http://localhost:3030/assets/images/dummy.png';
     return (
@@ -17,6 +17,6 @@ const Image = props => {
 Image.propTypes = {
     imgURL: PropTypes.string.isRequired,
     alt: PropTypes.string,
-    title: PropTypes.string,
+    title: PropTypes.string
 };
 export default Image;

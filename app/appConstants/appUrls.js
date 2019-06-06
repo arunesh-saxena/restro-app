@@ -7,5 +7,5 @@ export default {
     SIGN_UP: '/signUp',
     MENU_LIST: '/menuList',
     ADD_MENU: '/addmenu',
-    EDIT_MENU: '/editMenu',
+    EDIT_MENU: '/editMenu'
 };

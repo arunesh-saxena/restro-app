@@ -1,11 +1,12 @@
 import ServiceFactory from '../utils/ServiceFactory';
-var FormData = require('form-data');
-var fs = require('fs');
+
+const FormData = require('form-data');
+const fs = require('fs');
 const service = require('../config/dev-config.json');
 
-const getFormData = req => {
+const getFormData = (req) => {
     const { body } = req;
-    let data = new FormData();
+    const data = new FormData();
     body.itemName != undefined && data.append('itemName', body.itemName);
     body.description != undefined &&
         data.append('description', body.description);
@@ -19,7 +20,7 @@ const getFormData = req => {
         // When the stream is done being read, end the response
         data.append('imageURL', fileStream);
         setTimeout(() => {
-            fs.unlink(req.file.path, function(err) {
+            fs.unlink(req.file.path, (err) => {
                 if (err) {
                     console.log(
                         `<<--------problem in deleting file${
@@ -35,21 +36,21 @@ const getFormData = req => {
 };
 
 export const uploadMenu = (req, res, next) => {
-    let endPoint = service.menuUpload.default;
-    let data = getFormData(req);
+    const endPoint = service.menuUpload.default;
+    const data = getFormData(req);
 
     const config = {
         method: endPoint.method,
         url: endPoint.url,
         headers: endPoint.headers,
-        data: data,
+        data
     };
 
     ServiceFactory.triggerserviceRequest(config, true)
-        .then(response => {
+        .then((response) => {
             res.json(response);
         })
-        .catch(error => {
+        .catch((error) => {
             console.log(error);
             res.send(error);
         });
@@ -57,20 +58,20 @@ export const uploadMenu = (req, res, next) => {
 
 export const updateMenuItem = (req, res, next) => {
     const endPoint = service.menuItemUpdate.default;
-    let data = getFormData(req);
+    const data = getFormData(req);
 
     const config = {
         method: endPoint.method,
         url: endPoint.url,
         headers: endPoint.headers,
-        data: data,
+        data
     };
 
     ServiceFactory.triggerserviceRequest(config, true)
-        .then(response => {
+        .then((response) => {
             res.json(response);
         })
-        .catch(error => {
+        .catch((error) => {
             console.log(error);
             res.send(error);
         });
@@ -81,14 +82,14 @@ export const menuList = (req, res, next) => {
     const config = {
         method: endPoint.method,
         url: endPoint.url,
-        headers: endPoint.headers,
+        headers: endPoint.headers
     };
 
     ServiceFactory.triggerserviceRequest(config)
-        .then(response => {
+        .then((response) => {
             res.json(response);
         })
-        .catch(error => {
+        .catch((error) => {
             console.log(error);
             res.send(error);
         });
@@ -100,14 +101,14 @@ export const menuItem = (req, res, next) => {
     const config = {
         method: endPoint.method,
         url: `${endPoint.url}${itemId}`,
-        headers: endPoint.headers,
+        headers: endPoint.headers
     };
 
     ServiceFactory.triggerserviceRequest(config)
-        .then(response => {
+        .then((response) => {
             res.json(response);
         })
-        .catch(error => {
+        .catch((error) => {
             console.log(error);
             res.send(error);
         });
@@ -123,14 +124,14 @@ export const changeMenuItemQuantity = (req, res, next) => {
         headers: endPoint.headers,
         data: {
             itemId: body.itemId,
-            quantity: body.quantity,
-        },
+            quantity: body.quantity
+        }
     };
     ServiceFactory.triggerserviceRequest(config)
-        .then(response => {
+        .then((response) => {
             res.json(response);
         })
-        .catch(error => {
+        .catch((error) => {
             console.log(error);
             res.send(error);
         });
@@ -144,14 +145,14 @@ export const toggleHiddenMenuItem = (req, res, next) => {
         method: endPoint.method,
         url: endPoint.url,
         headers: endPoint.headers,
-        data: body,
+        data: body
     };
 
     ServiceFactory.triggerserviceRequest(config)
-        .then(response => {
+        .then((response) => {
             res.json(response);
         })
-        .catch(error => {
+        .catch((error) => {
             console.log(error);
             res.send(error);
         });
@@ -166,7 +167,7 @@ export const deleteMenuItem = (req, res, next) => {
         method: endPoint.method,
         url: endPoint.url,
         headers: endPoint.headers,
-        data: 'data need to change server with update   api',
+        data: 'data need to change server with update   api'
     };
 
     // ServiceFactory.triggerserviceRequest(config).then(

@@ -18,22 +18,20 @@ const renderMenuList = (menuList, labels, quantityHandler, toggleHandler) => {
         );
     }
 
-    const liElm = menuList.map((item, index) => {
-        return (
-            <li key={index} className="list-group-item">
-                <MenuItem
-                    labels={labels}
-                    item={item}
-                    quantityHandler={quantityHandler}
-                    toggleHandler={toggleHandler}
-                />
-            </li>
-        );
-    });
+    const liElm = menuList.map((item, index) => (
+        <li key={index} className="list-group-item">
+            <MenuItem
+                labels={labels}
+                item={item}
+                quantityHandler={quantityHandler}
+                toggleHandler={toggleHandler}
+            />
+        </li>
+    ));
 
     return <ul className="list-group">{liElm}</ul>;
 };
-const MenuListContainer = props => {
+const MenuListContainer = (props) => {
     const { menuList, quantityHandler, toggleHandler } = props;
     const { common: labels } = props.labels;
 

@@ -4,27 +4,27 @@ export default function menu(state = {}, action) {
     switch (action.type) {
         case types.UPLOAD_MENU: {
             return Object.assign({}, state, {
-                menuUpload: action.data,
+                menuUpload: action.data
             });
         }
         case types.MENU_LIST: {
             return Object.assign({}, state, {
-                menuList: action.data,
+                menuList: action.data
             });
         }
         case types.MENU_LIST_FILTERED: {
             return Object.assign({}, state, {
-                menuListFiltered: action.data,
+                menuListFiltered: action.data
             });
         }
         case types.MENU_ITEM: {
             return Object.assign({}, state, {
-                menuItem: action.data,
+                menuItem: action.data
             });
         }
         case types.MENU_INITIAL_ITEM: {
             return Object.assign({}, state, {
-                menuInitialItem: action.data,
+                menuInitialItem: action.data
             });
         }
         default: {

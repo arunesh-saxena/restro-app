@@ -5,7 +5,7 @@ class ToggleButton extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: props.initialValue,
+            value: props.initialValue
         };
     }
 
@@ -13,7 +13,7 @@ class ToggleButton extends React.Component {
         const val = this.state.value;
         this.setState(
             {
-                value: !val,
+                value: !val
             },
             () => {
                 this.props.toggleHandler(this.state.value);
@@ -33,7 +33,7 @@ class ToggleButton extends React.Component {
                         type="checkbox"
                         id="toggle-button-checkox"
                         checked={this.state.value}
-                        onChange={e => {
+                        onChange={(e) => {
                             this.changeHandler(e);
                         }}
                     />
@@ -53,6 +53,6 @@ ToggleButton.propTypes = {
     className: PropTypes.string,
     // label: PropTypes.string,
     checkedLabel: PropTypes.string,
-    unCheckedLabel: PropTypes.string,
+    unCheckedLabel: PropTypes.string
 };
 export default ToggleButton;

@@ -7,14 +7,14 @@ import {
     getMenuList,
     changeMenuItemQuantity,
     toggleHiddenMenuItem,
-    setMenuItemFilter,
+    setMenuItemFilter
 } from '../../actions/menuAction';
 
 class MenuListPage extends React.Component {
     changeProductQuantity(item) {
         const itemData = {
             itemId: item.itemId,
-            quantity: item.quantity,
+            quantity: item.quantity
         };
         this.props.changeMenuItemQuantity(itemData);
     }
@@ -27,8 +27,8 @@ class MenuListPage extends React.Component {
         const { menuList } = this.props;
         const filteredList = searchText.length
             ? menuList.filter(item =>
-                  item.itemName.toLowerCase().includes(searchText.toLowerCase())
-              )
+                item.itemName.toLowerCase().includes(searchText.toLowerCase())
+            )
             : menuList;
         this.props.setMenuItemFilter(filteredList);
     }
@@ -40,11 +40,11 @@ class MenuListPage extends React.Component {
                 <MenuListContainer
                     labels={appConstants.labels}
                     menuList={menuList}
-                    quantityHandler={itemData => {
+                    quantityHandler={(itemData) => {
                         this.changeProductQuantity(itemData);
                     }}
                     toggleHandler={value => this.toggleHandler(value)}
-                    searchBoxHandler={text => {
+                    searchBoxHandler={(text) => {
                         this.changeSearchHandler(text);
                     }}
                 />
@@ -55,7 +55,7 @@ class MenuListPage extends React.Component {
 
 const mapStateToProps = state => ({
     menuList: (state.menu && state.menu.menuList) || [],
-    menuListFiltered: (state.menu && state.menu.menuListFiltered) || [],
+    menuListFiltered: (state.menu && state.menu.menuListFiltered) || []
 });
 const mapDispatchToProps = dispatch =>
     bindActionCreators(
@@ -63,7 +63,7 @@ const mapDispatchToProps = dispatch =>
             getMenuList,
             changeMenuItemQuantity,
             toggleHiddenMenuItem,
-            setMenuItemFilter,
+            setMenuItemFilter
         },
         dispatch
     );

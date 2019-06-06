@@ -26,7 +26,7 @@ class App extends React.Component {
     render() {
         const props = Object.assign({}, this.props, {
             labels: appConstants.labels,
-            handleLogout: this.handleLogout,
+            handleLogout: this.handleLogout
         });
 
         return (
@@ -38,13 +38,13 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    user: state.user,
+    user: state.user
 });
 
 const mapDispatchToProps = dispatch =>
     bindActionCreators(
         {
-            logOutAction,
+            logOutAction
             // checkIsLogin
         },
         dispatch

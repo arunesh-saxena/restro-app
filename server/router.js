@@ -11,7 +11,7 @@ import {
     updateMenuItem,
     changeMenuItemQuantity,
     toggleHiddenMenuItem,
-    deleteMenuItem,
+    deleteMenuItem
 } from './controllers/MenuController';
 
 const express = require('express');
@@ -19,23 +19,23 @@ const multer = require('multer');
 
 const routes = express.Router();
 const storage = multer.diskStorage({
-    destination: function(req, file, cb) {
+    destination(req, file, cb) {
         cb(null, './uploads');
     },
-    filename: function(req, file, cb) {
-        let info = file.originalname.split('.');
+    filename(req, file, cb) {
+        const info = file.originalname.split('.');
         const ext = info[info.length - 1];
         cb(null, `${info[0]}-${Date.now()}.${ext}`);
-    },
+    }
 });
 
-const upload = multer({ storage: storage }).single('imageURL');
+const upload = multer({ storage }).single('imageURL');
 
 /* testing */
-routes.get(expressConstants.TEST_API.url, function(req, res) {
+routes.get(expressConstants.TEST_API.url, (req, res) => {
     res.status('200').json({
         success: false,
-        data: { msg: 'testing done' },
+        data: { msg: 'testing done' }
     });
 });
 

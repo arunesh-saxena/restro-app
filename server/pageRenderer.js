@@ -6,6 +6,7 @@ import { renderRoutes } from 'react-router-config';
 import createRoutes from '../app/routes.jsx';
 
 import staticAssets from './static';
+
 const context = {};
 const Routes = createRoutes;
 const createApp = (store, url) =>
@@ -42,6 +43,6 @@ export default (store, req) => {
     const componentHTML = createApp(store, req.url);
     return buildPage({
         componentHTML,
-        initialState,
+        initialState
     });
 };

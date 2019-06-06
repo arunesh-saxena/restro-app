@@ -1,8 +1,9 @@
 import axios from 'axios';
 import commonUtils from './commonUtils';
+
 const fetch = require('node-fetch');
 
-const errorHandler = error => {
+const errorHandler = (error) => {
     console.log('******** Error *********');
     console.log((error.response && error.response.data) || error);
     console.log('******** Error *********');
@@ -16,37 +17,29 @@ const ServiceFactory = {
             url: options.url,
             data: options.data,
             headers: options.headers,
-            withCredentials: true,
+            withCredentials: true
         };
 
         if (isMultiPart) {
             return fetch(config.url, {
                 method: config.method,
-                body: config.data,
+                body: config.data
             })
-                .then(function(res) {
-                    return res.json();
-                })
-                .then(function(json) {
-                    return json;
-                })
-                .catch(error => {
-                    return errorHandler(error);
-                });
+                .then(res => res.json())
+                .then(json => json)
+                .catch(error => errorHandler(error));
         }
         if (!options.headers) {
             delete options.headers;
         }
 
         return axios(config)
-            .then(response => {
+            .then((response) => {
                 const responseObj = response.data;
                 return responseObj;
             })
-            .catch(error => {
-                return errorHandler(error);
-            });
-    },
+            .catch(error => errorHandler(error));
+    }
 };
 
 export default ServiceFactory;

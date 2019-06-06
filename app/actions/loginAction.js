@@ -5,15 +5,15 @@ import appUrls from '../appConstants/appUrls';
 
 export const setLoginDataStatus = data => ({
     type: types.SET_LOGIN_DATA_STATUS,
-    data,
+    data
 });
 
 export const setErrorMsg = data => ({
     type: types.SET_LOGIN_ERROR_MSG,
-    data,
+    data
 });
 
-const submitFormDataSuccess = (dispatch, props) => value => {
+const submitFormDataSuccess = (dispatch, props) => (value) => {
     const success =
         (value.body && value.body.data && value.body.data.success) || null;
     if (success) {
@@ -33,15 +33,16 @@ const submitFormDataSuccess = (dispatch, props) => value => {
         dispatch(setLoginDataStatus({ username, msg: null }));
         props.history.push(appUrls.MENU_LIST);
     } else {
-        document.cookie = `_token=;expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/`;
+        document.cookie =
+            '_token=;expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/';
         dispatch(
             setLoginDataStatus({ username: null, msg: value.body.data.message })
         );
     }
 };
 
-const submitLoginFormDataFailure = dispatch => value => {
-    document.cookie = `_token=;expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/`;
+const submitLoginFormDataFailure = dispatch => (value) => {
+    document.cookie = '_token=;expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/';
     console.log(value);
 };
 
@@ -50,10 +51,10 @@ export const submitLogin = (formData, props) => {
     const option = {
         method: api.method,
         url: api.url,
-        data: formData,
+        data: formData
     };
 
-    return dispatch => {
+    return (dispatch) => {
         const success = submitFormDataSuccess(dispatch, props);
         const failure = submitLoginFormDataFailure(dispatch, props);
         AjaxFactory.triggerServerRequest(option)

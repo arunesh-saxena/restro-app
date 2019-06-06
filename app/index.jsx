@@ -7,6 +7,7 @@ import configureStore from './store/configureStore';
 import preRenderMiddleware from '../server/preRenderMiddleware';
 
 import createRoutes from './routes';
+
 const initialState = window.__INITIAL_STATE__;
 if (window.__INITIAL_STATE__ !== null) {
     window.__INITIAL_STATE__ = null;
@@ -24,10 +25,10 @@ const RouteDataLoader = withRouter(
                 );
                 const req = {
                     url: nextProps.location.pathname,
-                    headers: {},
+                    headers: {}
                 };
                 preRenderMiddleware(nextProps.dispatch, branch, req, null).then(
-                    v => {
+                    (v) => {
                         console.log(
                             '------------------Promise-end------------------'
                         );

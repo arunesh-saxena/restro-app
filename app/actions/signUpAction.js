@@ -4,9 +4,9 @@ import * as types from '../utils/types';
 
 export const signUp = data => ({
     type: types.SIGN_UP,
-    data,
+    data
 });
-const submitFormDataSuccess = dispatch => value => {
+const submitFormDataSuccess = dispatch => (value) => {
     const { success } = value.body.data;
     if (success) {
         dispatch(signUp(value.body.data));
@@ -15,19 +15,19 @@ const submitFormDataSuccess = dispatch => value => {
     }
 };
 
-const submitLoginFormDataFailure = dispatch => value => {
+const submitLoginFormDataFailure = dispatch => (value) => {
     console.log(value);
 };
 
-export const submitSignUp = formData => {
+export const submitSignUp = (formData) => {
     const api = expressConstants.SIGN_UP;
     const option = {
         method: api.method,
         url: api.url,
-        data: formData,
+        data: formData
     };
     // const success = submitFormDataSuccess(dispatch, props);
-    return dispatch => {
+    return (dispatch) => {
         const success = submitFormDataSuccess(dispatch);
         const failure = submitLoginFormDataFailure(dispatch);
         AjaxFactory.triggerServerRequest(option)

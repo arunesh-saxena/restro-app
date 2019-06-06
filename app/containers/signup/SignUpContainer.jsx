@@ -9,7 +9,7 @@ const renderField = ({
     placeholder,
     type,
     className,
-    meta: { touched, error, warning },
+    meta: { touched, error, warning }
 }) => (
     <div>
         <input
@@ -26,13 +26,13 @@ const renderField = ({
     </div>
 );
 
-let SignUpContainer = props => {
+let SignUpContainer = (props) => {
     const { handleSignUpSubmit, pristine, submitting, formInfo } = props;
     const { common: labels, signUp: labelsSignUp } = props.labels;
 
-    let redemderHeading = () => <Heading text={labels.signUp} />;
+    const redemderHeading = () => <Heading text={labels.signUp} />;
 
-    let renderLoginForm = () => {
+    const renderLoginForm = () => {
         const { userData } = props;
         if (
             !Object.keys(userData).length ||
@@ -146,6 +146,6 @@ let SignUpContainer = props => {
 };
 SignUpContainer = reduxForm({
     form: 'signUp',
-    validate: formValidate, // <--- validation function given to redux-form
+    validate: formValidate // <--- validation function given to redux-form
 })(SignUpContainer);
 export default SignUpContainer;

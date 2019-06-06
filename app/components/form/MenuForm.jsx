@@ -2,12 +2,12 @@ import React from 'react';
 import FormField from './FormField/FormField';
 import { required, maxLength15 } from '../../utils/formValidation';
 
-let MenuForm = props => {
+const MenuForm = (props) => {
     const { submitForm, labels, disabled } = props;
 
     let fileInput = '';
 
-    const submitHandler = e => {
+    const submitHandler = (e) => {
         e.preventDefault();
         submitForm(fileInput);
     };
@@ -21,7 +21,7 @@ let MenuForm = props => {
             type: 'text',
             className: '',
             isRequired: true,
-            validate: [required, maxLength15],
+            validate: [required, maxLength15]
         },
         {
             label: labels.quantity,
@@ -31,7 +31,7 @@ let MenuForm = props => {
             type: 'text',
             className: '',
             isRequired: true,
-            validate: [required, maxLength15],
+            validate: [required, maxLength15]
         },
         {
             label: labels.description,
@@ -41,7 +41,7 @@ let MenuForm = props => {
             type: 'text',
             className: '',
             isRequired: true,
-            validate: [required],
+            validate: [required]
         },
         {
             label: labels.price,
@@ -51,7 +51,7 @@ let MenuForm = props => {
             type: 'text',
             className: '',
             isRequired: true,
-            validate: [required],
+            validate: [required]
         },
         {
             label: labels.unit,
@@ -61,7 +61,7 @@ let MenuForm = props => {
             type: 'text',
             className: '',
             isRequired: true,
-            validate: [required],
+            validate: [required]
         },
         {
             label: labels.currency,
@@ -71,18 +71,16 @@ let MenuForm = props => {
             type: 'text',
             className: '',
             isRequired: true,
-            validate: [required],
-        },
+            validate: [required]
+        }
     ];
 
     const renderFormFields = () => {
-        const formFields = formField.map((file, key) => {
-            return (
-                <div className="form-group" key={key}>
-                    <FormField {...file} />
-                </div>
-            );
-        });
+        const formFields = formField.map((file, key) => (
+            <div className="form-group" key={key}>
+                <FormField {...file} />
+            </div>
+        ));
         return formFields;
     };
     return (
@@ -101,7 +99,7 @@ let MenuForm = props => {
                         id="image"
                         className="form-control"
                         placeholder={labels.image}
-                        ref={file => {
+                        ref={(file) => {
                             fileInput = file;
                         }}
                     />

@@ -10,7 +10,7 @@ const SignUpContainer = Loadable({
         import(
             /* webpackChunkName: "SignUpContainer" */ '../../containers/signup/SignUpContainer'
         ),
-    loading: () => <strong>Loading...</strong>,
+    loading: () => <strong>Loading...</strong>
 });
 class SignUpPage extends React.Component {
     constructor(props) {
@@ -48,14 +48,14 @@ class SignUpPage extends React.Component {
 
 const mapStateToProps = state => ({
     formInfo: state.form && state.form.signUp,
-    userData: state.signUp,
+    userData: state.signUp
 });
 
 const mapDispatchToProps = dispatch =>
     bindActionCreators(
         {
             submitSignUp,
-            signUp,
+            signUp
         },
         dispatch
     );

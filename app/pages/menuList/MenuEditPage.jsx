@@ -7,7 +7,7 @@ import appConstants from '../../appConstants/appConstants';
 import {
     getMenuItem,
     updateMenuItem,
-    setMenuUploadAction,
+    setMenuUploadAction
 } from '../../actions/menuAction';
 
 class MenuEditPage extends React.Component {
@@ -22,7 +22,7 @@ class MenuEditPage extends React.Component {
         if (formInfo && !formInfo.syncErrors) {
             const itemId = this.props.match.params.itemID;
             const formData = formInfo.values;
-            let data = new FormData();
+            const data = new FormData();
             data.append('itemName', formData.itemName);
             data.append('description', formData.description);
             data.append('quantity', formData.quantity);
@@ -42,7 +42,7 @@ class MenuEditPage extends React.Component {
                 <MenuEditContainer
                     labels={appConstants.labels}
                     formInfo={this.props.formInfo}
-                    handleMenuEditSubmit={file => {
+                    handleMenuEditSubmit={(file) => {
                         this.handleMenuEditSubmit(file);
                     }}
                     menu={this.props.menu}
@@ -54,14 +54,14 @@ class MenuEditPage extends React.Component {
 
 const mapStateToProps = state => ({
     menu: (state.menu && state.menu) || null,
-    formInfo: state.form && state.form.menuEditForm,
+    formInfo: state.form && state.form.menuEditForm
 });
 const mapDispatchToProps = dispatch =>
     bindActionCreators(
         {
             getMenuItem,
             updateMenuItem,
-            setMenuUploadAction,
+            setMenuUploadAction
         },
         dispatch
     );

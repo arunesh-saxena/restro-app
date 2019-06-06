@@ -1,5 +1,5 @@
 const createAppScript = () =>
-    `<script async type="text/javascript" charset="utf-8" src="/assets/app.js"></script>`;
+    '<script async type="text/javascript" charset="utf-8" src="/assets/app.js"></script>';
 
 const createAppCSS = () =>
     '<link rel= "stylesheet" type="text/css" href="/assets/styles/style.css">';
@@ -10,5 +10,5 @@ const createBootstrapCSS = () =>
 export default {
     createAppScript,
     createBootstrapCSS,
-    createAppCSS,
+    createAppCSS
 };

@@ -8,20 +8,20 @@ const AjaxFactory = {
             data: options.data || {},
             withCredentials: true,
             proxy: {
-                port: 3030,
-            },
+                port: 3030
+            }
         };
         // if (options.headers) {
         //      config.headers = options.headers;
         // }
         return axios(config).then(
-            response => {
+            (response) => {
                 // console.log(response);
                 const responseObject = {
                     data: response.data || [],
                     status: response.status,
                     statusText: response.statusText,
-                    ajaxRequestStatus: 'success',
+                    ajaxRequestStatus: 'success'
                 };
                 if (!response.data.hasOwnProperty('errorCode')) {
                     responseObject.ajaxRequestStatus = 'success';
@@ -30,20 +30,20 @@ const AjaxFactory = {
                 }
                 return { body: responseObject };
             },
-            error => {
+            (error) => {
                 const responseObject = {
                     ajaxRequestStatus: 'failure',
                     errorCode:
                         error && (error.response && error.response.status),
                     errorData:
                         (error && (error.response && error.response.data)) ||
-                        null,
+                        null
                 };
                 // console.log(responseObject);
                 return responseObject;
             }
         );
-    },
+    }
 };
 
 export default AjaxFactory;

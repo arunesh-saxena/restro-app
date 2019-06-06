@@ -7,20 +7,20 @@ import MenuForm from '../../components/form/MenuForm';
 import appConstants from '../../appConstants/appConstants';
 import Heading from '../../components/heading/Heading';
 
-let MenuEditContainer = props => {
+let MenuEditContainer = (props) => {
     const {
         menu,
         handleMenuEditSubmit,
         pristine,
         submitting,
-        formInfo,
+        formInfo
     } = props;
 
     const { common: labels } = props.labels;
 
-    let fileInput = '';
+    const fileInput = '';
 
-    const submitForm = fileInput => {
+    const submitForm = (fileInput) => {
         const file = !!fileInput.files.length && fileInput.files[0];
         handleMenuEditSubmit(file);
     };
@@ -65,12 +65,12 @@ let MenuEditContainer = props => {
 };
 
 MenuEditContainer = reduxForm({
-    form: appConstants.form.menuEditForm,
+    form: appConstants.form.menuEditForm
 })(MenuEditContainer);
 
 const mapStateToProps = state => ({
     initialValues: state.menu && state.menu.menuInitialItem,
-    enableReinitialize: true,
+    enableReinitialize: true
 });
 const matchDispatchToProps = dispatch => bindActionCreators({}, dispatch);
 

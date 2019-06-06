@@ -6,8 +6,9 @@ import MenuUploadContainer from '../../containers/menu/MenuUploadContainer';
 import appConstants from '../../appConstants/appConstants';
 import {
     uploadMenuAction,
-    setMenuUploadAction,
+    setMenuUploadAction
 } from '../../actions/menuAction';
+
 class MenuUploadPage extends React.Component {
     constructor(props) {
         super(props);
@@ -30,7 +31,7 @@ class MenuUploadPage extends React.Component {
                 currency: formData.currency,
                 imageURL: file
             } */
-            let data = new FormData();
+            const data = new FormData();
             data.append('itemName', formData.itemName);
             data.append('description', formData.description);
             data.append('quantity', formData.quantity);
@@ -59,13 +60,13 @@ class MenuUploadPage extends React.Component {
 
 const mapStateToProps = state => ({
     formInfo: state.form && state.form.menuUpload,
-    menu: state.menu.menuUpload,
+    menu: state.menu.menuUpload
 });
 const mapDispatchToProps = dispatch =>
     bindActionCreators(
         {
             uploadMenuAction,
-            setMenuUploadAction,
+            setMenuUploadAction
         },
         dispatch
     );

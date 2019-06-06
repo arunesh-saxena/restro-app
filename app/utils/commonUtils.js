@@ -11,7 +11,7 @@ const commonUtil = {
     splitCookies(rc) {
         const list = {};
         rc &&
-            rc.split(';').forEach(cookie => {
+            rc.split(';').forEach((cookie) => {
                 const parts = cookie.split('=');
                 list[parts.shift().trim()] = decodeURI(parts.join('='));
             });
@@ -25,10 +25,10 @@ const commonUtil = {
         return this.splitCookies(rc);
     },
     getDate(ISODate) {
-        let d = new Date(ISODate);
-        let min = ISODate.split(':')[1];
-        let finalData = `${d.getDate()}/${d.getMonth()}/${d.getFullYear()} ${d.getHours()}:${min}`;
+        const d = new Date(ISODate);
+        const min = ISODate.split(':')[1];
+        const finalData = `${d.getDate()}/${d.getMonth()}/${d.getFullYear()} ${d.getHours()}:${min}`;
         return finalData;
-    },
+    }
 };
 export default commonUtil;

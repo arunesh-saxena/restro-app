@@ -6,7 +6,7 @@ import * as types from '../utils/types';
 
 export const setLanguage = data => ({
     type: types.SET_LANGUAGE,
-    data,
+    data
 });
 
 export const checkIsLogin = (headers, res) => {
@@ -31,12 +31,12 @@ export const checkIsLogin = (headers, res) => {
         method: api.method,
         url: api.url,
         data: {
-            token: _token || null,
-        },
+            token: _token || null
+        }
     };
-    return dispatch => {
-        return AjaxFactory.triggerServerRequest(option)
-            .then(value => {
+    return dispatch =>
+        AjaxFactory.triggerServerRequest(option)
+            .then((value) => {
                 const success = (value.body && value.body.data) || null;
                 const message =
                     (value.body &&
@@ -57,8 +57,7 @@ export const checkIsLogin = (headers, res) => {
                     );
                 }
             })
-            .catch(error => {
+            .catch((error) => {
                 console.log(error);
             });
-    };
 };

@@ -1,7 +1,8 @@
 import appConstants from '../appConstants/appConstants';
+
 const { error } = appConstants.labels;
 
-export const signUpValidate = values => {
+export const signUpValidate = (values) => {
     const errors = {};
     if (!values.username) {
         errors.username = error.required;
@@ -27,7 +28,7 @@ export const signUpValidate = values => {
     return errors;
 };
 
-export const loginValidate = values => {
+export const loginValidate = (values) => {
     const errors = {};
     if (!values.username) {
         errors.username = error.required;

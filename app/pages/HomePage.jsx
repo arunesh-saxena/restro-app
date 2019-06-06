@@ -28,13 +28,13 @@ class HomePage extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    app: state.app,
+    app: state.app
 });
 
 const mapDispatchToProps = dispatch =>
     bindActionCreators(
         {
-            setLanguage,
+            setLanguage
         },
         dispatch
     );
