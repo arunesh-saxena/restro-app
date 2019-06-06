@@ -1,5 +1,5 @@
 .menu-item {
-    .heading {
+    .item-header {
         display: flex;
 
         @include breakpoint(desktop-below) {

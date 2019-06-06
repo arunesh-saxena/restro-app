@@ -23,7 +23,7 @@ const MenuItem = props => {
     };
     return (
         <div className="menu-item">
-            <div className="heading">
+            <div className="item-header">
                 <div className="img-container">
                     {props.item.imageURL ? (
                         <Image
