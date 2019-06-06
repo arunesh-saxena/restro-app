@@ -12,7 +12,7 @@ const renderMenuList = (menuList, labels, quantityHandler, toggleHandler) => {
     if (!menuList || !menuList.length) {
         return (
             <p>
-                {labels.empty} {labels.list}{' '}
+                {labels.empty} {labels.list}
                 <Link to={AppUrls.ADD_MENU}>{labels.addMenu}</Link>
             </p>
         );

@@ -1,6 +1,6 @@
 {
 	"parser": "babel-eslint",
-    "extends": ["airbnb", "plugin:react/recommended", "plugin:jsx-a11y/recommended"],
+    "extends": ["airbnb", "plugin:react/recommended", "plugin:jsx-a11y/recommended", "plugin:prettier/recommended"],
 	// "extends": "eslint:recommended",
 	"env": {
 		"browser": true,
@@ -104,11 +104,14 @@
         "jsx-a11y/click-events-have-key-events": 0,
         "jsx-a11y/anchor-has-content": 0,
         "dot-notation": 0,
-        "react/destructuring-assignment": 0
+        "react/destructuring-assignment": 0,
+        "react/jsx-one-expression-per-line": 0,
+        "prettier/prettier": "error"
 	},
 	"plugins": [
 		"react",
-		"jsx-a11y"
+        "jsx-a11y",
+        "prettier"
 	],
 	"globals": {
 		"__DEVSERVER__": true,

@@ -57,9 +57,7 @@ class NumberSelector extends Component {
                     onClick={() => {
                         this.decrementNumber();
                     }}
-                >
-                    {' '}
-                </button>
+                />
                 <span className="number-text">{selectedNumberValue}</span>
 
                 <button
@@ -68,9 +66,7 @@ class NumberSelector extends Component {
                     onClick={() => {
                         this.incrementNumber();
                     }}
-                >
-                    {' '}
-                </button>
+                />
             </div>
         );
     }

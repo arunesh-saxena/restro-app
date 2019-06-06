@@ -39,7 +39,8 @@ const FormField = ({
 }) => (
     <div>
         <label htmlFor={id}>
-            {label} {isRequired && <sup>*</sup>}{' '}
+            {label}
+            {isRequired && <sup>*</sup>}
         </label>
         <Field
             name={fieldName}

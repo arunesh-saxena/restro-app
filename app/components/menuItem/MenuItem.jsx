@@ -38,7 +38,7 @@ const MenuItem = props => {
                     )}
                 </div>
                 <p>
-                    <strong>{props.labels.description}:</strong>{' '}
+                    <strong>{props.labels.description}:</strong>
                     {props.item.description}
                 </p>
             </div>
