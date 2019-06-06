@@ -1,12 +1,18 @@
 {
 	"parser": "babel-eslint",
-    "extends": ["airbnb", "plugin:react/recommended", "plugin:jsx-a11y/recommended"],
+    "extends": ["airbnb", "plugin:react/recommended", "plugin:jsx-a11y/recommended", "eslint:recommended"],
 	// "extends": "eslint:recommended",
 	"env": {
 		"browser": true,
 		"node": true,
 		"mocha": true
-	},
+    },
+    "settings": {
+        "react": {
+          "pragma": "React", 
+          "version": "detect"
+        }
+      },
 	"parserOptions": {
 		"ecmaVersion": 2017,
 		"sourceType": "module",
