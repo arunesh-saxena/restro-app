@@ -9,5 +9,6 @@ _front/compiled
 
 
 # _server
+_server/node_modules
 
 # _db
