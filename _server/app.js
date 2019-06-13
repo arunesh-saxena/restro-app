@@ -12,17 +12,19 @@ mongoose.Promise = global.Promise; /* to make promise in mongoose */
 
 var router = require('./src/routes/router'),
     CONSTANTS = require('./src/constants');
-    
+
 var app = express();
 
 //Connect to the database
-mongoose.connect("mongodb://localhost:27017/todo", function (err, db) {
-    if (!err) {
-        console.log("We are connected");
-    } else {
-        console.log("We are not connected");
-    }
-});
+mongoose.connect("mongodb://localhost/restro",
+    { useMongoClient: true },
+    (err, db) => {
+        if (!err) {
+            console.log("We are connected");
+        } else {
+            console.log("We are not connected");
+        }
+    });
 /* mongoose.connect("mongodb://test:test@localhost:27017/todo", function (err, db) {
     if (!err) {
         console.log("We are connected");
@@ -36,7 +38,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'ejs');/* for tamplating */
 app.set('views', path.join(__dirname + '/src/views'));/* set view path */
 
-app.use('/uploads',express.static(__dirname + '/uploads'));
+app.use('/uploads', express.static(__dirname + '/uploads'));
 
 app.use(cookieParser());
 app.use(session({

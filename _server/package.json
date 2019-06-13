@@ -1,31 +1,37 @@
 {
-  "name": "node_tut",
+  "name": "restro-app-server",
   "version": "1.0.0",
-  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. In nisl ipsum, interdum ut nibh id, congue tincidunt lectus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed dolor mi, dapibus at nisi vel, convallis tristique ligula. Ut tincidunt mi vitae quam gravida, in imperdiet nulla pretium. Cras bibendum posuere faucibus. Integer non lacus pretium, tincidunt urna in, egestas tellus. Curabitur vel neque maximus, ultricies urna eu, tempus nulla. Aenean facilisis sit amet nulla ac volutpat. Interdum et malesuada fames ac ante ipsum primis in faucibus.",
+  "description": "server api for restro app",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon index.js"
   },
-  "author": "",
+  "author": "Arunesh Saxena Software Enginer",
   "license": "ISC",
+  "engines": {
+    "node": ">=10.10.0"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "body-parser": "^1.17.2",
-    "connect-redis": "^3.3.0",
-    "cookie-parser": "^1.4.3",
+    "body-parser": "^1.19.0",
+    "connect-redis": "^3.4.1",
+    "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
-    "ejs": "^2.5.6",
-    "express": "^4.15.3",
-    "express-session": "^1.15.4",
+    "ejs": "^2.6.1",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
     "express-validator": "^3.2.1",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^4.1.9",
-    "multer": "^1.3.0",
+    "mongoose": "^4.13.18",
+    "multer": "^1.4.1",
     "passport": "^0.3.2",
     "passport-http": "^0.3.0",
     "passport-local": "^1.0.0",
-    "redis": "^2.7.1",
-    "socket.io": "^2.0.4"
+    "redis": "^2.8.0",
+    "socket.io": "^2.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
   }
 }
