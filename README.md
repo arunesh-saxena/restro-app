@@ -6,3 +6,6 @@
 
 # _db contains db dump
 _cd _db
+
+
+node v10.10.0

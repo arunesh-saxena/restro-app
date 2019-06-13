@@ -39,7 +39,7 @@
     "author": "Arunesh Saxena Software Enginer",
     "license": "ISC",
     "engines": {
-        "node": ">=8.x"
+        "node": ">=10.10.0"
     },
     "devDependencies": {
         "@babel/cli": "^7.0.0-beta.41",
