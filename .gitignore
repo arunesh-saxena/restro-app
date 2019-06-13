@@ -1,5 +1,13 @@
-node_modules
+# _front
+
 .idea
-dist
-public
-compiled
+node_modules
+_front/node_modules
+_front/dist
+_front/public
+_front/compiled
+
+
+# _server
+
+# _db
