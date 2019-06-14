@@ -1,0 +1,14 @@
+_front/compiled/**
+_front/public/**
+_front/webpack/**
+_front/api/promiseMiddleware.js
+_front/app/third-party/
+_front/node_modules/
+
+
+_server/node_modules/
+_server/public/**
+_server/upload
+
+/node_modules
+_db
