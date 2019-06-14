@@ -16,7 +16,6 @@ const AjaxFactory = {
         // }
         return axios(config).then(
             (response) => {
-                // console.log(response);
                 const responseObject = {
                     data: response.data || [],
                     status: response.status,
@@ -39,7 +38,6 @@ const AjaxFactory = {
                         (error && (error.response && error.response.data)) ||
                         null
                 };
-                // console.log(responseObject);
                 return responseObject;
             }
         );

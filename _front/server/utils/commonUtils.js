@@ -5,26 +5,22 @@ const commonUtils = {
         let errorCode = null;
         if (error) {
             /* 500, 404 */
-            errorCode = error.status;
+            errorCode = error && error.status;
             responseObject = {
                 status: (error && error.status) || null,
                 statusText: (error && error.statusText) || null,
-                errorCode: error && error.status,
-                data: error && {
-                    message: error.statusText || error.data || null
-                },
+                errorCode,
+                message: (error && (error.statusText || error.data)) || null,
                 success: false
             };
         } else {
             /* server is not availables */
-            errorCode = err.errno;
+            errorCode = err && err.errno;
             responseObject = {
                 status: (err && err.errno) || null,
                 statusText: (err && err.code) || null,
                 errorCode: err && err.errno,
-                data: (err && err.data) || {
-                    message: 'server is unavailable'
-                },
+                message: (err && err.data) || 'server is unavailable',
                 success: false
             };
         }

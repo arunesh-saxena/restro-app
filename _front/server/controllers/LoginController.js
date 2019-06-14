@@ -20,7 +20,6 @@ export default (req, res, next) => {
             res.json(response);
         })
         .catch((error) => {
-            console.log(error);
             res.send(error);
         });
 };

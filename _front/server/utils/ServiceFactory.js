@@ -35,6 +35,7 @@ const ServiceFactory = {
 
         return axios(config)
             .then((response) => {
+                // console.log(response);
                 const responseObj = response.data;
                 return responseObj;
             })
