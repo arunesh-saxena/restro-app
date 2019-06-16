@@ -14,10 +14,10 @@ export default (req, res, next) => {
 
     ServiceFactory.triggerserviceRequest(config)
         .then((response) => {
-            res.json(response);
+            res.json(response.data);
         })
         .catch((error) => {
             console.log(error);
-            res.send(error);
+            res.send(error.data);
         });
 };

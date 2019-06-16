@@ -48,11 +48,11 @@ export const uploadMenu = (req, res, next) => {
 
     ServiceFactory.triggerserviceRequest(config, true)
         .then((response) => {
-            res.json(response);
+            res.json(response.data);
         })
         .catch((error) => {
             console.log(error);
-            res.send(error);
+            res.send(error.data);
         });
 };
 
@@ -69,11 +69,11 @@ export const updateMenuItem = (req, res, next) => {
 
     ServiceFactory.triggerserviceRequest(config, true)
         .then((response) => {
-            res.json(response);
+            res.json(response.data);
         })
         .catch((error) => {
             console.log(error);
-            res.send(error);
+            res.send(error.data);
         });
 };
 
@@ -87,11 +87,11 @@ export const menuList = (req, res, next) => {
 
     ServiceFactory.triggerserviceRequest(config)
         .then((response) => {
-            res.json(response);
+            res.json(response.data);
         })
         .catch((error) => {
             console.log(error);
-            res.send(error);
+            res.send(error.data);
         });
 };
 
@@ -106,11 +106,11 @@ export const menuItem = (req, res, next) => {
 
     ServiceFactory.triggerserviceRequest(config)
         .then((response) => {
-            res.json(response);
+            res.json(response.data);
         })
         .catch((error) => {
             console.log(error);
-            res.send(error);
+            res.send(error.data);
         });
 };
 
@@ -129,11 +129,11 @@ export const changeMenuItemQuantity = (req, res, next) => {
     };
     ServiceFactory.triggerserviceRequest(config)
         .then((response) => {
-            res.json(response);
+            res.json(response.data);
         })
         .catch((error) => {
             console.log(error);
-            res.send(error);
+            res.send(error.data);
         });
 };
 
@@ -150,11 +150,11 @@ export const toggleHiddenMenuItem = (req, res, next) => {
 
     ServiceFactory.triggerserviceRequest(config)
         .then((response) => {
-            res.json(response);
+            res.json(response.data);
         })
         .catch((error) => {
             console.log(error);
-            res.send(error);
+            res.send(error.data);
         });
 };
 
