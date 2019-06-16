@@ -17,9 +17,9 @@ export default (req, res, next) => {
 
     ServiceFactory.triggerserviceRequest(config)
         .then((response) => {
-            res.json(response);
+            res.send(response.data);
         })
         .catch((error) => {
-            res.send(error);
+            res.send(error.data);
         });
 };

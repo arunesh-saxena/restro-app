@@ -2,6 +2,7 @@ import AjaxFactory from '../utils/AjaxFactory';
 import expressConstants from '../appConstants/expressEndPoint';
 import * as types from '../utils/types';
 import appUrls from '../appConstants/appUrls';
+import { ajaxRequestSuccess, ajaxRequestFailure } from './errors';
 
 export const setLoginDataStatus = data => ({
     type: types.SET_LOGIN_DATA_STATUS,
@@ -30,6 +31,7 @@ const submitFormDataSuccess = (dispatch, props) => (value) => {
         const now = new Date();
         now.setTime(now.getTime() + 60 * 60 * 1000);
         document.cookie = `_token=${_token};expires=${now.toUTCString()}; path=/`;
+        dispatch(ajaxRequestSuccess());
         dispatch(setLoginDataStatus({ username, msg: null }));
         props.history.push(appUrls.MENU_LIST);
     } else {
@@ -38,12 +40,13 @@ const submitFormDataSuccess = (dispatch, props) => (value) => {
         dispatch(
             setLoginDataStatus({ username: null, msg: value.body.data.message })
         );
+        dispatch(ajaxRequestFailure({ message: value.body.data.message }));
     }
 };
 
 const submitLoginFormDataFailure = dispatch => (value) => {
     document.cookie = '_token=;expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/';
-    console.log(value);
+    dispatch(ajaxRequestFailure(error));
 };
 
 export const submitLogin = (formData, props) => {
