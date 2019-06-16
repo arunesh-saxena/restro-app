@@ -14,33 +14,35 @@ const AjaxFactory = {
         // if (options.headers) {
         //      config.headers = options.headers;
         // }
-        return axios(config).then(
-            (response) => {
-                const responseObject = {
-                    data: response.data || [],
-                    status: response.status,
-                    statusText: response.statusText,
-                    ajaxRequestStatus: 'success'
-                };
-                if (!response.data.hasOwnProperty('errorCode')) {
-                    responseObject.ajaxRequestStatus = 'success';
-                } else {
-                    responseObject.ajaxRequestStatus = 'failure';
-                }
-                return { body: responseObject };
-            },
-            (error) => {
-                const responseObject = {
-                    ajaxRequestStatus: 'failure',
-                    errorCode:
-                        error && (error.response && error.response.status),
-                    errorData:
-                        (error && (error.response && error.response.data)) ||
-                        null
-                };
-                return responseObject;
-            }
-        );
+        return new Promise((resolve, reject) => {
+            axios(config)
+                .then((response) => {
+                    const responseObject = {
+                        data: response.data || [],
+                        status: response.status,
+                        statusText: response.statusText,
+                        ajaxRequestStatus: 'success'
+                    };
+                    if (!response.data.hasOwnProperty('errorCode')) {
+                        responseObject.ajaxRequestStatus = 'success';
+                    } else {
+                        responseObject.ajaxRequestStatus = 'failure';
+                    }
+                    return resolve({ body: responseObject });
+                })
+                .catch((error) => {
+                    const responseObject = {
+                        ajaxRequestStatus: 'failure',
+                        errorCode:
+                            error && (error.response && error.response.status),
+                        errorData:
+                            (error &&
+                                (error.response && error.response.data)) ||
+                            null
+                    };
+                    return reject({ body: responseObject });
+                });
+        });
     }
 };
 

@@ -32,14 +32,21 @@ const ServiceFactory = {
         if (!options.headers) {
             delete options.headers;
         }
-
-        return axios(config)
-            .then((response) => {
-                // console.log(response);
-                const responseObj = response.data;
-                return responseObj;
-            })
-            .catch(error => errorHandler(error));
+        return new Promise((resolve, reject) => {
+            axios(config)
+                .then((response) => {
+                    const responseObject = response.data;
+                    return resolve({
+                        data: responseObject
+                    });
+                })
+                .catch((error) => {
+                    const responseObject = errorHandler(error);
+                    return reject({
+                        data: responseObject
+                    });
+                });
+        });
     }
 };
 
