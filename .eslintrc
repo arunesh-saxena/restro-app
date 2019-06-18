@@ -104,6 +104,7 @@
         "no-lone-blocks": 0,
         "no-unused-expressions": 0,
         "jsx-a11y/label-has-for": 0,
+        "jsx-a11y/label-has-associated-control": 0,
         "jsx-a11y/no-onchange": 0,
         "jsx-a11y/mouse-events-have-key-events": 0,
         "jsx-a11y/onclick-has-role": 0,
