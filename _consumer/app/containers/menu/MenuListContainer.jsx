@@ -1,14 +1,12 @@
 import React from 'react';
 
-import { Link } from 'react-router-dom';
-import AppUrls from '../../appConstants/appUrls';
-import MenuItem from '../../components/menuItem/MenuItemContainer';
+import MenuItem from '../../components/menuItem/MenuItem';
 import SearchBox from '../../components/SearchBox/SearchBox';
 import Heading from '../../components/heading/Heading';
 
 const renderHeading = labels => <Heading text={labels.menuList} />;
 
-const renderMenuList = (menuList, labels, quantityHandler, toggleHandler) => {
+const renderMenuList = (menuList, labels, addToCartHandler, toggleHandler) => {
     if (!menuList || !menuList.length) {
         return (
             <p>
@@ -23,8 +21,7 @@ const renderMenuList = (menuList, labels, quantityHandler, toggleHandler) => {
             <MenuItem
                 labels={labels}
                 item={item}
-                quantityHandler={quantityHandler}
-                toggleHandler={toggleHandler}
+                addToCartHandler={addToCartHandler}
             />
         </li>
     ));
@@ -32,14 +29,13 @@ const renderMenuList = (menuList, labels, quantityHandler, toggleHandler) => {
     return <ul className="list-group">{liElm}</ul>;
 };
 const MenuListContainer = (props) => {
-    const { menuList, quantityHandler, toggleHandler } = props;
+    const { menuList, addToCartHandler, toggleHandler } = props;
     const { common: labels } = props.labels;
 
     return (
         <div className="menu-list-container">
             <div className="row justify-content-md-center">
                 <div className="col-xs-12 col-md-12">
-                    dsdsdsd
                     <div className="heading-section">
                         {renderHeading(labels)}
                         <SearchBox
@@ -51,7 +47,7 @@ const MenuListContainer = (props) => {
                     {renderMenuList(
                         menuList,
                         labels,
-                        quantityHandler,
+                        addToCartHandler,
                         toggleHandler
                     )}
                 </div>

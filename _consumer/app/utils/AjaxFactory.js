@@ -8,7 +8,7 @@ const AjaxFactory = {
             data: options.data || {},
             withCredentials: true,
             proxy: {
-                port: 3030
+                port: 4040
             }
         };
         // if (options.headers) {

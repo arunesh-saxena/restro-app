@@ -1,24 +1,12 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import commonUtil from '../../utils/commonUtils';
-import AppUrls from '../../appConstants/appUrls';
-import NumberSelector from '../NumberSelector/NumberSelector';
 import Image from '../image/Image';
 
 const MenuItem = (props) => {
-    const quantityHandler = (selectedNumber) => {
+    const addToCartHandler = (selectedNumber) => {
         const itemData = {
-            itemId: props.item.id,
-            quantity: selectedNumber
+            itemId: props.item.id
         };
-        props.quantityHandler(itemData);
-    };
-    const toggleHiddenMenuItemHandler = (value) => {
-        const itemData = {
-            itemId: props.item.id,
-            isHidden: value
-        };
-        props.toggleHandler(itemData);
+        props.addToCartHandler(itemData);
     };
     return (
         <div className="menu-item">
@@ -43,20 +31,7 @@ const MenuItem = (props) => {
             <div className="item-info">
                 <div className="info-row">
                     <div className="row-header">{props.labels.itemName}</div>
-                    <div className="row-value">
-                        {props.item.itemName}
-                        <span className="code">{props.item.itemCode}</span>
-                    </div>
-                </div>
-
-                <div className="info-row">
-                    <div className="row-header">{props.labels.quantity}</div>
-                    <div className="row-value quantity-selector-container">
-                        <NumberSelector
-                            number={props.item.quantity}
-                            changeNumberHandler={quantityHandler}
-                        />
-                    </div>
+                    <div className="row-value">{props.item.itemName}</div>
                 </div>
 
                 <div className="info-row">
@@ -65,22 +40,24 @@ const MenuItem = (props) => {
                         {props.item.price} {props.item.unit}
                     </div>
                 </div>
-
                 <div className="info-row">
-                    <div className="row-header">{props.labels.lastUpdate}</div>
+                    <div className="row-header">{props.labels.itemCode}</div>
                     <div className="row-value">
-                        {commonUtil.getDate(props.item.updatedAt)}
+                        <span className="code">{props.item.itemCode}</span>
                     </div>
                 </div>
-
                 <div className="info-row">
                     <div className="row-header">{props.labels.action}</div>
-                    <div className="row-value">
-                        <span>
-                            <Link to={`${AppUrls.EDIT_MENU}/${props.item.id}`}>
-                                {props.labels.edit}
-                            </Link>
-                        </span>
+                    <div className="row-value quantity-selector-container">
+                        <button
+                            type="button"
+                            className="btn btn-primary btn-sm"
+                            onClick={() => {
+                                addToCartHandler();
+                            }}
+                        >
+                            {props.labels.addToCart}
+                        </button>
                     </div>
                 </div>
             </div>

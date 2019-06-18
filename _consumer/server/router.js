@@ -1,5 +1,11 @@
 import expressConstants from '../app/appConstants/expressEndPoint';
 
+import {
+    menuList,
+    menuItem,
+    changeMenuItemQuantity
+} from './controllers/MenuController';
+
 const express = require('express');
 const multer = require('multer');
 
@@ -24,5 +30,13 @@ routes.get(expressConstants.TEST_API.url, (req, res) => {
         data: { msg: 'testing done' }
     });
 });
+/* Menu action  */
+
+routes.post(expressConstants.MENU_LIST.url, menuList);
+routes.get(`${expressConstants.MENU_ITEM.url}/:itemID`, menuItem);
+routes.post(
+    expressConstants.MENU_ITEM_QUANITY_CHANGE.url,
+    changeMenuItemQuantity
+);
 
 module.exports = routes;

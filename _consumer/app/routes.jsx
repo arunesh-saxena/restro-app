@@ -2,6 +2,7 @@ import React from 'react';
 import Loadable from 'react-loadable';
 import AppUrls from './appConstants/appUrls';
 import App from './pages/App';
+import { getMenuList } from './actions/menuAction';
 
 const HomePage = Loadable({
     loader: () => import(/* webpackChunkName: "HomePage" */ './pages/HomePage'),
@@ -51,6 +52,7 @@ export default store => [
             {
                 path: AppUrls.menuList,
                 exact: true,
+                need: [getMenuList],
                 component: Loadable({
                     loader: () =>
                         import(

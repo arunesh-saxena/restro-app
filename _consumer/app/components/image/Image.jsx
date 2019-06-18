@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const Image = (props) => {
     const imageURL =
-        props.imgURL || 'http://localhost:3030/assets/images/dummy.png';
+        props.imgURL || 'http://localhost:4040/assets/images/dummy.png';
     return (
         <div className="img-section">
             <picture>
