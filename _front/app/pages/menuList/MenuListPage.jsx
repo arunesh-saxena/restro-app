@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{Component} from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import MenuListContainer from '../../containers/menu/MenuListContainer';
@@ -10,7 +10,7 @@ import {
     setMenuItemFilter
 } from '../../actions/menuAction';
 
-class MenuListPage extends React.Component {
+class MenuListPage extends Component {
     changeProductQuantity(item) {
         const itemData = {
             itemId: item.itemId,
