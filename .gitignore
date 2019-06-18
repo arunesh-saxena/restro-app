@@ -12,3 +12,11 @@ _front/compiled
 _server/node_modules
 
 # _db
+
+# _consumer
+.idea
+node_modules
+_consumer/node_modules
+_consumer/dist
+_consumer/public
+_consumer/compiled

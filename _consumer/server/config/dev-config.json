@@ -1,0 +1,109 @@
+{
+    "signUp": {
+        "default": {
+            "module": "SIGN_UP",
+            "url": "http://localhost:3000/api/singup",
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
+    },
+    "login": {
+        "default": {
+            "module": "LOGIN",
+            "url": "http://localhost:3000/api/login",
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
+    },
+    "logout": {
+        "default": {
+            "module": "LOGOUT",
+            "url": "http://localhost:3000/api/logout",
+            "method": "GET",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
+    },
+    "islogin": {
+        "default": {
+            "module": "LOGOUT",
+            "url": "http://localhost:3000/api/isLogin",
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
+    },
+    "menuUpload": {
+        "default": {
+            "module": "menuUpload",
+            "url": "http://localhost:3000/api/menu/add",
+            "method": "POST"
+        }
+    },
+    "menuList": {
+        "default": {
+            "module": "menuList",
+            "url": "http://localhost:3000/api/menu/list",
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
+    },
+    "menuItem": {
+        "default": {
+            "module": "menuItem",
+            "url": "http://localhost:3000/api/menu/getMenuItem/",
+            "method": "GET",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
+    },
+    "menuItemUpdate": {
+        "default": {
+            "module": "menuItemUpdate",
+            "url": "http://localhost:3000/api/menu/updateMenuItem/",
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
+    },
+    "changeMenuItemQuantity": {
+        "default": {
+            "module": "changeMenuItemQuantity",
+            "url": "http://localhost:3000/api/menu/changeMenuItemQuantity/",
+            "method": "PUT",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
+    },
+    "toggleHiddenMenuItem": {
+        "default": {
+            "module": "toggleHiddenMenuItem",
+            "url": "http://localhost:3000/api/menu/toggleHiddenMenuItem/",
+            "method": "PUT",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
+    },
+    "deleteMenuItem": {
+        "default": {
+            "module": "deleteMenuItem",
+            "url": "http://localhost:3000/api/menu/deleteMenuItem/",
+            "method": "DELETE",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
+    }
+}

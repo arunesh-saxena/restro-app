@@ -1,0 +1,22 @@
+// import all the custom scss files here
+
+// Common files
+@import 'common/fonts';
+@import 'common/variables';
+@import 'common/breakpoints';
+@import 'common/base';
+@import 'common/icons';
+
+// Components
+@import '../components/header/header';
+@import '../components/footer/footer';
+@import '../components/NumberSelector/numberSelector';
+@import '../components/SearchBox/searchBox';
+@import '../components/image/image';
+@import '../components/heading/heading';
+@import '../components//serverErrors/serverErrors';
+
+// Container
+
+// page../
+@import '../pages/app';
