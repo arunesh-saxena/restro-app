@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import commonUtil from '../../utils/commonUtils';
 import AppUrls from '../../appConstants/appUrls';
 import NumberSelector from '../NumberSelector/NumberSelector';
-import ToggleButton from '../toggleButton/ToggleButton';
 import Image from '../image/Image';
 
 const MenuItem = (props) => {
@@ -64,18 +63,6 @@ const MenuItem = (props) => {
                     <div className="row-header">{props.labels.rate}</div>
                     <div className="row-value">
                         {props.item.price} {props.item.unit}
-                    </div>
-                </div>
-
-                <div className="info-row">
-                    <div className="row-header">{props.labels.hidden}</div>
-                    <div className="row-value">
-                        <ToggleButton
-                            toggleHandler={toggleHiddenMenuItemHandler}
-                            initialValue={props.item.isHidden}
-                            checkedLabel={props.labels.yes}
-                            unCheckedLabel={props.labels.no}
-                        />
                     </div>
                 </div>
 

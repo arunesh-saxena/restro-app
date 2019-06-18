@@ -46,6 +46,17 @@ class Header extends Component {
                         </span>
                     </Link>
                 </li>
+                <li>
+                    <Link to={AppUrls.menuList}>
+                        <span
+                            role="button"
+                            tabIndex="0"
+                            onClick={this.toggleMainMenu}
+                        >
+                            {this.labels.menuList}
+                        </span>
+                    </Link>
+                </li>
             </ul>
         );
     }
@@ -55,8 +66,6 @@ class Header extends Component {
         return (
             <div className="header-container">
                 <header className="header container">
-                    {/* <div className="row">
-                        <div className="col-12"> */}
                     <div className="app-logo">
                         <Link to={`${AppUrls.ROOT}`}>
                             <img src="/assets/images/logo.png" alt="logo" />
@@ -75,8 +84,6 @@ class Header extends Component {
                         />
                         <div className="nav-menu">{this.navBar()}</div>
                     </div>
-                    {/* </div>
-                    </div> */}
                 </header>
             </div>
         );

@@ -49,6 +49,17 @@ export default store => [
                 ]
             },
             {
+                path: AppUrls.menuList,
+                exact: true,
+                component: Loadable({
+                    loader: () =>
+                        import(
+                            /* webpackChunkName: "MenuListPage" */ './pages/menuList/MenuListPage'
+                        ),
+                    loading: () => <strong>Loading...</strong>
+                })
+            },
+            {
                 path: '*',
                 exact: false,
                 component: Loadable({
