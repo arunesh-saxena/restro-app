@@ -1,37 +1,37 @@
 {
-  "name": "restro-app-server",
-  "version": "1.0.0",
-  "description": "server api for restro app",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon index.js"
-  },
-  "author": "Arunesh Saxena Software Enginer",
-  "license": "ISC",
-  "engines": {
-    "node": ">=10.10.0"
-  },
-  "dependencies": {
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.19.0",
-    "connect-redis": "^3.4.1",
-    "cookie-parser": "^1.4.4",
-    "cors": "^2.8.5",
-    "ejs": "^2.6.1",
-    "express": "^4.17.1",
-    "express-session": "^1.16.2",
-    "express-validator": "^3.2.1",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^4.13.18",
-    "multer": "^1.4.1",
-    "passport": "^0.3.2",
-    "passport-http": "^0.3.0",
-    "passport-local": "^1.0.0",
-    "redis": "^2.8.0",
-    "socket.io": "^2.2.0"
-  },
-  "devDependencies": {
-    "nodemon": "^1.19.1"
-  }
+    "name": "restro-app-server",
+    "version": "1.0.0",
+    "description": "server api for restro app",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "nodemon index.js"
+    },
+    "author": "Arunesh Saxena Software Enginer",
+    "license": "ISC",
+    "engines": {
+        "node": ">=10.10.0"
+    },
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.19.0",
+        "connect-redis": "^3.4.1",
+        "cookie-parser": "^1.4.4",
+        "cors": "^2.8.5",
+        "ejs": "^2.6.1",
+        "express": "^4.17.1",
+        "express-session": "^1.16.2",
+        "express-validator": "^3.2.1",
+        "jsonwebtoken": "^8.5.1",
+        "mongoose": "^5.6.0",
+        "multer": "^1.4.1",
+        "passport": "^0.3.2",
+        "passport-http": "^0.3.0",
+        "passport-local": "^1.0.0",
+        "redis": "^2.8.0",
+        "socket.io": "^2.2.0"
+    },
+    "devDependencies": {
+        "nodemon": "^1.19.1"
+    }
 }
