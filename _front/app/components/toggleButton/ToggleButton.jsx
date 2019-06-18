@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class ToggleButton extends React.Component {
+class ToggleButton extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -28,10 +28,10 @@ class ToggleButton extends React.Component {
         const checkStatus = this.state.value ? 'checked' : 'un-checked';
         return (
             <div className={`toggle-button ${className} ${checkStatus}`}>
-                <label className="switch" htmlFor="toggle-button-checkox">
+                <label className="switch-label">
                     <input
                         type="checkbox"
-                        id="toggle-button-checkox"
+                        className="toggle-button-checkox"
                         checked={this.state.value}
                         onChange={(e) => {
                             this.changeHandler(e);
@@ -51,7 +51,6 @@ ToggleButton.propTypes = {
     toggleHandler: PropTypes.func.isRequired,
     initialValue: PropTypes.bool.isRequired,
     className: PropTypes.string,
-    // label: PropTypes.string,
     checkedLabel: PropTypes.string,
     unCheckedLabel: PropTypes.string
 };
