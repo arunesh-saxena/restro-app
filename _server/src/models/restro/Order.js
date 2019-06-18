@@ -1,9 +1,9 @@
 // import { setTimeout } from 'timers'; import { setTimeout } from 'timers';
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 const CONSTANT = require('../../constants');
 
-let orderSchema = new mongoose.Schema({
+const orderSchema = new mongoose.Schema({
     id: {
         type: Number,
         default: 1
@@ -19,7 +19,7 @@ let orderSchema = new mongoose.Schema({
                     type: Number,
                     required: true
                 },
-                itemName:{
+                itemName: {
                     type: String,
                     require: true
                 },
@@ -60,16 +60,13 @@ let orderSchema = new mongoose.Schema({
     }
 });
 
-var Order = mongoose.model('order', orderSchema);
-
 orderSchema.pre('save', function (next) {
-    var doc = this;
-    Order
-        .find({})
+    const doc = this;
+    Order.find({})
         .select('id')
-        .sort({id: -1})
+        .sort({ id: -1 })
         .limit(1)
-        .exec(function (err, data) {
+        .exec((err, data) => {
             if (data.length) {
                 doc.id = ++data[0].id;
             }
@@ -77,5 +74,7 @@ orderSchema.pre('save', function (next) {
             next();
         });
 });
+
+var Order = mongoose.model('order', orderSchema);
 
 module.exports = Order;
