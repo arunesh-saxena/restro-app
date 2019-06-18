@@ -1,11 +1,11 @@
-# _front
+# _restro
 
 .idea
 node_modules
-_front/node_modules
-_front/dist
-_front/public
-_front/compiled
+_restro/node_modules
+_restro/dist
+_restro/public
+_restro/compiled
 
 
 # _server

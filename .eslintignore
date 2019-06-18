@@ -1,9 +1,9 @@
-_front/compiled/**
-_front/public/**
-_front/webpack/**
-_front/api/promiseMiddleware.js
-_front/app/third-party/
-_front/node_modules/
+_restro/compiled/**
+_restro/public/**
+_restro/webpack/**
+_restro/api/promiseMiddleware.js
+_restro/app/third-party/
+_restro/node_modules/
 
 
 _server/node_modules/

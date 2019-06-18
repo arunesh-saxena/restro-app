@@ -1,5 +1,5 @@
-# _front contains admin front end source code
-- cd _front
+# _restro contains admin front end source code
+- cd _restro
 http://localhost:3030/
 
 # _server contains restro apis source code

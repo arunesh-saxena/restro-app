@@ -6,13 +6,13 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "lint": "npm run lint:js && npm run lint:scss",
-        "lint:js": "eslint --quiet --ext .js,.jsx _front/app _front/server _consumer/app _consumer/server",
+        "lint:js": "eslint --quiet --ext .js,.jsx _restro/app _restro/server _consumer/app _consumer/server",
         "lint:scss": "stylelint --quiet \"**/*.scss\"",
         "lint:fix": "npm run lint:js:fix && npm run lint:scss:fix",
-        "lint:js:fix": "eslint --quiet --ext .js,.jsx _front/app _front/server _consumer/app _consumer/server --fix",
+        "lint:js:fix": "eslint --quiet --ext .js,.jsx _restro/app _restro/server _consumer/app _consumer/server --fix",
         "lint:scss:fix": "stylelint \"**/*.scss\" --fix",
-        "pretty": "prettier --write '{_front/app, _front/server,_consumer/app, _consumer/server}/**/*.{js,jsx,json,scss}'",
-        "format": "prettier-eslint  --write '{_front/app, _front/server,_consumer/app, _consumer/server}/**/*.{js,jsx,json,scss}'"
+        "pretty": "prettier --write '{_restro/app, _restro/server,_consumer/app, _consumer/server}/**/*.{js,jsx,json,scss}'",
+        "format": "prettier-eslint  --write '{_restro/app, _restro/server,_consumer/app, _consumer/server}/**/*.{js,jsx,json,scss}'"
     },
     "husky": {
         "hooks": {
