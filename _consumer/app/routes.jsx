@@ -50,13 +50,25 @@ export default store => [
                 ]
             },
             {
-                path: AppUrls.menuList,
+                path: AppUrls.MENULIST,
                 exact: true,
                 need: [getMenuList],
                 component: Loadable({
                     loader: () =>
                         import(
                             /* webpackChunkName: "MenuListPage" */ './pages/menuList/MenuListPage'
+                        ),
+                    loading: () => <strong>Loading...</strong>
+                })
+            },
+            {
+                path: AppUrls.CART,
+                exact: true,
+                need: [],
+                component: Loadable({
+                    loader: () =>
+                        import(
+                            /* webpackChunkName: "CartPage" */ './pages/cart/CartPage'
                         ),
                     loading: () => <strong>Loading...</strong>
                 })
