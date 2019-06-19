@@ -4,10 +4,15 @@ import { bindActionCreators } from 'redux';
 import appConstants from '../../appConstants/appConstants';
 import MenuListContainer from '../../containers/menu/MenuListContainer';
 import { getMenuList, setMenuItemFilter } from '../../actions/menuAction';
+import { addToCart } from '../../actions/cartAction';
 
 class MenuListPage extends Component {
     addToCartHandler(item) {
-        console.log('TODO: addToCart', item);
+        const data = {
+            itemId: item.itemId,
+            quantity: 1
+        };
+        this.props.addToCart(data);
     }
     changeSearchHandler(searchText) {
         const { menuList } = this.props;
@@ -44,7 +49,8 @@ const mapDispatchToProps = dispatch =>
     bindActionCreators(
         {
             getMenuList,
-            setMenuItemFilter
+            setMenuItemFilter,
+            addToCart
         },
         dispatch
     );

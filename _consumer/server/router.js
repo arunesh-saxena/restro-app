@@ -35,7 +35,7 @@ routes.get(expressConstants.TEST_API.url, (req, res) => {
 routes.post(expressConstants.MENU_LIST.url, menuList);
 routes.get(`${expressConstants.MENU_ITEM.url}/:itemID`, menuItem);
 routes.post(
-    expressConstants.MENU_ITEM_QUANITY_CHANGE.url,
+    expressConstants.MENU_ITEM_QUANTITY_CHANGE.url,
     changeMenuItemQuantity
 );
 

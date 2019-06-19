@@ -6,15 +6,19 @@ const expressConstants = {
         method: 'GET'
     },
     MENU_LIST: {
-        url: '/MENU_LIST',
+        url: '/menu_list',
         method: 'POST'
     },
     MENU_ITEM: {
-        url: '/MENU_ITEM',
+        url: '/menu_item',
         method: 'GET'
     },
-    MENU_ITEM_QUANITY_CHANGE: {
-        url: '/MENU_ITEM_QUANITY_CHANGE',
+    MENU_ITEM_QUANTITY_CHANGE: {
+        url: '/menu_item_quantity_change',
+        method: 'POST'
+    },
+    CART: {
+        url: '/CART',
         method: 'POST'
     }
 };

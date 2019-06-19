@@ -14,6 +14,9 @@ export const MENU_ITEM = 'MENU_ITEM';
 export const MENU_INITIAL_ITEM = 'MENU_INITIAL_ITEM';
 export const MENU_LIST_FILTERED = 'MENU_LIST_FILTERED';
 
-// ajax request
+/* Cart */
+export const ADD_TO_CART = 'ADD_TO_CART';
+
+/* ajax request */
 export const AJAX_REQUEST_SUCCESS = 'AJAX_REQUEST_SUCCESS';
 export const AJAX_REQUEST_FAILURE = 'AJAX_REQUEST_FAILURE';
