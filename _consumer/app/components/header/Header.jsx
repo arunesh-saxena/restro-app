@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import AppUrls from '../../appConstants/appUrls';
+import CartLink from '../cartLink/CartLink';
 
 class Header extends Component {
     constructor(props) {
@@ -47,7 +48,7 @@ class Header extends Component {
                     </Link>
                 </li>
                 <li>
-                    <Link to={AppUrls.menuList}>
+                    <Link to={AppUrls.MENULIST}>
                         <span
                             role="button"
                             tabIndex="0"
@@ -56,6 +57,9 @@ class Header extends Component {
                             {this.labels.menuList}
                         </span>
                     </Link>
+                </li>
+                <li>
+                    <CartLink headerLabel={this.labels.cart} />
                 </li>
             </ul>
         );

@@ -35,7 +35,8 @@ const appConstants = {
             edit: 'Edit',
             search: 'Search',
             addToCart: 'Add to Cart',
-            itemCode: 'Item Code'
+            itemCode: 'Item Code',
+            cart: 'Cart'
         },
         error: {
             required: 'Required',
