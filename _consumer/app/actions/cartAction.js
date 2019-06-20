@@ -7,7 +7,19 @@ export const addToCart = data => ({
     data
 });
 
-export const getCart = () => {
+export const placeOrder = (orderData) => {
+    const api = expressConstants.MENU_LIST;
+    const option = {
+        method: api.method,
+        url: api.url
+    };
+    return dispatch => ({
+        type: 'orderPlaced',
+        data: 'orderdata'
+    });
+};
+
+/* export const getCart = () => {
     const api = expressConstants.MENU_LIST;
     const option = {
         method: api.method,
@@ -19,4 +31,4 @@ export const getCart = () => {
             .catch((error) => {
                 console.log(error);
             });
-};
+}; */
