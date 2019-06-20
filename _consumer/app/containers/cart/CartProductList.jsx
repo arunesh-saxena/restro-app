@@ -49,7 +49,7 @@ const CartProductList = (props) => {
     };
 
     const renderListHeader = () => (
-        <div className="row product-list-heading">
+        <div className="row cart-product-header">
             <div className="product-col-header col-md-6 product-col-name">
                 {labels.common.product}
             </div>
@@ -68,27 +68,31 @@ const CartProductList = (props) => {
     const renderCartProductList = () => {
         const cartProductList = getCartProductList();
         const list = cartProductList.map((item, ind) => (
-            <div key={ind} className="row product-row-content">
-                <div className="col-12 col-md-6 cart-data-col cart-col-name">
-                    <div className="row">
-                        <div className="col-6 col-md-6">
-                            <Image
-                                imgURL={`http://localhost:3000/${item.imageURL}`}
-                                alt={item.itemName}
-                                title={item.itemName}
-                            />
+            <div key={ind} className="cart-product-row ">
+                <div className="row product-row-content">
+                    <div className="col-12 col-md-6 cart-data-col cart-col-name">
+                        <div className="row">
+                            <div className="col-6 col-md-6">
+                                <Image
+                                    imgURL={`http://localhost:3000/${item.imageURL}`}
+                                    alt={item.itemName}
+                                    title={item.itemName}
+                                />
+                            </div>
+                            <div className="col-6 col-md-6">
+                                {item.itemName}
+                            </div>
                         </div>
-                        <div className="col-6 col-md-6">{item.itemName}</div>
                     </div>
-                </div>
-                <div className="col-md-2 cart-data-col cart-col-rate">
-                    {item.price} {item.unit}
-                </div>
-                <div className="col-md-2 cart-data-col cart-col-quantity">
-                    {item.quantity}
-                </div>
-                <div className="col-md-1 offset-md-1 cart-data-col cart-col-total">
-                    {item.quantity * item.price}
+                    <div className="col-md-2 cart-data-col cart-col-rate">
+                        {item.price} {item.unit}
+                    </div>
+                    <div className="col-md-2 cart-data-col cart-col-quantity">
+                        {item.quantity}
+                    </div>
+                    <div className="col-md-1 offset-md-1 cart-data-col cart-col-total">
+                        {item.quantity * item.price}
+                    </div>
                 </div>
             </div>
         ));
@@ -96,9 +100,11 @@ const CartProductList = (props) => {
     };
 
     return (
-        <div className="cart-product-list">
+        <div className="cart-product-container">
             {renderListHeader()}
-            {renderCartProductList()}
+            <div className="row cart-product-list">
+                <div className="col">{renderCartProductList()}</div>
+            </div>
         </div>
     );
 };
