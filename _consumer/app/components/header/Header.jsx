@@ -58,6 +58,13 @@ class Header extends Component {
                         </span>
                     </Link>
                 </li>
+            </ul>
+        );
+    }
+
+    cartBar() {
+        return (
+            <ul className="nav-bar cart-bar">
                 <li>
                     <CartLink headerLabel={this.labels.cart} />
                 </li>
@@ -86,7 +93,10 @@ class Header extends Component {
                             className="btn icon-cross cross-menu btn-icon"
                             onClick={this.toggleMainMenu}
                         />
-                        <div className="nav-menu">{this.navBar()}</div>
+                        <div className="nav-menu">
+                            {this.navBar()}
+                            {this.cartBar()}
+                        </div>
                     </div>
                 </header>
             </div>
