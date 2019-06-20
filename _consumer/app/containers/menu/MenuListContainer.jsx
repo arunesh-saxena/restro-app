@@ -35,7 +35,7 @@ const MenuListContainer = (props) => {
     return (
         <div className="menu-list-container">
             <div className="row justify-content-md-center">
-                <div className="col-xs-12 col-md-12">
+                <div className="col-12 col-md-12">
                     <div className="heading-section">
                         {renderHeading(labels)}
                         <SearchBox

@@ -12,6 +12,11 @@ export const setInitialMenuItem = data => ({
     data
 });
 
+export const setMenuItemFilter = data => ({
+    type: types.MENU_LIST_FILTERED,
+    data
+});
+
 export const getMenuList = () => {
     const api = expressConstants.MENU_LIST;
     const option = {
@@ -32,8 +37,10 @@ export const getMenuList = () => {
                         value.body.data.message) ||
                     null;
                 const list = (success && value.body.data.data) || [];
-                dispatch(setMenuList(list));
-                dispatch(setMenuItemFilter(list));
+                Promise.all([
+                    dispatch(setMenuList(list)),
+                    dispatch(setMenuItemFilter(list))
+                ]);
             })
             .catch((error) => {
                 console.log(error);
@@ -66,7 +73,3 @@ export const getMenuItem = (itemID) => {
                 console.log(error);
             });
 };
-export const setMenuItemFilter = data => ({
-    type: types.MENU_LIST_FILTERED,
-    data
-});

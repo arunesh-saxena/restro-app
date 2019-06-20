@@ -1,14 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import CartContainer from '../../containers/cart/CartContainer';
+import appConstants from '../../appConstants/appConstants';
 
 class CartPage extends Component {
     render() {
-        const menuList = this.props.menuListFiltered;
-        return <div>cart page comming soon</div>;
+        return (
+            <div className="cart-page">
+                <CartContainer
+                    labels={appConstants.labels}
+                    menuList={this.props.menuList}
+                />
+            </div>
+        );
     }
 }
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+    menuList: (state.menu && state.menu.menuList) || []
+});
 const mapDispatchToProps = dispatch => bindActionCreators({}, dispatch);
 
 export default connect(

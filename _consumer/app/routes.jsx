@@ -64,7 +64,7 @@ export default store => [
             {
                 path: AppUrls.CART,
                 exact: true,
-                need: [],
+                need: [getMenuList],
                 component: Loadable({
                     loader: () =>
                         import(

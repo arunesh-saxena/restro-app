@@ -1,0 +1,35 @@
+.cart-product-list {
+    .product-list-heading {
+        display: none;
+        @include breakpoint(desktop-above) {
+            display: flex;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+    }
+    .product-row-content {
+        @include breakpoint(desktop-above) {
+            height: 150px;
+            border-bottom: 1px solid;
+            padding: 40px 0;
+            overflow: hidden;
+            box-sizing: content-box;
+        }
+
+        .cart-col-rate,
+        .cart-col-quantity,
+        .cart-col-total {
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .img-section {
+            @include breakpoint(desktop-above) {
+                height: 150px;
+                overflow: hidden;
+                background: transparent;
+            }
+        }
+    }
+}

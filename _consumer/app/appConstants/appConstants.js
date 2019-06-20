@@ -36,7 +36,11 @@ const appConstants = {
             search: 'Search',
             addToCart: 'Add to Cart',
             itemCode: 'Item Code',
-            cart: 'Cart'
+            cart: 'Cart',
+            yourCart: 'Your Cart',
+            product: 'Product',
+            Equivalency: 'Equivalency',
+            total: 'Total'
         },
         error: {
             required: 'Required',
