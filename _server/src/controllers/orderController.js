@@ -1,17 +1,17 @@
-var db = require('../models'),
-    CONSTANTS = require('../constants');
+var db = require('../models');
+    var CONSTANTS = require('../constants');
 
 var addOrder = (req, res) => {
-    const body = req.body;
-    
+    const {body} = req;
+
     const order = db.Order(body).save(function (err, data) {
         sendRes(res, err, data);
       });
-    
+
 }
 var updateOrder = (req, res) => {
-    const body = req.body,
-        orderId = req.params.id;
+    const {body} = req;
+        const orderId = req.params.id;
     const setObj = {
         status: body.status,
         updatedAt: Date.now()
@@ -22,18 +22,18 @@ var updateOrder = (req, res) => {
             $set: setObj
         }, function (err, data) {
             if (err) {
-                sendRes(res, err, data);  
+                sendRes(res, err, data);
             } else {
-                getOrderbyId(orderId, function(err,data){
+                getOrderbyId(orderId, function (err, data) {
                     sendRes(res, err, data[0]);
                 })
-                  
+
             }
         });
 };
 
 var getOrderbyId = (orderId, callback) => {
-    db.Order.find({id:orderId},function(err, data){
+    db.Order.find({id:orderId}, function (err, data) {
         callback(err, data);
     });
 }
@@ -45,13 +45,13 @@ var newOrder = (req, res, body) => {
 };
 
 var getOrderList = (req, res) => {
-    db.Order.find({},function(err, data){
+    db.Order.find({}, function (err, data) {
         sendRes(res, err, data);
     });
 }
 
 var getOrder = (req, res) => {
-    const orderId = req.params.id ;
+    const orderId = req.params.id;
     getOrderbyId(orderId, (err, data) => {
         sendRes(res, err, data[0]);
     });

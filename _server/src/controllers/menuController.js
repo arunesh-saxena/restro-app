@@ -57,15 +57,13 @@ const getMenuItem = async (req, res) => {
 
 
 const updateMenuItem = (req, res) => {
-    console.log('updateMenuItem')
     const { body } = req;
     if (req.file && req.file.path) {
         body.imageURL = req.file && req.file.path;
     }
     const itemId = parseInt(body.itemId);
 
-    db.Menu.updateOne
-        ({ id: itemId },
+    db.Menu.updateOne({ id: itemId },
         {
             $set: {
                 ...body

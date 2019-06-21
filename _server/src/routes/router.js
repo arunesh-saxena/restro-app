@@ -30,7 +30,7 @@ const cartCtrl = require('../controllers/cartContoller');
 
 const CONSTANTS = require('../constants');
 
-let token_secret = CONSTANTS.token_secret;
+const {token_secret} = CONSTANTS;
 
 const isAuthenticated = (req, res, next) => {
     // check for token in the header first, then if not provided, it checks whether it's supplied in the body of the request

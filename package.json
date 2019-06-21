@@ -9,7 +9,7 @@
         "lint:js": "eslint --quiet --ext .js,.jsx _restro/app _restro/server _consumer/app _consumer/server _server/src",
         "lint:scss": "stylelint --quiet \"**/*.scss\"",
         "lint:fix": "npm run lint:js:fix && npm run lint:scss:fix",
-        "lint:js:fix": "eslint --quiet --ext .js,.jsx _restro/app _restro/server _consumer/app _consumer/server --fix",
+        "lint:js:fix": "eslint --quiet --ext .js,.jsx _restro/app _restro/server _consumer/app _consumer/server _server/src --fix",
         "lint:scss:fix": "stylelint \"**/*.scss\" --fix",
         "pretty": "prettier --write '{_restro/app, _restro/server,_consumer/app, _consumer/server}/**/*.{js,jsx,json,scss}'",
         "format": "prettier-eslint  --write '{_restro/app, _restro/server,_consumer/app, _consumer/server}/**/*.{js,jsx,json,scss}'"

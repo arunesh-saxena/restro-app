@@ -55,9 +55,7 @@ const placeOrder = async (req, res) => {
                 success: true,
                 data: result
             });
-        }
-        catch (error) {
-            console.log(error);
+        } catch (error) {
             res.json({
                 success: false,
                 message: error
