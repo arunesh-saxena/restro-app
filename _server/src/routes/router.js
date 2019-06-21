@@ -23,14 +23,16 @@ routes.post('/imageUpload', upload, function (req, res) {
 });
 
 /* controllers */
-var userCtrl = require('../controllers/userController'),
-    menuCtrl = require('../controllers/menuController'),
-    orderCtrl = require('../controllers/orderController');
-var CONSTANTS = require('../constants');
+const userCtrl = require('../controllers/userController');
+const menuCtrl = require('../controllers/menuController');
+const orderCtrl = require('../controllers/orderController');
+const cartCtrl = require('../controllers/cartContoller');
+
+const CONSTANTS = require('../constants');
 
 let token_secret = CONSTANTS.token_secret;
 
-var isAuthenticated = (req, res, next) => {
+const isAuthenticated = (req, res, next) => {
     // check for token in the header first, then if not provided, it checks whether it's supplied in the body of the request
     var token = req.headers['x-access-token'] || req.body.token;
     if (token) {
@@ -58,7 +60,7 @@ var isAuthenticated = (req, res, next) => {
         });
     }
 };
-var issue2options = {
+const issue2options = {
     origin: [CONSTANTS.allowedOrigin, CONSTANTS.allowedOrigin2, CONSTANTS.allowedOrigin3, CONSTANTS.allowedOrigin4],
     methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
@@ -113,6 +115,8 @@ routes.put('/order/:id/', orderCtrl.updateOrder);
 routes.get('/order/:id', orderCtrl.getOrder);
 
 routes.get('/orders/', orderCtrl.getOrderList);
+
+routes.post('/placeOrder', cartCtrl.placeOrder)
 
 /* Restro end */
 

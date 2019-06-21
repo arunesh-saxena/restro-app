@@ -1,10 +1,9 @@
-
-var User = require('./User');
-var Menu = require('./restro/Menu');
-var Order = require('./restro/Order');
+const User = require('./User');
+const Menu = require('./restro/Menu');
+const Order = require('./restro/Order');
 
 module.exports = {
     User,
     Menu,
-    Order : Order
-}
+    Order
+};

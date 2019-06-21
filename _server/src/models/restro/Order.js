@@ -8,7 +8,11 @@ const orderSchema = new mongoose.Schema({
         type: Number,
         default: 1
     },
-    orderBy: {
+    token: {
+        type: Number,
+        default: 0
+    },
+    tableId: {
         type: Number,
         required: true
     },
@@ -23,7 +27,7 @@ const orderSchema = new mongoose.Schema({
                     type: String,
                     require: true
                 },
-                qnty: {
+                quantity: {
                     type: Number,
                     required: true
                 },
@@ -38,10 +42,18 @@ const orderSchema = new mongoose.Schema({
                 itemCode: {
                     type: String,
                     default: null
+                },
+                itemCost: {
+                    type: Number,
+                    default: 0
                 }
             }
         ],
         required: true
+    },
+    totalCost: {
+        type: Number,
+        default: 0
     },
     status: {
         type: String,
@@ -70,11 +82,12 @@ orderSchema.pre('save', function (next) {
             if (data.length) {
                 doc.id = ++data[0].id;
             }
+            doc.token = doc.id;
             doc.createdAt = Date.now();
             next();
         });
 });
 
-var Order = mongoose.model('order', orderSchema);
+const Order = mongoose.model('order', orderSchema);
 
 module.exports = Order;
