@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-let userSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     username: {
         type: String,
         unique: true,
@@ -14,7 +14,7 @@ let userSchema = new mongoose.Schema({
         unique: true,
         dropDups: true,
         required: true,
-        index: true,
+        index: true
     },
     password: {
         type: String,
@@ -22,10 +22,10 @@ let userSchema = new mongoose.Schema({
         minlength: [8, 'Username must be 9 characters or more']
     },
     isDeleted: { type: Boolean, default: false },
-    role:{ type: Number, default:2 },
+    role: { type: Number, default: 2 },
     createdAt: { type: Date, default: Date.now },
 });
 
-var User = mongoose.model('users', userSchema);
+const User = mongoose.model('users', userSchema);
 
 module.exports = User;

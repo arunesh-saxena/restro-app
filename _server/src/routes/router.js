@@ -1,11 +1,12 @@
-var express = require('express');
-var routes = express.Router();
-// var session = require('express-session');
-var cors = require('cors');
-var multer = require('multer');
-var jwt = require('jsonwebtoken');
+const express = require('express');
 
-var storage = multer.diskStorage({
+const routes = express.Router();
+// const session = require('express-session');
+const cors = require('cors');
+const multer = require('multer');
+const jwt = require('jsonwebtoken');
+
+const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, './uploads')
     },
@@ -16,10 +17,10 @@ var storage = multer.diskStorage({
     }
 });
 
-var upload = multer({ storage: storage }).single('imageURL');
+const upload = multer({ storage }).single('imageURL');
 
-routes.post('/imageUpload', upload, function (req, res) {
-    console.log('hello', req.body)
+routes.post('/imageUpload', upload, (req, res) => {
+    console.log('hello', req.body);
 });
 
 /* controllers */
@@ -30,11 +31,11 @@ const cartCtrl = require('../controllers/cartContoller');
 
 const CONSTANTS = require('../constants');
 
-let token_secret = CONSTANTS.token_secret;
+const token_secret = CONSTANTS.token_secret;
 
 const isAuthenticated = (req, res, next) => {
     // check for token in the header first, then if not provided, it checks whether it's supplied in the body of the request
-    var token = req.headers['x-access-token'] || req.body.token;
+    const token = req.headers['x-access-token'] || req.body.token;
     if (token) {
         jwt.verify(token, token_secret, function (err, decoded) {
             if (!err) {
@@ -49,7 +50,7 @@ const isAuthenticated = (req, res, next) => {
                     }
                 });
             }
-        })
+        });
     } else {
         // res.status(403).send('Authorization failed! Please provide a valid token');
         res.json({
@@ -86,7 +87,7 @@ routes.get('/logout', userCtrl.logout);
 // routes.post('/logout', userCtrl.logout);
 /* check is user is loggin on server */
 routes.post('/isLogin', isAuthenticated, (req, res) => {
-    let decoded = req.decoded;
+    const { decoded } = req;
     res.json({
         success: true,
         data: {
@@ -116,24 +117,25 @@ routes.get('/order/:id', orderCtrl.getOrder);
 
 routes.get('/orders/', orderCtrl.getOrderList);
 
-routes.post('/placeOrder', cartCtrl.placeOrder)
+routes.post('/placeOrder', cartCtrl.placeOrder);
 
 /* Restro end */
 
 /* testing */
 
-routes.get('/test', function (req, res) {
+routes.get('/test', (req, res) => {
     // res.status(CONSTANTS.serCode.success).json({
     //         success: false,
     //         data: {msg:'testing done'}
     //       });
     res.render('test');
-})
-routes.get('/testApi', function (req, res) {
+});
+
+routes.get('/testApi', (req, res) => {
     res.json({
         success: true,
         data: { msg: 'testing done' }
     });
-})
+});
 
 module.exports = routes;

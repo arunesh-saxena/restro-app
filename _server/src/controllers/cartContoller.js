@@ -20,7 +20,7 @@ const saveOrder = async (orderData) => {
 };
 const placeOrder = async (req, res) => {
     const { body } = req;
-    const { order, tableId } = body;
+    const { order = [], tableId } = body;
     const orderItemsId = order.map(item => item.itemId);
     let orderItemsData = [];
     // get order list from db
@@ -57,15 +57,19 @@ const placeOrder = async (req, res) => {
             });
         }
         catch (error) {
-            console.log(error);
             res.json({
                 success: false,
                 message: error
             });
         }
+    } else {
+        res.json({
+            success: false,
+            message: 'Please provide order items'
+        });
     }
 };
 
 module.exports = {
     placeOrder
-}
+};
