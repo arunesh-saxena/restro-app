@@ -1,6 +1,9 @@
 const db = require('../models');
 
-const getMenuItemById = async itemId => await db.Menu.findOne({ id: itemId }).exec();
+const getMenuItemById = async (itemId) => {
+    const result = await db.Menu.findOne({ id: itemId }).exec();
+    return result;
+};
 
 const addMenu = (req, res) => {
     const { body } = req;
