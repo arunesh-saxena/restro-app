@@ -5,6 +5,13 @@ _restro/api/promiseMiddleware.js
 _restro/app/third-party/
 _restro/node_modules/
 
+_consumer/compiled/**
+_consumer/public/**
+_consumer/webpack/**
+_consumer/api/promiseMiddleware.js
+_consumer/app/third-party/
+_consumer/node_modules/
+
 
 _server/node_modules/
 _server/public/**

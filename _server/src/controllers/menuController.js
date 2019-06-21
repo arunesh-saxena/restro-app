@@ -1,7 +1,9 @@
 const db = require('../models');
 
+const getMenuItemById = async itemId => await db.Menu.findOne({ id: itemId }).exec();
+
 const addMenu = (req, res) => {
-    const {body} = req;
+    const { body } = req;
     if (req.file && req.file.path) {
         body.imageURL = req.file && req.file.path;
     }
@@ -53,48 +55,48 @@ const getMenuItem = async (req, res) => {
     }
 };
 
-let getMenuItemById = async itemId => await db.Menu.findOne({ id: itemId }).exec();
 
 const updateMenuItem = (req, res) => {
-    const {body} = req;
+    console.log('updateMenuItem')
+    const { body } = req;
     if (req.file && req.file.path) {
         body.imageURL = req.file && req.file.path;
     }
     const itemId = parseInt(body.itemId);
 
-    db.Menu.updateOne,
-    ({ id: itemId },
-    {
-        $set: {
-            ...body
-        }
-    },
-    { upsert: false },
-    async function (err, data) {
-        if (err) {
-            res.json({
-                success: false,
-                message: err
-            });
-        } else {
-            try {
-                const item = await getMenuItemById(itemId);
-                res.json({
-                    success: true,
-                    data: item
-                });
-            } catch (err) {
+    db.Menu.updateOne
+        ({ id: itemId },
+        {
+            $set: {
+                ...body
+            }
+        },
+        { upsert: false },
+        async function (err, data) {
+            if (err) {
                 res.json({
                     success: false,
-                    data: err
+                    message: err
                 });
+            } else {
+                try {
+                    const item = await getMenuItemById(itemId);
+                    res.json({
+                        success: true,
+                        data: item
+                    });
+                } catch (err) {
+                    res.json({
+                        success: false,
+                        data: err
+                    });
+                }
             }
-        }
-    });
+        });
 };
 
 const changeMenuItemQuantity = (req, res) => {
-    const {body} = req;
+    const { body } = req;
     const itemId = parseInt(body.itemId);
     db.Menu.update(
         { id: itemId },
@@ -129,41 +131,40 @@ const changeMenuItemQuantity = (req, res) => {
 };
 
 const toggleHiddenMenuItem = (req, res) => {
-    const {body} = req;
+    const { body } = req;
     const itemId = parseInt(body.itemId);
-    db.Menu.updateOne,
-    ({ id: itemId },
-    {
-        $set: {
-            isHidden: body.isHidden
-        }
-    },
-    { upsert: false },
-    async (err, data) => {
-        if (err) {
-            res.json({
-                success: false,
-                message: err
-            });
-        } else {
-            try {
-                const item = await getMenuItemById(itemId);
-                res.json({
-                    success: true,
-                    data: item
-                });
-            } catch (err) {
+    db.Menu.updateOne({ id: itemId },
+        {
+            $set: {
+                isHidden: body.isHidden
+            }
+        },
+        { upsert: false },
+        async (err, data) => {
+            if (err) {
                 res.json({
                     success: false,
-                    data: err
+                    message: err
                 });
+            } else {
+                try {
+                    const item = await getMenuItemById(itemId);
+                    res.json({
+                        success: true,
+                        data: item
+                    });
+                } catch (err) {
+                    res.json({
+                        success: false,
+                        data: err
+                    });
+                }
             }
-        }
-    });
+        });
 };
 
 const deleteMenuItem = (req, res) => {
-    const {body} = req;
+    const { body } = req;
     const itemId = parseInt(body.itemId);
     db.Menu.update(
         { id: itemId },
