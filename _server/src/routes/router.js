@@ -7,13 +7,13 @@ const multer = require('multer');
 const jwt = require('jsonwebtoken');
 
 const storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, './uploads')
+    destination(req, file, cb) {
+        cb(null, './uploads');
     },
-    filename: function (req, file, cb) {
-        let info = file.originalname.split('.');
+    filename(req, file, cb) {
+        const info = file.originalname.split('.');
         const ext = info[info.length - 1];
-        cb(null, `${info[0]}-${Date.now()}.${ext}`)
+        cb(null, `${info[0]}-${Date.now()}.${ext}`);
     }
 });
 
@@ -31,13 +31,13 @@ const cartCtrl = require('../controllers/cartContoller');
 
 const CONSTANTS = require('../constants');
 
-const token_secret = CONSTANTS.token_secret;
+const { token_secret } = CONSTANTS;
 
 const isAuthenticated = (req, res, next) => {
     // check for token in the header first, then if not provided, it checks whether it's supplied in the body of the request
     const token = req.headers['x-access-token'] || req.body.token;
     if (token) {
-        jwt.verify(token, token_secret, function (err, decoded) {
+        jwt.verify(token, token_secret, (err, decoded) => {
             if (!err) {
                 req.decoded = decoded; // this add the decoded payload to the client req (request) object and make it available in the routes
                 next();
@@ -62,7 +62,12 @@ const isAuthenticated = (req, res, next) => {
     }
 };
 const issue2options = {
-    origin: [CONSTANTS.allowedOrigin, CONSTANTS.allowedOrigin2, CONSTANTS.allowedOrigin3, CONSTANTS.allowedOrigin4],
+    origin: [
+        CONSTANTS.allowedOrigin,
+        CONSTANTS.allowedOrigin2,
+        CONSTANTS.allowedOrigin3,
+        CONSTANTS.allowedOrigin4
+    ],
     methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
@@ -77,7 +82,7 @@ routes.use(cors(issue2options));
     next();
 }); */
 
-/* User routes*/
+/* User routes */
 
 routes.post('/singup', userCtrl.singUp);
 
@@ -130,7 +135,6 @@ routes.get('/test', (req, res) => {
     //       });
     res.render('test');
 });
-
 routes.get('/testApi', (req, res) => {
     res.json({
         success: true,

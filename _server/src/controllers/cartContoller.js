@@ -30,7 +30,7 @@ const placeOrder = async (req, res) => {
 
     orderItemsData = itemsArr.map((item) => {
         const itemQuantity = order.find(val => val.itemId === item.id);
-        totalCost += (itemQuantity.quantity * item.price);
+        totalCost += itemQuantity.quantity * item.price;
         return {
             id: item.id,
             itemName: item.itemName,
@@ -55,8 +55,7 @@ const placeOrder = async (req, res) => {
                 success: true,
                 data: result
             });
-        }
-        catch (error) {
+        } catch (error) {
             res.json({
                 success: false,
                 message: error

@@ -4,13 +4,12 @@ const jwt = require('jsonwebtoken');
 const CONSTANTS = require('../constants');
 const db = require('../models');
 
-const {token_secret} = CONSTANTS;
+const { token_secret } = CONSTANTS;
 
-const singUp = function (req, res) {
-    const {username} = req.body;
-    const {email} = req.body;
-    const {password} = req.body;
-    const {role} = req.body;
+const singUp = (req, res) => {
+    const {
+        username, email, password, role
+    } = req.body;
     let passwordHash = '';
     db.User.findOne({
         $or: [{ username }, { email }]
@@ -48,15 +47,16 @@ const singUp = function (req, res) {
                 res.json({
                     success: false,
                     data: {
-                        message: `${
-                            username == data.username ? username : ''
-                        } ${
-                            username == data.username && email == data.email
-                                ? 'and'
-                                : ''
-                        } ${
-                            email == data.email ? email : ''
-                        } is already exsit.`
+                        message: `${username === data.username ? username : ''} 
+                                    ${
+    username === data.username
+                                        && email === data.email
+        ? 'and'
+        : ''
+} 
+                                    ${
+    email === data.email ? email : ''
+} is already exsit.`
                     }
                 });
             }
@@ -76,7 +76,7 @@ const singUp = function (req, res) {
     /* todo: need to handle when DB connection is not available */
 };
 
-const login = function (req, res) {
+const login = (req, res) => {
     db.User.findOne({ username: req.body.username })
         .then((user) => {
             if (user) {

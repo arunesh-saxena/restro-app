@@ -9,7 +9,7 @@
         "lint:js": "eslint --quiet --ext .js,.jsx _restro/app _restro/server _consumer/app _consumer/server _server/src",
         "lint:scss": "stylelint --quiet \"**/*.scss\"",
         "lint:fix": "npm run lint:js:fix && npm run lint:scss:fix",
-        "lint:js:fix": "eslint --quiet --ext .js,.jsx _restro/app _restro/server _consumer/app _consumer/server --fix",
+        "lint:js:fix": "eslint --quiet --ext .js,.jsx _restro/app _restro/server _consumer/app _consumer/server _server/src --fix",
         "lint:scss:fix": "stylelint \"**/*.scss\" --fix",
         "pretty": "prettier --write '{_restro/app, _restro/server,_consumer/app, _consumer/server}/**/*.{js,jsx,json,scss}'",
         "format": "prettier-eslint  --write '{_restro/app, _restro/server,_consumer/app, _consumer/server}/**/*.{js,jsx,json,scss}'"
@@ -43,7 +43,7 @@
         "eslint-plugin-import": "^2.17.3",
         "eslint-plugin-jsx-a11y": "^6.2.1",
         "eslint-plugin-react": "^7.13.0",
-        "husky": "^2.4.1",
+        "husky": "^2.3.0",
         "lint": "^0.7.0",
         "lint-staged": "^8.2.1",
         "prettier": "^1.18.2",

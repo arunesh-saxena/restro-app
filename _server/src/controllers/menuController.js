@@ -1,6 +1,9 @@
 const db = require('../models');
 
-const getMenuItemById = async itemId => await db.Menu.findOne({ id: itemId }).exec();
+const getMenuItemById = async (itemId) => {
+    const result = await db.Menu.findOne({ id: itemId }).exec();
+    return result;
+};
 
 const addMenu = (req, res) => {
     const { body } = req;
@@ -55,24 +58,22 @@ const getMenuItem = async (req, res) => {
     }
 };
 
-
 const updateMenuItem = (req, res) => {
-    console.log('updateMenuItem')
     const { body } = req;
     if (req.file && req.file.path) {
         body.imageURL = req.file && req.file.path;
     }
     const itemId = parseInt(body.itemId);
 
-    db.Menu.updateOne
-        ({ id: itemId },
+    db.Menu.updateOne(
+        { id: itemId },
         {
             $set: {
                 ...body
             }
         },
         { upsert: false },
-        async function (err, data) {
+        async (err, data) => {
             if (err) {
                 res.json({
                     success: false,
@@ -92,7 +93,8 @@ const updateMenuItem = (req, res) => {
                     });
                 }
             }
-        });
+        }
+    );
 };
 
 const changeMenuItemQuantity = (req, res) => {
@@ -133,7 +135,8 @@ const changeMenuItemQuantity = (req, res) => {
 const toggleHiddenMenuItem = (req, res) => {
     const { body } = req;
     const itemId = parseInt(body.itemId);
-    db.Menu.updateOne({ id: itemId },
+    db.Menu.updateOne(
+        { id: itemId },
         {
             $set: {
                 isHidden: body.isHidden
@@ -160,7 +163,8 @@ const toggleHiddenMenuItem = (req, res) => {
                     });
                 }
             }
-        });
+        }
+    );
 };
 
 const deleteMenuItem = (req, res) => {
