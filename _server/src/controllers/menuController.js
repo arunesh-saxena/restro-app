@@ -86,10 +86,10 @@ const updateMenuItem = (req, res) => {
                         success: true,
                         data: item
                     });
-                } catch (err) {
+                } catch (error) {
                     res.json({
                         success: false,
-                        data: err
+                        data: error
                     });
                 }
             }
@@ -100,7 +100,7 @@ const updateMenuItem = (req, res) => {
 const changeMenuItemQuantity = (req, res) => {
     const { body } = req;
     const itemId = parseInt(body.itemId);
-    db.Menu.update(
+    db.Menu.updateOne(
         { id: itemId },
         {
             $set: {
@@ -121,10 +121,10 @@ const changeMenuItemQuantity = (req, res) => {
                         success: true,
                         data: item
                     });
-                } catch (err) {
+                } catch (error) {
                     res.json({
                         success: false,
-                        data: err
+                        data: error
                     });
                 }
             }
@@ -170,7 +170,7 @@ const toggleHiddenMenuItem = (req, res) => {
 const deleteMenuItem = (req, res) => {
     const { body } = req;
     const itemId = parseInt(body.itemId);
-    db.Menu.update(
+    db.Menu.updateOne(
         { id: itemId },
         {
             $set: {

@@ -18,7 +18,11 @@ const app = express();
 // Connect to the database
 mongoose.connect(
     'mongodb://localhost/restro',
-    { useNewUrlParser: true },
+    {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+        useFindAndModify: false
+    },
     (err, db) => {
         if (!err) {
             console.log('We are connected');
