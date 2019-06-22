@@ -34,6 +34,16 @@ menuSchema.pre('save', function (next) {
         });
 });
 
+menuSchema.pre('update', function (next) {
+    console.log('todo: this is not working on findOneandUpdate');
+    this.update(
+        {},
+        {
+            $set: { updatedAt: new Date() }
+        }
+    );
+});
+
 var Menu = mongoose.model('menu', menuSchema);
 
 module.exports = Menu;

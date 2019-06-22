@@ -24,7 +24,8 @@ const updateMenuQuantity = async ({ itemId, itemQuantity }) => {
         { id: itemId },
         {
             $set: {
-                quantity: itemQuantity
+                quantity: itemQuantity,
+                updatedAt: new Date()
             }
         },
         { upsert: false }
