@@ -32,74 +32,113 @@ const updateMenuQuantity = async ({ itemId, itemQuantity }) => {
     return result;
 };
 
+const getMenuItemById = async (itemId) => {
+    const result = await db.Menu.findOne({ id: itemId });
+    return result;
+};
+
 const placeOrder = async (req, res) => {
     const { body } = req;
     const { order = [], tableId } = body;
     const orderItemsId = order.map(item => item.itemId);
     let orderItemsData = [];
     let totalCost = 0;
+    try {
+        // get order list from db
+        const itemsArr = await getMenuList(orderItemsId);
 
-    // get order list from db
-    const itemsArr = await getMenuList(orderItemsId);
+        orderItemsData = await itemsArr
+            .map((item, ind) => {
+                const { id: itemId, quantity: itemQuantity } = item;
+                let menuUpdatedResult = null;
+                const orderItem = order.find(val => val.itemId === itemId);
+                // isOrderedItem available
+                const newItemQnt = itemQuantity - orderItem.quantity;
+                if (newItemQnt > -1) {
+                    // update item quanity in menu table
+                    menuUpdatedResult = updateMenuQuantity({
+                        itemId,
+                        itemQuantity: newItemQnt
+                    });
+                }
+                if (menuUpdatedResult) {
+                    totalCost += orderItem.quantity * item.price;
+                    return {
+                        id: itemId,
+                        itemName: item.itemName,
+                        quantity: orderItem.quantity,
+                        price: item.price,
+                        unit: item.unit,
+                        itemCode: item.itemCode,
+                        itemCost: orderItem.quantity * item.price
+                    };
+                }
+                return null;
+            })
+            .filter(item => item);
 
-    orderItemsData = await itemsArr
-        .map((item, ind) => {
-            const { id: itemId, quantity: itemQuantity } = item;
-            let menuUpdatedResult = null;
-            const orderItem = order.find(val => val.itemId === itemId);
-            // isOrderedItem available
-            const newItemQnt = itemQuantity - orderItem.quantity;
+        const orderData = {
+            tableId,
+            items: orderItemsData,
+            totalCost
+        };
 
-            if (newItemQnt > -1) {
-                // update item quanity in menu table
-                menuUpdatedResult = updateMenuQuantity({
-                    itemId,
-                    itemQuantity: newItemQnt
+        if (orderData.tableId && orderData.items && orderData.items.length) {
+            try {
+                const result = await saveOrder(orderData);
+                res.json({
+                    success: true,
+                    data: result
+                });
+            } catch (error) {
+                res.json({
+                    success: false,
+                    message: `${error}`
                 });
             }
-            if (menuUpdatedResult) {
-                totalCost += orderItem.quantity * item.price;
-                return {
-                    id: itemId,
-                    itemName: item.itemName,
-                    quantity: orderItem.quantity,
-                    price: item.price,
-                    unit: item.unit,
-                    itemCode: item.itemCode,
-                    itemCost: orderItem.quantity * item.price
-                };
-            }
-            return null;
-        })
-        .filter(item => item);
-
-    const orderData = {
-        tableId,
-        items: orderItemsData,
-        totalCost
-    };
-
-    if (orderData.tableId && orderData.items && orderData.items.length) {
-        try {
-            const result = await saveOrder(orderData);
-            res.json({
-                success: true,
-                data: result
-            });
-        } catch (error) {
+        } else {
             res.json({
                 success: false,
-                message: error
+                message: 'Please provide order items'
             });
         }
-    } else {
+    } catch (error) {
         res.json({
             success: false,
-            message: 'Please provide order items'
+            message: `${error}`
+        });
+    }
+};
+
+const isItemAvailable = async (req, res) => {
+    const { itemId } = req.params;
+    let itemDetails = {};
+
+    try {
+        itemDetails = await getMenuItemById(itemId);
+        itemDetails = JSON.parse(JSON.stringify(itemDetails)); // copying
+
+        const { isHidden, isDeleted, quantity: itemQnt } = itemDetails || {};
+        const isAvailable = isHidden || isDeleted || itemQnt > 0;
+        Object.assign(itemDetails, {
+            isAvailable
+        });
+
+        res.json({
+            success: true,
+            data: {
+                item: itemDetails
+            }
+        });
+    } catch (error) {
+        res.json({
+            success: false,
+            message: `${error}`
         });
     }
 };
 
 module.exports = {
-    placeOrder
+    placeOrder,
+    isItemAvailable
 };
