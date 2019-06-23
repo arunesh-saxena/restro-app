@@ -48,6 +48,28 @@ export const placeOrder = (orderData, props = null) => {
             });
 };
 
+export const getOrderStatus = ({ tokenId }) => {
+    console.log('------getOrderStatus', tokenId);
+    // let { tokenId } = req && req.query || null;
+    // if (!tokenId) {
+    //     tokenId = token;
+    // }
+    const api = expressConstants.ORDER_STATUS;
+    const option = {
+        method: api.method,
+        url: `${api.url}?tokenId=${tokenId}`
+    };
+    console.log(option);
+    return dispatch =>
+        AjaxFactory.triggerServerRequest(option)
+            .then((value) => {
+                console.log(value);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+};
+
 /* export const getCart = () => {
     const api = expressConstants.MENU_LIST;
     const option = {

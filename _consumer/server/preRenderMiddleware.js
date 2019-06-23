@@ -4,7 +4,7 @@ const preRenderMiddleware = (dispatch, branch, req, res) => {
         if (typeof route.need !== 'undefined') {
             // return dispatch(route.need[0](req.headers, res))
             return route.need.map((need) => {
-                promises.push(dispatch(need(req.headers, res)));
+                promises.push(dispatch(need(req, res)));
             });
         }
     });

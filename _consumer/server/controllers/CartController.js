@@ -34,3 +34,18 @@ export const placeOrder = (req, res, next) => {
             res.send(error.data);
         });
 };
+
+export const getOrderStatus = (req, res) => {
+    const endPoint = service.orderStatus.default;
+    const { tokenId } = req.query;
+    const config = {
+        method: endPoint.method,
+        url: `${endPoint.url}?tokenId=${tokenId}`,
+        headers: endPoint.headers
+    };
+    res.json({
+        success: true,
+        message: 'Todo: comming soon',
+        data: config
+    });
+};

@@ -24,6 +24,10 @@ const expressConstants = {
     PLACE_ORDER: {
         url: '/placeOrder',
         method: 'POST'
+    },
+    ORDER_STATUS: {
+        url: '/ordeStatus',
+        method: 'GET'
     }
 };
 

@@ -3,6 +3,7 @@ import Loadable from 'react-loadable';
 import AppUrls from './appConstants/appUrls';
 import App from './pages/App';
 import { getMenuList } from './actions/menuAction';
+import { getOrderStatus } from './actions/cartAction';
 
 const HomePage = Loadable({
     loader: () => import(/* webpackChunkName: "HomePage" */ './pages/HomePage'),
@@ -69,6 +70,18 @@ export default store => [
                     loader: () =>
                         import(
                             /* webpackChunkName: "CartPage" */ './pages/cart/CartPage'
+                        ),
+                    loading: () => <strong>Loading...</strong>
+                })
+            },
+            {
+                path: `${AppUrls.order_status}?:tokenId`,
+                exact: true,
+                need: [],
+                component: Loadable({
+                    loader: () =>
+                        import(
+                            /* webpackChunkName: "OrderStatusPage" */ './pages/order/OrderStatusPage'
                         ),
                     loading: () => <strong>Loading...</strong>
                 })
