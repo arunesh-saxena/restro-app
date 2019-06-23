@@ -3,6 +3,6 @@ export default {
     HOME: '/home',
     ABOUT_US: '/aboutUs',
     CONTACT_US: '/aboutUs/contactUs',
-    MENULIST: '/menuList',
+    MENU_LIST: '/menuList',
     CART: '/cat'
 };

@@ -50,7 +50,7 @@ export default store => [
                 ]
             },
             {
-                path: AppUrls.MENULIST,
+                path: AppUrls.MENU_LIST,
                 exact: true,
                 need: [getMenuList],
                 component: Loadable({

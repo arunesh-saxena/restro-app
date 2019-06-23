@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import CartContainer from '../../containers/cart/CartContainer';
 import appConstants from '../../appConstants/appConstants';
-import placeOrder from '../../actions/cartAction';
+import { placeOrder } from '../../actions/cartAction';
 
 class CartPage extends Component {
     placeOrderClickHandler() {
@@ -24,6 +24,7 @@ class CartPage extends Component {
                 <CartContainer
                     labels={appConstants.labels}
                     menuList={this.props.menuList}
+                    cart={this.props.cart}
                     placeOrderClickHandler={() => {
                         this.placeOrderClickHandler();
                     }}

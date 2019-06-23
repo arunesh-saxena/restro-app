@@ -48,7 +48,7 @@ class Header extends Component {
                     </Link>
                 </li>
                 <li>
-                    <Link to={AppUrls.MENULIST}>
+                    <Link to={AppUrls.MENU_LIST}>
                         <span
                             role="button"
                             tabIndex="0"
