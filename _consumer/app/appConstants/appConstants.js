@@ -41,7 +41,10 @@ const appConstants = {
             product: 'Product',
             Equivalency: 'Equivalency',
             total: 'Total',
-            placeOrder: 'Place Order'
+            placeOrder: 'Place Order',
+            cartSummary: 'Cart Summary',
+            amount: 'Amount',
+            emptyCart: 'Your cart is Empty'
         },
         error: {
             required: 'Required',
