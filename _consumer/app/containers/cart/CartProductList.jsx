@@ -2,35 +2,12 @@ import React from 'react';
 import Image from '../../components/image/Image';
 
 const CartProductList = (props) => {
-    const { labels, menuList } = props;
-    const cart = {
-        order: [
-            {
-                itemId: 1,
-                quantity: 1
-            },
-            {
-                itemId: 2,
-                quantity: 2
-            },
-            {
-                itemId: 3,
-                quantity: 2
-            },
-            {
-                itemId: 4,
-                quantity: 2
-            },
-            {
-                itemId: 5,
-                quantity: 2
-            }
-        ]
-    };
+    const { labels, menuList, cartList } = props;
+    const cartOrder = (cartList && cartList.order) || [];
 
     const getCartProductList = () => {
         const cartList = [];
-        cart.order.forEach((value) => {
+        cartOrder.forEach((value) => {
             const itemDetails = menuList.find(menu => menu.id === value.itemId);
             const cartItemDetails = {
                 itemId: value.itemId,

@@ -20,6 +20,10 @@ const expressConstants = {
     CART: {
         url: '/CART',
         method: 'POST'
+    },
+    PLACE_ORDER: {
+        url: '/placeOrder',
+        method: 'POST'
     }
 };
 

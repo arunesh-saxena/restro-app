@@ -6,11 +6,13 @@ import {
     changeMenuItemQuantity
 } from './controllers/MenuController';
 
+import { placeOrder } from './controllers/CartController';
+
 const express = require('express');
 const multer = require('multer');
 
 const routes = express.Router();
-const storage = multer.diskStorage({
+/* const storage = multer.diskStorage({
     destination(req, file, cb) {
         cb(null, './uploads');
     },
@@ -21,7 +23,7 @@ const storage = multer.diskStorage({
     }
 });
 
-const upload = multer({ storage }).single('imageURL');
+const upload = multer({ storage }).single('imageURL'); */
 
 /* testing */
 routes.get(expressConstants.TEST_API.url, (req, res) => {
@@ -38,5 +40,7 @@ routes.post(
     expressConstants.MENU_ITEM_QUANTITY_CHANGE.url,
     changeMenuItemQuantity
 );
+/* Cart  */
+routes.get(`${expressConstants.PLACE_ORDER.url}`, placeOrder);
 
 module.exports = routes;
