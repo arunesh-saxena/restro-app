@@ -13,6 +13,7 @@ export const placeOrder = (orderData) => {
         method: api.method,
         url: api.url
     };
+    console.log(option);
     return dispatch => ({
         type: 'orderPlaced',
         data: 'orderdata'
