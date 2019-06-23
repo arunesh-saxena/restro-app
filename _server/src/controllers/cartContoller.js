@@ -37,6 +37,12 @@ const getMenuItemById = async (itemId) => {
     const result = await db.Menu.findOne({ id: itemId });
     return result;
 };
+const getOrder = async ({ tokenId = null, orderId = null }) => {
+    const result = await db.Order.findOne({
+        $or: [{ tokenId }, { id: orderId }]
+    });
+    return result;
+};
 
 const placeOrder = async (req, res) => {
     const { body } = req;
@@ -139,7 +145,29 @@ const isItemAvailable = async (req, res) => {
     }
 };
 
+const orderStatus = async (req, res) => {
+    const { tokenId = null, orderId = null } = req.query;
+    let orderDetail = {};
+    try {
+        orderDetail = await getOrder({ tokenId, orderId });
+        orderDetail = JSON.parse(JSON.stringify(orderDetail)); // copying
+
+        res.json({
+            success: true,
+            data: {
+                order: orderDetail
+            }
+        });
+    } catch (error) {
+        res.json({
+            success: false,
+            message: `${error}`
+        });
+    }
+};
+
 module.exports = {
     placeOrder,
-    isItemAvailable
+    isItemAvailable,
+    orderStatus
 };
