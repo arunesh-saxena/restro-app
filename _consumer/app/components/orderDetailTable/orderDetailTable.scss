@@ -1,0 +1,9 @@
+.order-detail-table {
+    .table-row {
+        display: flex;
+        padding: 5px 10px;
+        div {
+            flex: 0 1 50%;
+        }
+    }
+}
