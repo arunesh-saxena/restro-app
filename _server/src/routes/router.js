@@ -126,6 +126,8 @@ routes.get('/isItemAvailable/:itemId', cartCtrl.isItemAvailable);
 
 routes.post('/placeOrder', cartCtrl.placeOrder);
 
+routes.get('/orderStatus', cartCtrl.orderStatus);
+
 /* Restro end */
 
 /* testing */

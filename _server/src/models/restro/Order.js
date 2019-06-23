@@ -8,7 +8,7 @@ const orderSchema = new mongoose.Schema({
         type: Number,
         default: 1
     },
-    token: {
+    tokenId: {
         type: Number,
         default: 0
     },
@@ -82,7 +82,7 @@ orderSchema.pre('save', function (next) {
             if (data.length) {
                 doc.id = ++data[0].id;
             }
-            doc.token = doc.id;
+            doc.tokenId = doc.id;
             doc.createdAt = Date.now();
             next();
         });
