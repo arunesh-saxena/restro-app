@@ -4,6 +4,7 @@ import Heading from '../../components/heading/Heading';
 import CartProductList from './CartProductList';
 import CartSummary from './CartSummary';
 import AppUrls from '../../appConstants/appUrls';
+import ServerErrors from '../../components/serverErrors/ServerErrors';
 
 const CartContainer = (props) => {
     const { labels, cart } = props;
@@ -71,6 +72,7 @@ const CartContainer = (props) => {
             <div className="row justify-content-md-center">
                 <div className="col-12 col-md-12">
                     {renderHeading()}
+                    <ServerErrors />
                     {renderEmptyMsg()}
                     {renderCartContainer()}
                 </div>

@@ -6,6 +6,13 @@ import appConstants from '../../appConstants/appConstants';
 import { placeOrder } from '../../actions/cartAction';
 
 class CartPage extends Component {
+    // componentDidMount() {
+    //     this.props.placeOrder({
+    //         order:
+    //             [{ itemId: 1, quantity: 1 }],
+    //         tableId: 1
+    //     }, this.props);
+    // }
     placeOrderClickHandler() {
         console.log('Todo: place placeOrderClickHandler');
         const order = this.props.cart && this.props.cart.order;
@@ -15,7 +22,7 @@ class CartPage extends Component {
                 tableId: 1
             };
             console.log('coming soon', orderData);
-            this.props.placeOrder(orderData);
+            this.props.placeOrder(orderData, this.props);
         }
     }
     render() {
