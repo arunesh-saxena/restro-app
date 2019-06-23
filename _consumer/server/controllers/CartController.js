@@ -43,9 +43,17 @@ export const getOrderStatus = (req, res) => {
         url: `${endPoint.url}?tokenId=${tokenId}`,
         headers: endPoint.headers
     };
-    res.json({
-        success: true,
-        message: 'Todo: comming soon',
-        data: config
-    });
+    ServiceFactory.triggerserviceRequest(config)
+        .then((response) => {
+            res.json(response.data);
+        })
+        .catch((error) => {
+            console.log(error);
+            res.send(error.data);
+        });
+    // res.json({
+    //     success: true,
+    //     message: 'Todo: comming soon',
+    //     data: config
+    // });
 };

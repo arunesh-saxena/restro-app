@@ -9,6 +9,11 @@ export const addToCart = data => ({
     data
 });
 
+const setPlacedOrder = data => ({
+    type: types.SET_PLACED_ORDER,
+    data
+});
+
 export const placeOrder = (orderData, props = null) => {
     const api = expressConstants.PLACE_ORDER;
     const option = {
@@ -30,7 +35,7 @@ export const placeOrder = (orderData, props = null) => {
                     const orderDetails = data.data;
                     if (props) {
                         props.history.push(
-                            `${appUrls.order_status}/${orderDetails.token}`
+                            `${appUrls.order_status}?tokenId=${orderDetails.tokenId}`
                         );
                     }
                 } else {
@@ -49,24 +54,35 @@ export const placeOrder = (orderData, props = null) => {
 };
 
 export const getOrderStatus = ({ tokenId }) => {
-    console.log('------getOrderStatus', tokenId);
-    // let { tokenId } = req && req.query || null;
-    // if (!tokenId) {
-    //     tokenId = token;
-    // }
     const api = expressConstants.ORDER_STATUS;
     const option = {
         method: api.method,
         url: `${api.url}?tokenId=${tokenId}`
     };
-    console.log(option);
+
     return dispatch =>
         AjaxFactory.triggerServerRequest(option)
             .then((value) => {
-                console.log(value);
+                const data = (value.body && value.body.data) || null;
+                const success = (data && data.success) || null;
+                const message = (data && data.message) || null;
+
+                if (success) {
+                    const orderDetails = data.data.order;
+                    dispatch(setPlacedOrder(orderDetails));
+                    dispatch(ajaxRequestSuccess());
+                } else {
+                    ajaxRequestFailure({ message });
+                }
             })
             .catch((error) => {
                 console.log(error);
+                const message =
+                    (error.body &&
+                        error.body.data &&
+                        error.body.data.message) ||
+                    null;
+                ajaxRequestFailure({ message });
             });
 };
 

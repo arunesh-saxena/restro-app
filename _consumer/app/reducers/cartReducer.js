@@ -18,6 +18,11 @@ export default function cart(state = { order: [] }, action) {
                 order: [...state.order, order]
             });
         }
+        case types.SET_PLACED_ORDER: {
+            return Object.assign({}, state, {
+                placedOrder: action.data
+            });
+        }
         default: {
             return state;
         }

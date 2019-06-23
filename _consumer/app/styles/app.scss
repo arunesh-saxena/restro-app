@@ -15,14 +15,16 @@
 @import '../components/SearchBox/searchBox';
 @import '../components/image/image';
 @import '../components/heading/heading';
-@import '../components//serverErrors/serverErrors';
-@import '../components//cartLink/cartLink';
+@import '../components/serverErrors/serverErrors';
+@import '../components/cartLink/cartLink';
+@import '../components/orderDetailTable/orderDetailTable';
 
 // Container
 @import '../containers/menu/menuListContainer';
 @import '../containers/cart/cartProductList';
 @import '../containers/cart/cartContainer';
 @import '../containers/cart/cartSummary';
+@import '../containers/order/orderStatusContainer';
 
 // page../
 @import '../pages/app';

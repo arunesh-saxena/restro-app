@@ -44,7 +44,8 @@ const appConstants = {
             placeOrder: 'Place Order',
             cartSummary: 'Cart Summary',
             amount: 'Amount',
-            emptyCart: 'Your cart is Empty'
+            emptyCart: 'Your cart is Empty',
+            emptyOrder: 'No order found...'
         },
         error: {
             required: 'Required',

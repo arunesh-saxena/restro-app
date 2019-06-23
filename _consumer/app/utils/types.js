@@ -16,6 +16,7 @@ export const MENU_LIST_FILTERED = 'MENU_LIST_FILTERED';
 
 /* Cart */
 export const ADD_TO_CART = 'ADD_TO_CART';
+export const SET_PLACED_ORDER = 'SET_PLACED_ORDER';
 
 /* ajax request */
 export const AJAX_REQUEST_SUCCESS = 'AJAX_REQUEST_SUCCESS';
