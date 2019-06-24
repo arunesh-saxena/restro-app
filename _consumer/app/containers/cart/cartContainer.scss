@@ -5,4 +5,18 @@
     .cart-empty-msg-section {
         text-align: center;
     }
+    .page-header-section {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        flex-wrap: wrap;
+        flex-direction: column;
+
+        @include breakpoint(desktop-above) {
+            flex-direction: row;
+        }
+        .cart-heading {
+            margin: 0;
+        }
+    }
 }

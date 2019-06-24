@@ -1,0 +1,14 @@
+.table-selector-container {
+    //   display: inline-block;
+    @include breakpoint(desktop-below) {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+    label {
+        padding-right: 10px;
+    }
+    .table-selector {
+        min-width: 100px;
+    }
+}

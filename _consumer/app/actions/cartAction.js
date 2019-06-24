@@ -25,7 +25,6 @@ export const placeOrder = (orderData, props = null) => {
     return dispatch =>
         AjaxFactory.triggerServerRequest(option)
             .then((value) => {
-                console.log(value);
                 const data = (value.body && value.body.data) || null;
                 const success = (data && data.success) || null;
                 const message = (data && data.message) || null;
@@ -43,7 +42,6 @@ export const placeOrder = (orderData, props = null) => {
                 }
             })
             .catch((error) => {
-                console.log(error);
                 const message =
                     (error.body &&
                         error.body.data &&

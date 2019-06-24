@@ -1,20 +1,28 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { Link } from 'react-router-dom';
 import Heading from '../../components/heading/Heading';
+import TableSelector from '../../components/tableSelector/TableSelector';
 import CartProductList from './CartProductList';
 import CartSummary from './CartSummary';
 import AppUrls from '../../appConstants/appUrls';
 import ServerErrors from '../../components/serverErrors/ServerErrors';
 
 const CartContainer = (props) => {
-    const { labels, cart } = props;
+    const {
+        labels,
+        cart,
+        placeOrderClickHandler,
+        tableChangeHandler,
+        tableList
+    } = props;
     const cartOrder = (cart && cart.order) || [];
     const renderHeading = () => (
         <div className="cart-heading">
             <Heading text={labels.common.yourCart} />
         </div>
     );
-
     const renderPlaceOrderBtn = () => (
         <div className="row">
             <div className="col-md-2 offset-md-10">
@@ -23,7 +31,7 @@ const CartContainer = (props) => {
                     id="place_order"
                     className="place-order-btn btn btn-primary btn-lg"
                     onClick={() => {
-                        props.placeOrderClickHandler();
+                        placeOrderClickHandler();
                     }}
                 >
                     {labels.common.placeOrder}
@@ -71,7 +79,13 @@ const CartContainer = (props) => {
         <div className="cart-container">
             <div className="row justify-content-md-center">
                 <div className="col-12 col-md-12">
-                    {renderHeading()}
+                    <section className="page-header-section ">
+                        {renderHeading()}
+                        <TableSelector
+                            tableList={tableList}
+                            tableChangeHandler={tableChangeHandler}
+                        />
+                    </section>
                     <ServerErrors />
                     {renderEmptyMsg()}
                     {renderCartContainer()}
@@ -80,4 +94,23 @@ const CartContainer = (props) => {
         </div>
     );
 };
+
+CartContainer.propTypes = {
+    labels: PropTypes.objectOf(
+        PropTypes.shape({
+            common: PropTypes.object
+        })
+    ),
+    menuList: PropTypes.array,
+    cart: PropTypes.object,
+    tableList: PropTypes.arrayOf(
+        PropTypes.shape({
+            tableId: PropTypes.number.isRequired,
+            label: PropTypes.string.isRequired
+        })
+    ),
+    placeOrderClickHandler: PropTypes.func,
+    tableChangeHandler: PropTypes.func
+};
+
 export default CartContainer;

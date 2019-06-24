@@ -6,22 +6,50 @@ import appConstants from '../../appConstants/appConstants';
 import { placeOrder } from '../../actions/cartAction';
 
 class CartPage extends Component {
-    // componentDidMount() {
-    //     this.props.placeOrder({
-    //         order:
-    //             [{ itemId: 1, quantity: 1 }],
-    //         tableId: 1
-    //     }, this.props);
-    // }
+    constructor(props) {
+        super();
+        this.state = {
+            orderTableId: null
+        };
+        this.dummyTableList = [
+            {
+                tableId: 1,
+                label: 'Table # 1'
+            },
+            {
+                tableId: 2,
+                label: 'Table # 2'
+            },
+
+            {
+                tableId: 3,
+                label: 'Table # 3'
+            },
+            {
+                tableId: 4,
+                label: 'Table # 4'
+            }
+        ];
+    }
+
+    tableChangeHandler(tableID) {
+        this.setState({
+            orderTableId: tableID
+        });
+    }
+
     placeOrderClickHandler() {
-        console.log('Todo: place placeOrderClickHandler');
+        const { orderTableId } = this.state;
         const order = this.props.cart && this.props.cart.order;
+        if (!orderTableId) {
+            console.error('Please select the table');
+            return;
+        }
         if (order && order.length) {
             const orderData = {
                 order,
-                tableId: 1
+                tableId: orderTableId
             };
-            console.log('coming soon', orderData);
             this.props.placeOrder(orderData, this.props);
         }
     }
@@ -32,8 +60,12 @@ class CartPage extends Component {
                     labels={appConstants.labels}
                     menuList={this.props.menuList}
                     cart={this.props.cart}
+                    tableList={this.dummyTableList}
                     placeOrderClickHandler={() => {
                         this.placeOrderClickHandler();
+                    }}
+                    tableChangeHandler={(tableID) => {
+                        this.tableChangeHandler(tableID);
                     }}
                 />
             </div>
