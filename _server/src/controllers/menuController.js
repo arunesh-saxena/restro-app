@@ -8,7 +8,7 @@ const getMenuItemById = async (itemId) => {
 const addMenu = (req, res) => {
     const { body } = req;
     if (req.file && req.file.path) {
-        body.imageURL = req.file && req.file.path;
+        body.imageURL = req.file && req.file.path && req.file.path.split('assets/')[1];
     }
 
     const menuMenu = db.Menu(body).save((err, data) => {
@@ -61,7 +61,7 @@ const getMenuItem = async (req, res) => {
 const updateMenuItem = (req, res) => {
     const { body } = req;
     if (req.file && req.file.path) {
-        body.imageURL = req.file && req.file.path;
+        body.imageURL = req.file && req.file.path && req.file.path.split('assets/')[1];
     }
     const itemId = parseInt(body.itemId);
 

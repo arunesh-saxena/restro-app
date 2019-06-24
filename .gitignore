@@ -10,6 +10,7 @@ _restro/compiled
 
 # _server
 _server/node_modules
+_server/compiled
 
 # _db
 

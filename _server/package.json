@@ -5,7 +5,13 @@
     "main": "app.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "dev": "nodemon index.js"
+        "dev2": "nodemon index.js",
+        "start": "node ./compiled/index.js",
+        "build": "webpack --config ./webpack/webpack.server.js --mode production",
+        "dev:build": "NODE_ENV=development webpack --config ./webpack/webpack.server.js --mode development -w && dev:start",
+        "dev:start": "nodemon ./compiled/index.js",
+        "dev": "npm-run-all --parallel dev:build dev:start",
+        "copy": "copyfiles -f ./uploads/*.* ./compiled/assets/images"
     },
     "author": "Arunesh Saxena Software Enginer",
     "license": "ISC",
@@ -32,6 +38,16 @@
         "socket.io": "^2.2.0"
     },
     "devDependencies": {
-        "nodemon": "^1.19.1"
+        "@babel/core": "^7.4.5",
+        "babel-loader": "^8.0.6",
+        "copyfiles": "^2.1.0",
+        "nodemon": "^1.19.1",
+        "npm-run-all": "^4.1.5",
+        "url-loader": "^2.0.0",
+        "webpack": "^4.35.0",
+        "webpack-cli": "^3.3.5",
+        "webpack-dev-server": "^3.7.2",
+        "webpack-hot-middleware": "^2.25.0",
+        "webpack-node-externals": "^1.7.2"
     }
 }
