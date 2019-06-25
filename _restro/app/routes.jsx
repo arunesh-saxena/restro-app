@@ -11,6 +11,16 @@ const HomePage = Loadable({
     loader: () => import(/* webpackChunkName: "HomePage" */ './pages/HomePage'),
     loading: () => <strong>Loading...</strong>
 });
+const AboutUsPage = Loadable({
+    loader: () =>
+        import(/* webpackChunkName: "AboutusPage" */ './pages/AboutUsPage'),
+    loading: () => <strong>Loading...</strong>
+});
+const ContactUsPage = Loadable({
+    loader: () =>
+        import(/* webpackChunkName: "ContactUsPage" */ './pages/ContactUsPage'),
+    loading: () => <strong>Loading...</strong>
+});
 const menuList = Loadable({
     loader: () =>
         import(
@@ -18,7 +28,18 @@ const menuList = Loadable({
         ),
     loading: () => <strong>Loading...</strong>
 });
-
+const LoginPage = Loadable({
+    loader: () =>
+        import(/* webpackChunkName: "LoginPage" */ './pages/login/LoginPage'),
+    loading: () => <strong>Loading...</strong>
+});
+const SignUpPage = Loadable({
+    loader: () =>
+        import(
+            /* webpackChunkName: "SignUpPage" */ './pages/signUp/SignUpPage'
+        ),
+    loading: () => <strong>Loading...</strong>
+});
 const menuUploadPage = Loadable({
     loader: () =>
         import(
@@ -31,6 +52,18 @@ const menuEditPage = Loadable({
         import(
             /* webpackChunkName: "MenuEditPage" */ './pages/menuList/MenuEditPage'
         ),
+    loading: () => <strong>Loading...</strong>
+});
+const OrderListPage = Loadable({
+    loader: () =>
+        import(
+            /* webpackChunkName: "OrderListPage" */ './pages/order/OrderListPage'
+        ),
+    loading: () => <strong>Loading...</strong>
+});
+const ErrorPage = Loadable({
+    loader: () =>
+        import(/* webpackChunkName: "ErrorPage" */ './pages/ErrorPage'),
     loading: () => <strong>Loading...</strong>
 });
 
@@ -53,48 +86,24 @@ export default store => [
             {
                 path: AppUrls.ABOUT_US,
                 exact: false,
-                component: Loadable({
-                    loader: () =>
-                        import(
-                            /* webpackChunkName: "AboutusPage" */ './pages/AboutUsPage'
-                        ),
-                    loading: () => <strong>Loading...</strong>
-                }),
+                component: AboutUsPage,
                 routes: [
                     {
                         path: AppUrls.CONTACT_US,
                         exact: true,
-                        component: Loadable({
-                            loader: () =>
-                                import(
-                                    /* webpackChunkName: "ContactUsPage" */ './pages/ContactUsPage'
-                                ),
-                            loading: () => <strong>Loading...</strong>
-                        })
+                        component: ContactUsPage
                     }
                 ]
             },
             {
                 path: AppUrls.LOGIN,
                 exact: true,
-                component: Loadable({
-                    loader: () =>
-                        import(
-                            /* webpackChunkName: "LoginPage" */ './pages/login/LoginPage'
-                        ),
-                    loading: () => <strong>Loading...</strong>
-                })
+                component: LoginPage
             },
             {
                 path: AppUrls.SIGN_UP,
                 exact: true,
-                component: Loadable({
-                    loader: () =>
-                        import(
-                            /* webpackChunkName: "SignUpPage" */ './pages/signUp/SignUpPage'
-                        ),
-                    loading: () => <strong>Loading...</strong>
-                })
+                component: SignUpPage
             },
             {
                 path: AppUrls.MENU_LIST,
@@ -113,15 +122,14 @@ export default store => [
                 component: menuEditPage
             },
             {
+                path: `${AppUrls.ORDER_LIST}/`,
+                exact: true,
+                component: OrderListPage
+            },
+            {
                 path: '*',
                 exact: false,
-                component: Loadable({
-                    loader: () =>
-                        import(
-                            /* webpackChunkName: "ErrorPage" */ './pages/ErrorPage'
-                        ),
-                    loading: () => <strong>Loading...</strong>
-                })
+                component: ErrorPage
             }
         ]
     }
