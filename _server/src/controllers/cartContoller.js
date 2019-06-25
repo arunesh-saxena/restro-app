@@ -147,6 +147,13 @@ const isItemAvailable = async (req, res) => {
 
 const orderStatus = async (req, res) => {
     const { tokenId = null, orderId = null } = req.query;
+    if (!(orderId || tokenId)) {
+        res.json({
+            success: false,
+            message: 'Please provide orderId, tokenId'
+        });
+        return;
+    }
     let orderDetail = {};
     try {
         orderDetail = await getOrder({ tokenId, orderId });
