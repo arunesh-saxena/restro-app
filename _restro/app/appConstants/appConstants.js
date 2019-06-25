@@ -33,7 +33,11 @@ const appConstants = {
             no: 'No',
             action: 'Action',
             edit: 'Edit',
-            search: 'Search'
+            search: 'Search',
+            orderList: 'Order list'
+        },
+        order: {
+            orderList: 'Order list'
         },
         error: {
             required: 'Required',

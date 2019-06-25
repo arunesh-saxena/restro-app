@@ -69,6 +69,19 @@ class Header extends Component {
                         </Link>
                     </li>
                 )}
+                {isLogin && (
+                    <li>
+                        <Link to={AppUrls.ORDER_LIST}>
+                            <span
+                                role="button"
+                                tabIndex="0"
+                                onClick={this.toggleMainMenu}
+                            >
+                                {this.labels.orderList}
+                            </span>
+                        </Link>
+                    </li>
+                )}
             </ul>
         );
     }
