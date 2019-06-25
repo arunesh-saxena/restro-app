@@ -66,9 +66,10 @@ export const updateMenuItem = (req, res, next) => {
         headers: endPoint.headers,
         data
     };
-
+    console.log('-------------->updateMenuItem');
     ServiceFactory.triggerserviceRequest(config, true)
         .then((response) => {
+            console.log('----------------', response);
             res.json(response.data);
         })
         .catch((error) => {
