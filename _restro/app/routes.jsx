@@ -6,6 +6,7 @@ import Authentication from './Authentication';
 
 import { checkIsLogin } from './actions/appAction';
 import { getMenuList } from './actions/menuAction';
+import { getOrderList } from './actions/orderAction';
 
 const HomePage = Loadable({
     loader: () => import(/* webpackChunkName: "HomePage" */ './pages/HomePage'),
@@ -122,6 +123,7 @@ export default store => [
                 component: menuEditPage
             },
             {
+                need: [getOrderList],
                 path: `${AppUrls.ORDER_LIST}/`,
                 exact: true,
                 component: OrderListPage

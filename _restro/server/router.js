@@ -13,6 +13,7 @@ import {
     toggleHiddenMenuItem,
     deleteMenuItem
 } from './controllers/MenuController';
+import orderController from './controllers/OrderContoller';
 
 const express = require('express');
 const multer = require('multer');
@@ -54,5 +55,8 @@ routes.post(
 );
 routes.post(expressConstants.MENU_ITEM_TOGGLE_HIDDEN.url, toggleHiddenMenuItem);
 routes.post(expressConstants.MENU_ITEM_DELETE.url, deleteMenuItem);
+
+/* Order action */
+routes.get(expressConstants.ORDER_LIST.url, orderController);
 
 module.exports = routes;

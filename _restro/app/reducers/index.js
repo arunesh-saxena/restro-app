@@ -6,6 +6,7 @@ import signUp from './signUpReducers';
 import user from './loginReducer';
 import myAccount from './myAccountReducer';
 import errors from './errorsReducers';
+import order from './orderReducer';
 
 // Combine reducers with routeReducer which keeps track of
 // router state
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
     signUp,
     user,
     myAccount,
-    errors
+    errors,
+    order
 });
 export default rootReducer;

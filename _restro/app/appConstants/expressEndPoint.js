@@ -48,6 +48,10 @@ const expressConstants = {
     MENU_ITEM_DELETE: {
         url: '/MENU_ITEM_DELETE',
         method: 'POST'
+    },
+    ORDER_LIST: {
+        url: '/order_list',
+        method: 'GET'
     }
 };
 

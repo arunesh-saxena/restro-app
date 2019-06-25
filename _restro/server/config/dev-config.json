@@ -105,5 +105,25 @@
                 "Content-Type": "application/json"
             }
         }
+    },
+    "getOrderList": {
+        "default": {
+            "module": "getOrderList",
+            "url": "http://localhost:3000/api/ordersList",
+            "method": "GET",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
+    },
+    "updateOrder": {
+        "default": {
+            "module": "updateOrder",
+            "url": "http://localhost:3000/api/updateOrder",
+            "method": "PUT",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
     }
 }

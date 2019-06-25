@@ -19,6 +19,10 @@ export const setInitialMenuItem = data => ({
     type: types.MENU_INITIAL_ITEM,
     data
 });
+export const setMenuItemFilter = data => ({
+    type: types.MENU_LIST_FILTERED,
+    data
+});
 export const uploadMenuAction = (formData) => {
     const api = expressConstants.UPLOAD_MENU;
     const option = {
@@ -121,10 +125,6 @@ export const getMenuItem = (itemID) => {
                 dispatch(ajaxRequestFailure({ message: error }));
             });
 };
-export const setMenuItemFilter = data => ({
-    type: types.MENU_LIST_FILTERED,
-    data
-});
 
 export const updateMenuItem = (formData) => {
     const api = expressConstants.MENU_ITEM_UPDATE;
