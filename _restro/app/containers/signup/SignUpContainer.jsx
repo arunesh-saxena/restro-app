@@ -2,6 +2,7 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { signUpValidate as formValidate } from '../../utils/formValidation';
 import Heading from '../../components/heading/Heading';
+import ServerErrors from '../../components/serverErrors/ServerErrors';
 
 const renderField = ({
     input,
@@ -122,13 +123,8 @@ let SignUpContainer = (props) => {
         if (userData && userData.user && userData.user.success) {
             className += ' alert-success';
             msg = labelsSignUp.successMsg;
-        } else if (
-            userData &&
-            userData.user &&
-            userData.user.success === false
-        ) {
-            className += ' alert-dark';
-            msg = userData.user.data && userData.user.data.message;
+        } else {
+            return '';
         }
         return <p className={className}>{msg}</p>;
     };
@@ -137,8 +133,9 @@ let SignUpContainer = (props) => {
             <div className="row justify-content-md-center">
                 <div className="col-xs-12 col-md-6">
                     {redemderHeading()}
-                    {renderLoginForm()}
+                    <ServerErrors />
                     {successMsg()}
+                    {renderLoginForm()}
                 </div>
             </div>
         </div>

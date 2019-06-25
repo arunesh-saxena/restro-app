@@ -46,8 +46,7 @@ const singUp = (req, res) => {
             } else {
                 res.json({
                     success: false,
-                    data: {
-                        message: `${username === data.username ? username : ''} 
+                    message: `${username === data.username ? username : ''} 
                                     ${
     username === data.username
                                         && email === data.email
@@ -57,7 +56,6 @@ const singUp = (req, res) => {
                                     ${
     email === data.email ? email : ''
 } is already exsit.`
-                    }
                 });
             }
         })

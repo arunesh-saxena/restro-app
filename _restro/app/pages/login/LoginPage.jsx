@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import LoginContainer from '../../containers/login/LoginContainer';
-import { submitLogin, setErrorMsg } from '../../actions/loginAction';
+import { submitLogin } from '../../actions/loginAction';
 import appConstants from '../../appConstants/appConstants';
 import appUrls from '../../appConstants/appUrls';
 
@@ -18,10 +18,6 @@ class LoginPage extends React.Component {
         if (loginData && loginData.username) {
             this.props.history.push(appUrls.MENU_LIST);
         }
-    }
-
-    componentWillUnmount() {
-        this.props.setErrorMsg({ msg: null });
     }
 
     handleSignInSubmit(e) {
@@ -56,8 +52,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch =>
     bindActionCreators(
         {
-            submitLogin,
-            setErrorMsg
+            submitLogin
         },
         dispatch
     );

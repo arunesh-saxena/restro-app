@@ -73,23 +73,7 @@ let LoginContainer = (props) => {
             </button>
         </form>
     );
-    const successMsg = () => {
-        const { loginData } = props;
 
-        if (!Object.keys(loginData).length || !loginData.errorMsg) {
-            return '';
-        }
-        let msg = '';
-        let className = 'alert';
-        if (loginData && loginData.username) {
-            className += ' alert-success';
-            msg = 'Thank you for login';
-        } else {
-            className += ' alert-dark';
-            msg = `${loginData.errorMsg}`;
-        }
-        return <p className={className}>{msg}</p>;
-    };
     return (
         <div className="login-form-container">
             <div className="row justify-content-md-center">
@@ -97,7 +81,6 @@ let LoginContainer = (props) => {
                     {renderHeading()}
                     <ServerErrors />
                     {renderLoginForm()}
-                    {successMsg()}
                 </div>
             </div>
         </div>
