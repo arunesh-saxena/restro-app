@@ -1,13 +1,6 @@
 const db = require('../models');
 const CONSTANTS = require('../constants');
 
-const addOrder = (req, res) => {
-    const { body } = req;
-
-    const order = db.Order(body).save((err, data) => {
-        sendRes(res, err, data);
-    });
-};
 const updateOrder = (req, res) => {
     const { body } = req;
     const orderId = req.params.id;
@@ -34,15 +27,9 @@ const updateOrder = (req, res) => {
     );
 };
 
-var getOrderbyId = (orderId, callback) => {
+const getOrderbyId = (orderId, callback) => {
     db.Order.find({ id: orderId }, (err, data) => {
         callback(err, data);
-    });
-};
-
-const newOrder = (req, res, body) => {
-    const order = db.Order(body).save((err, data) => {
-        sendRes(res, err, data);
     });
 };
 
@@ -75,7 +62,6 @@ const sendRes = (res, err, data) => {
 };
 
 module.exports = {
-    addOrder,
     updateOrder,
     getOrderList,
     getOrder

@@ -1,7 +1,7 @@
 const express = require('express');
 
 const routes = express.Router();
-// const session = require('express-session');
+
 const cors = require('cors');
 const multer = require('multer');
 const jwt = require('jsonwebtoken');
@@ -23,11 +23,12 @@ routes.post('/imageUpload', upload, (req, res) => {
     console.log('hello', req.body);
 });
 
-/* controllers */
+/* controllers start */
 const userCtrl = require('../controllers/userController');
 const menuCtrl = require('../controllers/menuController');
 const orderCtrl = require('../controllers/orderController');
 const cartCtrl = require('../controllers/cartContoller');
+/* controllers end */
 
 const CONSTANTS = require('../constants');
 
@@ -42,7 +43,6 @@ const isAuthenticated = (req, res, next) => {
                 req.decoded = decoded; // this add the decoded payload to the client req (request) object and make it available in the routes
                 next();
             } else {
-                // res.status(403).send('Invalid token supplied');
                 res.json({
                     success: false,
                     data: {
@@ -52,7 +52,6 @@ const isAuthenticated = (req, res, next) => {
             }
         });
     } else {
-        // res.status(403).send('Authorization failed! Please provide a valid token');
         res.json({
             success: false,
             data: {
@@ -83,13 +82,11 @@ routes.use(cors(issue2options));
 }); */
 
 /* User routes */
+/* Start _user by _restro login and signUp */
 
 routes.post('/singup', userCtrl.singUp);
-
 routes.post('/login/', userCtrl.login);
-
 routes.get('/logout', userCtrl.logout);
-// routes.post('/logout', userCtrl.logout);
 /* check is user is loggin on server */
 routes.post('/isLogin', isAuthenticated, (req, res) => {
     const { decoded } = req;
@@ -101,42 +98,39 @@ routes.post('/isLogin', isAuthenticated, (req, res) => {
     });
 });
 
-/* Restro start */
+/* End */
+
+/* Start used by _restor admin for menu actions */
 
 routes.post('/menu/add/', upload, menuCtrl.addMenu);
-
 routes.post('/menu/list/', menuCtrl.getMenuList);
-
 routes.get('/menu/getMenuItem/:itemID/', menuCtrl.getMenuItem);
-
 routes.post('/menu/updateMenuItem/', upload, menuCtrl.updateMenuItem);
 routes.put('/menu/changeMenuItemQuantity/', menuCtrl.changeMenuItemQuantity);
 routes.put('/menu/toggleHiddenMenuItem/', menuCtrl.toggleHiddenMenuItem);
 routes.delete('/menu/deleteMenuItem/', menuCtrl.deleteMenuItem);
 
-routes.post('/order/add/', orderCtrl.addOrder);
+/* End */
+
+/* Start used by _restor admin for order db actions */
 
 routes.put('/order/:id/', orderCtrl.updateOrder);
-
 routes.get('/order/:id', orderCtrl.getOrder);
+routes.get('/ordersList/', orderCtrl.getOrderList);
 
-routes.get('/orders/', orderCtrl.getOrderList);
+/* End */
+
+/* Start use by _consumer placeOrder */
 
 routes.get('/isItemAvailable/:itemId', cartCtrl.isItemAvailable);
-
 routes.post('/placeOrder', cartCtrl.placeOrder);
-
 routes.get('/orderStatus', cartCtrl.orderStatus);
 
-/* Restro end */
+/* End */
 
-/* testing */
+/* Start testing */
 
 routes.get('/test', (req, res) => {
-    // res.status(CONSTANTS.serCode.success).json({
-    //         success: false,
-    //         data: {msg:'testing done'}
-    //       });
     res.render('test');
 });
 routes.get('/testApi', (req, res) => {
@@ -145,5 +139,7 @@ routes.get('/testApi', (req, res) => {
         data: { msg: 'testing done' }
     });
 });
+
+/* End */
 
 module.exports = routes;
