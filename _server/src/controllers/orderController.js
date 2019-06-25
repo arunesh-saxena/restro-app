@@ -1,68 +1,117 @@
 const db = require('../models');
 const CONSTANTS = require('../constants');
 
-const updateOrder = (req, res) => {
-    const { body } = req;
-    const orderId = req.params.id;
-    const setObj = {
-        status: body.status,
-        updatedAt: Date.now()
-    };
-    const order = db.Order.update(
+const updateOrderByIdOrToken = async ({
+    tokenId = null,
+    orderId = null,
+    setObj = {}
+}) => {
+    const infoToUpdate = Object.assign(
         {
-            id: orderId
+            updatedAt: new Date()
         },
-        {
-            $set: setObj
-        },
-        (err, data) => {
-            if (err) {
-                sendRes(res, err, data);
-            } else {
-                getOrderbyId(orderId, (err, data) => {
-                    sendRes(res, err, data[0]);
-                });
-            }
-        }
+        setObj
     );
+
+    const result = await db.Order.findOneAndUpdate(
+        { $or: [{ id: orderId }, { tokenId }] },
+        {
+            $set: infoToUpdate
+        },
+        { upsert: false }
+    );
+
+    return result;
 };
 
-const getOrderbyId = (orderId, callback) => {
-    db.Order.find({ id: orderId }, (err, data) => {
-        callback(err, data);
+const getOrderByIdORTokenId = async ({ tokenId = null, orderId = null }) => {
+    const result = await db.Order.findOne({
+        $or: [{ tokenId }, { id: orderId }]
     });
+    return result;
 };
 
-const getOrderList = (req, res) => {
-    db.Order.find({}, (err, data) => {
-        sendRes(res, err, data);
-    });
-};
+const updateOrder = async (req, res) => {
+    const { orderId, tokenId, orderStatus } = req.body || {};
 
-const getOrder = (req, res) => {
-    const orderId = req.params.id;
-    getOrderbyId(orderId, (err, data) => {
-        sendRes(res, err, data[0]);
-    });
-};
-
-const sendRes = (res, err, data) => {
-    if (err) {
-        res.status(CONSTANTS.serCode.ISE).json({
+    if (!(orderId || tokenId) || !orderStatus) {
+        res.json({
             success: false,
-            data: err
+            message: 'Please provide orderId, tokenId, orderStatus'
         });
-        // throw err;
-    } else {
-        res.status(CONSTANTS.serCode.success).json({
+        return;
+    }
+
+    const setObj = {
+        status: orderStatus
+    };
+    try {
+        const updatedOrder = await updateOrderByIdOrToken({
+            tokenId,
+            orderId,
+            setObj
+        });
+        res.json({
             success: true,
-            data
+            data: {
+                order: updatedOrder
+            }
+        });
+    } catch (error) {
+        res.json({
+            success: false,
+            message: `${error}`
+        });
+    }
+};
+
+const getOrdersList = async (req, res) => {
+    try {
+        const ordersList = await db.Order.find({});
+        res.json({
+            success: true,
+            data: {
+                orders: ordersList
+            }
+        });
+    } catch (error) {
+        res.json({
+            success: false,
+            message: `${error}`
+        });
+    }
+};
+
+const getOrder = async (req, res) => {
+    const { tokenId = null, orderId = null } = req.query;
+    if (!(orderId || tokenId)) {
+        res.json({
+            success: false,
+            message: 'Please provide orderId, tokenId'
+        });
+        return;
+    }
+    let orderDetail = {};
+    try {
+        orderDetail = await getOrderByIdORTokenId({ tokenId, orderId });
+        orderDetail = JSON.parse(JSON.stringify(orderDetail)); // copying
+
+        res.json({
+            success: true,
+            data: {
+                order: orderDetail
+            }
+        });
+    } catch (error) {
+        res.json({
+            success: false,
+            message: `${error}`
         });
     }
 };
 
 module.exports = {
     updateOrder,
-    getOrderList,
+    getOrdersList,
     getOrder
 };

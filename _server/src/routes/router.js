@@ -114,9 +114,9 @@ routes.delete('/menu/deleteMenuItem/', menuCtrl.deleteMenuItem);
 
 /* Start used by _restor admin for order db actions */
 
-routes.put('/order/:id/', orderCtrl.updateOrder);
-routes.get('/order/:id', orderCtrl.getOrder);
-routes.get('/ordersList/', orderCtrl.getOrderList);
+routes.put('/updateOrder', orderCtrl.updateOrder);
+routes.get('/getOrder/', orderCtrl.getOrder);
+routes.get('/ordersList/', orderCtrl.getOrdersList);
 
 /* End */
 
