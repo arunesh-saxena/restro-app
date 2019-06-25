@@ -6,6 +6,7 @@ import { reduxForm } from 'redux-form';
 import MenuForm from '../../components/form/MenuForm';
 import appConstants from '../../appConstants/appConstants';
 import Heading from '../../components/heading/Heading';
+import ServerErrors from '../../components/serverErrors/ServerErrors';
 
 let MenuEditContainer = (props) => {
     const {
@@ -51,6 +52,7 @@ let MenuEditContainer = (props) => {
             <div className="row justify-content-md-center">
                 <div className="col-xs-10 col-md-10">
                     {renderHeading()}
+                    <ServerErrors />
                     <MenuForm
                         submitForm={submitForm}
                         labels={labels}

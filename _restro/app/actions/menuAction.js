@@ -1,6 +1,7 @@
 import AjaxFactory from '../utils/AjaxFactory';
 import expressConstants from '../appConstants/expressEndPoint';
 import * as types from '../utils/types';
+import { ajaxRequestSuccess, ajaxRequestFailure } from './errors';
 
 export const setMenuUploadAction = data => ({
     type: types.UPLOAD_MENU,
@@ -40,6 +41,7 @@ export const uploadMenuAction = (formData) => {
                     null;
                 const data = success && value.body.data.data;
                 if (success) {
+                    dispatch(ajaxRequestSuccess());
                     dispatch(
                         setMenuUploadAction({
                             success,
@@ -47,6 +49,7 @@ export const uploadMenuAction = (formData) => {
                         })
                     );
                 } else {
+                    dispatch(ajaxRequestFailure({ message }));
                     dispatch(
                         setMenuUploadAction({
                             success,
@@ -80,11 +83,13 @@ export const getMenuList = () => {
                         value.body.data.message) ||
                     null;
                 const list = (success && value.body.data.data) || [];
+                dispatch(ajaxRequestSuccess());
                 dispatch(setMenuList(list));
                 dispatch(setMenuItemFilter(list));
             })
             .catch((error) => {
                 console.log(error);
+                dispatch(ajaxRequestFailure({ message: error }));
             });
 };
 
@@ -108,10 +113,12 @@ export const getMenuItem = (itemID) => {
                         value.body.data.message) ||
                     null;
                 const list = (success && value.body.data.data) || [];
+                dispatch(ajaxRequestSuccess());
                 dispatch(setInitialMenuItem(list));
             })
             .catch((error) => {
                 console.log(error);
+                dispatch(ajaxRequestFailure({ message: error }));
             });
 };
 export const setMenuItemFilter = data => ({
@@ -142,6 +149,7 @@ export const updateMenuItem = (formData) => {
                     null;
                 const data = success && value.body.data.data;
                 if (success) {
+                    dispatch(ajaxRequestSuccess());
                     dispatch(
                         setMenuUploadAction({
                             success,
@@ -149,6 +157,7 @@ export const updateMenuItem = (formData) => {
                         })
                     );
                 } else {
+                    dispatch(ajaxRequestFailure({ message }));
                     dispatch(
                         setMenuUploadAction({
                             success,
@@ -159,6 +168,7 @@ export const updateMenuItem = (formData) => {
             })
             .catch((error) => {
                 console.log(error);
+                dispatch(ajaxRequestFailure({ message: error }));
             });
 };
 
@@ -184,13 +194,15 @@ export const changeMenuItemQuantity = (itemData) => {
                     null;
                 const data = success && value.body.data.data;
                 if (success) {
+                    dispatch(ajaxRequestSuccess());
                     dispatch(getMenuList());
                 } else {
-                    console.log(value);
+                    dispatch(ajaxRequestFailure({ message }));
                 }
             })
             .catch((error) => {
                 console.log(error);
+                dispatch(ajaxRequestFailure({ message: error }));
             });
 };
 
@@ -216,12 +228,15 @@ export const toggleHiddenMenuItem = (data) => {
                     null;
                 const data = success && value.body.data.data;
                 if (success) {
+                    dispatch(ajaxRequestSuccess());
                     dispatch(getMenuList());
                 } else {
                     console.log(12, value);
+                    dispatch(ajaxRequestFailure({ message }));
                 }
             })
             .catch((error) => {
                 console.log(error);
+                dispatch(ajaxRequestFailure({ message: error }));
             });
 };

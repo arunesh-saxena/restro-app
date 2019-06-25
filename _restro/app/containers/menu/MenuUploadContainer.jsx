@@ -3,6 +3,7 @@ import { reduxForm } from 'redux-form';
 import MenuForm from '../../components/form/MenuForm';
 import appConstants from '../../appConstants/appConstants';
 import Heading from '../../components/heading/Heading';
+import ServerErrors from '../../components/serverErrors/ServerErrors';
 
 let MenuUploadContainer = (props) => {
     const { handleMenuUploadSubmit, pristine, submitting, formInfo } = props;
@@ -35,6 +36,7 @@ let MenuUploadContainer = (props) => {
             <div className="row justify-content-md-center">
                 <div className="col-xs-12 col-md-6">
                     {renderHeading()}
+                    <ServerErrors />
                     <MenuForm
                         submitForm={submitForm}
                         labels={labels}

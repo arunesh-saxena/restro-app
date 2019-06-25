@@ -4,9 +4,9 @@ import commonUtils from './commonUtils';
 const fetch = require('node-fetch');
 
 const errorHandler = (error) => {
-    console.log('******** Error *********');
+    console.log('******** Error Start *********');
     console.log((error.response && error.response.data) || error);
-    console.log('******** Error *********');
+    console.log('******** Error End *********');
     return commonUtils.sendError(error);
 };
 
@@ -21,17 +21,30 @@ const ServiceFactory = {
         };
 
         if (isMultiPart) {
-            return fetch(config.url, {
-                method: config.method,
-                body: config.data
-            })
-                .then(res => res.json())
-                .then(json => json)
-                .catch(error => errorHandler(error));
+            return new Promise((resolve, reject) => {
+                fetch(config.url, {
+                    method: config.method,
+                    body: config.data
+                })
+                    .then(res => res.json())
+                    .then((response) => {
+                        const responseObject = response.data;
+                        return resolve({
+                            data: responseObject
+                        });
+                    })
+                    .catch((error) => {
+                        const responseObject = errorHandler(error);
+                        return reject({
+                            data: responseObject
+                        });
+                    });
+            });
         }
         if (!options.headers) {
             delete options.headers;
         }
+
         return new Promise((resolve, reject) => {
             axios(config)
                 .then((response) => {
