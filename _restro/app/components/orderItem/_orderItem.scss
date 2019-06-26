@@ -3,16 +3,18 @@
         flex-direction: column;
     }
     display: flex;
-    padding: 20px 10px;
-    border: 1px solid;
     .item-col {
         flex: 0 1 100%;
         @include breakpoint(desktop-above) {
             border-right: 1px solid;
             padding: 0 20px;
 
+            flex: 0 1 25%;
             &:first-child {
                 padding-left: 0;
+            }
+            &:nth-child(2) {
+                flex: 0 1 100%;
             }
             &:last-child {
                 padding-right: 0;
@@ -28,6 +30,7 @@
             }
             &:last-child {
                 padding-bottom: 0;
+                border-top: none;
             }
         }
         .id-section {
@@ -47,9 +50,21 @@
         }
 
         .item-section {
-            .item-section-header,
+            .item-section-header {
+                display: flex;
+                padding-bottom: 5px;
+                > * {
+                    flex: 0 1 100%;
+                }
+            }
             .item-section-row {
                 display: flex;
+                padding: 5px 0;
+                border-top: 1px solid;
+                align-items: center;
+                &:last-child {
+                    border-bottom: 1px solid;
+                }
                 > * {
                     flex: 0 1 100%;
                 }

@@ -37,7 +37,15 @@ const appConstants = {
             orderList: 'Order list'
         },
         order: {
-            orderList: 'Order list'
+            orderList: 'Order list',
+            tokenNumber: 'Token#',
+            orderId: 'Order#',
+            tableNumber: 'Table#',
+            status: 'Status',
+            itemName: 'Item Name',
+            itemCode: 'Item Code',
+            quantity: 'Quantity',
+            action: 'Action'
         },
         error: {
             required: 'Required',

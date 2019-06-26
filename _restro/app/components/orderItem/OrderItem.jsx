@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const OrderItem = (props) => {
+    const { actionHandeler, labels } = props;
     const { id, tokenId, totalCost, status, isDeleted, tableId, items = [] } =
         props.itemDetails || {};
-    const { actionHandeler } = props;
     const selectInput = React.createRef();
     const changeHandler = () => {
         const actionId = selectInput.current.value;
@@ -15,19 +15,19 @@ const OrderItem = (props) => {
             <div className="item-col">
                 <div className="id-section">
                     <div className="id-row">
-                        <strong>Token#</strong>
+                        <strong>{labels.tokenNumber}</strong>
                         <span>{tokenId}</span>
                     </div>
                     <div className="id-row">
-                        <strong>Order#</strong>
+                        <strong>{labels.orderId}</strong>
                         <span>{id}</span>
                     </div>
                     <div className="id-row">
-                        <strong>Table#</strong>
+                        <strong>{labels.tableNumber}</strong>
                         <span>{tableId}</span>
                     </div>
                     <div className="id-row">
-                        <strong>Status</strong>
+                        <strong>{labels.status}</strong>
                         <span>{status}</span>
                     </div>
                 </div>
@@ -35,9 +35,9 @@ const OrderItem = (props) => {
             <div className="item-col">
                 <div className="item-section">
                     <div className="item-section-header">
-                        <strong>itemName</strong>
-                        <strong>itemCode</strong>
-                        <strong>quantity</strong>
+                        <strong>{labels.itemName}</strong>
+                        <strong>{labels.itemCode}</strong>
+                        <strong>{labels.quantity}</strong>
                     </div>
                     {items.map((item, ind) => (
                         <div className="item-section-row" key={ind}>
@@ -50,7 +50,7 @@ const OrderItem = (props) => {
             </div>
             <div className="item-col">
                 <div className="action-col">
-                    <strong>Action</strong>
+                    <strong>{labels.action}</strong>
                     <select
                         ref={selectInput}
                         className="action-selector"
@@ -89,7 +89,8 @@ OrderItem.propTypes = {
             })
         )
     }),
-    actionHandeler: PropTypes.func
+    actionHandeler: PropTypes.func,
+    labels: PropTypes.object
 };
 
 export default OrderItem;
