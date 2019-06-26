@@ -2,9 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const OrderItem = (props) => {
-    const { actionHandeler, labels } = props;
-    const { id, tokenId, totalCost, status, isDeleted, tableId, items = [] } =
-        props.itemDetails || {};
+    const { itemDetails = {}, actionHandeler, labels, actionList = [] } = props;
+    const {
+        id,
+        tokenId,
+        totalCost,
+        status,
+        isDeleted,
+        tableId,
+        items = []
+    } = itemDetails;
+
     const selectInput = React.createRef();
     const changeHandler = () => {
         const actionId = selectInput.current.value;
@@ -32,6 +40,7 @@ const OrderItem = (props) => {
                     </div>
                 </div>
             </div>
+
             <div className="item-col">
                 <div className="item-section">
                     <div className="item-section-header">
@@ -48,6 +57,7 @@ const OrderItem = (props) => {
                     ))}
                 </div>
             </div>
+
             <div className="item-col">
                 <div className="action-col">
                     <strong>{labels.action}</strong>
@@ -58,10 +68,18 @@ const OrderItem = (props) => {
                             changeHandler();
                         }}
                     >
-                        <option value="1">Action# 1</option>
-                        <option value="2">Action# 2</option>
-                        <option value="3">Action# 3</option>
-                        <option value="4">Action# 4</option>
+                        {actionList.map((action, ind) => (
+                            <option
+                                key={ind}
+                                value={action.actionId}
+                                selected={
+                                    parseInt(status) ===
+                                        parseInt(action.actionId)
+                                }
+                            >
+                                {action.label}
+                            </option>
+                        ))}
                     </select>
                 </div>
             </div>
@@ -90,7 +108,13 @@ OrderItem.propTypes = {
         )
     }),
     actionHandeler: PropTypes.func,
-    labels: PropTypes.object
+    labels: PropTypes.object,
+    actionList: PropTypes.arrayOf(
+        PropTypes.shape({
+            actionId: PropTypes.number,
+            label: PropTypes.string
+        })
+    )
 };
 
 export default OrderItem;

@@ -6,6 +6,28 @@ import ServerErrors from '../../components/serverErrors/ServerErrors';
 import OrderItem from '../../components/orderItem/OrderItem';
 
 const OrderListContainer = (props) => {
+    const actionDummy = [
+        {
+            actionId: 1,
+            label: 'Action# 1'
+        },
+        {
+            actionId: 2,
+            label: 'Action# 2'
+        },
+        {
+            actionId: 3,
+            label: 'Action# 3'
+        },
+        {
+            actionId: 4,
+            label: 'Action# 4'
+        },
+        {
+            actionId: 5,
+            label: 'Action# 5'
+        }
+    ];
     const { labels, order = {} } = props;
     const renderHeading = () => <Heading text={labels.orderList} />;
     const renderOrderList = () => {
@@ -15,6 +37,7 @@ const OrderListContainer = (props) => {
                 <OrderItem
                     labels={labels}
                     itemDetails={item}
+                    actionList={actionDummy}
                     actionHandeler={(actionId) => {
                         console.log('todo: action change', actionId);
                     }}
@@ -23,7 +46,6 @@ const OrderListContainer = (props) => {
         ));
         return <ul className="list-group">{orderList}</ul>;
     };
-    const orderDummy = order.orders;
 
     return (
         <div className="order-list-container">
