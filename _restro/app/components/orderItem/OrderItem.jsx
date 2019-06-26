@@ -64,19 +64,13 @@ const OrderItem = (props) => {
                     <select
                         ref={selectInput}
                         className="action-selector"
+                        defaultValue={parseInt(status)}
                         onChange={() => {
                             changeHandler();
                         }}
                     >
                         {actionList.map((action, ind) => (
-                            <option
-                                key={ind}
-                                value={action.actionId}
-                                selected={
-                                    parseInt(status) ===
-                                        parseInt(action.actionId)
-                                }
-                            >
+                            <option key={ind} value={parseInt(action.actionId)}>
                                 {action.label}
                             </option>
                         ))}
