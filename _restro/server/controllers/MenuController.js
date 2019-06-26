@@ -66,10 +66,9 @@ export const updateMenuItem = (req, res, next) => {
         headers: endPoint.headers,
         data
     };
-    console.log('-------------->updateMenuItem');
+
     ServiceFactory.triggerserviceRequest(config, true)
         .then((response) => {
-            console.log('----------------', response);
             res.json(response.data);
         })
         .catch((error) => {
@@ -162,7 +161,6 @@ export const toggleHiddenMenuItem = (req, res, next) => {
 export const deleteMenuItem = (req, res, next) => {
     const endPoint = service.deleteMenuItem.default;
     const { body } = req;
-    console.log(body);
 
     const config = {
         method: endPoint.method,

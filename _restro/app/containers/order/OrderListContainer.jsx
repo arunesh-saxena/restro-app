@@ -21,6 +21,6 @@ const OrderListContainer = (props) => {
     );
 };
 OrderListContainer.propTypes = {
-    labels: PropTypes.object
+    labels: PropTypes.shape({ orders: PropTypes.array })
 };
 export default OrderListContainer;

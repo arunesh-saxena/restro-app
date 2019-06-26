@@ -18,7 +18,6 @@ export const getOrderList = () => {
     return dispatch =>
         AjaxFactory.triggerServerRequest(option)
             .then((value) => {
-                console.log(value);
                 const data = (value.body && value.body.data) || null;
                 const success = (data && value.body.data.success) || null;
                 const message = (data && value.body.data.message) || null;
