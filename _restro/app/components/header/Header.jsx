@@ -9,7 +9,7 @@ class Header extends Component {
         this.state = {
             isMainMenuOpen: false
         };
-        this.labels = props.labels.common;
+        this.labels = props.labels;
     }
 
     toggleMainMenu(event) {
@@ -30,7 +30,7 @@ class Header extends Component {
                             tabIndex="0"
                             onClick={this.toggleMainMenu}
                         >
-                            {this.labels.aboutUs}
+                            {this.labels.common.aboutUs}
                         </span>
                     </Link>
                 </li>
@@ -41,7 +41,7 @@ class Header extends Component {
                             tabIndex="0"
                             onClick={this.toggleMainMenu}
                         >
-                            {this.labels.contactUs}
+                            {this.labels.common.contactUs}
                         </span>
                     </Link>
                 </li>
@@ -52,7 +52,7 @@ class Header extends Component {
                             tabIndex="0"
                             onClick={this.toggleMainMenu}
                         >
-                            {this.labels.menuList}
+                            {this.labels.common.menuList}
                         </span>
                     </Link>
                 </li>
@@ -64,7 +64,7 @@ class Header extends Component {
                                 tabIndex="0"
                                 onClick={this.toggleMainMenu}
                             >
-                                {this.labels.addMenu}
+                                {this.labels.common.addMenu}
                             </span>
                         </Link>
                     </li>
@@ -77,7 +77,20 @@ class Header extends Component {
                                 tabIndex="0"
                                 onClick={this.toggleMainMenu}
                             >
-                                {this.labels.orderList}
+                                {this.labels.common.orderList}
+                            </span>
+                        </Link>
+                    </li>
+                )}
+                {isLogin && (
+                    <li>
+                        <Link to={AppUrls.ADD_RESTRO}>
+                            <span
+                                role="button"
+                                tabIndex="0"
+                                onClick={this.toggleMainMenu}
+                            >
+                                {this.labels.restro.addRestro}
                             </span>
                         </Link>
                     </li>
@@ -100,7 +113,7 @@ class Header extends Component {
                                         tabIndex="0"
                                         onClick={this.toggleMainMenu}
                                     >
-                                        {this.labels.login}
+                                        {this.labels.common.login}
                                     </span>
                                 </Link>
                             </li>
@@ -111,7 +124,7 @@ class Header extends Component {
                                         tabIndex="0"
                                         onClick={this.toggleMainMenu}
                                     >
-                                        {this.labels.signUp}
+                                        {this.labels.common.signUp}
                                     </span>
                                 </Link>
                             </li>
@@ -130,7 +143,7 @@ class Header extends Component {
                                         tabIndex="0"
                                         onClick={this.toggleMainMenu}
                                     >
-                                        {this.labels.logout}
+                                        {this.labels.common.logout}
                                     </span>
                                 </Link>
                             </span>

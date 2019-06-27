@@ -62,6 +62,13 @@ const OrderListPage = Loadable({
         ),
     loading: () => <strong>Loading...</strong>
 });
+const AddRestroPage = Loadable({
+    loader: () =>
+        import(
+            /* webpackChunkName: "AddRestroPage" */ './pages/restro/AddRestroPage'
+        ),
+    loading: () => <strong>Loading...</strong>
+});
 const ErrorPage = Loadable({
     loader: () =>
         import(/* webpackChunkName: "ErrorPage" */ './pages/ErrorPage'),
@@ -127,6 +134,12 @@ export default store => [
                 path: `${AppUrls.ORDER_LIST}/`,
                 exact: true,
                 component: OrderListPage
+            },
+            {
+                need: [],
+                path: `${AppUrls.ADD_RESTRO}/`,
+                exact: true,
+                component: AddRestroPage
             },
             {
                 path: '*',

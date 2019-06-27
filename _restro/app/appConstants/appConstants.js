@@ -47,6 +47,9 @@ const appConstants = {
             quantity: 'Quantity',
             action: 'Action'
         },
+        restro: {
+            addRestro: 'Add Restro'
+        },
         error: {
             required: 'Required',
             invalidEmail: 'Invalid email address',
