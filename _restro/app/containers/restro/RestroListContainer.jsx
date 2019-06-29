@@ -10,7 +10,7 @@ const RestroListContainer = (props) => {
 
     const renderHeading = () => <Heading text={labels.restroList} />;
 
-    const renderRestroList = () => 'TODO: renderRestroList ';
+    const renderRestroList = () => `TODO: renderRestroList ${restroList.length}`;
 
     return (
         <div className="restro-add-container">

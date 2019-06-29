@@ -150,7 +150,7 @@ export default store => [
                 component: Authentication(AddRestroPage, store)
             },
             {
-                need: [],
+                need: [getRestroList],
                 path: `${AppUrls.RESTRO_LIST}/`,
                 exact: true,
                 component: Authentication(RestroListPage, store)

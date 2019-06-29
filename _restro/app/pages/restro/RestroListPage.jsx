@@ -2,13 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import appConstants from '../../appConstants/appConstants';
-import { getRestroList } from '../../actions/restroAction';
 import RestroListContainer from '../../containers/restro/RestroListContainer';
 
 class RestroListPage extends Component {
-    componentDidMount() {
-        this.props.getRestroList();
-    }
     render() {
         return (
             <div className="restro-add-page">
@@ -24,13 +20,7 @@ class RestroListPage extends Component {
 const mapStateToProps = state => ({
     restro: state.restro || {}
 });
-const mapDispatchToProps = dispatch =>
-    bindActionCreators(
-        {
-            getRestroList
-        },
-        dispatch
-    );
+const mapDispatchToProps = dispatch => bindActionCreators({}, dispatch);
 
 export default connect(
     mapStateToProps,
