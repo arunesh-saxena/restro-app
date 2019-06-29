@@ -28,6 +28,7 @@ const userCtrl = require('../controllers/userController');
 const menuCtrl = require('../controllers/menuController');
 const orderCtrl = require('../controllers/orderController');
 const cartCtrl = require('../controllers/cartContoller');
+const restroCtrl = require('../controllers/restroControler');
 /* controllers end */
 
 const CONSTANTS = require('../constants');
@@ -119,7 +120,11 @@ routes.get('/getOrder/', orderCtrl.getOrder);
 routes.get('/ordersList/', orderCtrl.getOrdersList);
 
 /* End */
+/* Start used by _restro admin form restaurant */
 
+routes.post('/addRestro/', restroCtrl.addRestro);
+
+/* End */
 /* Start use by _consumer placeOrder */
 
 routes.get('/isItemAvailable/:itemId', cartCtrl.isItemAvailable);
