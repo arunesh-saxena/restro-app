@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const restaurantSchema = new mongoose.Schema({
     id: { type: Number, default: 1 },
+    userName: { type: String, require: true },
     restaurantCode: { type: String, default: null },
     restaurantName: { type: String, require: true },
     noOfTables: { type: Number, required: true },
