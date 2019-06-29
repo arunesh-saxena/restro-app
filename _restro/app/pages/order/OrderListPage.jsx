@@ -7,7 +7,6 @@ import { getOrderList, updateOrder } from '../../actions/orderAction';
 
 class OrderListPage extends Component {
     orderActionHandler(tokenId, actionId) {
-        console.log('orderActionHandler', tokenId, actionId);
         this.props.updateOrder({ tokenId, actionId });
     }
     render() {

@@ -42,16 +42,14 @@ export const updateOrder = ({ tokenId, actionId }) => {
         url: api.url,
         data: { tokenId, actionId }
     };
-    console.log(option);
+
     return dispatch =>
         AjaxFactory.triggerServerRequest(option)
             .then((value) => {
-                console.log(value);
                 const data = (value.body && value.body.data) || null;
                 const success = (data && value.body.data.success) || null;
                 const message = (data && value.body.data.message) || null;
                 const order = (success && data.data) || [];
-                console.log(order);
 
                 if (success) {
                     dispatch(ajaxRequestSuccess());
