@@ -28,6 +28,7 @@ class AddRestroPage extends Component {
                     addRestroHandler={() => {
                         this.addRestroHandler();
                     }}
+                    restro={this.props.restro}
                 />
             </div>
         );
@@ -36,7 +37,8 @@ class AddRestroPage extends Component {
 
 const mapStateToProps = state => ({
     formInfo: state.form && state.form.addRestro,
-    user: state.user
+    user: state.user,
+    restro: state.restro || {}
 });
 const mapDispatchToProps = dispatch =>
     bindActionCreators(

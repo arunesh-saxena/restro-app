@@ -5,7 +5,7 @@ import appUrls from '../appConstants/appUrls';
 import { ajaxRequestSuccess, ajaxRequestFailure } from './errors';
 
 export const restroAdded = data => ({
-    type: 'types.RESTRO_ADDED',
+    type: types.SUCCESS_MSG,
     data
 });
 
@@ -22,9 +22,20 @@ export const addRestro = (formData) => {
                 const data = (value.body && value.body.data) || null;
                 const success = (data && value.body.data.success) || null;
                 const message = (data && value.body.data.message) || null;
-                const list = (success && data.data) || [];
                 if (success) {
-                    dispatch(ajaxRequestSuccess());
+                    const restro = (data && data.data) || {};
+                    const successMsg = `${
+                        restro.restaurantName
+                    } added sucessfully`;
+                    Promise.all([
+                        dispatch(ajaxRequestSuccess()),
+                        dispatch(
+                            restroAdded({
+                                msg: successMsg,
+                                infoType: 'success'
+                            })
+                        )
+                    ]);
                 } else {
                     dispatch(ajaxRequestFailure({ message }));
                 }

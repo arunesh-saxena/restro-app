@@ -21,3 +21,6 @@ export const SET_ORDER_LIST = 'SET_ORDER_LIST';
 /*  ajax request */
 export const AJAX_REQUEST_SUCCESS = 'AJAX_REQUEST_SUCCESS';
 export const AJAX_REQUEST_FAILURE = 'AJAX_REQUEST_FAILURE';
+
+/* restro */
+export const SUCCESS_MSG = 'SUCCESS_MSG';
