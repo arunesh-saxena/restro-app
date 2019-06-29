@@ -18,7 +18,10 @@ const updateOrderByIdOrToken = async ({
         {
             $set: infoToUpdate
         },
-        { upsert: false }
+        {
+            upsert: false,
+            returnNewDocument: true
+        }
     );
 
     return result;

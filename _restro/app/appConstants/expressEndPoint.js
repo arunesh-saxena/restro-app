@@ -52,6 +52,10 @@ const expressConstants = {
     ORDER_LIST: {
         url: '/order_list',
         method: 'GET'
+    },
+    UPDATE_ORDER_ACTION: {
+        url: '/update_order_action',
+        method: 'PUT'
     }
 };
 

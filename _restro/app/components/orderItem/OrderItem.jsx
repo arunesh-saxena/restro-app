@@ -16,7 +16,7 @@ const OrderItem = (props) => {
     const selectInput = React.createRef();
     const changeHandler = () => {
         const actionId = selectInput.current.value;
-        actionHandeler(actionId);
+        actionHandeler(tokenId, actionId);
     };
     return (
         <div className="order-item">
@@ -65,9 +65,7 @@ const OrderItem = (props) => {
                         ref={selectInput}
                         className="action-selector"
                         defaultValue={parseInt(status)}
-                        onChange={() => {
-                            changeHandler();
-                        }}
+                        onChange={changeHandler}
                     >
                         {actionList.map((action, ind) => (
                             <option key={ind} value={parseInt(action.actionId)}>

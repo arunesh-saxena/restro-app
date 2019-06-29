@@ -13,7 +13,7 @@ import {
     toggleHiddenMenuItem,
     deleteMenuItem
 } from './controllers/MenuController';
-import orderController from './controllers/OrderContoller';
+import orderController, { updateOrder } from './controllers/OrderContoller';
 
 const express = require('express');
 const multer = require('multer');
@@ -58,5 +58,6 @@ routes.post(expressConstants.MENU_ITEM_DELETE.url, deleteMenuItem);
 
 /* Order action */
 routes.get(expressConstants.ORDER_LIST.url, orderController);
+routes.put(expressConstants.UPDATE_ORDER_ACTION.url, updateOrder);
 
 module.exports = routes;

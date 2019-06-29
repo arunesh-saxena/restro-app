@@ -3,15 +3,22 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import appConstants from '../../appConstants/appConstants';
 import OrderListContainer from '../../containers/order/OrderListContainer';
-import { getOrderList } from '../../actions/orderAction';
+import { getOrderList, updateOrder } from '../../actions/orderAction';
 
 class OrderListPage extends Component {
+    orderActionHandler(tokenId, actionId) {
+        console.log('orderActionHandler', tokenId, actionId);
+        this.props.updateOrder({ tokenId, actionId });
+    }
     render() {
         return (
             <div className="order-page-container">
                 <OrderListContainer
                     labels={appConstants.labels.order}
                     order={this.props.order}
+                    orderActionHandler={(tokenId, actionId) => {
+                        this.orderActionHandler(tokenId, actionId);
+                    }}
                 />
             </div>
         );
@@ -24,7 +31,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch =>
     bindActionCreators(
         {
-            getOrderList
+            getOrderList,
+            updateOrder
         },
         dispatch
     );

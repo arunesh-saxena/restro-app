@@ -28,7 +28,7 @@ const OrderListContainer = (props) => {
             label: 'Action# 5'
         }
     ];
-    const { labels, order = {} } = props;
+    const { labels, order = {}, orderActionHandler } = props;
     const renderHeading = () => <Heading text={labels.orderList} />;
     const renderOrderList = () => {
         const { orders = [] } = order;
@@ -38,9 +38,7 @@ const OrderListContainer = (props) => {
                     labels={labels}
                     itemDetails={item}
                     actionList={actionDummy}
-                    actionHandeler={(actionId) => {
-                        console.log('todo: action change', actionId);
-                    }}
+                    actionHandeler={orderActionHandler}
                 />
             </li>
         ));
@@ -56,6 +54,7 @@ const OrderListContainer = (props) => {
     );
 };
 OrderListContainer.propTypes = {
-    labels: PropTypes.shape({ orders: PropTypes.array })
+    labels: PropTypes.shape({ orders: PropTypes.array }),
+    orderActionHandler: PropTypes.func
 };
 export default OrderListContainer;
