@@ -18,10 +18,12 @@
 @import '../components/heading/heading';
 @import '../components/serverErrors/serverErrors';
 @import '../components/orderItem/orderItem';
+@import '../components/restroItem/restroItem';
 
 // Container
 @import '../containers/menu/menuListContainer';
 @import '../containers/order/orderListContainer';
+@import '../containers/restro/restroListContainer';
 
 // page../
 @import '../pages/app';

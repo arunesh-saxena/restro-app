@@ -50,9 +50,15 @@ const appConstants = {
         restro: {
             addRestro: 'Add Restro',
             restaurantName: 'Restaurant Name',
-            noOfTables: 'Number of Tables',
+            numberOfTables: 'Number of Tables',
             submit: 'submit',
-            restroList: 'Restro List'
+            restroList: 'Restro List',
+            editRestro: 'Edit Restro',
+            restroCode: 'Restro Code',
+            restroName: 'Restro Name',
+            noOfTables: 'No of Tables',
+            action: 'Action',
+            youHaveNoRestaurant: 'You have no restaurant'
         },
         error: {
             required: 'Required',

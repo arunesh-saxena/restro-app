@@ -24,10 +24,10 @@ const RestroForm = (props) => {
             validate: [required, maxLength15]
         },
         {
-            label: labels.noOfTables,
-            id: 'noOfTables',
-            fieldName: 'noOfTables',
-            placeholder: labels.noOfTables,
+            label: labels.numberOfTables,
+            id: 'numberOfTables',
+            fieldName: 'numberOfTables',
+            placeholder: labels.numberOfTables,
             type: 'text',
             className: '',
             isRequired: true,

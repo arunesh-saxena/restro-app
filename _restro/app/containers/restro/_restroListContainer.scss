@@ -1,0 +1,7 @@
+.header-list {
+    display: flex;
+    font-weight: bold;
+    * {
+        flex: 0 1 100%;
+    }
+}

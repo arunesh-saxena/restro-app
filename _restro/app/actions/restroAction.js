@@ -57,7 +57,7 @@ export const getRestroList = () => {
         method: api.method,
         url: api.url
     };
-    console.log(option);
+
     return dispatch =>
         AjaxFactory.triggerServerRequest(option)
             .then((value) => {
