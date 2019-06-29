@@ -123,6 +123,8 @@ routes.get('/ordersList/', orderCtrl.getOrdersList);
 /* Start used by _restro admin form restaurant */
 
 routes.post('/addRestro/', restroCtrl.addRestro);
+routes.get('/getRestroList/', restroCtrl.getRestroList);
+routes.get('/getRestro/', restroCtrl.getRestro);
 
 /* End */
 /* Start use by _consumer placeOrder */
