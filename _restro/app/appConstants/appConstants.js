@@ -51,7 +51,8 @@ const appConstants = {
             addRestro: 'Add Restro',
             restaurantName: 'Restaurant Name',
             noOfTables: 'Number of Tables',
-            submit: 'submit'
+            submit: 'submit',
+            restroList: 'Restro List'
         },
         error: {
             required: 'Required',

@@ -9,6 +9,11 @@ export const restroAdded = data => ({
     data
 });
 
+export const setRestroList = data => ({
+    type: types.RESTRO_LIST,
+    data
+});
+
 export const addRestro = (formData) => {
     const api = expressConstants.ADD_RESTRO;
     const option = {
@@ -24,7 +29,48 @@ export const addRestro = (formData) => {
                 const message = (data && value.body.data.message) || null;
                 const list = (success && data.data) || [];
                 if (success) {
-                    dispatch(ajaxRequestSuccess());
+                    const restro = (data && data.data) || {};
+                    const successMsg = `${
+                        restro.restaurantName
+                    } added sucessfully`;
+                    Promise.all([
+                        dispatch(ajaxRequestSuccess()),
+                        dispatch(
+                            restroAdded({
+                                msg: successMsg,
+                                infoType: 'success'
+                            })
+                        )
+                    ]);
+                } else {
+                    dispatch(ajaxRequestFailure({ message }));
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+                dispatch(ajaxRequestFailure({ message: error }));
+            });
+};
+
+export const getRestroList = () => {
+    const api = expressConstants.RESTRO_LIST;
+    const option = {
+        method: api.method,
+        url: api.url
+    };
+    console.log(option);
+    return dispatch =>
+        AjaxFactory.triggerServerRequest(option)
+            .then((value) => {
+                const data = (value.body && value.body.data) || null;
+                const success = (data && value.body.data.success) || null;
+                const message = (data && value.body.data.message) || null;
+                if (success) {
+                    const { restaurants } = (data && data.data) || {};
+                    Promise.all([
+                        dispatch(ajaxRequestSuccess()),
+                        dispatch(setRestroList(restaurants))
+                    ]);
                 } else {
                     dispatch(ajaxRequestFailure({ message }));
                 }

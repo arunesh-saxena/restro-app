@@ -36,3 +36,22 @@ export default (req, res, next) => {
     //         res.send(error.data);
     //     });
 };
+
+export const getRestroList = (req, res, next) => {
+    const endPoint = service.getRestroList.default;
+    const config = {
+        method: endPoint.method,
+        url: endPoint.url,
+        headers: endPoint.headers
+    };
+    console.log(config);
+
+    ServiceFactory.triggerserviceRequest(config)
+        .then((response) => {
+            res.json(response.data);
+        })
+        .catch((error) => {
+            console.log(error);
+            res.send(error.data);
+        });
+};
