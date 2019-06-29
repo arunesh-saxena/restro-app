@@ -56,6 +56,14 @@ const expressConstants = {
     UPDATE_ORDER_ACTION: {
         url: '/update_order_action',
         method: 'PUT'
+    },
+    ADD_RESTRO: {
+        url: '/ADD_RESTRO',
+        method: 'POST'
+    },
+    UPDATE_RESTRO: {
+        url: '/UPDATE_RESTRO',
+        method: 'POST'
     }
 };
 

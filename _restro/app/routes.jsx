@@ -117,29 +117,29 @@ export default store => [
                 path: AppUrls.MENU_LIST,
                 exact: true,
                 need: [getMenuList],
-                component: Authentication(menuList, store) // Example of authentication....
+                component: Authentication(menuList, store)
             },
             {
                 path: AppUrls.ADD_MENU,
                 exact: true,
-                component: menuUploadPage
+                component: Authentication(menuUploadPage)
             },
             {
                 path: `${AppUrls.EDIT_MENU}/:itemID`,
                 exact: true,
-                component: menuEditPage
+                component: Authentication(menuEditPage)
             },
             {
                 need: [getOrderList],
                 path: `${AppUrls.ORDER_LIST}/`,
                 exact: true,
-                component: OrderListPage
+                component: Authentication(OrderListPage)
             },
             {
                 need: [],
                 path: `${AppUrls.ADD_RESTRO}/`,
                 exact: true,
-                component: AddRestroPage
+                component: Authentication(AddRestroPage, store)
             },
             {
                 path: '*',

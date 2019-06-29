@@ -48,13 +48,17 @@ const appConstants = {
             action: 'Action'
         },
         restro: {
-            addRestro: 'Add Restro'
+            addRestro: 'Add Restro',
+            restaurantName: 'Restaurant Name',
+            noOfTables: 'Number of Tables',
+            submit: 'submit'
         },
         error: {
             required: 'Required',
             invalidEmail: 'Invalid email address',
             misMatchWithPassword: 'Mismatch with password',
-            charactersLess: 'Must be 15 characters or less'
+            charactersLess: 'Must be 15 characters or less',
+            number: 'Invalid number'
         },
         signUp: {
             emailConfidentialMsg:
@@ -64,7 +68,8 @@ const appConstants = {
     },
     form: {
         menuUpload: 'menuUpload',
-        menuEditForm: 'menuEditForm'
+        menuEditForm: 'menuEditForm',
+        addRestro: 'addRestro'
     }
 };
 

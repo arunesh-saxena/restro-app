@@ -125,5 +125,15 @@
                 "Content-Type": "application/json"
             }
         }
+    },
+    "addRestro": {
+        "default": {
+            "module": "updateOrder",
+            "url": "http://localhost:3000/api/addRestro",
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
     }
 }

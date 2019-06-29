@@ -45,6 +45,12 @@ export const loginValidate = (values) => {
 
 const maxLength = max => value =>
     value && value.length > max ? error.charactersLess : undefined;
+
 export const required = value => (value ? undefined : error.required);
+
+export const number = (value) => {
+    const val = parseFloat(value);
+    return Number.isInteger(val) && val > 0 ? undefined : error.number;
+};
 
 export const maxLength15 = maxLength(15);
