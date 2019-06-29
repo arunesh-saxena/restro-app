@@ -20,7 +20,7 @@ const updateOrderByIdOrToken = async ({
         },
         {
             upsert: false,
-            returnNewDocument: true
+            new: true
         }
     );
 

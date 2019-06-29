@@ -125,6 +125,7 @@ routes.get('/ordersList/', orderCtrl.getOrdersList);
 routes.post('/addRestro/', restroCtrl.addRestro);
 routes.get('/getRestroList/', restroCtrl.getRestroList);
 routes.get('/getRestro/', restroCtrl.getRestro);
+routes.put('/updateRestro/', restroCtrl.updateRestro);
 
 /* End */
 /* Start use by _consumer placeOrder */

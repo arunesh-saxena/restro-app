@@ -14,6 +14,30 @@ const getRestaurantByIdORRestroCode = async ({
     });
     return result;
 };
+const updateRestaurantByIdOrRestroCode = async ({
+    id = null,
+    restaurantCode = null,
+    setObj = {}
+}) => {
+    const infoToUpdate = Object.assign(
+        {
+            updatedAt: new Date()
+        },
+        setObj
+    );
+
+    const result = await db.Restaurant.findOneAndUpdate(
+        { $or: [{ id }, { restaurantCode }] },
+        {
+            $set: infoToUpdate
+        },
+        {
+            upsert: false,
+            new: true
+        }
+    );
+    return result;
+};
 const addRestro = async (req, res) => {
     const { body } = req;
     const { userName = null, restaurantName = null, noOfTables = null } = body;
@@ -89,8 +113,39 @@ const getRestro = async (req, res) => {
     }
 };
 
+const updateRestro = async (req, res) => {
+    const { id, restaurantCode, restroDetails } = req.body || {};
+
+    if (!(id || restaurantCode) || !Object.keys(restroDetails).length) {
+        res.json({
+            success: false,
+            message: 'Please provide restaurant id or restaurantCode'
+        });
+        return;
+    }
+
+    try {
+        const setObj = { ...restroDetails };
+        const updatedRestro = await updateRestaurantByIdOrRestroCode({
+            id,
+            restaurantCode,
+            setObj
+        });
+        res.json({
+            success: true,
+            data: updatedRestro
+        });
+    } catch (error) {
+        res.json({
+            success: false,
+            message: `${error}`
+        });
+    }
+};
+
 module.exports = {
     addRestro,
     getRestroList,
-    getRestro
+    getRestro,
+    updateRestro
 };
