@@ -33,7 +33,6 @@ export const getRestroList = (req, res, next) => {
         url: endPoint.url,
         headers: endPoint.headers
     };
-    console.log(config);
 
     ServiceFactory.triggerserviceRequest(config)
         .then((response) => {

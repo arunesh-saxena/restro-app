@@ -231,7 +231,6 @@ export const toggleHiddenMenuItem = (data) => {
                     dispatch(ajaxRequestSuccess());
                     dispatch(getMenuList());
                 } else {
-                    console.log(12, value);
                     dispatch(ajaxRequestFailure({ message }));
                 }
             })
