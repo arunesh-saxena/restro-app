@@ -7,6 +7,7 @@ import Authentication from './Authentication';
 import { checkIsLogin } from './actions/appAction';
 import { getMenuList } from './actions/menuAction';
 import { getOrderList } from './actions/orderAction';
+import { getRestroList } from './actions/restroAction';
 
 const HomePage = Loadable({
     loader: () => import(/* webpackChunkName: "HomePage" */ './pages/HomePage'),
@@ -69,6 +70,13 @@ const AddRestroPage = Loadable({
         ),
     loading: () => <strong>Loading...</strong>
 });
+const RestroListPage = Loadable({
+    loader: () =>
+        import(
+            /* webpackChunkName: "RestroListPage" */ './pages/restro/RestroListPage'
+        ),
+    loading: () => <strong>Loading...</strong>
+});
 const ErrorPage = Loadable({
     loader: () =>
         import(/* webpackChunkName: "ErrorPage" */ './pages/ErrorPage'),
@@ -122,24 +130,30 @@ export default store => [
             {
                 path: AppUrls.ADD_MENU,
                 exact: true,
-                component: Authentication(menuUploadPage)
+                component: Authentication(menuUploadPage, store)
             },
             {
                 path: `${AppUrls.EDIT_MENU}/:itemID`,
                 exact: true,
-                component: Authentication(menuEditPage)
+                component: Authentication(menuEditPage, store)
             },
             {
                 need: [getOrderList],
                 path: `${AppUrls.ORDER_LIST}/`,
                 exact: true,
-                component: Authentication(OrderListPage)
+                component: Authentication(OrderListPage, store)
             },
             {
                 need: [],
                 path: `${AppUrls.ADD_RESTRO}/`,
                 exact: true,
                 component: Authentication(AddRestroPage, store)
+            },
+            {
+                need: [],
+                path: `${AppUrls.RESTRO_LIST}/`,
+                exact: true,
+                component: Authentication(RestroListPage, store)
             },
             {
                 path: '*',

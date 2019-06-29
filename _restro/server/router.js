@@ -15,7 +15,7 @@ import {
 } from './controllers/MenuController';
 import orderController, { updateOrder } from './controllers/OrderContoller';
 
-import addRestro from './controllers/RestroController';
+import addRestro, { getRestroList } from './controllers/RestroController';
 
 const express = require('express');
 const multer = require('multer');
@@ -64,5 +64,6 @@ routes.put(expressConstants.UPDATE_ORDER_ACTION.url, updateOrder);
 
 /* Restro action */
 routes.post(expressConstants.ADD_RESTRO.url, addRestro);
+routes.get(expressConstants.RESTRO_LIST.url, getRestroList);
 
 module.exports = routes;

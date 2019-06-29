@@ -95,6 +95,19 @@ class Header extends Component {
                         </Link>
                     </li>
                 )}
+                {isLogin && (
+                    <li>
+                        <Link to={AppUrls.RESTRO_LIST}>
+                            <span
+                                role="button"
+                                tabIndex="0"
+                                onClick={this.toggleMainMenu}
+                            >
+                                {this.labels.restro.restroList}
+                            </span>
+                        </Link>
+                    </li>
+                )}
             </ul>
         );
     }

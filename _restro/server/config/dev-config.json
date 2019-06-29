@@ -128,9 +128,19 @@
     },
     "addRestro": {
         "default": {
-            "module": "updateOrder",
+            "module": "addRestro",
             "url": "http://localhost:3000/api/addRestro",
             "method": "POST",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
+    },
+    "getRestroList": {
+        "default": {
+            "module": "updateOrder",
+            "url": "http://localhost:3000/api/getRestroList",
+            "method": "GET",
             "headers": {
                 "Content-Type": "application/json"
             }
