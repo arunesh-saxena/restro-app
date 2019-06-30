@@ -2,11 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import appConstants from '../../appConstants/appConstants';
-import AddRestroContainer from '../../containers/restro/AddRestoContainer';
-import { addRestro } from '../../actions/restroAction';
+import RestroEditContainer from '../../containers/restro/RestroEditContainer';
+import { getRestro } from '../../actions/restroAction';
 
-class AddRestroPage extends Component {
-    addRestroHandler() {
+class RestroEditPage extends Component {
+    componentWillMount() {
+        const { restroID } = this.props.match.params;
+        this.props.getRestro(restroID);
+    }
+    updateRestroHandler() {
         const { formInfo } = this.props;
         if (formInfo && !formInfo.syncErrors) {
             const formData = formInfo.values;
@@ -16,17 +20,17 @@ class AddRestroPage extends Component {
                 noOfTables: formData.numberOfTables,
                 userName: username
             };
-            this.props.addRestro(data);
+            console.log(data);
         }
     }
     render() {
         return (
             <div className="restro-add-page">
-                <AddRestroContainer
+                <RestroEditContainer
                     labels={appConstants.labels.restro}
                     formInfo={this.props.formInfo}
-                    addRestroHandler={() => {
-                        this.addRestroHandler();
+                    updateRestroHandler={() => {
+                        this.updateRestroHandler();
                     }}
                     restro={this.props.restro}
                 />
@@ -36,14 +40,14 @@ class AddRestroPage extends Component {
 }
 
 const mapStateToProps = state => ({
-    formInfo: state.form && state.form.addRestro,
+    restro: state.restro || {},
     user: state.user,
-    restro: state.restro || {}
+    formInfo: state.form && state.form.restroEditForm
 });
 const mapDispatchToProps = dispatch =>
     bindActionCreators(
         {
-            addRestro
+            getRestro
         },
         dispatch
     );
@@ -51,4 +55,4 @@ const mapDispatchToProps = dispatch =>
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(AddRestroPage);
+)(RestroEditPage);

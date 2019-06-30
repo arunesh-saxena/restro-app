@@ -77,6 +77,13 @@ const RestroListPage = Loadable({
         ),
     loading: () => <strong>Loading...</strong>
 });
+const RestroEditPage = Loadable({
+    loader: () =>
+        import(
+            /* webpackChunkName: "RestroEditPage" */ './pages/restro/RestroEditPage'
+        ),
+    loading: () => <strong>Loading...</strong>
+});
 const ErrorPage = Loadable({
     loader: () =>
         import(/* webpackChunkName: "ErrorPage" */ './pages/ErrorPage'),
@@ -154,6 +161,11 @@ export default store => [
                 path: `${AppUrls.RESTRO_LIST}/`,
                 exact: true,
                 component: Authentication(RestroListPage, store)
+            },
+            {
+                path: `${AppUrls.EDIT_RESTRO}/:restroID`,
+                exact: true,
+                component: Authentication(RestroEditPage, store)
             },
             {
                 path: '*',

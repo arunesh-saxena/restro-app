@@ -16,6 +16,11 @@ export default function app(
                 restroList: action.data
             });
         }
+        case types.RESTRO_INITIAL_DETAILS: {
+            return Object.assign({}, state, {
+                restroInitialDetials: action.data
+            });
+        }
         default: {
             return state;
         }

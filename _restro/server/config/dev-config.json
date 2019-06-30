@@ -138,8 +138,18 @@
     },
     "getRestroList": {
         "default": {
-            "module": "updateOrder",
+            "module": "getRestroList",
             "url": "http://localhost:3000/api/getRestroList",
+            "method": "GET",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
+    },
+    "getRestro": {
+        "default": {
+            "module": "getRestro",
+            "url": "http://localhost:3000/api/getRestro",
             "method": "GET",
             "headers": {
                 "Content-Type": "application/json"

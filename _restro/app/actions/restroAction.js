@@ -14,6 +14,11 @@ export const setRestroList = data => ({
     data
 });
 
+export const setInitialRestroDetails = data => ({
+    type: types.RESTRO_INITIAL_DETAILS,
+    data
+});
+
 export const addRestro = (formData) => {
     const api = expressConstants.ADD_RESTRO;
     const option = {
@@ -70,6 +75,32 @@ export const getRestroList = () => {
                         dispatch(ajaxRequestSuccess()),
                         dispatch(setRestroList(restaurants))
                     ]);
+                } else {
+                    dispatch(ajaxRequestFailure({ message }));
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+                dispatch(ajaxRequestFailure({ message: error }));
+            });
+};
+
+export const getRestro = (restroID) => {
+    const api = expressConstants.GET_RESTRO;
+    const option = {
+        method: api.method,
+        url: `${api.url}/${restroID}`
+    };
+    return dispatch =>
+        AjaxFactory.triggerServerRequest(option)
+            .then((value) => {
+                const data = (value.body && value.body.data) || null;
+                const success = (data && data.success) || null;
+                const message = (data && data.message) || null;
+                const restroDetails = (success && data.data) || [];
+                if (success) {
+                    dispatch(ajaxRequestSuccess());
+                    dispatch(setInitialRestroDetails(restroDetails));
                 } else {
                     dispatch(ajaxRequestFailure({ message }));
                 }

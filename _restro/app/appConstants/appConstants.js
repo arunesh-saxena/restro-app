@@ -76,7 +76,8 @@ const appConstants = {
     form: {
         menuUpload: 'menuUpload',
         menuEditForm: 'menuEditForm',
-        addRestro: 'addRestro'
+        addRestro: 'addRestro',
+        restroEditForm: 'restroEditForm'
     }
 };
 

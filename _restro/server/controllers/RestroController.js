@@ -43,3 +43,22 @@ export const getRestroList = (req, res, next) => {
             res.send(error.data);
         });
 };
+
+export const getRestro = (req, res) => {
+    const restroID = req.params.restroID;
+    const endPoint = service.getRestro.default;
+    const config = {
+        method: endPoint.method,
+        url: `${endPoint.url}?id=${restroID}`,
+        headers: endPoint.headers
+    };
+
+    ServiceFactory.triggerserviceRequest(config)
+        .then((response) => {
+            res.json(response.data);
+        })
+        .catch((error) => {
+            console.log(error);
+            res.send(error.data);
+        });
+};

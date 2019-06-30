@@ -17,6 +17,7 @@ export const MENU_LIST_FILTERED = 'MENU_LIST_FILTERED';
 
 /* order */
 export const SET_ORDER_LIST = 'SET_ORDER_LIST';
+export const RESTRO_INITIAL_DETAILS = 'RESTRO_INITIAL_DETAILS';
 
 /*  ajax request */
 export const AJAX_REQUEST_SUCCESS = 'AJAX_REQUEST_SUCCESS';
