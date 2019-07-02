@@ -3,24 +3,37 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import appConstants from '../../appConstants/appConstants';
 import RestroEditContainer from '../../containers/restro/RestroEditContainer';
-import { getRestro } from '../../actions/restroAction';
+import {
+    getRestro,
+    updateRestro,
+    restroRest
+} from '../../actions/restroAction';
 
 class RestroEditPage extends Component {
     componentWillMount() {
         const { restroID } = this.props.match.params;
         this.props.getRestro(restroID);
     }
+    componentWillUnmount() {
+        this.props.restroRest();
+    }
     updateRestroHandler() {
         const { formInfo } = this.props;
         if (formInfo && !formInfo.syncErrors) {
             const formData = formInfo.values;
             const { username } = this.props.user;
+            const restroInitialDetials =
+                (this.props.restro && this.props.restro.restroInitialDetials) ||
+                null;
+            const restroID = restroInitialDetials && restroInitialDetials.id;
             const data = {
-                restaurantName: formData.restaurantName,
-                noOfTables: formData.numberOfTables,
-                userName: username
+                id: restroID,
+                restroDetails: {
+                    restaurantName: formData.restaurantName,
+                    noOfTables: formData.numberOfTables
+                }
             };
-            console.log(data);
+            this.props.updateRestro(data);
         }
     }
     render() {
@@ -47,7 +60,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch =>
     bindActionCreators(
         {
-            getRestro
+            getRestro,
+            updateRestro,
+            restroRest
         },
         dispatch
     );

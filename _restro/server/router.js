@@ -17,7 +17,8 @@ import orderController, { updateOrder } from './controllers/OrderContoller';
 
 import addRestro, {
     getRestroList,
-    getRestro
+    getRestro,
+    updateRestro
 } from './controllers/RestroController';
 
 const express = require('express');
@@ -69,5 +70,6 @@ routes.put(expressConstants.UPDATE_ORDER_ACTION.url, updateOrder);
 routes.post(expressConstants.ADD_RESTRO.url, addRestro);
 routes.get(expressConstants.RESTRO_LIST.url, getRestroList);
 routes.get(`${expressConstants.GET_RESTRO.url}/:restroID`, getRestro);
+routes.put(`${expressConstants.UPDATE_RESTRO.url}`, updateRestro);
 
 module.exports = routes;

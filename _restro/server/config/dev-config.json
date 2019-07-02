@@ -155,5 +155,15 @@
                 "Content-Type": "application/json"
             }
         }
+    },
+    "updateRestro": {
+        "default": {
+            "module": "updateRestro",
+            "url": "http://localhost:3000/api/updateRestro",
+            "method": "PUT",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
     }
 }

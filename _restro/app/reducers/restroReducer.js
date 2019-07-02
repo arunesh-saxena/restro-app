@@ -21,6 +21,14 @@ export default function app(
                 restroInitialDetials: action.data
             });
         }
+        case types.RESTRO_RESET: {
+            return Object.assign({}, state, {
+                msg: null,
+                infoType: null,
+                restroList: [],
+                restroInitialDetials: null
+            });
+        }
         default: {
             return state;
         }

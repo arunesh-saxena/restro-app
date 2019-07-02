@@ -4,9 +4,12 @@ import * as types from '../utils/types';
 import appUrls from '../appConstants/appUrls';
 import { ajaxRequestSuccess, ajaxRequestFailure } from './errors';
 
-export const restroAdded = data => ({
+export const restroSuccessMsg = data => ({
     type: types.SUCCESS_MSG,
     data
+});
+export const restroRest = () => ({
+    type: types.RESTRO_RESET
 });
 
 export const setRestroList = data => ({
@@ -40,7 +43,7 @@ export const addRestro = (formData) => {
                     Promise.all([
                         dispatch(ajaxRequestSuccess()),
                         dispatch(
-                            restroAdded({
+                            restroSuccessMsg({
                                 msg: successMsg,
                                 infoType: 'success'
                             })
@@ -101,6 +104,43 @@ export const getRestro = (restroID) => {
                 if (success) {
                     dispatch(ajaxRequestSuccess());
                     dispatch(setInitialRestroDetails(restroDetails));
+                } else {
+                    dispatch(ajaxRequestFailure({ message }));
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+                dispatch(ajaxRequestFailure({ message: error }));
+            });
+};
+
+export const updateRestro = (formData) => {
+    const api = expressConstants.UPDATE_RESTRO;
+    const option = {
+        method: api.method,
+        url: api.url,
+        data: formData
+    };
+
+    return dispatch =>
+        AjaxFactory.triggerServerRequest(option)
+            .then((value) => {
+                console.log(value);
+                const data = (value.body && value.body.data) || null;
+                const success = (data && data.success) || null;
+                const message = (data && data.message) || null;
+                if (success) {
+                    const result = success && data.data;
+                    const successMsg = `${
+                        result.restaurantName
+                    } is updated successfully`;
+                    dispatch(ajaxRequestSuccess());
+                    dispatch(
+                        restroSuccessMsg({
+                            msg: successMsg,
+                            infoType: 'success'
+                        })
+                    );
                 } else {
                     dispatch(ajaxRequestFailure({ message }));
                 }

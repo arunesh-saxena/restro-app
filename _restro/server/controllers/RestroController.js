@@ -62,3 +62,28 @@ export const getRestro = (req, res) => {
             res.send(error.data);
         });
 };
+
+export const updateRestro = (req, res) => {
+    const endPoint = service.updateRestro.default;
+    const { body } = req;
+    const config = {
+        method: endPoint.method,
+        url: endPoint.url,
+        headers: endPoint.headers,
+        data: {
+            id: body.id,
+            restroDetails: {
+                restaurantName: body.restroDetails.restaurantName,
+                noOfTables: body.restroDetails.noOfTables
+            }
+        }
+    };
+    ServiceFactory.triggerserviceRequest(config)
+        .then((response) => {
+            res.json(response.data);
+        })
+        .catch((error) => {
+            console.log(error);
+            res.send(error.data);
+        });
+};

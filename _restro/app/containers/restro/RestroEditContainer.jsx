@@ -8,6 +8,7 @@ import appConstants from '../../appConstants/appConstants';
 import RestroForm from '../../components/form/RestroForm';
 import Heading from '../../components/heading/Heading';
 import ServerErrors from '../../components/serverErrors/ServerErrors';
+import InfoMessage from '../../components/infoMessage/InfoMessage';
 
 let RestroEditContainer = (props) => {
     const {
@@ -29,6 +30,7 @@ let RestroEditContainer = (props) => {
         <div className="restro-edit-container">
             {renderHeading()}
             <ServerErrors />
+            <InfoMessage infoType={restro.infoType} message={restro.msg} />
             <RestroForm
                 submitForm={updateRestroHandler}
                 labels={labels}
