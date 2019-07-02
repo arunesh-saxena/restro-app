@@ -3,12 +3,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import appConstants from '../../appConstants/appConstants';
 import AddRestroContainer from '../../containers/restro/AddRestoContainer';
-import { addRestro, restroRest } from '../../actions/restroAction';
+import { addRestro } from '../../actions/restroAction';
 
 class AddRestroPage extends Component {
-    componentWillUnmount() {
-        this.props.restroRest();
-    }
     addRestroHandler() {
         const { formInfo } = this.props;
         if (formInfo && !formInfo.syncErrors) {
@@ -46,8 +43,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch =>
     bindActionCreators(
         {
-            addRestro,
-            restroRest
+            addRestro
         },
         dispatch
     );

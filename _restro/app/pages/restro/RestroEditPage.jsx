@@ -3,19 +3,12 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import appConstants from '../../appConstants/appConstants';
 import RestroEditContainer from '../../containers/restro/RestroEditContainer';
-import {
-    getRestro,
-    updateRestro,
-    restroRest
-} from '../../actions/restroAction';
+import { getRestro, updateRestro } from '../../actions/restroAction';
 
 class RestroEditPage extends Component {
     componentWillMount() {
         const { restroID } = this.props.match.params;
         this.props.getRestro(restroID);
-    }
-    componentWillUnmount() {
-        this.props.restroRest();
     }
     updateRestroHandler() {
         const { formInfo } = this.props;
@@ -61,8 +54,7 @@ const mapDispatchToProps = dispatch =>
     bindActionCreators(
         {
             getRestro,
-            updateRestro,
-            restroRest
+            updateRestro
         },
         dispatch
     );

@@ -10,7 +10,8 @@ const errors = (state = { ajaxRequestStatus: 'success' }, action) => {
         }
         case types.AJAX_REQUEST_SUCCESS: {
             return Object.assign({}, state, {
-                ajaxRequestStatus: 'success'
+                ajaxRequestStatus: 'success',
+                data: action.data
             });
         }
         default:

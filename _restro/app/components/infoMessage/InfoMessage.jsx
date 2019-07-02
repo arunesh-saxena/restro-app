@@ -2,20 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 const InfoMessage = (props) => {
-    const { infoType = null, message = null, heading = null } = props;
+    const { message = null, heading = null, infoClass = '' } = props;
     const renderMsg = () => {
         if (!message) {
             return '';
         }
-        let infoClass = '';
-        if (infoType === 'success') {
-            infoClass = 'alert-success';
-        } else {
-            infoClass = 'alert-primary';
-        }
-        const className = `alert ${infoClass}`;
+
+        const class_name = `alert ${infoClass} ${infoClass}`;
         return (
-            <div className={className}>
+            <div className={class_name}>
                 {heading && (
                     <strong className="alert-heading"> {heading} : </strong>
                 )}
@@ -28,9 +23,9 @@ const InfoMessage = (props) => {
 };
 
 InfoMessage.propTypes = {
-    infoType: PropTypes.string,
     heading: PropTypes.string,
-    message: PropTypes.string
+    message: PropTypes.string,
+    infoClass: PropTypes.string
 };
 
 export default InfoMessage;

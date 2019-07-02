@@ -1,7 +1,8 @@
 import * as types from '../utils/types';
 
-export const ajaxRequestSuccess = () => ({
-    type: types.AJAX_REQUEST_SUCCESS
+export const ajaxRequestSuccess = data => ({
+    type: types.AJAX_REQUEST_SUCCESS,
+    data
 });
 
 export const ajaxRequestFailure = data => ({

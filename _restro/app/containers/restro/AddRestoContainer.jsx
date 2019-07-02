@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import Heading from '../../components/heading/Heading';
 import ServerErrors from '../../components/serverErrors/ServerErrors';
-import InfoMessage from '../../components/infoMessage/InfoMessage';
+import ServerMsg from '../../components/serverMsg/ServerMsg';
 import RestroForm from '../../components/form/RestroForm';
 import appConstants from '../../appConstants/appConstants';
 
@@ -22,8 +22,7 @@ let AddRestroContainer = (props) => {
     return (
         <div className="restro-add-container">
             {renderHeading()}
-            <ServerErrors />
-            <InfoMessage infoType={restro.infoType} message={restro.msg} />
+            <ServerMsg />
             <div className="row justify-content-md-center">
                 <div className="col-xs-12 col-md-6">
                     <RestroForm

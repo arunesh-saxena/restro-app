@@ -4,14 +4,6 @@ import * as types from '../utils/types';
 import appUrls from '../appConstants/appUrls';
 import { ajaxRequestSuccess, ajaxRequestFailure } from './errors';
 
-export const restroSuccessMsg = data => ({
-    type: types.SUCCESS_MSG,
-    data
-});
-export const restroRest = () => ({
-    type: types.RESTRO_RESET
-});
-
 export const setRestroList = data => ({
     type: types.RESTRO_LIST,
     data
@@ -40,15 +32,12 @@ export const addRestro = (formData) => {
                     const successMsg = `${
                         restro.restaurantName
                     } added sucessfully`;
-                    Promise.all([
-                        dispatch(ajaxRequestSuccess()),
-                        dispatch(
-                            restroSuccessMsg({
-                                msg: successMsg,
-                                infoType: 'success'
-                            })
-                        )
-                    ]);
+                    dispatch(
+                        ajaxRequestSuccess({
+                            msg: successMsg,
+                            infoType: 'success'
+                        })
+                    );
                 } else {
                     dispatch(ajaxRequestFailure({ message }));
                 }
@@ -134,11 +123,9 @@ export const updateRestro = (formData) => {
                     const successMsg = `${
                         result.restaurantName
                     } is updated successfully`;
-                    dispatch(ajaxRequestSuccess());
                     dispatch(
-                        restroSuccessMsg({
-                            msg: successMsg,
-                            infoType: 'success'
+                        ajaxRequestSuccess({
+                            message: successMsg
                         })
                     );
                 } else {
