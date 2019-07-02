@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Heading from '../../components/heading/Heading';
-import SeverMsg from '../../components/serverMsg/ServerMsg';
+import ServerMsg from '../../components/serverMsg/ServerMsg';
 import RestroItem from '../../components/restroItem/RestroItem';
 
 const RestroListContainer = (props) => {
@@ -50,7 +50,7 @@ const RestroListContainer = (props) => {
     return (
         <div className="restro-add-container">
             {renderHeading()}
-            <SeverMsg />
+            <ServerMsg />
             <div className="row justify-content-md-center">
                 <div className="col-xs-12 col-md-12">{renderRestroList()}</div>
             </div>

@@ -7,7 +7,7 @@ import { reduxForm } from 'redux-form';
 import appConstants from '../../appConstants/appConstants';
 import RestroForm from '../../components/form/RestroForm';
 import Heading from '../../components/heading/Heading';
-import SeverMsg from '../../components/serverMsg/ServerMsg';
+import ServerMsg from '../../components/serverMsg/ServerMsg';
 
 let RestroEditContainer = (props) => {
     const {
@@ -28,7 +28,7 @@ let RestroEditContainer = (props) => {
     return (
         <div className="restro-edit-container">
             {renderHeading()}
-            <SeverMsg />
+            <ServerMsg />
             <RestroForm
                 submitForm={updateRestroHandler}
                 labels={labels}

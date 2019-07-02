@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import InfoMessage from '../infoMessage/InfoMessage';
 
-class SeverMsg extends Component {
+class ServerMsg extends Component {
     renderMessage() {
         const className = 'alert-success';
         const message =
@@ -55,7 +55,7 @@ class SeverMsg extends Component {
     }
 }
 
-SeverMsg.propTypes = {};
+ServerMsg.propTypes = {};
 
 const mapStateToProps = state => ({
     errors: state.errors,
@@ -64,4 +64,4 @@ const mapStateToProps = state => ({
 export default connect(
     mapStateToProps,
     null
-)(SeverMsg);
+)(ServerMsg);
