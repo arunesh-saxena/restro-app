@@ -14,6 +14,12 @@ const errors = (state = { ajaxRequestStatus: null }, action) => {
                 data: action.data
             });
         }
+        case types.AJAX_REQUEST_REST: {
+            return Object.assign({}, state, {
+                ajaxRequestStatus: null,
+                data: null
+            });
+        }
         default:
             return state;
     }

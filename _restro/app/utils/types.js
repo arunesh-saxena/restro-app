@@ -22,6 +22,7 @@ export const RESTRO_INITIAL_DETAILS = 'RESTRO_INITIAL_DETAILS';
 /*  ajax request */
 export const AJAX_REQUEST_SUCCESS = 'AJAX_REQUEST_SUCCESS';
 export const AJAX_REQUEST_FAILURE = 'AJAX_REQUEST_FAILURE';
+export const AJAX_REQUEST_REST = 'AJAX_REQUEST_REST';
 
 /* restro */
 export const RESTRO_LIST = 'RESTRO_LIST';

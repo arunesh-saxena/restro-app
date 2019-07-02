@@ -9,3 +9,8 @@ export const ajaxRequestFailure = data => ({
     type: types.AJAX_REQUEST_FAILURE,
     data
 });
+
+export const ajaxRequestRest = data => ({
+    type: types.AJAX_REQUEST_REST,
+    data
+});

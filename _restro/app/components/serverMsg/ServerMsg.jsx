@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+import { ajaxRequestRest } from '../../actions/errors';
 
 import InfoMessage from '../infoMessage/InfoMessage';
 
 class ServerMsg extends Component {
+    componentWillUnmount() {
+        this.props.ajaxRequestRest();
+    }
     renderMessage() {
         const className = 'alert-success';
         const message =
@@ -61,7 +67,16 @@ const mapStateToProps = state => ({
     errors: state.errors,
     commonLabels: {}
 });
+
+const mapDispatchToProps = dispatch =>
+    bindActionCreators(
+        {
+            ajaxRequestRest
+        },
+        dispatch
+    );
+
 export default connect(
     mapStateToProps,
-    null
+    mapDispatchToProps
 )(ServerMsg);
