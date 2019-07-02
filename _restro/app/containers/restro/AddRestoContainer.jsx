@@ -3,7 +3,6 @@ import { reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
 
 import Heading from '../../components/heading/Heading';
-import ServerErrors from '../../components/serverErrors/ServerErrors';
 import ServerMsg from '../../components/serverMsg/ServerMsg';
 import RestroForm from '../../components/form/RestroForm';
 import appConstants from '../../appConstants/appConstants';
