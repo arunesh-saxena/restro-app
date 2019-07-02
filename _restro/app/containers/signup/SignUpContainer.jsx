@@ -2,7 +2,7 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { signUpValidate as formValidate } from '../../utils/formValidation';
 import Heading from '../../components/heading/Heading';
-import ServerErrors from '../../components/serverErrors/ServerErrors';
+import ServerMsg from '../../components/serverMsg/ServerMsg';
 
 const renderField = ({
     input,
@@ -112,29 +112,13 @@ let SignUpContainer = (props) => {
             // return '';
         }
     };
-    const successMsg = () => {
-        const { userData } = props;
 
-        if (!Object.keys(userData).length) {
-            return '';
-        }
-        let msg = '';
-        let className = 'alert';
-        if (userData && userData.user && userData.user.success) {
-            className += ' alert-success';
-            msg = labelsSignUp.successMsg;
-        } else {
-            return '';
-        }
-        return <p className={className}>{msg}</p>;
-    };
     return (
         <div className="sign-form-container">
             <div className="row justify-content-md-center">
                 <div className="col-xs-12 col-md-6">
                     {redemderHeading()}
-                    <ServerErrors />
-                    {successMsg()}
+                    <ServerMsg />
                     {renderLoginForm()}
                 </div>
             </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import { loginValidate } from '../../utils/formValidation';
 import Heading from '../../components/heading/Heading';
-import ServerErrors from '../../components/serverErrors/ServerErrors';
+import ServerMsg from '../../components/serverMsg/ServerMsg';
 
 const renderField = ({
     input,
@@ -79,7 +79,7 @@ let LoginContainer = (props) => {
             <div className="row justify-content-md-center">
                 <div className="col-xs-12 col-md-6">
                     {renderHeading()}
-                    <ServerErrors />
+                    <ServerMsg />
                     {renderLoginForm()}
                 </div>
             </div>

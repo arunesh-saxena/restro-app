@@ -10,7 +10,11 @@ export const signUp = data => ({
 const submitFormDataSuccess = dispatch => (value) => {
     const { success } = value.body.data;
     if (success) {
-        dispatch(ajaxRequestSuccess());
+        dispatch(
+            ajaxRequestSuccess({
+                message: 'Thank you for signUp'
+            })
+        );
         dispatch(signUp(value.body.data));
     } else {
         dispatch(signUp(value.body.data));
@@ -20,7 +24,11 @@ const submitFormDataSuccess = dispatch => (value) => {
 
 const submitLoginFormDataFailure = dispatch => (value) => {
     console.log(value);
-    dispatch(ajaxRequestFailure(error));
+    dispatch(
+        ajaxRequestFailure({
+            message: value
+        })
+    );
 };
 
 export const submitSignUp = (formData) => {
