@@ -5,7 +5,7 @@ import AppUrls from '../../appConstants/appUrls';
 import MenuItem from '../../components/menuItem/MenuItem';
 import SearchBox from '../../components/SearchBox/SearchBox';
 import Heading from '../../components/heading/Heading';
-import ServerErrors from '../../components/serverErrors/ServerErrors';
+import ServerMsg from '../../components/serverMsg/ServerMsg';
 
 const renderHeading = labels => <Heading text={labels.menuList} />;
 
@@ -48,7 +48,7 @@ const MenuListContainer = (props) => {
                             changeHandler={props.searchBoxHandler}
                         />
                     </div>
-                    <ServerErrors />
+                    <ServerMsg />
                     {renderMenuList(
                         menuList,
                         labels,

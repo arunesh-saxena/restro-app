@@ -3,10 +3,6 @@ import expressConstants from '../appConstants/expressEndPoint';
 import * as types from '../utils/types';
 import { ajaxRequestSuccess, ajaxRequestFailure } from './errors';
 
-export const setMenuUploadAction = data => ({
-    type: types.UPLOAD_MENU,
-    data
-});
 export const setMenuList = data => ({
     type: types.MENU_LIST,
     data
@@ -33,33 +29,18 @@ export const uploadMenuAction = (formData) => {
     return dispatch =>
         AjaxFactory.triggerServerRequest(option)
             .then((value) => {
-                const success =
-                    (value.body &&
-                        value.body.data &&
-                        value.body.data.success) ||
-                    null;
-                const message =
-                    (value.body &&
-                        value.body.data &&
-                        value.body.data.message) ||
-                    null;
-                const data = success && value.body.data.data;
+                const data = (value.body && value.body.data) || null;
+                const success = (data && data.success) || null;
+                const message = (data && data.message) || null;
                 if (success) {
-                    dispatch(ajaxRequestSuccess());
+                    const result = data.data;
                     dispatch(
-                        setMenuUploadAction({
-                            success,
-                            msg: `${data.itemName} uploaded successfully`
+                        ajaxRequestSuccess({
+                            message: `${result.itemName} uploaded successfully`
                         })
                     );
                 } else {
                     dispatch(ajaxRequestFailure({ message }));
-                    dispatch(
-                        setMenuUploadAction({
-                            success,
-                            msg: success ? message : message.message
-                        })
-                    );
                 }
             })
             .catch((error) => {
@@ -76,20 +57,17 @@ export const getMenuList = () => {
     return dispatch =>
         AjaxFactory.triggerServerRequest(option)
             .then((value) => {
-                const success =
-                    (value.body &&
-                        value.body.data &&
-                        value.body.data.success) ||
-                    null;
-                const message =
-                    (value.body &&
-                        value.body.data &&
-                        value.body.data.message) ||
-                    null;
+                const data = (value.body && value.body.data) || null;
+                const success = (data && data.success) || null;
+                const message = (data && data.message) || null;
                 const list = (success && value.body.data.data) || [];
-                dispatch(ajaxRequestSuccess());
-                dispatch(setMenuList(list));
-                dispatch(setMenuItemFilter(list));
+                if (success) {
+                    dispatch(ajaxRequestSuccess());
+                    dispatch(setMenuList(list));
+                    dispatch(setMenuItemFilter(list));
+                } else {
+                    dispatch(ajaxRequestFailure({ message }));
+                }
             })
             .catch((error) => {
                 console.log(error);
@@ -106,19 +84,16 @@ export const getMenuItem = (itemID) => {
     return dispatch =>
         AjaxFactory.triggerServerRequest(option)
             .then((value) => {
-                const success =
-                    (value.body &&
-                        value.body.data &&
-                        value.body.data.success) ||
-                    null;
-                const message =
-                    (value.body &&
-                        value.body.data &&
-                        value.body.data.message) ||
-                    null;
-                const list = (success && value.body.data.data) || [];
-                dispatch(ajaxRequestSuccess());
-                dispatch(setInitialMenuItem(list));
+                const data = (value.body && value.body.data) || null;
+                const success = (data && data.success) || null;
+                const message = (data && data.message) || null;
+                if (success) {
+                    const item = data.data || [];
+                    dispatch(ajaxRequestSuccess());
+                    dispatch(setInitialMenuItem(item));
+                } else {
+                    dispatch(ajaxRequestFailure({ message }));
+                }
             })
             .catch((error) => {
                 console.log(error);
@@ -137,33 +112,18 @@ export const updateMenuItem = (formData) => {
     return dispatch =>
         AjaxFactory.triggerServerRequest(option)
             .then((value) => {
-                const success =
-                    (value.body &&
-                        value.body.data &&
-                        value.body.data.success) ||
-                    null;
-                const message =
-                    (value.body &&
-                        value.body.data &&
-                        value.body.data.message) ||
-                    null;
-                const data = success && value.body.data.data;
+                const data = (value.body && value.body.data) || null;
+                const success = (data && data.success) || null;
+                const message = (data && data.message) || null;
                 if (success) {
-                    dispatch(ajaxRequestSuccess());
+                    const result = data.data;
                     dispatch(
-                        setMenuUploadAction({
-                            success,
-                            msg: `${data.itemName} uploaded successfully`
+                        ajaxRequestSuccess({
+                            message: `${result.itemName} uploaded successfully`
                         })
                     );
                 } else {
                     dispatch(ajaxRequestFailure({ message }));
-                    dispatch(
-                        setMenuUploadAction({
-                            success,
-                            msg: success ? message : message.message
-                        })
-                    );
                 }
             })
             .catch((error) => {
@@ -182,19 +142,16 @@ export const changeMenuItemQuantity = (itemData) => {
     return dispatch =>
         AjaxFactory.triggerServerRequest(option)
             .then((value) => {
-                const success =
-                    (value.body &&
-                        value.body.data &&
-                        value.body.data.success) ||
-                    null;
-                const message =
-                    (value.body &&
-                        value.body.data &&
-                        value.body.data.message) ||
-                    null;
-                const data = success && value.body.data.data;
+                const data = (value.body && value.body.data) || null;
+                const success = (data && data.success) || null;
+                const message = (data && data.message) || null;
                 if (success) {
-                    dispatch(ajaxRequestSuccess());
+                    const result = data.data;
+                    dispatch(
+                        ajaxRequestSuccess({
+                            message: 'Quantity updated successfully'
+                        })
+                    );
                     dispatch(getMenuList());
                 } else {
                     dispatch(ajaxRequestFailure({ message }));
@@ -206,29 +163,28 @@ export const changeMenuItemQuantity = (itemData) => {
             });
 };
 
-export const toggleHiddenMenuItem = (data) => {
+export const toggleHiddenMenuItem = (itemData) => {
     const api = expressConstants.MENU_ITEM_TOGGLE_HIDDEN;
     const option = {
         method: api.method,
         url: api.url,
-        data
+        data: itemData
     };
     return dispatch =>
         AjaxFactory.triggerServerRequest(option)
             .then((value) => {
-                const success =
-                    (value.body &&
-                        value.body.data &&
-                        value.body.data.success) ||
-                    null;
-                const message =
-                    (value.body &&
-                        value.body.data &&
-                        value.body.data.message) ||
-                    null;
-                const data = success && value.body.data.data;
+                const data = (value.body && value.body.data) || null;
+                const success = (data && data.success) || null;
+                const message = (data && data.message) || null;
                 if (success) {
-                    dispatch(ajaxRequestSuccess());
+                    const result = data.data;
+                    dispatch(
+                        ajaxRequestSuccess({
+                            message: `${
+                                result.itemName
+                            } hidden updated sucessfully`
+                        })
+                    );
                     dispatch(getMenuList());
                 } else {
                     dispatch(ajaxRequestFailure({ message }));

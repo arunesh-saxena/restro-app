@@ -34,8 +34,7 @@ export const addRestro = (formData) => {
                     } added sucessfully`;
                     dispatch(
                         ajaxRequestSuccess({
-                            msg: successMsg,
-                            infoType: 'success'
+                            message: successMsg
                         })
                     );
                 } else {

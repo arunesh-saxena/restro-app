@@ -28,7 +28,7 @@ const ServiceFactory = {
                 })
                     .then(res => res.json())
                     .then((response) => {
-                        const responseObject = response.data;
+                        const responseObject = response;
                         return resolve({
                             data: responseObject
                         });

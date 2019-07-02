@@ -141,13 +141,13 @@ export const toggleHiddenMenuItem = (req, res, next) => {
     const endPoint = service.toggleHiddenMenuItem.default;
     const { body } = req;
 
+    console.log(req.body);
     const config = {
         method: endPoint.method,
         url: endPoint.url,
         headers: endPoint.headers,
         data: body
     };
-
     ServiceFactory.triggerserviceRequest(config)
         .then((response) => {
             res.json(response.data);

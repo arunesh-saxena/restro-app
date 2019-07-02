@@ -6,7 +6,7 @@ import { reduxForm } from 'redux-form';
 import MenuForm from '../../components/form/MenuForm';
 import appConstants from '../../appConstants/appConstants';
 import Heading from '../../components/heading/Heading';
-import ServerErrors from '../../components/serverErrors/ServerErrors';
+import ServerMsg from '../../components/serverMsg/ServerMsg';
 
 let MenuEditContainer = (props) => {
     const {
@@ -31,35 +31,18 @@ let MenuEditContainer = (props) => {
         return <Heading text={text} />;
     };
 
-    const successMsg = () => {
-        const menuUpload = (menu && menu.menuUpload && menu.menuUpload) || {};
-        const { msg, success } = menuUpload;
-
-        if (!msg && !success) {
-            return '';
-        }
-        let className = 'alert';
-        if (success && msg && msg.length) {
-            className += ' alert-success';
-        } else {
-            className += ' alert-dark';
-        }
-        return <p className={className}>{msg}</p>;
-    };
-
     return (
         <div className="menu-edit-container">
             <div className="row justify-content-md-center">
                 <div className="col-xs-10 col-md-10">
                     {renderHeading()}
-                    <ServerErrors />
+                    <ServerMsg />
                     <MenuForm
                         submitForm={submitForm}
                         labels={labels}
                         fileInput={fileInput}
                         disabled={pristine || submitting || formInfo.syncErrors}
                     />
-                    {successMsg()}
                 </div>
             </div>
         </div>

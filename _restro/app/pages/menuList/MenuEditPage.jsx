@@ -4,15 +4,10 @@ import { bindActionCreators } from 'redux';
 
 import MenuEditContainer from '../../containers/menu/MenuEditContainer';
 import appConstants from '../../appConstants/appConstants';
-import {
-    getMenuItem,
-    updateMenuItem,
-    setMenuUploadAction
-} from '../../actions/menuAction';
+import { getMenuItem, updateMenuItem } from '../../actions/menuAction';
 
 class MenuEditPage extends React.Component {
     componentWillMount() {
-        this.props.setMenuUploadAction({ success: null, msg: null });
         const { itemID } = this.props.match.params;
         this.props.getMenuItem(itemID);
     }
@@ -60,8 +55,7 @@ const mapDispatchToProps = dispatch =>
     bindActionCreators(
         {
             getMenuItem,
-            updateMenuItem,
-            setMenuUploadAction
+            updateMenuItem
         },
         dispatch
     );

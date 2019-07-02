@@ -44,14 +44,18 @@ class ServerMsg extends Component {
         );
     }
     render() {
-        if (
-            this.props &&
-            this.props.errors &&
-            this.props.errors.ajaxRequestStatus === 'success'
-        ) {
-            return this.renderMessage();
+        const ajaxRequestStatus =
+            (this.props &&
+                this.props.errors &&
+                this.props.errors.ajaxRequestStatus) ||
+            null;
+        let renderComp = '----------no error and msg----------';
+        if (ajaxRequestStatus === 'success') {
+            renderComp = this.renderMessage();
+        } else if (ajaxRequestStatus === 'failure') {
+            renderComp = this.renderAjaxErrors();
         }
-        return this.renderAjaxErrors();
+        return renderComp;
     }
 }
 

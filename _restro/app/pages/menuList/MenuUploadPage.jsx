@@ -4,19 +4,12 @@ import { bindActionCreators } from 'redux';
 
 import MenuUploadContainer from '../../containers/menu/MenuUploadContainer';
 import appConstants from '../../appConstants/appConstants';
-import {
-    uploadMenuAction,
-    setMenuUploadAction
-} from '../../actions/menuAction';
+import { uploadMenuAction } from '../../actions/menuAction';
 
 class MenuUploadPage extends React.Component {
     constructor(props) {
         super(props);
         this.handleMenuUploadSubmit = this.handleMenuUploadSubmit.bind(this);
-    }
-
-    componentWillMount() {
-        this.props.setMenuUploadAction({ success: null, msg: null });
     }
 
     handleMenuUploadSubmit(file) {
@@ -65,8 +58,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch =>
     bindActionCreators(
         {
-            uploadMenuAction,
-            setMenuUploadAction
+            uploadMenuAction
         },
         dispatch
     );
