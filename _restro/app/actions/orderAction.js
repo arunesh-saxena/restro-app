@@ -49,10 +49,16 @@ export const updateOrder = ({ tokenId, actionId }) => {
                 const data = (value.body && value.body.data) || null;
                 const success = (data && value.body.data.success) || null;
                 const message = (data && value.body.data.message) || null;
-                const order = (success && data.data) || [];
-
                 if (success) {
-                    dispatch(ajaxRequestSuccess());
+                    const order = data.data || [];
+                    console.log(order);
+                    dispatch(
+                        ajaxRequestSuccess({
+                            message: `Order: Token# ${
+                                order.order.tokenId
+                            } action change to ${order.order.status}`
+                        })
+                    );
                 } else {
                     dispatch(ajaxRequestFailure({ message }));
                 }

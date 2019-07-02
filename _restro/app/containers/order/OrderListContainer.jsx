@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Heading from '../../components/heading/Heading';
-import ServerErrors from '../../components/serverErrors/ServerErrors';
+import ServerMsg from '../../components/serverMsg/ServerMsg';
 import OrderItem from '../../components/orderItem/OrderItem';
 
 const OrderListContainer = (props) => {
@@ -48,7 +48,7 @@ const OrderListContainer = (props) => {
     return (
         <div className="order-list-container">
             {renderHeading()}
-            <ServerErrors />
+            <ServerMsg />
             {renderOrderList()}
         </div>
     );

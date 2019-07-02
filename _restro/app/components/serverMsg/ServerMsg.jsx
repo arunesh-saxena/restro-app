@@ -32,10 +32,6 @@ class ServerMsg extends Component {
         const heading = this.props.heading || null;
 
         return (
-            // <p className={className}>
-            //     {heading && <strong>{heading}</strong>}
-            //     {message}
-            // </p>
             <InfoMessage
                 message={message}
                 heading={heading}
@@ -49,7 +45,7 @@ class ServerMsg extends Component {
                 this.props.errors &&
                 this.props.errors.ajaxRequestStatus) ||
             null;
-        let renderComp = '----------no error and msg----------';
+        let renderComp = '';
         if (ajaxRequestStatus === 'success') {
             renderComp = this.renderMessage();
         } else if (ajaxRequestStatus === 'failure') {
