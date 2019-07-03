@@ -8,6 +8,7 @@ import CartProductList from './CartProductList';
 import CartSummary from './CartSummary';
 import AppUrls from '../../appConstants/appUrls';
 import ServerMsg from '../../components/serverMsg/ServerMsg';
+import InfoMessage from '../../components/infoMessage/InfoMessage';
 
 const CartContainer = (props) => {
     const {
@@ -15,7 +16,8 @@ const CartContainer = (props) => {
         cart,
         placeOrderClickHandler,
         tableChangeHandler,
-        tableList
+        tableList,
+        validationMsg
     } = props;
     const cartOrder = (cart && cart.order) || [];
     const renderHeading = () => (
@@ -86,6 +88,11 @@ const CartContainer = (props) => {
                             tableChangeHandler={tableChangeHandler}
                         />
                     </section>
+                    <InfoMessage
+                        message={validationMsg}
+                        infoClass="alert-dark"
+                    />
+
                     <ServerMsg />
                     {renderEmptyMsg()}
                     {renderCartContainer()}
@@ -110,7 +117,8 @@ CartContainer.propTypes = {
         })
     ),
     placeOrderClickHandler: PropTypes.func,
-    tableChangeHandler: PropTypes.func
+    tableChangeHandler: PropTypes.func,
+    validationMsg: PropTypes.string
 };
 
 export default CartContainer;

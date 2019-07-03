@@ -9,7 +9,8 @@ class CartPage extends Component {
     constructor(props) {
         super();
         this.state = {
-            orderTableId: null
+            orderTableId: null,
+            validationMsg: ''
         };
         this.dummyTableList = [
             {
@@ -42,9 +43,14 @@ class CartPage extends Component {
         const { orderTableId } = this.state;
         const order = this.props.cart && this.props.cart.order;
         if (!orderTableId) {
-            console.error('Please select the table');
+            this.setState({
+                validationMsg: appConstants.labels.common.plseSelectTable
+            });
             return;
         }
+        this.setState({
+            validationMsg: ''
+        });
         if (order && order.length) {
             const orderData = {
                 order,
@@ -67,6 +73,7 @@ class CartPage extends Component {
                     tableChangeHandler={(tableID) => {
                         this.tableChangeHandler(tableID);
                     }}
+                    validationMsg={this.state.validationMsg}
                 />
             </div>
         );
