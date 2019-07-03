@@ -5,7 +5,7 @@ import menu from './menuReducer';
 import signUp from './signUpReducers';
 import user from './loginReducer';
 import myAccount from './myAccountReducer';
-import errors from './errorsReducers';
+import serverInfo from './serverInfoReducers';
 import order from './orderReducer';
 import restro from './restroReducer';
 
@@ -18,7 +18,7 @@ const rootReducer = combineReducers({
     signUp,
     user,
     myAccount,
-    errors,
+    serverInfo,
     order,
     restro
 });

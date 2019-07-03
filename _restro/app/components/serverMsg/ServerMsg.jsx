@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { ajaxRequestRest } from '../../actions/errors';
+import { ajaxRequestRest } from '../../actions/serverInfoAction';
 
 import InfoMessage from '../infoMessage/InfoMessage';
 
@@ -14,9 +14,9 @@ class ServerMsg extends Component {
     renderMessage() {
         const className = 'alert-success';
         const message =
-            (this.props.errors &&
-                this.props.errors.data &&
-                this.props.errors.data.message) ||
+            (this.props.serverInfo &&
+                this.props.serverInfo.data &&
+                this.props.serverInfo.data.message) ||
             null;
         const heading = this.props.heading || null;
 
@@ -31,9 +31,9 @@ class ServerMsg extends Component {
     renderAjaxErrors() {
         const className = 'alert-dark';
         const message =
-            (this.props.errors &&
-                this.props.errors.data &&
-                this.props.errors.data.message) ||
+            (this.props.serverInfo &&
+                this.props.serverInfo.data &&
+                this.props.serverInfo.data.message) ||
             null;
         const heading = this.props.heading || null;
 
@@ -48,8 +48,8 @@ class ServerMsg extends Component {
     render() {
         const ajaxRequestStatus =
             (this.props &&
-                this.props.errors &&
-                this.props.errors.ajaxRequestStatus) ||
+                this.props.serverInfo &&
+                this.props.serverInfo.ajaxRequestStatus) ||
             null;
         let renderComp = '';
         if (ajaxRequestStatus === 'success') {
@@ -62,7 +62,7 @@ class ServerMsg extends Component {
 }
 
 ServerMsg.propTypes = {
-    errors: PropTypes.shape({
+    serverInfo: PropTypes.shape({
         ajaxRequestStatus: PropTypes.string,
         data: PropTypes.shape({
             message: PropTypes.string
@@ -71,7 +71,7 @@ ServerMsg.propTypes = {
 };
 
 const mapStateToProps = state => ({
-    errors: state.errors,
+    serverInfo: state.serverInfo,
     commonLabels: {}
 });
 

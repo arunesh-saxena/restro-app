@@ -2,7 +2,7 @@ import AjaxFactory from '../utils/AjaxFactory';
 import expressConstants from '../appConstants/expressEndPoint';
 import * as types from '../utils/types';
 import appUrls from '../appConstants/appUrls';
-import { ajaxRequestSuccess, ajaxRequestFailure } from './errors';
+import { ajaxRequestSuccess, ajaxRequestFailure } from './serverInfoAction';
 
 export const setLoginDataStatus = data => ({
     type: types.SET_LOGIN_DATA_STATUS,
