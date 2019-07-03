@@ -1,6 +1,6 @@
 import * as types from '../utils/types';
 
-const errors = (state = { ajaxRequestStatus: 'success' }, action) => {
+const errors = (state = { ajaxRequestStatus: null }, action) => {
     switch (action.type) {
         case types.AJAX_REQUEST_FAILURE: {
             return Object.assign({}, state, {
@@ -10,7 +10,14 @@ const errors = (state = { ajaxRequestStatus: 'success' }, action) => {
         }
         case types.AJAX_REQUEST_SUCCESS: {
             return Object.assign({}, state, {
-                ajaxRequestStatus: 'success'
+                ajaxRequestStatus: 'success',
+                data: action.data
+            });
+        }
+        case types.AJAX_REQUEST_REST: {
+            return Object.assign({}, state, {
+                ajaxRequestStatus: null,
+                data: null
             });
         }
         default:

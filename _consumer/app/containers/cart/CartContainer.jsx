@@ -7,7 +7,7 @@ import TableSelector from '../../components/tableSelector/TableSelector';
 import CartProductList from './CartProductList';
 import CartSummary from './CartSummary';
 import AppUrls from '../../appConstants/appUrls';
-import ServerErrors from '../../components/serverErrors/ServerErrors';
+import ServerMsg from '../../components/serverMsg/ServerMsg';
 
 const CartContainer = (props) => {
     const {
@@ -86,7 +86,7 @@ const CartContainer = (props) => {
                             tableChangeHandler={tableChangeHandler}
                         />
                     </section>
-                    <ServerErrors />
+                    <ServerMsg />
                     {renderEmptyMsg()}
                     {renderCartContainer()}
                 </div>
