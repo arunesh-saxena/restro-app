@@ -1,6 +1,6 @@
 import * as types from '../utils/types';
 
-const errors = (state = { ajaxRequestStatus: null }, action) => {
+const serverInfo = (state = { ajaxRequestStatus: null }, action) => {
     switch (action.type) {
         case types.AJAX_REQUEST_FAILURE: {
             return Object.assign({}, state, {
@@ -25,4 +25,4 @@ const errors = (state = { ajaxRequestStatus: null }, action) => {
     }
 };
 
-export default errors;
+export default serverInfo;

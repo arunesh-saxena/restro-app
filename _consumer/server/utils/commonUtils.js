@@ -20,7 +20,7 @@ const commonUtils = {
                 status: (err && err.errno) || null,
                 statusText: (err && err.code) || null,
                 errorCode: err && err.errno,
-                message: (err && err.data) || 'server is unavailable',
+                message: (err && err.data) || 'Server is unavailable',
                 success: false
             };
         }

@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import app from './appReducers';
-import errors from './errorsReducers';
+import serverInfo from './serverInfoReducers';
 import menu from './menuReducer';
 import cart from './cartReducer';
 
@@ -11,7 +11,7 @@ const rootReducer = combineReducers({
     form: formReducer,
     app,
     menu,
-    errors,
+    serverInfo,
     cart
 });
 export default rootReducer;

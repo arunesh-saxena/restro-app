@@ -61,7 +61,14 @@ class ServerMsg extends Component {
     }
 }
 
-ServerMsg.propTypes = {};
+ServerMsg.propTypes = {
+    errors: PropTypes.shape({
+        ajaxRequestStatus: PropTypes.string,
+        data: PropTypes.shape({
+            message: PropTypes.string
+        })
+    })
+};
 
 const mapStateToProps = state => ({
     errors: state.errors,

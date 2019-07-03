@@ -1,7 +1,7 @@
 import AjaxFactory from '../utils/AjaxFactory';
 import expressConstants from '../appConstants/expressEndPoint';
 import * as types from '../utils/types';
-import { ajaxRequestSuccess, ajaxRequestFailure } from './errors';
+import { ajaxRequestSuccess, ajaxRequestFailure } from './serverInfo';
 import appUrls from '../appConstants/appUrls';
 
 export const addToCart = data => ({
