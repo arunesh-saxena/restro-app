@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { ajaxRequestRest } from '../../actions/serverInfo';
+import { ajaxRequestRest } from '../../actions/serverInfoAction';
 
 import InfoMessage from '../infoMessage/InfoMessage';
 
