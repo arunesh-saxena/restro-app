@@ -35,6 +35,26 @@ const CONSTANTS = require('../constants');
 
 const { token_secret } = CONSTANTS;
 
+const issue2options = {
+    origin: [
+        CONSTANTS.allowedOrigin,
+        CONSTANTS.allowedOrigin2,
+        CONSTANTS.allowedOrigin3,
+        CONSTANTS.allowedOrigin4
+    ],
+    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
+    maxAge: 3600
+};
+routes.use(cors(issue2options));
+/* routes.all('*', function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', CONSTANTS.allowedOrigin);
+    res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    next();
+}); */
 const isAuthenticated = (req, res, next) => {
     // check for token in the header first, then if not provided, it checks whether it's supplied in the body of the request
     const token = req.headers['x-access-token'] || req.body.token;
@@ -61,26 +81,6 @@ const isAuthenticated = (req, res, next) => {
         });
     }
 };
-const issue2options = {
-    origin: [
-        CONSTANTS.allowedOrigin,
-        CONSTANTS.allowedOrigin2,
-        CONSTANTS.allowedOrigin3,
-        CONSTANTS.allowedOrigin4
-    ],
-    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true,
-    maxAge: 3600
-};
-routes.use(cors(issue2options));
-/* routes.all('*', function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', CONSTANTS.allowedOrigin);
-    res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-    res.header('Access-Control-Allow-Credentials', 'true');
-    next();
-}); */
 
 /* User routes */
 /* Start _user by _restro login and signUp */
@@ -98,6 +98,9 @@ routes.post('/isLogin', isAuthenticated, (req, res) => {
         }
     });
 });
+
+routes.post('/myAccount', userCtrl.myAccount);
+routes.post('/getUserResautants', userCtrl.getUserResautants);
 
 /* End */
 

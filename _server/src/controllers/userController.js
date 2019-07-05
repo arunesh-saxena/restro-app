@@ -132,8 +132,88 @@ const logout = (req, res) => {
     });
 };
 
+const getMyAccount = async (userName) => {
+    const result = await db.User.findOne({ username: userName });
+    return result;
+};
+
+const getRestaurantsByUserName = async (userName) => {
+    const result = await db.Restaurant.find({ userName });
+    return result;
+};
+
+const myAccount = async (req, res) => {
+    const { body } = req;
+    console.log(body);
+    const { userName } = body;
+    if (!userName) {
+        res.json({
+            success: false,
+            message: 'userName is empty'
+        });
+        return;
+    }
+
+    let userAccount = null;
+    let restaurants = [];
+    try {
+        userAccount = await getMyAccount(userName);
+        userAccount = JSON.parse(JSON.stringify(userAccount)); // copying
+        restaurants = await getRestaurantsByUserName(userName);
+        restaurants = JSON.parse(JSON.stringify(restaurants));
+
+        res.json({
+            success: true,
+            data: {
+                myAccount: {
+                    userAccount,
+                    restaurants
+                }
+            }
+        });
+    } catch (error) {
+        res.json({
+            success: false,
+            message: `${error}`
+        });
+    }
+};
+
+const getUserResautants = async (req, res) => {
+    const { body } = req;
+    console.log(body);
+    const { userName } = body;
+    if (!userName) {
+        res.json({
+            success: false,
+            message: 'userName is empty'
+        });
+        return;
+    }
+
+    let restaurants = [];
+    try {
+        restaurants = await getRestaurantsByUserName(userName);
+        restaurants = JSON.parse(JSON.stringify(restaurants));
+
+        res.json({
+            success: true,
+            data: {
+                restaurants
+            }
+        });
+    } catch (error) {
+        res.json({
+            success: false,
+            message: `${error}`
+        });
+    }
+};
+
 module.exports = {
     singUp,
     login,
-    logout
+    logout,
+    myAccount,
+    getUserResautants
 };

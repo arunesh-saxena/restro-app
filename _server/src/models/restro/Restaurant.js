@@ -21,13 +21,13 @@ restaurantSchema.pre('save', function (next) {
         .exec((err, data) => {
             if (data.length) {
                 doc.id = ++data[0].id;
-                doc.restaurantCode = `${doc.restaurantName.substr(0, 3)}${
-                    doc.id
-                }`;
+                doc.restaurantCode = `${doc.restaurantName
+                    .substr(0, 3)
+                    .toLocaleLowerCase()}${doc.id}`;
             } else {
-                doc.restaurantCode = `${doc.restaurantName.substr(0, 3)}${
-                    doc.id
-                }`;
+                doc.restaurantCode = `${doc.restaurantName
+                    .substr(0, 3)
+                    .toLocaleLowerCase()}${doc.id}`;
             }
             doc.createdAt = Date.now();
             next();

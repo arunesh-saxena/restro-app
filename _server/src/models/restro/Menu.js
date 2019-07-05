@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const menuSchema = new mongoose.Schema({
     id: { type: Number, default: 1 },
+    restaurantCode: { type: String },
     itemCode: { type: String, default: null },
     itemName: { type: String, require: true },
     description: { type: String },
@@ -25,9 +26,13 @@ menuSchema.pre('save', function (next) {
         .exec((err, data) => {
             if (data.length) {
                 doc.id = ++data[0].id;
-                doc.itemCode = `${doc.itemName.substr(0, 3)}${doc.id}`;
+                doc.itemCode = `${doc.itemName
+                    .substr(0, 3)
+                    .toLocaleLowerCase()}${doc.id}`;
             } else {
-                doc.itemCode = `${doc.itemName.substr(0, 3)}${doc.id}`;
+                doc.itemCode = `${doc.itemName
+                    .substr(0, 3)
+                    .toLocaleLowerCase()}${doc.id}`;
             }
             doc.createdAt = Date.now();
             next();
