@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 
@@ -67,6 +67,16 @@ const renderSelect = ({
     meta: { touched, error, warning },
     defaultValue
 }) => {
+    const [selectedVal, setSelectedVal] = useState(defaultValue);
+    // const [isuseEffect, setisuseEffect] = useState(true);
+    useEffect(() => {
+        /* this will run only once first time cleanUping */
+        setSelectedVal('');
+    }, []);
+    useEffect(() => {
+        /* this will run only when default value change */
+        setSelectedVal(defaultValue);
+    }, [defaultValue]);
     if (!options) {
         options = [];
     }
@@ -78,6 +88,7 @@ const renderSelect = ({
             </option>
         );
     });
+
     return (
         <div>
             <select
@@ -85,7 +96,11 @@ const renderSelect = ({
                 id={id}
                 className={className}
                 autoComplete="on"
-                defaultValue={defaultValue}
+                value={selectedVal}
+                onChange={(e) => {
+                    // setisuseEffect(false);
+                    setSelectedVal(e.target.value);
+                }}
             >
                 <option value="">{label}</option>
                 {opts}
