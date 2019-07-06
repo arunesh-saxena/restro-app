@@ -8,6 +8,37 @@ const renderField = ({
     placeholder,
     type,
     className,
+    options,
+    label,
+    meta: { touched, error, warning }
+}) => {
+    if (type == 'select') {
+        return renderSelect({
+            input,
+            id,
+            label,
+            className,
+            options,
+            meta: { touched, error, warning }
+        });
+    }
+    /* (type === 'text') */
+    return renderText({
+        input,
+        id,
+        placeholder,
+        type,
+        className,
+        meta: { touched, error, warning }
+    });
+};
+
+const renderText = ({
+    input,
+    id,
+    placeholder,
+    type,
+    className,
     meta: { touched, error, warning }
 }) => (
     <div>
@@ -25,6 +56,38 @@ const renderField = ({
     </div>
 );
 
+const renderSelect = ({
+    input,
+    id,
+    label,
+    options,
+    className,
+    meta: { touched, error, warning }
+}) => {
+    if (!options) {
+        options = [];
+    }
+    const opts = [];
+    options.forEach((v, i) => {
+        opts.push(
+            <option key={i} value={v.value}>
+                {v.label}
+            </option>
+        );
+    });
+    return (
+        <div>
+            <select {...input} id={id} className={className} autoComplete="on">
+                <option value="">{label}</option>
+                {opts}
+            </select>
+            {touched &&
+                ((error && <span className="error-message">{error}</span>) ||
+                    (warning && <span>{warning}</span>))}
+        </div>
+    );
+};
+
 const FormField = ({
     label,
     id,
@@ -33,6 +96,7 @@ const FormField = ({
     type,
     className,
     isRequired,
+    options = [],
     validate = []
 }) => (
     <div>
@@ -48,6 +112,8 @@ const FormField = ({
             id={fieldName}
             validate={validate}
             placeholder={placeholder}
+            options={options}
+            label={label}
         />
     </div>
 );
