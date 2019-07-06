@@ -4,31 +4,16 @@ import PropTypes from 'prop-types';
 import Heading from '../../components/heading/Heading';
 import ServerMsg from '../../components/serverMsg/ServerMsg';
 import OrderItem from '../../components/orderItem/OrderItem';
+import RestroSelectList from '../../components/RestroSelectList/RestroSelectList';
 
 const OrderListContainer = (props) => {
-    const actionDummy = [
-        {
-            actionId: 1,
-            label: 'Action# 1'
-        },
-        {
-            actionId: 2,
-            label: 'Action# 2'
-        },
-        {
-            actionId: 3,
-            label: 'Action# 3'
-        },
-        {
-            actionId: 4,
-            label: 'Action# 4'
-        },
-        {
-            actionId: 5,
-            label: 'Action# 5'
-        }
-    ];
-    const { labels, order = {}, orderActionHandler } = props;
+    const {
+        labels,
+        order = {},
+        orderActionHandler,
+        userRestaurants = [],
+        actionList = []
+    } = props;
     const renderHeading = () => <Heading text={labels.orderList} />;
     const renderOrderList = () => {
         const { orders = [] } = order;
@@ -37,17 +22,25 @@ const OrderListContainer = (props) => {
                 <OrderItem
                     labels={labels}
                     itemDetails={item}
-                    actionList={actionDummy}
+                    actionList={actionList}
                     actionHandeler={orderActionHandler}
                 />
             </li>
         ));
         return <ul className="list-group">{orderList}</ul>;
     };
+    const restroChangeHandler = (text) => {
+        props.restroChangeHandler(text);
+    };
 
     return (
         <div className="order-list-container">
             {renderHeading()}
+            <RestroSelectList
+                restaurants={userRestaurants}
+                label={labels.selectRestaurant}
+                changeHandler={restroChangeHandler}
+            />
             <ServerMsg />
             {renderOrderList()}
         </div>

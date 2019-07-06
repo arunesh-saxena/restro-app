@@ -6,6 +6,7 @@ import MenuItem from '../../components/menuItem/MenuItem';
 import SearchBox from '../../components/SearchBox/SearchBox';
 import Heading from '../../components/heading/Heading';
 import ServerMsg from '../../components/serverMsg/ServerMsg';
+import RestroSelectList from '../../components/RestroSelectList/RestroSelectList';
 
 const renderHeading = labels => <Heading text={labels.menuList} />;
 
@@ -33,19 +34,40 @@ const renderMenuList = (menuList, labels, quantityHandler, toggleHandler) => {
     return <ul className="list-group">{liElm}</ul>;
 };
 const MenuListContainer = (props) => {
-    const { menuList, quantityHandler, toggleHandler } = props;
+    const {
+        menuList,
+        quantityHandler,
+        toggleHandler,
+        userRestaurants = []
+    } = props;
     const { common: labels } = props.labels;
-
+    const changeHandler = (text) => {
+        props.searchBoxHandler({
+            type: 'itemName',
+            searchText: text
+        });
+    };
+    const RestroChangeHandler = (text) => {
+        props.searchBoxHandler({
+            type: 'restro',
+            searchText: text
+        });
+    };
     return (
         <div className="menu-list-container">
             <div className="row justify-content-md-center">
                 <div className="col-xs-12 col-md-12">
                     <div className="heading-section">
                         {renderHeading(labels)}
+                        <RestroSelectList
+                            restaurants={userRestaurants}
+                            label={labels.selectRestaurant}
+                            changeHandler={RestroChangeHandler}
+                        />
                         <SearchBox
                             className="menuList-search"
                             searchLabel={labels.search}
-                            changeHandler={props.searchBoxHandler}
+                            changeHandler={changeHandler}
                         />
                     </div>
                     <ServerMsg />
