@@ -3,7 +3,13 @@ import FormField from './FormField/FormField';
 import { required, maxLength15 } from '../../utils/formValidation';
 
 const MenuForm = (props) => {
-    const { submitForm, labels, disabled, restaurants = [] } = props;
+    const {
+        submitForm,
+        labels,
+        disabled,
+        restaurants = [],
+        defaultRestro = ''
+    } = props;
 
     let fileInput = '';
 
@@ -31,7 +37,8 @@ const MenuForm = (props) => {
                     });
                 });
                 return options;
-            })()
+            })(),
+            defaultValue: defaultRestro
         },
         {
             label: labels.itemName,

@@ -10,7 +10,8 @@ const renderField = ({
     className,
     options,
     label,
-    meta: { touched, error, warning }
+    meta: { touched, error, warning },
+    defaultValue
 }) => {
     if (type == 'select') {
         return renderSelect({
@@ -19,7 +20,8 @@ const renderField = ({
             label,
             className,
             options,
-            meta: { touched, error, warning }
+            meta: { touched, error, warning },
+            defaultValue
         });
     }
     /* (type === 'text') */
@@ -62,7 +64,8 @@ const renderSelect = ({
     label,
     options,
     className,
-    meta: { touched, error, warning }
+    meta: { touched, error, warning },
+    defaultValue
 }) => {
     if (!options) {
         options = [];
@@ -77,7 +80,13 @@ const renderSelect = ({
     });
     return (
         <div>
-            <select {...input} id={id} className={className} autoComplete="on">
+            <select
+                {...input}
+                id={id}
+                className={className}
+                autoComplete="on"
+                defaultValue={defaultValue}
+            >
                 <option value="">{label}</option>
                 {opts}
             </select>
@@ -97,7 +106,8 @@ const FormField = ({
     className,
     isRequired,
     options = [],
-    validate = []
+    validate = [],
+    defaultValue = ''
 }) => (
     <div>
         <label htmlFor={id}>
@@ -114,6 +124,7 @@ const FormField = ({
             placeholder={placeholder}
             options={options}
             label={label}
+            defaultValue={defaultValue}
         />
     </div>
 );

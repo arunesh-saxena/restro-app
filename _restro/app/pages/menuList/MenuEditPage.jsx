@@ -5,11 +5,14 @@ import { bindActionCreators } from 'redux';
 import MenuEditContainer from '../../containers/menu/MenuEditContainer';
 import appConstants from '../../appConstants/appConstants';
 import { getMenuItem, updateMenuItem } from '../../actions/menuAction';
+import { getUserResautants } from '../../actions/myAccountAction';
 
 class MenuEditPage extends React.Component {
     componentWillMount() {
         const { itemID } = this.props.match.params;
         this.props.getMenuItem(itemID);
+        const { username } = this.props.user;
+        this.props.getUserResautants(username);
     }
 
     handleMenuEditSubmit(file) {
@@ -17,8 +20,6 @@ class MenuEditPage extends React.Component {
         if (formInfo && !formInfo.syncErrors) {
             const itemId = this.props.match.params.itemID;
             const formData = formInfo.values;
-
-            const restaurantCode = 'rest2';
             const data = new FormData();
             data.append('itemName', formData.itemName);
             data.append('description', formData.description);
@@ -28,7 +29,7 @@ class MenuEditPage extends React.Component {
             data.append('currency', formData.currency);
             data.append('imageURL', file);
             data.append('itemId', itemId);
-            data.append('restaurantCode', restaurantCode);
+            data.append('restaurantCode', formData.restroCode);
 
             this.props.updateMenuItem(data);
         }
@@ -44,6 +45,7 @@ class MenuEditPage extends React.Component {
                         this.handleMenuEditSubmit(file);
                     }}
                     menu={this.props.menu}
+                    userRestaurants={this.props.myAccount.restaurants}
                 />
             </div>
         );
@@ -52,13 +54,16 @@ class MenuEditPage extends React.Component {
 
 const mapStateToProps = state => ({
     menu: (state.menu && state.menu) || null,
-    formInfo: state.form && state.form.menuEditForm
+    formInfo: state.form && state.form.menuEditForm,
+    user: state.user,
+    myAccount: state.myAccount
 });
 const mapDispatchToProps = dispatch =>
     bindActionCreators(
         {
             getMenuItem,
-            updateMenuItem
+            updateMenuItem,
+            getUserResautants
         },
         dispatch
     );

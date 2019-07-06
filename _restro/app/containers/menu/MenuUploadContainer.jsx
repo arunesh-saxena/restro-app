@@ -29,6 +29,7 @@ let MenuUploadContainer = (props) => {
                         fileInput={fileInput}
                         disabled={pristine || submitting || formInfo.syncErrors}
                         restaurants={props.userRestaurants}
+                        defaultRestro=""
                     />
                 </div>
             </div>

@@ -42,6 +42,12 @@ let MenuEditContainer = (props) => {
                         labels={labels}
                         fileInput={fileInput}
                         disabled={pristine || submitting || formInfo.syncErrors}
+                        restaurants={props.userRestaurants}
+                        defaultRestro={
+                            props &&
+                            props.initialValues &&
+                            props.initialValues.restaurantCode
+                        }
                     />
                 </div>
             </div>
