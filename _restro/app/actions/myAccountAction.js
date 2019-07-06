@@ -30,7 +30,6 @@ export const getUserResautants = (userName) => {
                 const data = (value.body && value.body.data) || null;
                 const success = (data && data.success) || null;
                 const message = (data && data.message) || null;
-                console.log(data);
                 if (success) {
                     const result = data.data || [];
                     Promise.all([

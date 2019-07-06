@@ -35,7 +35,8 @@ const appConstants = {
             edit: 'Edit',
             search: 'Search',
             orderList: 'Order list',
-            restroCode: 'Restro Code'
+            restroCode: 'Restro Code',
+            selectRestaurant: 'Select Restaurant'
         },
         order: {
             orderList: 'Order list',

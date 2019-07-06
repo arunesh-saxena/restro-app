@@ -17,6 +17,8 @@ class MenuEditPage extends React.Component {
         if (formInfo && !formInfo.syncErrors) {
             const itemId = this.props.match.params.itemID;
             const formData = formInfo.values;
+
+            const restaurantCode = 'rest2';
             const data = new FormData();
             data.append('itemName', formData.itemName);
             data.append('description', formData.description);
@@ -26,6 +28,7 @@ class MenuEditPage extends React.Component {
             data.append('currency', formData.currency);
             data.append('imageURL', file);
             data.append('itemId', itemId);
+            data.append('restaurantCode', restaurantCode);
 
             this.props.updateMenuItem(data);
         }

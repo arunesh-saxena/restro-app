@@ -3,7 +3,7 @@ import FormField from './FormField/FormField';
 import { required, maxLength15 } from '../../utils/formValidation';
 
 const MenuForm = (props) => {
-    const { submitForm, labels, disabled } = props;
+    const { submitForm, labels, disabled, restaurants = [] } = props;
 
     let fileInput = '';
 
@@ -13,6 +13,26 @@ const MenuForm = (props) => {
     };
 
     const formField = [
+        {
+            label: labels.selectRestaurant,
+            id: 'restroCode',
+            fieldName: 'restroCode',
+            placeholder: 'labels.currency',
+            type: 'select',
+            className: '',
+            isRequired: true,
+            validate: [required],
+            options: (function() {
+                const options = [];
+                restaurants.forEach((v) => {
+                    options.push({
+                        label: v.restaurantName,
+                        value: v.restaurantCode
+                    });
+                });
+                return options;
+            })()
+        },
         {
             label: labels.itemName,
             id: 'itemName',
@@ -76,13 +96,14 @@ const MenuForm = (props) => {
     ];
 
     const renderFormFields = () => {
-        const formFields = formField.map((file, key) => (
+        const formFields = formField.map((field, key) => (
             <div className="form-group" key={key}>
-                <FormField {...file} />
+                <FormField {...field} />
             </div>
         ));
         return formFields;
     };
+
     return (
         <div className="menu-form">
             <form onSubmit={submitHandler}>

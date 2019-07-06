@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 import MenuUploadContainer from '../../containers/menu/MenuUploadContainer';
 import appConstants from '../../appConstants/appConstants';
 import { uploadMenuAction } from '../../actions/menuAction';
+import { getUserResautants } from '../../actions/myAccountAction';
 
 class MenuUploadPage extends React.Component {
     constructor(props) {
@@ -12,18 +13,15 @@ class MenuUploadPage extends React.Component {
         this.handleMenuUploadSubmit = this.handleMenuUploadSubmit.bind(this);
     }
 
+    componentWillMount() {
+        const { username } = this.props.user;
+        this.props.getUserResautants(username);
+    }
+
     handleMenuUploadSubmit(file) {
         const { formInfo } = this.props;
         if (formInfo && !formInfo.syncErrors) {
             const formData = formInfo.values;
-            /* let menu = {
-                itemName: formData.itemName,
-                description: formData.description,
-                price: formData.price,
-                unit: formData.unit,
-                currency: formData.currency,
-                imageURL: file
-            } */
             const data = new FormData();
             data.append('itemName', formData.itemName);
             data.append('description', formData.description);
@@ -32,6 +30,7 @@ class MenuUploadPage extends React.Component {
             data.append('unit', formData.unit);
             data.append('currency', formData.currency);
             data.append('imageURL', file);
+            data.append('restaurantCode', formData.restroCode);
 
             this.props.uploadMenuAction(data);
         }
@@ -45,6 +44,7 @@ class MenuUploadPage extends React.Component {
                     formInfo={this.props.formInfo}
                     labels={appConstants.labels}
                     menu={this.props.menu}
+                    userRestaurants={this.props.myAccount.restaurants}
                 />
             </div>
         );
@@ -53,12 +53,15 @@ class MenuUploadPage extends React.Component {
 
 const mapStateToProps = state => ({
     formInfo: state.form && state.form.menuUpload,
-    menu: state.menu.menuUpload
+    menu: state.menu.menuUpload,
+    user: state.user,
+    myAccount: state.myAccount
 });
 const mapDispatchToProps = dispatch =>
     bindActionCreators(
         {
-            uploadMenuAction
+            uploadMenuAction,
+            getUserResautants
         },
         dispatch
     );

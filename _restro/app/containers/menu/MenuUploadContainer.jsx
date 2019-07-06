@@ -28,6 +28,7 @@ let MenuUploadContainer = (props) => {
                         labels={labels}
                         fileInput={fileInput}
                         disabled={pristine || submitting || formInfo.syncErrors}
+                        restaurants={props.userRestaurants}
                     />
                 </div>
             </div>
