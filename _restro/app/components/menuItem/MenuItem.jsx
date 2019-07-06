@@ -45,6 +45,11 @@ const MenuItem = (props) => {
 
             <div className="item-info">
                 <div className="info-row">
+                    <div className="row-header">{props.labels.restroCode}</div>
+                    <div className="row-value">{props.item.restaurantCode}</div>
+                </div>
+
+                <div className="info-row">
                     <div className="row-header">{props.labels.itemName}</div>
                     <div className="row-value">
                         {props.item.itemName}

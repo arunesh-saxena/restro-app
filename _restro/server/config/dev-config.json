@@ -165,5 +165,25 @@
                 "Content-Type": "application/json"
             }
         }
+    },
+    "myAccount": {
+        "default": {
+            "module": "myAccount",
+            "url": "http://localhost:3000/api/myAccount",
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
+    },
+    "getUserResautants": {
+        "default": {
+            "module": "getUserResautants",
+            "url": "http://localhost:3000/api/getUserResautants",
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
     }
 }

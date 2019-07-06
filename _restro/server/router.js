@@ -2,7 +2,9 @@ import expressConstants from '../app/appConstants/expressEndPoint';
 import SignUpController from './controllers/SignUpController';
 import LoginController from './controllers/LoginController';
 import LogOutController from './controllers/LogOutController';
-import MyAccountController from './controllers/MyAccountController';
+import MyAccountController, {
+    getUserResautants
+} from './controllers/MyAccountController';
 
 import {
     uploadMenu,
@@ -50,6 +52,7 @@ routes.post(expressConstants.SIGN_UP.url, SignUpController);
 routes.post(expressConstants.LOGIN.url, LoginController);
 routes.post(expressConstants.LOGOUT.url, LogOutController);
 routes.post(expressConstants.ISLOGIN.url, MyAccountController);
+routes.post(expressConstants.GET_USER_RESTRO.url, getUserResautants);
 /* Menu action  */
 routes.post(expressConstants.UPLOAD_MENU.url, upload, uploadMenu);
 routes.post(expressConstants.MENU_ITEM_UPDATE.url, upload, updateMenuItem);

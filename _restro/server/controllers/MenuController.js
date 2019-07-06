@@ -15,6 +15,8 @@ const getFormData = (req) => {
     body.unit != undefined && data.append('unit', body.unit);
     body.currency != undefined && data.append('currency', body.currency);
     body.itemId != undefined && data.append('itemId', body.itemId);
+    body.restaurantCode != undefined &&
+        data.append('restaurantCode', body.restaurantCode);
     if (req.file != undefined && req.file && req.file.path) {
         const fileStream = fs.createReadStream(req.file.path);
         // When the stream is done being read, end the response

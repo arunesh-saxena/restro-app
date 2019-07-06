@@ -9,11 +9,6 @@ const login = (state = {}, action) => {
                 errorMsg: action.data.msg
             });
         }
-        case types.SET_LOGIN_ERROR_MSG: {
-            return Object.assign({}, state, {
-                errorMsg: action.data.msg
-            });
-        }
 
         default: {
             return state;

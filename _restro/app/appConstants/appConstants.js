@@ -34,7 +34,8 @@ const appConstants = {
             action: 'Action',
             edit: 'Edit',
             search: 'Search',
-            orderList: 'Order list'
+            orderList: 'Order list',
+            restroCode: 'Restro Code'
         },
         order: {
             orderList: 'Order list',

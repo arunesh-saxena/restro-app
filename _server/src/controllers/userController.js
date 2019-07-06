@@ -144,7 +144,6 @@ const getRestaurantsByUserName = async (userName) => {
 
 const myAccount = async (req, res) => {
     const { body } = req;
-    console.log(body);
     const { userName } = body;
     if (!userName) {
         res.json({
@@ -181,7 +180,6 @@ const myAccount = async (req, res) => {
 
 const getUserResautants = async (req, res) => {
     const { body } = req;
-    console.log(body);
     const { userName } = body;
     if (!userName) {
         res.json({
