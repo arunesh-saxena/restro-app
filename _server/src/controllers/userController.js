@@ -158,6 +158,7 @@ const myAccount = async (req, res) => {
     try {
         userAccount = await getMyAccount(userName);
         userAccount = JSON.parse(JSON.stringify(userAccount)); // copying
+        delete userAccount['password'];
         restaurants = await getRestaurantsByUserName(userName);
         restaurants = JSON.parse(JSON.stringify(restaurants));
 

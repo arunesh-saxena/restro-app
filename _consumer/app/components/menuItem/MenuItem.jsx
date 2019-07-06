@@ -19,7 +19,7 @@ const MenuItem = (props) => {
                             title={props.item.itemName}
                         />
                     ) : (
-                        'no image'
+                        'No image'
                     )}
                 </div>
                 <p>
