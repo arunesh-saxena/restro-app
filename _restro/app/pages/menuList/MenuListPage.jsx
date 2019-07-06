@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import MenuListContainer from '../../containers/menu/MenuListContainer';
@@ -9,8 +9,13 @@ import {
     toggleHiddenMenuItem,
     setMenuItemFilter
 } from '../../actions/menuAction';
+import { getUserResautants } from '../../actions/myAccountAction';
 
 class MenuListPage extends Component {
+    componentWillMount() {
+        const { username } = this.props.user;
+        this.props.getUserResautants(username);
+    }
     changeProductQuantity(item) {
         const itemData = {
             itemId: item.itemId,
@@ -23,13 +28,27 @@ class MenuListPage extends Component {
         this.props.toggleHiddenMenuItem(data);
     }
 
-    changeSearchHandler(searchText) {
+    changeSearchHandler({ type, searchText }) {
         const { menuList } = this.props;
-        const filteredList = searchText.length
-            ? menuList.filter(item =>
-                item.itemName.toLowerCase().includes(searchText.toLowerCase())
-            )
-            : menuList;
+        let filteredList = [];
+        if (type === 'itemName') {
+            filteredList = searchText.length
+                ? menuList.filter(item =>
+                    item.itemName
+                        .toLowerCase()
+                        .includes(searchText.toLowerCase())
+                )
+                : menuList;
+        }
+        if (type === 'restro') {
+            filteredList = searchText.length
+                ? menuList.filter(item =>
+                    item.restaurantCode
+                        .toLowerCase()
+                        .includes(searchText.toLowerCase())
+                )
+                : menuList;
+        }
         this.props.setMenuItemFilter(filteredList);
     }
 
@@ -47,6 +66,7 @@ class MenuListPage extends Component {
                     searchBoxHandler={(text) => {
                         this.changeSearchHandler(text);
                     }}
+                    userRestaurants={this.props.myAccount.restaurants}
                 />
             </div>
         );
@@ -55,7 +75,9 @@ class MenuListPage extends Component {
 
 const mapStateToProps = state => ({
     menuList: (state.menu && state.menu.menuList) || [],
-    menuListFiltered: (state.menu && state.menu.menuListFiltered) || []
+    menuListFiltered: (state.menu && state.menu.menuListFiltered) || [],
+    user: state.user,
+    myAccount: state.myAccount
 });
 const mapDispatchToProps = dispatch =>
     bindActionCreators(
@@ -63,7 +85,8 @@ const mapDispatchToProps = dispatch =>
             getMenuList,
             changeMenuItemQuantity,
             toggleHiddenMenuItem,
-            setMenuItemFilter
+            setMenuItemFilter,
+            getUserResautants
         },
         dispatch
     );
