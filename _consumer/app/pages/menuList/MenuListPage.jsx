@@ -5,13 +5,18 @@ import appConstants from '../../appConstants/appConstants';
 import MenuListContainer from '../../containers/menu/MenuListContainer';
 import { getMenuList, setMenuItemFilter } from '../../actions/menuAction';
 import { addToCart } from '../../actions/cartAction';
+import { getRestroList } from '../../actions/restroAction';
 
 class MenuListPage extends Component {
+    componentWillMount() {
+        this.props.getRestroList();
+    }
     addToCartHandler(item) {
         const data = {
             itemId: item.itemId,
             quantity: 1
         };
+        console.log('-------ToDo: please select restaurant');
         this.props.addToCart(data);
     }
     changeSearchHandler(searchText) {
@@ -25,6 +30,7 @@ class MenuListPage extends Component {
     }
     render() {
         const menuList = this.props.menuListFiltered;
+        const restaurants = this.props.restro && this.props.restro.restaurants;
         return (
             <div>
                 <MenuListContainer
@@ -36,6 +42,7 @@ class MenuListPage extends Component {
                     searchBoxHandler={(text) => {
                         this.changeSearchHandler(text);
                     }}
+                    restaurants={restaurants}
                 />
             </div>
         );
@@ -43,14 +50,16 @@ class MenuListPage extends Component {
 }
 const mapStateToProps = state => ({
     menuList: (state.menu && state.menu.menuList) || [],
-    menuListFiltered: (state.menu && state.menu.menuListFiltered) || []
+    menuListFiltered: (state.menu && state.menu.menuListFiltered) || [],
+    restro: state.restro
 });
 const mapDispatchToProps = dispatch =>
     bindActionCreators(
         {
             getMenuList,
             setMenuItemFilter,
-            addToCart
+            addToCart,
+            getRestroList
         },
         dispatch
     );

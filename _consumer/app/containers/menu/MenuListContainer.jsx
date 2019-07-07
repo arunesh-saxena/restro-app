@@ -3,6 +3,7 @@ import React from 'react';
 import MenuItem from '../../components/menuItem/MenuItem';
 import SearchBox from '../../components/SearchBox/SearchBox';
 import Heading from '../../components/heading/Heading';
+import RestroSelectList from '../../components/RestroSelectList/RestroSelectList';
 
 const renderHeading = labels => <Heading text={labels.menuList} />;
 
@@ -29,7 +30,12 @@ const renderMenuList = (menuList, labels, addToCartHandler, toggleHandler) => {
     return <ul className="list-group">{liElm}</ul>;
 };
 const MenuListContainer = (props) => {
-    const { menuList, addToCartHandler, toggleHandler } = props;
+    const {
+        menuList,
+        addToCartHandler,
+        toggleHandler,
+        restaurants = []
+    } = props;
     const { common: labels } = props.labels;
 
     return (
@@ -38,6 +44,7 @@ const MenuListContainer = (props) => {
                 <div className="col-12 col-md-12">
                     <div className="heading-section">
                         {renderHeading(labels)}
+                        <RestroSelectList restaurants={restaurants} />
                         <SearchBox
                             className="menuList-search"
                             searchLabel={labels.search}
