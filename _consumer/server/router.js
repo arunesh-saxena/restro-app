@@ -7,9 +7,10 @@ import {
 } from './controllers/MenuController';
 
 import { placeOrder, getOrderStatus } from './controllers/CartController';
+import getRestroList from './controllers/RestroController';
 
 const express = require('express');
-const multer = require('multer');
+// const multer = require('multer');
 
 const routes = express.Router();
 /* const storage = multer.diskStorage({
@@ -43,5 +44,7 @@ routes.post(
 /* Cart  */
 routes.post(`${expressConstants.PLACE_ORDER.url}`, placeOrder);
 routes.get(`${expressConstants.ORDER_STATUS.url}?:tokenId`, getOrderStatus);
+
+routes.get(expressConstants.RESTRO_LIST.url, getRestroList);
 
 module.exports = routes;

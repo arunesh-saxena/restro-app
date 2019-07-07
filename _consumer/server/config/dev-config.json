@@ -48,5 +48,15 @@
                 "Content-Type": "application/json"
             }
         }
+    },
+    "getRestroList": {
+        "default": {
+            "module": "getRestroList",
+            "url": "http://localhost:3000/api/getRestroList",
+            "method": "GET",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
     }
 }

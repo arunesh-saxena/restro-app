@@ -1,5 +1,3 @@
-import { UPLOAD_MENU } from '../utils/types';
-
 const expressConstants = {
     TEST_API: {
         url: '/testApi',
@@ -27,6 +25,10 @@ const expressConstants = {
     },
     ORDER_STATUS: {
         url: '/ordeStatus',
+        method: 'GET'
+    },
+    RESTRO_LIST: {
+        url: '/RESTRO_LIST',
         method: 'GET'
     }
 };

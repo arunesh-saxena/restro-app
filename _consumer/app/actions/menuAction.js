@@ -46,30 +46,3 @@ export const getMenuList = () => {
                 console.log(error);
             });
 };
-
-export const getMenuItem = (itemID) => {
-    const api = expressConstants.MENU_ITEM;
-    const option = {
-        method: api.method,
-        url: `${api.url}/${itemID}`
-    };
-    return dispatch =>
-        AjaxFactory.triggerServerRequest(option)
-            .then((value) => {
-                const success =
-                    (value.body &&
-                        value.body.data &&
-                        value.body.data.success) ||
-                    null;
-                const message =
-                    (value.body &&
-                        value.body.data &&
-                        value.body.data.message) ||
-                    null;
-                const list = (success && value.body.data.data) || [];
-                dispatch(setInitialMenuItem(list));
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-};
