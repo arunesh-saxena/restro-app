@@ -46,7 +46,7 @@ const getOrder = async ({ tokenId = null, orderId = null }) => {
 
 const placeOrder = async (req, res) => {
     const { body } = req;
-    const { order = [], tableId } = body;
+    const { order = [], tableId, restaurantCode } = body;
     const orderItemsId = order.map(item => item.itemId);
     let orderItemsData = [];
     let totalCost = 0;
@@ -87,7 +87,8 @@ const placeOrder = async (req, res) => {
         const orderData = {
             tableId,
             items: orderItemsData,
-            totalCost
+            totalCost,
+            restaurantCode
         };
 
         if (orderData.tableId && orderData.items && orderData.items.length) {

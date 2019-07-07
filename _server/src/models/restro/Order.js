@@ -12,6 +12,10 @@ const orderSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
+    restaurantCode: {
+        type: String,
+        require: true
+    },
     tableId: {
         type: Number,
         required: true
