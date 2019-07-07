@@ -54,7 +54,8 @@ class CartPage extends Component {
         if (order && order.length) {
             const orderData = {
                 order,
-                tableId: orderTableId
+                tableId: orderTableId,
+                restaurantCode: this.props.cart.restroCode
             };
             this.props.placeOrder(orderData, this.props);
         }

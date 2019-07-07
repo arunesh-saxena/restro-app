@@ -14,14 +14,15 @@ export const cartOrder = (req, res) => {
 export const placeOrder = (req, res, next) => {
     const endPoint = service.placeOrder.default;
     const { body } = req;
-    const { order = [], tableId } = body;
+    const { order = [], tableId, restaurantCode } = body;
     const config = {
         method: endPoint.method,
         url: endPoint.url,
         headers: endPoint.headers,
         data: {
             order,
-            tableId
+            tableId,
+            restaurantCode
         }
     };
 

@@ -13,6 +13,15 @@ class MenuListContainer extends Component {
     componentWillMount() {
         const { restroCode } = this.props.match.params;
         this.props.setRestroCode(restroCode);
+        /* filter list according to restroCode */
+        this.setFilerbyRestoCode(restroCode);
+    }
+    setFilerbyRestoCode(restroCode) {
+        const { menuList } = this.props;
+        const filteredList = menuList.filter(item =>
+            item.restaurantCode.toLowerCase().includes(restroCode.toLowerCase())
+        );
+        this.props.setMenuItemFilter(filteredList);
     }
     addToCartHandler(item) {
         const data = {
@@ -23,7 +32,7 @@ class MenuListContainer extends Component {
     }
 
     renderHeading(text) {
-        return <Heading text={text} />;
+        return <Heading text={text} tag="h2" />;
     }
 
     renderMenuList(menuList, labels, addToCartHandler, toggleHandler) {
@@ -68,7 +77,9 @@ class MenuListContainer extends Component {
                 <div className="row justify-content-md-center">
                     <div className="col-12 col-md-12">
                         <div className="heading-section">
-                            {this.renderHeading(`Menu for ${restaurantName}`)}
+                            {this.renderHeading(
+                                `Menu for Restaurant: ${restaurantName}`
+                            )}
                         </div>
                         {!restroCode && <p>Please select the restaurant</p>}
                         {restroCode &&
@@ -87,6 +98,7 @@ class MenuListContainer extends Component {
     }
 }
 const mapStateToProps = state => ({
+    menuList: (state.menu && state.menu.menuList) || [],
     menuListFiltered: (state.menu && state.menu.menuListFiltered) || [],
     restro: state.restro
 });

@@ -52,7 +52,7 @@ export default store => [
             {
                 path: `${AppUrls.MENU_LIST}`,
                 exact: false,
-                need: [],
+                need: [getMenuList],
                 component: Loadable({
                     loader: () =>
                         import(
@@ -63,8 +63,8 @@ export default store => [
                 routes: [
                     {
                         path: `${AppUrls.MENU_LIST}/:restroCode`,
-                        exact: false,
-                        need: [getMenuList],
+                        exact: true,
+                        need: [],
                         component: Loadable({
                             loader: () =>
                                 import(

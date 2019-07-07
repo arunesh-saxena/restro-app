@@ -29,8 +29,8 @@ const SearchBox = (props) => {
                     onChange={e => onChangeHandler(e)}
                 />
                 {isIconShow && (
-                    <span
-                        role="button"
+                    <button
+                        type="button"
                         tabIndex="0"
                         className="icon icon-cross"
                         onClick={() => {

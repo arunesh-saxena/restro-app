@@ -37,10 +37,7 @@ export const getMenuList = () => {
                         value.body.data.message) ||
                     null;
                 const list = (success && value.body.data.data) || [];
-                Promise.all([
-                    dispatch(setMenuList(list)),
-                    dispatch(setMenuItemFilter(list))
-                ]);
+                Promise.all([dispatch(setMenuList(list))]);
             })
             .catch((error) => {
                 console.log(error);

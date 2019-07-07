@@ -13,22 +13,41 @@ import { getRestroList } from '../../actions/restroAction';
 class MenuListPage extends Component {
     componentWillMount() {
         this.props.getRestroList();
-    }
-    componentWillUnmount() {
         this.props.setRestroCode('');
     }
+
+    setFilerbyRestoCode(restroCode, cb) {
+        const { menuList } = this.props;
+        const filteredList = menuList.filter(item =>
+            item.restaurantCode.toLowerCase().includes(restroCode.toLowerCase())
+        );
+        this.props.setMenuItemFilter(filteredList, cb());
+    }
     changeSearchHandler(searchText) {
+        const { restroCode } = this.props.cart;
         const { menuList } = this.props;
         const filteredList = searchText.length
-            ? menuList.filter(item =>
-                item.itemName.toLowerCase().includes(searchText.toLowerCase())
-            )
+            ? menuList.filter((item) => {
+                const isInItemName = item.itemName
+                    .toLowerCase()
+                    .includes(searchText.toLowerCase());
+                const isInRestro = item.restaurantCode
+                    .toLowerCase()
+                    .includes(restroCode.toLowerCase());
+                return isInItemName && isInRestro;
+            })
             : menuList;
         this.props.setMenuItemFilter(filteredList);
     }
     changeRestroHandler(restroCode) {
+        const crossElm = document.querySelector('.menuList-search button');
+        if (crossElm) {
+            crossElm.click();
+        }
         this.props.setRestroCode(restroCode);
-        this.props.history.push(`${appUrls.MENU_LIST}/${restroCode}`);
+        this.setFilerbyRestoCode(restroCode, () => {
+            this.props.history.push(`${appUrls.MENU_LIST}/${restroCode}`);
+        });
     }
 
     render() {
