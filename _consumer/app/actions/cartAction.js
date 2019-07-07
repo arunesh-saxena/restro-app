@@ -13,6 +13,10 @@ const setPlacedOrder = data => ({
     type: types.SET_PLACED_ORDER,
     data
 });
+export const setRestroCode = data => ({
+    type: types.SET_RESTRO_CODE,
+    data
+});
 
 export const placeOrder = (orderData, props = null) => {
     const api = expressConstants.PLACE_ORDER;

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const RestroSelectList = (props) => {
-    const { restaurants = [], label, changeHandler } = props;
+    const { restaurants = [], label, changeHandler, defaultValue = '' } = props;
     const options = [];
     const restroLable = label || 'Select Restaurant';
     restaurants.forEach((v, i) => {
@@ -16,6 +16,7 @@ const RestroSelectList = (props) => {
         const value = e.target.value;
         changeHandler(value);
     };
+
     return (
         <div className="restro-list-select">
             <select
@@ -24,6 +25,7 @@ const RestroSelectList = (props) => {
                 onChange={(e) => {
                     onChangeHandler(e);
                 }}
+                value={defaultValue}
             >
                 <option value="">{restroLable}</option>
                 {options}
@@ -39,7 +41,8 @@ RestroSelectList.propTypes = {
             restaurantName: PropTypes.string
         })
     ).isRequired,
-    label: PropTypes.string
+    label: PropTypes.string,
+    defaultValue: PropTypes.string
 };
 
 export default RestroSelectList;

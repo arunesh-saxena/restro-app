@@ -3,7 +3,6 @@ import Loadable from 'react-loadable';
 import AppUrls from './appConstants/appUrls';
 import App from './pages/App';
 import { getMenuList } from './actions/menuAction';
-import { getOrderStatus } from './actions/cartAction';
 
 const HomePage = Loadable({
     loader: () => import(/* webpackChunkName: "HomePage" */ './pages/HomePage'),
@@ -51,16 +50,30 @@ export default store => [
                 ]
             },
             {
-                path: AppUrls.MENU_LIST,
-                exact: true,
-                need: [getMenuList],
+                path: `${AppUrls.MENU_LIST}`,
+                exact: false,
+                need: [],
                 component: Loadable({
                     loader: () =>
                         import(
                             /* webpackChunkName: "MenuListPage" */ './pages/menuList/MenuListPage'
                         ),
                     loading: () => <strong>Loading...</strong>
-                })
+                }),
+                routes: [
+                    {
+                        path: `${AppUrls.MENU_LIST}/:restroCode`,
+                        exact: false,
+                        need: [getMenuList],
+                        component: Loadable({
+                            loader: () =>
+                                import(
+                                    /* webpackChunkName: "MenuListContainer" */ './containers/menu/MenuListContainer'
+                                ),
+                            loading: () => <strong>Loading...</strong>
+                        })
+                    }
+                ]
             },
             {
                 path: AppUrls.CART,

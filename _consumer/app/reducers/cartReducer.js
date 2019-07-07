@@ -1,6 +1,6 @@
 import * as types from '../utils/types';
 
-export default function cart(state = { order: [] }, action) {
+export default function cart(state = { order: [], restroCode: '' }, action) {
     switch (action.type) {
         case types.ADD_TO_CART: {
             const preOrder = state.order; // copy the order lsit
@@ -21,6 +21,11 @@ export default function cart(state = { order: [] }, action) {
         case types.SET_PLACED_ORDER: {
             return Object.assign({}, state, {
                 placedOrder: action.data
+            });
+        }
+        case types.SET_RESTRO_CODE: {
+            return Object.assign({}, state, {
+                restroCode: action.data
             });
         }
         default: {
