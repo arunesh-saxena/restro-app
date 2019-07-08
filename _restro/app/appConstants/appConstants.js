@@ -34,12 +34,12 @@ const appConstants = {
             action: 'Action',
             edit: 'Edit',
             search: 'Search',
-            orderList: 'Order list',
+            ordersList: 'Orders list',
             restroCode: 'Restro Code',
             selectRestaurant: 'Select Restaurant'
         },
         order: {
-            orderList: 'Order list',
+            ordersList: 'Orders list',
             restroCode: 'R Code#',
             tokenNumber: 'Token#',
             orderId: 'Order#',
@@ -48,7 +48,9 @@ const appConstants = {
             itemName: 'Item Name',
             itemCode: 'Item Code',
             quantity: 'Quantity',
-            action: 'Action'
+            action: 'Action',
+            all: 'All',
+            ordersListForRestaurant: 'Orders list for Restaurant:'
         },
         restro: {
             addRestro: 'Add Restro',

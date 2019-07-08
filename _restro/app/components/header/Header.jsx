@@ -77,7 +77,7 @@ class Header extends Component {
                                 tabIndex="0"
                                 onClick={this.toggleMainMenu}
                             >
-                                {this.labels.common.orderList}
+                                {this.labels.common.ordersList}
                             </span>
                         </Link>
                     </li>

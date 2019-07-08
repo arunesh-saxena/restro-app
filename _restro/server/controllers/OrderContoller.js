@@ -12,7 +12,15 @@ export default (req, res, next) => {
 
     ServiceFactory.triggerserviceRequest(config)
         .then((response) => {
-            res.json(response.data);
+            const result = response;
+            const { success } = response.data;
+            if (success) {
+                const { orders = [] } = result.data.data;
+                orders.map((item) => {
+                    item['isFilter'] = true;
+                });
+            }
+            res.json(result.data);
         })
         .catch((error) => {
             console.log(error);

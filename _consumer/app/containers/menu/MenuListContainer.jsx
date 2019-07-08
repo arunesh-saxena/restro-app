@@ -31,8 +31,22 @@ class MenuListContainer extends Component {
         this.props.addToCart(data);
     }
 
-    renderHeading(text) {
-        return <Heading text={text} tag="h2" />;
+    renderHeading() {
+        const { restroCode } = this.props.match.params;
+        const restaurant =
+            (this.props.restro &&
+                this.props.restro.restaurants.filter(
+                    v =>
+                        v.restaurantCode.toLowerCase() ===
+                        restroCode.toLowerCase()
+                )) ||
+            [];
+        const restaurantName = restaurant.length
+            ? restaurant[0].restaurantName
+            : restroCode;
+
+        const msg = `Menu for Restaurant: ${restaurantName}`;
+        return <Heading text={msg} tag="h2" />;
     }
 
     renderMenuList(menuList, labels, addToCartHandler, toggleHandler) {
@@ -60,26 +74,13 @@ class MenuListContainer extends Component {
         const { menuListFiltered } = this.props;
         const { restroCode } = this.props.match.params;
         const { common: labels } = appConstants.labels;
-        const restaurant =
-            (this.props.restro &&
-                this.props.restro.restaurants.filter(
-                    v =>
-                        v.restaurantCode.toLowerCase() ===
-                        restroCode.toLowerCase()
-                )) ||
-            [];
-        const restaurantName = restaurant.length
-            ? restaurant[0].restaurantName
-            : restroCode;
 
         return (
             <div className="menu-list-container">
                 <div className="row justify-content-md-center">
                     <div className="col-12 col-md-12">
                         <div className="heading-section">
-                            {this.renderHeading(
-                                `Menu for Restaurant: ${restaurantName}`
-                            )}
+                            {this.renderHeading()}
                         </div>
                         {!restroCode && <p>Please select the restaurant</p>}
                         {restroCode &&

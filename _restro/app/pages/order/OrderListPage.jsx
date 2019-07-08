@@ -3,10 +3,20 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import appConstants from '../../appConstants/appConstants';
 import OrderListContainer from '../../containers/order/OrderListContainer';
-import { getOrderList, updateOrder } from '../../actions/orderAction';
+import {
+    getOrderList,
+    updateOrder,
+    setOrderList
+} from '../../actions/orderAction';
 import { getUserResautants } from '../../actions/myAccountAction';
 
 class OrderListPage extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            restroCode: ''
+        };
+    }
     componentWillMount() {
         const { username } = this.props.user;
         this.props.getUserResautants(username);
@@ -15,17 +25,16 @@ class OrderListPage extends Component {
         this.props.updateOrder({ tokenId, actionId });
     }
     restroChangeHandler(restroCode) {
-        console.log('todo: ', restroCode);
-        const filteredList = restroCode
-            ? this.order.orders.filter(
-                item =>
-                    item.restaurantCode &&
-                      item.restaurantCode
-                          .toLowerCase()
-                          .includes(restroCode.toLowerCase())
-            )
-            : this.order.orders;
-        console.log(filteredList);
+        this.setState({
+            restroCode
+        });
+        const { orders } = this.props.order;
+        orders.map((item) => {
+            item.isFilter =
+                !restroCode ||
+                item.restaurantCode.toLowerCase() === restroCode.toLowerCase();
+        });
+        this.props.setOrderList(orders);
     }
 
     actionDummy() {
@@ -63,7 +72,10 @@ class OrderListPage extends Component {
                         this.orderActionHandler(tokenId, actionId);
                     }}
                     userRestaurants={this.props.myAccount.restaurants}
-                    restroChangeHandler={this.restroChangeHandler}
+                    restroChangeHandler={(restroCode) => {
+                        this.restroChangeHandler(restroCode);
+                    }}
+                    restroCode={this.state.restroCode}
                 />
             </div>
         );
@@ -80,7 +92,8 @@ const mapDispatchToProps = dispatch =>
         {
             getOrderList,
             updateOrder,
-            getUserResautants
+            getUserResautants,
+            setOrderList
         },
         dispatch
     );
