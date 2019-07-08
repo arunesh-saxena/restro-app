@@ -40,6 +40,7 @@ const appConstants = {
         },
         order: {
             orderList: 'Order list',
+            restroCode: 'R Code#',
             tokenNumber: 'Token#',
             orderId: 'Order#',
             tableNumber: 'Table#',

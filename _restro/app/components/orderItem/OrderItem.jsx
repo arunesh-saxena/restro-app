@@ -10,7 +10,8 @@ const OrderItem = (props) => {
         status,
         isDeleted,
         tableId,
-        items = []
+        items = [],
+        restaurantCode
     } = itemDetails;
 
     const selectInput = React.createRef();
@@ -22,6 +23,10 @@ const OrderItem = (props) => {
         <div className="order-item">
             <div className="item-col">
                 <div className="id-section">
+                    <div className="id-row">
+                        <strong>{labels.restroCode}</strong>
+                        <span>{restaurantCode}</span>
+                    </div>
                     <div className="id-row">
                         <strong>{labels.tokenNumber}</strong>
                         <span>{tokenId}</span>

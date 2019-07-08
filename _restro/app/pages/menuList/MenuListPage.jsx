@@ -15,6 +15,7 @@ class MenuListPage extends Component {
     componentWillMount() {
         const { username } = this.props.user;
         this.props.getUserResautants(username);
+        this.restroCode = '';
     }
     changeProductQuantity(item) {
         const itemData = {
@@ -33,14 +34,24 @@ class MenuListPage extends Component {
         let filteredList = [];
         if (type === 'itemName') {
             filteredList = searchText.length
-                ? menuList.filter(item =>
-                    item.itemName
+                ? menuList.filter((item) => {
+                    const restroCode = this.restroCode;
+                    const isInItemName = item.itemName
                         .toLowerCase()
-                        .includes(searchText.toLowerCase())
-                )
+                        .includes(searchText.toLowerCase());
+                    const isInRestro = item.restaurantCode
+                        .toLowerCase()
+                        .includes(restroCode.toLowerCase());
+                    return isInItemName && isInRestro;
+                })
                 : menuList;
         }
         if (type === 'restro') {
+            const crossElm = document.querySelector('.menuList-search button');
+            if (crossElm) {
+                crossElm.click();
+            }
+            this.restroCode = searchText;
             filteredList = searchText.length
                 ? menuList.filter(item =>
                     item.restaurantCode
