@@ -2,15 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const OrderDetailTable = (props) => {
-    const {
-        id,
-        tokenId,
-        totalCost,
-        status: orderStatus,
-        tableId,
-        items,
-        updatedAt
-    } = props.orderDetail || {};
+    const { id, tokenId, totalCost, orderStatus, tableId, items, updatedAt } =
+        props.orderDetail || {};
     return (
         <div className="row justify-content-md-center">
             <div className="col-6">

@@ -59,7 +59,7 @@ const orderSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
-    status: {
+    orderStatus: {
         type: String,
         default: CONSTANT.restro.orderStatus.PENDING
     },

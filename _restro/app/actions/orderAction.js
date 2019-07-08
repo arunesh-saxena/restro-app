@@ -50,7 +50,6 @@ export const updateOrder = ({ tokenId, actionId }) => {
                 const message = (data && value.body.data.message) || null;
                 if (success) {
                     const order = data.data || [];
-                    console.log(order);
                     dispatch(
                         ajaxRequestSuccess({
                             message: `Order: Token# ${

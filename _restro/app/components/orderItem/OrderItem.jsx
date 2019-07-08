@@ -7,7 +7,7 @@ const OrderItem = (props) => {
         id,
         tokenId,
         totalCost,
-        status,
+        orderStatus,
         isDeleted,
         tableId,
         items = [],
@@ -41,7 +41,7 @@ const OrderItem = (props) => {
                     </div>
                     <div className="id-row">
                         <strong>{labels.status}</strong>
-                        <span>{status}</span>
+                        <span>{orderStatus}</span>
                     </div>
                 </div>
             </div>
@@ -69,7 +69,7 @@ const OrderItem = (props) => {
                     <select
                         ref={selectInput}
                         className="action-selector"
-                        defaultValue={parseInt(status)}
+                        defaultValue={parseInt(orderStatus)}
                         onChange={changeHandler}
                     >
                         {actionList.map((action, ind) => (
@@ -89,7 +89,7 @@ OrderItem.propTypes = {
         id: PropTypes.number,
         tokenId: PropTypes.number,
         totalCost: PropTypes.number,
-        status: PropTypes.string,
+        orderStatus: PropTypes.string,
         isDeleted: PropTypes.bool,
         tableId: PropTypes.number,
         items: PropTypes.arrayOf(

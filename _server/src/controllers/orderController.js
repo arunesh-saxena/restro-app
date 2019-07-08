@@ -46,7 +46,7 @@ const updateOrder = async (req, res) => {
     }
 
     const setObj = {
-        status: orderStatus
+        orderStatus
     };
     try {
         const updatedOrder = await updateOrderByIdOrToken({

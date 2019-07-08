@@ -12,7 +12,6 @@ const OrderStatusContainer = (props) => {
 
     const renderOrderDetails = () => {
         const isOrderAvialable = !!Object.keys(placedOrder).length;
-        console.log(isOrderAvialable);
         if (isOrderAvialable) {
             return orderDetails(placedOrder);
         }
