@@ -54,7 +54,7 @@ export const updateOrder = ({ tokenId, actionId }) => {
                         ajaxRequestSuccess({
                             message: `Order: Token# ${
                                 order.order.tokenId
-                            } action change to ${order.order.status}`
+                            } action change to ${order.order.orderStatus}`
                         })
                     );
                 } else {
