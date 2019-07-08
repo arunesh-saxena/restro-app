@@ -29,6 +29,7 @@ const menuCtrl = require('../controllers/menuController');
 const orderCtrl = require('../controllers/orderController');
 const cartCtrl = require('../controllers/cartContoller');
 const restroCtrl = require('../controllers/restroControler');
+const actionsCtrl = require('../controllers/actionController');
 /* controllers end */
 
 const CONSTANTS = require('../constants');
@@ -113,6 +114,8 @@ routes.post('/menu/updateMenuItem/', upload, menuCtrl.updateMenuItem);
 routes.put('/menu/changeMenuItemQuantity/', menuCtrl.changeMenuItemQuantity);
 routes.put('/menu/toggleHiddenMenuItem/', menuCtrl.toggleHiddenMenuItem);
 routes.delete('/menu/deleteMenuItem/', menuCtrl.deleteMenuItem);
+routes.post('/action/addAction', actionsCtrl.addAction);
+routes.get('/action/getActions', actionsCtrl.getActions);
 
 /* End */
 
