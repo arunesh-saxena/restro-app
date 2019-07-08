@@ -74,7 +74,7 @@ const OrderItem = (props) => {
                     >
                         {actionList.map((action, ind) => (
                             <option key={ind} value={parseInt(action.actionId)}>
-                                {action.label}
+                                {action.actionName}
                             </option>
                         ))}
                     </select>
@@ -109,7 +109,7 @@ OrderItem.propTypes = {
     actionList: PropTypes.arrayOf(
         PropTypes.shape({
             actionId: PropTypes.number,
-            label: PropTypes.string
+            actionName: PropTypes.string
         })
     )
 };

@@ -73,7 +73,11 @@ const expressConstants = {
     },
     GET_USER_RESTRO: {
         url: '/get_user_restro',
-        method: 'post'
+        method: 'POST'
+    },
+    GET_ACTIONS_LIST: {
+        url: '/get_action_list',
+        method: 'GET'
     }
 };
 

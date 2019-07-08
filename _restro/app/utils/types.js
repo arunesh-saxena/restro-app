@@ -27,3 +27,4 @@ export const AJAX_REQUEST_REST = 'AJAX_REQUEST_REST';
 
 /* restro */
 export const RESTRO_LIST = 'RESTRO_LIST';
+export const SET_ACTIONS_LIST = 'SET_ACTIONS_LIST';

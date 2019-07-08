@@ -1,9 +1,6 @@
 import * as types from '../utils/types';
 
-export default function app(
-    state = { infoType: null, msg: null, restroList: [] },
-    action
-) {
+export default function app(state = { restroList: [] }, action) {
     switch (action.type) {
         case types.RESTRO_LIST: {
             return Object.assign({}, state, {

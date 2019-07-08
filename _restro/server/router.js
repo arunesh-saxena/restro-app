@@ -16,6 +16,7 @@ import {
     deleteMenuItem
 } from './controllers/MenuController';
 import orderController, { updateOrder } from './controllers/OrderContoller';
+import getActionsList from './controllers/ActionsController';
 
 import addRestro, {
     getRestroList,
@@ -64,6 +65,7 @@ routes.post(
 );
 routes.post(expressConstants.MENU_ITEM_TOGGLE_HIDDEN.url, toggleHiddenMenuItem);
 routes.post(expressConstants.MENU_ITEM_DELETE.url, deleteMenuItem);
+routes.get(expressConstants.GET_ACTIONS_LIST.url, getActionsList);
 
 /* Order action */
 routes.get(expressConstants.ORDER_LIST.url, orderController);

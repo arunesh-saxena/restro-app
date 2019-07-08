@@ -8,6 +8,7 @@ import { checkIsLogin } from './actions/appAction';
 import { getMenuList } from './actions/menuAction';
 import { getOrderList } from './actions/orderAction';
 import { getRestroList } from './actions/restroAction';
+import { getActionsList } from './actions/myAccountAction';
 
 const HomePage = Loadable({
     loader: () => import(/* webpackChunkName: "HomePage" */ './pages/HomePage'),
@@ -145,7 +146,7 @@ export default store => [
                 component: Authentication(menuEditPage, store)
             },
             {
-                need: [getOrderList],
+                need: [getOrderList, getActionsList],
                 path: `${AppUrls.ORDER_LIST}/`,
                 exact: true,
                 component: Authentication(OrderListPage, store)

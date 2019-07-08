@@ -185,5 +185,15 @@
                 "Content-Type": "application/json"
             }
         }
+    },
+    "getActions": {
+        "default": {
+            "module": "getActions",
+            "url": "http://localhost:3000/api/action/getActions",
+            "method": "GET",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
     }
 }

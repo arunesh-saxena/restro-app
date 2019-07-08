@@ -37,37 +37,13 @@ class OrderListPage extends Component {
         this.props.setOrderList(orders);
     }
 
-    actionDummy() {
-        return [
-            {
-                actionId: 1,
-                label: 'Action# 1'
-            },
-            {
-                actionId: 2,
-                label: 'Action# 2'
-            },
-            {
-                actionId: 3,
-                label: 'Action# 3'
-            },
-            {
-                actionId: 4,
-                label: 'Action# 4'
-            },
-            {
-                actionId: 5,
-                label: 'Action# 5'
-            }
-        ];
-    }
     render() {
         return (
             <div className="order-page-container">
                 <OrderListContainer
                     labels={appConstants.labels.order}
                     order={this.props.order}
-                    actionList={this.actionDummy()}
+                    actionList={this.props.myAccount.actions}
                     orderActionHandler={(tokenId, actionId) => {
                         this.orderActionHandler(tokenId, actionId);
                     }}
