@@ -35,7 +35,9 @@
 # docker 
 ```docker build -t <image name>:<version> .
 docker run -p <port to access>:<node port> <imageID>
+docker run -p <HOST_PORT>:<CONTAINER:PORT> IMAGE_NAME
 docker run -d -p <port to be exposed>:4002 --name <container name> --cap-add=SYS_ADMIN <image name>
+-d for silent
 ```
 
 > docker usefull commonds
@@ -45,6 +47,6 @@ docker exec -it <container id> sh[/bin/bash]
 docker rm/stop/restart <container id>
 docker ps -a/-aq
 docker rmi <images id>
-docker rm $(docker images -aq)
+docker rmi $(docker images -aq)
 docker log <container id>
 ```

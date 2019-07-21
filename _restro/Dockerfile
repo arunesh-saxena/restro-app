@@ -1,6 +1,6 @@
 FROM node:8.11.3
 
-CMD ["node","-v"]
+# CMD ["node","-v"]
 
 MAINTAINER arunsh saxerna
 
@@ -22,10 +22,10 @@ COPY pm2.config.json  /restro_app/pm2.config.json
 RUN npm install 
 RUN npm run build
 
-# RUN npm install -g pm2 
+RUN npm install -g pm2 
 
-CMD ["npm","start"]
+# CMD ["npm","start"]
 
-# todo CMD ["pm2","start","--env","production","pm2.config.json"]
+CMD ["pm2","start","--env","production","pm2.config.json"]
 
 # CMD ["echo","hello arunesh"]
