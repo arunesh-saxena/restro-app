@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import appConstants from '../../appConstants/appConstants';
 import OrderListContainer from '../../containers/order/OrderListContainer';
+import appUrls from '../../appConstants/appUrls';
+import commonUtils from '../../utils/commonUtils';
 import {
     getOrderList,
     updateOrder,
@@ -20,6 +22,7 @@ class OrderListPage extends Component {
     componentWillMount() {
         const { username } = this.props.user;
         this.props.getUserResautants(username);
+        this.initPage();
     }
     orderActionHandler(tokenId, actionId) {
         this.props.updateOrder({ tokenId, actionId });
@@ -28,6 +31,24 @@ class OrderListPage extends Component {
         this.setState({
             restroCode
         });
+        this.updateOrderList(restroCode);
+        this.props.history.push(
+            `${appUrls.ORDER_LIST}?restroCode=${restroCode}`
+        );
+    }
+    initPage() {
+        const queryString = commonUtils.parseQueryString(
+            this.props.location.search
+        );
+        const restroCode = (queryString && queryString.restroCode) || null;
+        if (restroCode) {
+            this.setState({
+                restroCode
+            });
+        }
+        this.updateOrderList(restroCode);
+    }
+    updateOrderList(restroCode) {
         const { orders } = this.props.order;
         orders.map((item) => {
             item.isFilter =

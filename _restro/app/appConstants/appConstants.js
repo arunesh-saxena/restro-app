@@ -50,7 +50,8 @@ const appConstants = {
             quantity: 'Quantity',
             action: 'Action',
             all: 'All',
-            ordersListForRestaurant: 'Orders list for Restaurant:'
+            ordersListForRestaurant: 'Orders list for Restaurant:',
+            allRestaurants: 'All Restaurants'
         },
         restro: {
             addRestro: 'Add Restro',

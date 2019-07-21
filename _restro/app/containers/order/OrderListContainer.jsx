@@ -15,7 +15,7 @@ const OrderListContainer = (props) => {
         actionList = [],
         restroCode
     } = props;
-    const renderHeading = () => <Heading text={labels.orderList} />;
+    const renderHeading = () => <Heading text={labels.ordersList} />;
 
     const renderSelectedRestro = () => {
         const restaurant =
@@ -55,12 +55,17 @@ const OrderListContainer = (props) => {
     return (
         <div className="order-list-container">
             {renderHeading()}
-            <RestroSelectList
-                restaurants={userRestaurants}
-                label={labels.selectRestaurant}
-                changeHandler={restroChangeHandler}
-            />
-            {renderSelectedRestro()}
+            <div className="row">
+                <div className="col-md-6">{renderSelectedRestro()}</div>
+                <div className="col-md-6">
+                    <RestroSelectList
+                        restaurants={userRestaurants}
+                        label={labels.allRestaurants}
+                        changeHandler={restroChangeHandler}
+                        defaultValue={restroCode}
+                    />
+                </div>
+            </div>
             <ServerMsg />
             {renderOrderList()}
         </div>
