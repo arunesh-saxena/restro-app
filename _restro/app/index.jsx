@@ -16,13 +16,10 @@ const store = configureStore(initialState, {});
 const Routes = createRoutes(store);
 
 const RouteDataLoader = withRouter(
-    class extends React.Component {
+    class preFetch extends React.Component {
         componentWillReceiveProps(nextProps) {
-            if (nextProps.location.pathname != this.props.location.pathname) {
-                const branch = matchRoutes(
-                    this.props.routes,
-                    nextProps.location.pathname
-                );
+            if (nextProps.location.pathname !== this.props.location.pathname) {
+                const branch = matchRoutes(Routes, nextProps.location.pathname);
                 const req = {
                     url: nextProps.location.pathname,
                     headers: {}

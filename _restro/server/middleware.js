@@ -1,6 +1,5 @@
 import { matchRoutes } from 'react-router-config';
-import routes from '../app/routes.jsx';
-
+import createRoutes from '../app/routes.jsx';
 import pageRenderer from './pageRenderer';
 import preRenderMiddleware from './preRenderMiddleware';
 import configureStore from '../app/store/configureStore';
@@ -17,8 +16,9 @@ export default function render(req, res) {
     const initialState = {};
     const store = configureStore(initialState);
 
-    const ROUTES = routes();
-    const branch = matchRoutes(ROUTES, req.url);
+    const ROUTES = createRoutes(store);
+    const branch = matchRoutes(ROUTES, req.path);
+
     preRenderMiddleware(store.dispatch, branch, req, res).then((v) => {
         const html = pageRenderer(store, req, res);
         res.status(200).send(html);
