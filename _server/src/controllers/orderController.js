@@ -1,5 +1,4 @@
-const db = require('../models');
-const CONSTANTS = require('../constants');
+import db from '../models';
 
 const updateOrderByIdOrToken = async ({
     tokenId = null,
@@ -113,7 +112,7 @@ const getOrder = async (req, res) => {
     }
 };
 
-module.exports = {
+export default {
     updateOrder,
     getOrdersList,
     getOrder

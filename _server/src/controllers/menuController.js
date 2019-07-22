@@ -1,4 +1,4 @@
-const db = require('../models');
+import db from '../models';
 
 const getMenuItemById = async (itemId) => {
     const result = await db.Menu.findOne({ id: itemId }).exec();
@@ -202,7 +202,7 @@ const deleteMenuItem = (req, res) => {
     );
 };
 
-module.exports = {
+export default {
     addMenu,
     getMenuList,
     getMenuItem,

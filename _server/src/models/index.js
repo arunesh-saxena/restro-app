@@ -1,13 +1,15 @@
-const User = require('./User');
-const Menu = require('./restro/Menu');
-const Order = require('./restro/Order');
-const Restaurant = require('./restro/Restaurant');
-const Actions = require('./restro/Actions');
+import User from './User';
+import Menu from './restro/Menu';
+import Order from './restro/Order';
+import Restaurant from './restro/Restaurant';
+import Actions from './restro/Actions';
 
-module.exports = {
+const db = {
     User,
     Menu,
     Order,
     Restaurant,
     Actions
 };
+
+export default db;

@@ -1,7 +1,7 @@
 // import { setTimeout } from 'timers'; import { setTimeout } from 'timers';
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
-const CONSTANT = require('../../constants');
+import CONSTANT from '../../constants';
 
 const orderSchema = new mongoose.Schema({
     id: {
@@ -94,4 +94,4 @@ orderSchema.pre('save', function (next) {
 
 const Order = mongoose.model('order', orderSchema);
 
-module.exports = Order;
+export default Order;

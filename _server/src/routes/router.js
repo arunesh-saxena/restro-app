@@ -1,11 +1,20 @@
-const express = require('express');
+import express from 'express';
+import cors from 'cors';
+import multer from 'multer';
+import jwt from 'jsonwebtoken';
+
+/* controllers start */
+import userCtrl from '../controllers/userController';
+import menuCtrl from '../controllers/menuController';
+import orderCtrl from '../controllers/orderController';
+import cartCtrl from '../controllers/cartContoller';
+import restroCtrl from '../controllers/restroControler';
+import actionsCtrl from '../controllers/actionController';
+/* controllers end */
+
+import CONSTANTS from '../constants';
 
 const routes = express.Router();
-
-const cors = require('cors');
-const multer = require('multer');
-const jwt = require('jsonwebtoken');
-
 const storage = multer.diskStorage({
     destination(req, file, cb) {
         cb(null, './assets/uploads');
@@ -22,17 +31,6 @@ const upload = multer({ storage }).single('imageURL');
 routes.post('/imageUpload', upload, (req, res) => {
     console.log('hello', req.body);
 });
-
-/* controllers start */
-const userCtrl = require('../controllers/userController');
-const menuCtrl = require('../controllers/menuController');
-const orderCtrl = require('../controllers/orderController');
-const cartCtrl = require('../controllers/cartContoller');
-const restroCtrl = require('../controllers/restroControler');
-const actionsCtrl = require('../controllers/actionController');
-/* controllers end */
-
-const CONSTANTS = require('../constants');
 
 const { token_secret } = CONSTANTS;
 
@@ -156,4 +154,4 @@ routes.get('/testApi', (req, res) => {
 
 /* End */
 
-module.exports = routes;
+export default routes;

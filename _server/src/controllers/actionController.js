@@ -1,4 +1,4 @@
-const db = require('../models');
+import db from '../models';
 
 const saveAction = async (actionData) => {
     const result = await db.Actions(actionData).save();
@@ -48,7 +48,7 @@ const getActions = async (req, res) => {
     }
 };
 
-module.exports = {
+export default {
     addAction,
     getActions
 };

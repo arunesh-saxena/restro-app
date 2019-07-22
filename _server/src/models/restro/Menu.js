@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const menuSchema = new mongoose.Schema({
     id: { type: Number, default: 1 },
@@ -51,4 +51,4 @@ menuSchema.pre('update', function (next) {
 
 var Menu = mongoose.model('menu', menuSchema);
 
-module.exports = Menu;
+export default Menu;

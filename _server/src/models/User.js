@@ -1,4 +1,4 @@
-var mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -23,9 +23,9 @@ const userSchema = new mongoose.Schema({
     },
     isDeleted: { type: Boolean, default: false },
     role: { type: Number, default: 2 },
-    createdAt: { type: Date, default: Date.now },
+    createdAt: { type: Date, default: Date.now }
 });
 
 const User = mongoose.model('users', userSchema);
 
-module.exports = User;
+export default User;

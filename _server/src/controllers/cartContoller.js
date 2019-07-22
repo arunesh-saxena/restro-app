@@ -1,4 +1,4 @@
-const db = require('../models');
+import db from '../models';
 
 const getMenuList = async (ids = []) => {
     let list = [];
@@ -174,7 +174,7 @@ const orderStatus = async (req, res) => {
     }
 };
 
-module.exports = {
+export default {
     placeOrder,
     isItemAvailable,
     orderStatus

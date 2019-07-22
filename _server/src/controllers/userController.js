@@ -1,8 +1,7 @@
-const bcrypt = require('bcryptjs');
-const session = require('express-session');
-const jwt = require('jsonwebtoken');
-const CONSTANTS = require('../constants');
-const db = require('../models');
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import CONSTANTS from '../constants';
+import db from '../models';
 
 const { token_secret } = CONSTANTS;
 
@@ -209,7 +208,7 @@ const getUserResautants = async (req, res) => {
     }
 };
 
-module.exports = {
+export default {
     singUp,
     login,
     logout,

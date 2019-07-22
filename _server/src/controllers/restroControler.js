@@ -1,5 +1,4 @@
-const db = require('../models');
-const CONSTANTS = require('../constants');
+import db from '../models';
 
 const saveRestaurant = async (restroData) => {
     const result = await db.Restaurant(restroData).save();
@@ -143,7 +142,7 @@ const updateRestro = async (req, res) => {
     }
 };
 
-module.exports = {
+export default {
     addRestro,
     getRestroList,
     getRestro,

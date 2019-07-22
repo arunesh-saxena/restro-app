@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const actionsSchema = new mongoose.Schema({
     actionId: { type: Number, default: 1 },
@@ -22,4 +22,4 @@ actionsSchema.pre('save', function (next) {
 });
 const Actions = mongoose.model('actions', actionsSchema);
 
-module.exports = Actions;
+export default Actions;

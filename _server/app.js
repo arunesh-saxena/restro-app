@@ -1,17 +1,18 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-const cookieParser = require('cookie-parser');
-const session = require('express-session');
-const path = require('path');
+import express from 'express';
+import bodyParser from 'body-parser';
+import mongoose from 'mongoose';
+import cookieParser from 'cookie-parser';
+import session from 'express-session';
+import path from 'path'; /* to make promise in mongoose */
+
+// const router = require('./src/routes/router');
+import routes from './src/routes/router';
+import CONSTANTS from './src/constants';
 // var RedisStore = require('connect-redis')(session);
 // var redis = require("redis");
 // var client = redis.createClient();
 
-mongoose.Promise = global.Promise; /* to make promise in mongoose */
-
-const router = require('./src/routes/router');
-const CONSTANTS = require('./src/constants');
+mongoose.Promise = global.Promise;
 
 const app = express();
 
@@ -88,6 +89,6 @@ app.use((err, req, res, next) => {
     // console.log('/api middle ware');
     next();
 }); */
-app.use('/api', router);
+app.use('/api', routes);
 
-module.exports = app;
+export default app;

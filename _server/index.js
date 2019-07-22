@@ -1,11 +1,12 @@
-var app = require('./app');
-var io = require('./socket');
+import app from './app';
+
+const io = require('./socket');
 
 const port = {
     app: 3000,
     socket: 8000
-}
-//listen to port
+};
+// listen to port
 app.listen(port.app);
 console.log('Yor are listening to port ', port.app);
 
