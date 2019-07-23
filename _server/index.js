@@ -1,6 +1,6 @@
 import app from './app';
 
-const io = require('./socket');
+import io from './socket';
 
 const port = {
     app: 3000,
