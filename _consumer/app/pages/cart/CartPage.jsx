@@ -44,7 +44,7 @@ class CartPage extends Component {
         const order = this.props.cart && this.props.cart.order;
         if (!orderTableId) {
             this.setState({
-                validationMsg: appConstants.labels.common.plseSelectTable
+                validationMsg: appConstants.labels.common.pleaseSelectTable
             });
             return;
         }

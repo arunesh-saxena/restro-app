@@ -100,6 +100,18 @@ export default store => [
                 })
             },
             {
+                path: AppUrls.ORDERS_VIEW_LIST,
+                exact: true,
+                need: [],
+                component: Loadable({
+                    loader: () =>
+                        import(
+                            /* webpackChunkName: "ordersViewListPage" */ './pages/order/ordersViewListPage'
+                        ),
+                    loading: () => <strong>Loading...</strong>
+                })
+            },
+            {
                 path: '*',
                 exact: false,
                 component: Loadable({

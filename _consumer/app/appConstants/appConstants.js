@@ -47,7 +47,8 @@ const appConstants = {
             emptyCart: 'Your cart is Empty',
             emptyOrder: 'No order found...',
             selectTable: 'Select Table',
-            plseSelectTable: 'Please select the table'
+            pleaseSelectTable: 'Please select the table',
+            ordersList: 'Orders List'
         },
         error: {
             required: 'Required',
