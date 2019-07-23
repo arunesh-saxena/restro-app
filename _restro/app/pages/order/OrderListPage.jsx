@@ -5,6 +5,7 @@ import appConstants from '../../appConstants/appConstants';
 import OrderListContainer from '../../containers/order/OrderListContainer';
 import appUrls from '../../appConstants/appUrls';
 import commonUtils from '../../utils/commonUtils';
+import { subscribeToMsg, unSubscribeToMsg, emitMsg } from '../../utils/socket';
 import {
     getOrderList,
     updateOrder,
@@ -23,9 +24,18 @@ class OrderListPage extends Component {
         const { username } = this.props.user;
         this.props.getUserResautants(username);
         this.initPage();
+        subscribeToMsg((err, data) => {
+            console.log(data);
+        });
+    }
+    componentWillUnmount() {
+        unSubscribeToMsg();
     }
     orderActionHandler(tokenId, actionId) {
         this.props.updateOrder({ tokenId, actionId });
+        emitMsg({
+            data: { tokenId, actionId }
+        });
     }
     restroChangeHandler(restroCode) {
         this.setState({
@@ -49,7 +59,7 @@ class OrderListPage extends Component {
         this.updateOrderList(restroCode);
     }
     updateOrderList(restroCode) {
-        const { orders } = this.props.order;
+        const { orders = [] } = this.props.order;
         orders.map((item) => {
             item.isFilter =
                 !restroCode ||

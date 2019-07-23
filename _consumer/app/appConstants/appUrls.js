@@ -6,5 +6,6 @@ export default {
     MENU_LIST: '/menuList',
     CART: '/cart',
     order_status: '/orderStatus',
-    ORDERS_VIEW_LIST: '/ordersViewList'
+    ORDERS_VIEW_LIST: '/ordersViewList',
+    SOCKET_URL: 'http://localhost:8000'
 };

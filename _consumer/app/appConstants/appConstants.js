@@ -65,6 +65,10 @@ const appConstants = {
     form: {
         menuUpload: 'menuUpload',
         menuEditForm: 'menuEditForm'
+    },
+    socketEvent: {
+        subscribeServer: 'emitAll',
+        emitToServer: 'subscribeClient'
     }
 };
 

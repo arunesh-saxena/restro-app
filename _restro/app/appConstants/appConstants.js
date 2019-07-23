@@ -84,6 +84,10 @@ const appConstants = {
         menuEditForm: 'menuEditForm',
         addRestro: 'addRestro',
         restroEditForm: 'restroEditForm'
+    },
+    socketEvent: {
+        subscribeServer: 'emitAll',
+        emitToServer: 'subscribeClient'
     }
 };
 

@@ -36,7 +36,11 @@ const CONSTANTS = {
             DELIVERED: 5
         }
     },
-    token_secret: 'iy98hcbh489n38984y4h498'
+    token_secret: 'iy98hcbh489n38984y4h498',
+    socketEvent: {
+        subscribeClient: 'subscribeClient',
+        emitAll: 'emitAll'
+    }
 };
 
 export default CONSTANTS;

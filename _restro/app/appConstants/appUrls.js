@@ -11,5 +11,6 @@ export default {
     ORDER_LIST: '/orderList',
     ADD_RESTRO: '/addRestro',
     EDIT_RESTRO: '/editResto',
-    RESTRO_LIST: '/restroList'
+    RESTRO_LIST: '/restroList',
+    SOCKET_URL: 'http://localhost:8000'
 };

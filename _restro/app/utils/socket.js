@@ -6,7 +6,7 @@ const socket = io(`${appUrl.SOCKET_URL}`, { autoConnect: false });
 
 const { socketEvent } = appConstants;
 
-function subscribeToMsg(cb) {
+function subscribeToMsg(callBack) {
     socket.open();
     console.log('subscribeToMsg');
 

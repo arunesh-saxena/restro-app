@@ -1,20 +1,23 @@
 import socket from 'socket.io';
+import CONSTANTS from './src/constants';
 
 const io = socket();
 const clientIds = [];
+const { socketEvent } = CONSTANTS;
+
 io.on('connection', (client) => {
     console.log(`a user connected ${client.id}`);
     clientIds.push(client.id);
-    client.on('subscribeToMsg', (data) => {
+    client.on(`${socketEvent.subscribeClient}`, (data) => {
         console.log('client is subscribing  ', data, client.id);
         // console.log(data.orderDetails)
         /* send only to just connected client */
         // client.emit('msgFromServer', {msg: `web socket : ${data.msg}`});
 
         /* send to all connected client */
-        io.sockets.emit('msgFromServer', {
-            msg: `web socket : ${data.msg}`,
-            orderDetails: data.orderDetails
+        io.sockets.emit(`${socketEvent.emitAll}`, {
+            clinetId: `web socket : ${client.id}`,
+            data
         });
 
         /* send to specific client */
@@ -25,7 +28,11 @@ io.on('connection', (client) => {
     });
 
     client.on('disconnect', (reason) => {
-        console.log('user disconnected-----------', reason);
+        console.log(`user disconnected----------- ${reason} ${client.id}`);
+        const ind = clientIds.indexOf(client.id);
+        if (ind > -1) {
+            clientIds.splice(ind, 1);
+        }
     });
 });
 
