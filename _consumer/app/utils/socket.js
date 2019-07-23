@@ -6,17 +6,23 @@ const socket = io(`${appUrl.SOCKET_URL}`, { autoConnect: false });
 
 const { socketEvent } = appConstants;
 
-function subscribeToMsg(cb) {
+function init() {
+    socket.on('connect', (client) => {
+        console.log(`a user connected ${socket.id}`);
+    });
+    socket.on('disconnect', (reason) => {
+        console.log(reason);
+    });
     socket.open();
-    console.log('subscribeToMsg');
+}
 
+function subscribeToMsg(callBack) {
     socket.on(`${socketEvent.subscribeServer}`, (data) => {
         console.log(data);
     });
 }
 
 function unSubscribeToMsg() {
-    console.log('unSubscribeToMsg');
     socket.close();
 }
 
@@ -24,8 +30,6 @@ function emitMsg(data) {
     socket.emit(`${socketEvent.emitToServer}`, data);
 }
 
-socket.on('disconnect', (reason) => {
-    console.log(reason);
-});
+init();
 
 export { subscribeToMsg, unSubscribeToMsg, emitMsg };
