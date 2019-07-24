@@ -4,9 +4,10 @@ import { bindActionCreators } from 'redux';
 import commonUtil from '../../utils/commonUtils';
 import { subscribeToMsg, unSubscribeToMsg, emitMsg } from '../../utils/socket';
 import appConstants from '../../appConstants/appConstants';
-import { getRestroList } from '../../actions/restroAction';
+import { getRestroList, getRestroOrders } from '../../actions/restroAction';
 import InfoMessage from '../../components/infoMessage/InfoMessage';
 import OrderViewListContainer from '../../containers/order/OrderViewListContainer';
+import appUrls from '../../appConstants/appUrls';
 
 class ordersViewListPage extends React.Component {
     constructor(props) {
@@ -30,28 +31,48 @@ class ordersViewListPage extends React.Component {
     componentWillUnmount() {
         // unSubscribeToMsg();
     }
+    changeRestroHandler(restroCode) {
+        console.log('changeRestroHandler', restroCode);
+        this.setState(
+            {
+                restroCode
+            },
+            () => {
+                this.props.getRestroOrders(restroCode);
+                this.props.history.push(
+                    `${appUrls.ORDERS_VIEW_LIST}?restroCode=${restroCode}`
+                );
+            }
+        );
+    }
     render() {
         const { restroCode } = this.state;
+        const { restaurants } = this.props;
         const restroSelectError = 'Please select the restaurant';
         return (
             <div className="orders-view-list-page">
-                {restroCode && <OrderViewListContainer />}
-                {!restroCode && (
-                    <InfoMessage
-                        message={restroSelectError}
-                        infoClass="alert-warning"
-                    />
-                )}
+                <OrderViewListContainer
+                    restroCode={restroCode}
+                    restroSelectError={restroSelectError}
+                    restaurants={restaurants}
+                    changeRestroHandler={(value) => {
+                        this.changeRestroHandler(value);
+                    }}
+                    defaultValue={restroCode}
+                />
             </div>
         );
     }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+    restaurants: state.restro && state.restro.restaurants
+});
 const mapDispatchToProps = dispatch =>
     bindActionCreators(
         {
-            getRestroList
+            getRestroList,
+            getRestroOrders
         },
         dispatch
     );

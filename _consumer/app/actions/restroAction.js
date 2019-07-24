@@ -36,3 +36,33 @@ export const getRestroList = () => {
                 dispatch(ajaxRequestFailure({ message: error }));
             });
 };
+
+export const getRestroOrders = (restroCode) => {
+    const api = expressConstants.GET_RESTRO_ORDERS;
+    const option = {
+        method: api.method,
+        url: api.url,
+        data: {
+            restroCode
+        }
+    };
+
+    return dispatch =>
+        AjaxFactory.triggerServerRequest(option)
+            .then((value) => {
+                const data = (value.body && value.body.data) || null;
+                const success = (data && value.body.data.success) || null;
+                const message = (data && value.body.data.message) || null;
+                if (success) {
+                    const { orders } = (data && data.data) || {};
+                    console.log(orders);
+                    Promise.all([dispatch(ajaxRequestSuccess())]);
+                } else {
+                    dispatch(ajaxRequestFailure({ message }));
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+                dispatch(ajaxRequestFailure({ message: error }));
+            });
+};

@@ -3,9 +3,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import appConstants from '../../appConstants/appConstants';
-import { getMenuList, setMenuItemFilter } from '../../actions/menuAction';
+import { setMenuItemFilter } from '../../actions/menuAction';
 import { addToCart, setRestroCode } from '../../actions/cartAction';
-import { getRestroList } from '../../actions/restroAction';
 import MenuItem from '../../components/menuItem/MenuItem';
 import Heading from '../../components/heading/Heading';
 
@@ -106,10 +105,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch =>
     bindActionCreators(
         {
-            getMenuList,
             setMenuItemFilter,
             addToCart,
-            getRestroList,
             setRestroCode
         },
         dispatch

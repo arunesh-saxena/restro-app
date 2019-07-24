@@ -58,5 +58,15 @@
                 "Content-Type": "application/json"
             }
         }
+    },
+    "getRestroOrders": {
+        "default": {
+            "module": "getRestroOrders",
+            "url": "http://localhost:3000/api/getRestroOrders",
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
     }
 }
