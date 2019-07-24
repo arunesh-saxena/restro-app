@@ -32,9 +32,12 @@ class OrderListPage extends Component {
         unSubscribeToMsg();
     }
     orderActionHandler(tokenId, actionId) {
-        this.props.updateOrder({ tokenId, actionId });
-        emitMsg({
-            data: { tokenId, actionId }
+        this.props.updateOrder({ tokenId, actionId }, (order) => {
+            console.log('-----updaste sucess fully', order);
+            emitMsg({
+                tokenId: order.tokenId,
+                orderStatus: order.orderStatus
+            });
         });
     }
     restroChangeHandler(restroCode) {

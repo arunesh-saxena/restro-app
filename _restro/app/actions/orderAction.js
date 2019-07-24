@@ -34,7 +34,7 @@ export const getOrderList = () => {
             });
 };
 
-export const updateOrder = ({ tokenId, actionId }) => {
+export const updateOrder = ({ tokenId, actionId }, callBack) => {
     const api = expressConstants.UPDATE_ORDER_ACTION;
     const option = {
         method: api.method,
@@ -49,7 +49,7 @@ export const updateOrder = ({ tokenId, actionId }) => {
                 const success = (data && value.body.data.success) || null;
                 const message = (data && value.body.data.message) || null;
                 if (success) {
-                    const order = data.data || [];
+                    const order = data.data || {};
                     dispatch(
                         ajaxRequestSuccess({
                             message: `Order: Token# ${
@@ -57,6 +57,9 @@ export const updateOrder = ({ tokenId, actionId }) => {
                             } action change to ${order.order.orderStatus}`
                         })
                     );
+                    if (callBack && typeof callBack === 'function') {
+                        callBack(order.order);
+                    }
                 } else {
                     dispatch(ajaxRequestFailure({ message }));
                 }

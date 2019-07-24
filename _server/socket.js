@@ -16,7 +16,7 @@ io.on('connection', (client) => {
 
         /* send to all connected client */
         io.sockets.emit(`${socketEvent.emitAll}`, {
-            clinetId: `web socket : ${client.id}`,
+            clinetId: client.id,
             data
         });
 

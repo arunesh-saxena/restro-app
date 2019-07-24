@@ -147,19 +147,19 @@ export default store => [
             },
             {
                 need: [getOrderList, getActionsList],
-                path: `${AppUrls.ORDER_LIST}/`,
+                path: AppUrls.ORDER_LIST,
                 exact: true,
                 component: Authentication(OrderListPage, store)
             },
             {
                 need: [],
-                path: `${AppUrls.ADD_RESTRO}/`,
+                path: AppUrls.ADD_RESTRO,
                 exact: true,
                 component: Authentication(AddRestroPage, store)
             },
             {
                 need: [getRestroList],
-                path: `${AppUrls.RESTRO_LIST}/`,
+                path: AppUrls.RESTRO_LIST,
                 exact: true,
                 component: Authentication(RestroListPage, store)
             },
