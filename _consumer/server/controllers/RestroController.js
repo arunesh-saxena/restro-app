@@ -28,13 +28,12 @@ export const getRestroOrders = (req, res) => {
         headers: endPoint.headers,
         data: body
     };
-    res.json(config);
-    // ServiceFactory.triggerserviceRequest(config)
-    //     .then((response) => {
-    //         res.json(response.data);
-    //     })
-    //     .catch((error) => {
-    //         console.log(error);
-    //         res.send(error.data);
-    //     });
+    ServiceFactory.triggerserviceRequest(config)
+        .then((response) => {
+            res.json(response.data);
+        })
+        .catch((error) => {
+            console.log(error);
+            res.send(error.data);
+        });
 };

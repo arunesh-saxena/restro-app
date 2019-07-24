@@ -24,6 +24,9 @@ class ordersViewListPage extends React.Component {
         this.setState({
             restroCode
         });
+        if (restroCode) {
+            this.props.getRestroOrders(restroCode);
+        }
         // subscribeToMsg((err, data) => {
         //     console.log(data);
         // });

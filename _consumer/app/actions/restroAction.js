@@ -7,6 +7,10 @@ export const setRestro = data => ({
     type: types.RESTRO_LIST,
     data
 });
+export const setRestroOrders = data => ({
+    type: types.RESTRO_ORDERS,
+    data
+});
 
 export const getRestroList = () => {
     const api = expressConstants.RESTRO_LIST;
@@ -55,8 +59,10 @@ export const getRestroOrders = (restroCode) => {
                 const message = (data && value.body.data.message) || null;
                 if (success) {
                     const { orders } = (data && data.data) || {};
-                    console.log(orders);
-                    Promise.all([dispatch(ajaxRequestSuccess())]);
+                    Promise.all([
+                        dispatch(ajaxRequestSuccess()),
+                        dispatch(setRestroOrders(orders))
+                    ]);
                 } else {
                     dispatch(ajaxRequestFailure({ message }));
                 }

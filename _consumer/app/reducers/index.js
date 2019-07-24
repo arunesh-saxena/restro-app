@@ -5,6 +5,7 @@ import serverInfo from './serverInfoReducers';
 import menu from './menuReducer';
 import cart from './cartReducer';
 import restro from './restroReducer';
+import orders from './ordersReducer';
 
 // Combine reducers with routeReducer which keeps track of
 // router state
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
     menu,
     serverInfo,
     cart,
-    restro
+    restro,
+    orders
 });
 export default rootReducer;

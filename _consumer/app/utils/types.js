@@ -25,3 +25,4 @@ export const AJAX_REQUEST_REST = 'AJAX_REQUEST_REST';
 
 /* Restro */
 export const RESTRO_LIST = 'RESTRO_LIST';
+export const RESTRO_ORDERS = 'RESTRO_ORDERS';
