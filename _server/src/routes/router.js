@@ -121,6 +121,7 @@ routes.get('/action/getActions', actionsCtrl.getActions);
 
 routes.put('/updateOrder', orderCtrl.updateOrder);
 routes.get('/getOrder/', orderCtrl.getOrder);
+routes.post('/getRestroOrders/', orderCtrl.getRestroOrders);
 routes.get('/ordersList/', orderCtrl.getOrdersList);
 
 /* End */

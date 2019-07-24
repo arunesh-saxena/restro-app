@@ -33,6 +33,13 @@ const getOrderByIdORTokenId = async ({ tokenId = null, orderId = null }) => {
     return result;
 };
 
+const getOrdersByRestroCode = async (restroCode) => {
+    const result = await db.Order.find({
+        restaurantCode: restroCode
+    });
+    return result;
+};
+
 const updateOrder = async (req, res) => {
     const { orderId, tokenId, orderStatus } = req.body || {};
 
@@ -112,8 +119,34 @@ const getOrder = async (req, res) => {
     }
 };
 
+const getRestroOrders = async (req, res) => {
+    const { restroCode } = req.body;
+    if (!restroCode) {
+        res.json({
+            success: false,
+            message: 'Please provide reatroCode'
+        });
+        return;
+    }
+    try {
+        const ordersList = await getOrdersByRestroCode(restroCode);
+        res.json({
+            success: true,
+            data: {
+                orders: ordersList
+            }
+        });
+    } catch (error) {
+        res.json({
+            success: false,
+            message: `${error}`
+        });
+    }
+};
+
 export default {
     updateOrder,
     getOrdersList,
-    getOrder
+    getOrder,
+    getRestroOrders
 };
