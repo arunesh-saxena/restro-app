@@ -50,7 +50,7 @@ class ordersViewListPage extends React.Component {
     }
     render() {
         const { restroCode } = this.state;
-        const { restaurants } = this.props;
+        const { restaurants, orders } = this.props;
         const restroSelectError = 'Please select the restaurant';
         return (
             <div className="orders-view-list-page">
@@ -62,6 +62,7 @@ class ordersViewListPage extends React.Component {
                         this.changeRestroHandler(value);
                     }}
                     defaultValue={restroCode}
+                    orders={(orders && orders.restroOrders) || []}
                 />
             </div>
         );
@@ -69,7 +70,8 @@ class ordersViewListPage extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    restaurants: state.restro && state.restro.restaurants
+    restaurants: state.restro && state.restro.restaurants,
+    orders: state.orders
 });
 const mapDispatchToProps = dispatch =>
     bindActionCreators(
