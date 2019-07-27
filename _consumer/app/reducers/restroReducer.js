@@ -7,6 +7,11 @@ const restro = (state = { restaurants: [] }, action) => {
                 restaurants: action.data
             });
         }
+        case types.SET_ACTIONS_LIST: {
+            return Object.assign({}, state, {
+                actions: action.data || []
+            });
+        }
         default: {
             return state;
         }

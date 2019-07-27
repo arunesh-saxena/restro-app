@@ -30,6 +30,10 @@ const expressConstants = {
     GET_RESTRO_ORDERS: {
         url: '/getRestroOrders',
         method: 'POST'
+    },
+    GET_ACTIONS_LIST: {
+        url: '/getActions',
+        method: 'GET'
     }
 };
 

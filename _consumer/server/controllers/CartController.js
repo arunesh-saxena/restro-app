@@ -52,9 +52,4 @@ export const getOrderStatus = (req, res) => {
             console.log(error);
             res.send(error.data);
         });
-    // res.json({
-    //     success: true,
-    //     message: 'Todo: comming soon',
-    //     data: config
-    // });
 };

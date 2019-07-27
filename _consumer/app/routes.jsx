@@ -3,7 +3,7 @@ import Loadable from 'react-loadable';
 import AppUrls from './appConstants/appUrls';
 import App from './pages/App';
 import { getMenuList } from './actions/menuAction';
-import { getRestroList } from './actions/restroAction';
+import { getRestroList, getActionsList } from './actions/restroAction';
 
 const HomePage = Loadable({
     loader: () => import(/* webpackChunkName: "HomePage" */ './pages/HomePage'),
@@ -103,7 +103,7 @@ export default store => [
             {
                 path: AppUrls.ORDERS_VIEW_LIST,
                 exact: true,
-                need: [getRestroList],
+                need: [getRestroList, getActionsList],
                 component: Loadable({
                     loader: () =>
                         import(

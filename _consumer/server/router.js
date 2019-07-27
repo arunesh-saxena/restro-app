@@ -8,6 +8,7 @@ import {
 
 import { placeOrder, getOrderStatus } from './controllers/CartController';
 import { getRestroList, getRestroOrders } from './controllers/RestroController';
+import getActionsList from './controllers/ActionsController';
 
 const express = require('express');
 // const multer = require('multer');
@@ -41,10 +42,12 @@ routes.post(
     changeMenuItemQuantity
 );
 /* Cart  */
-routes.post(`${expressConstants.PLACE_ORDER.url}`, placeOrder);
+routes.post(expressConstants.PLACE_ORDER.url, placeOrder);
 routes.get(`${expressConstants.ORDER_STATUS.url}?:tokenId`, getOrderStatus);
 
 routes.get(expressConstants.RESTRO_LIST.url, getRestroList);
 routes.post(expressConstants.GET_RESTRO_ORDERS.url, getRestroOrders);
 
-module.exports = routes;
+routes.get(expressConstants.GET_ACTIONS_LIST.url, getActionsList);
+
+export default routes;

@@ -12,6 +12,11 @@ export const setRestroOrders = data => ({
     data
 });
 
+export const setActionsList = data => ({
+    type: types.SET_ACTIONS_LIST,
+    data
+});
+
 export const getRestroList = () => {
     const api = expressConstants.RESTRO_LIST;
     const option = {
@@ -63,6 +68,33 @@ export const getRestroOrders = (restroCode) => {
                         dispatch(ajaxRequestSuccess()),
                         dispatch(setRestroOrders(orders))
                     ]);
+                } else {
+                    dispatch(ajaxRequestFailure({ message }));
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+                dispatch(ajaxRequestFailure({ message: error }));
+            });
+};
+
+export const getActionsList = () => {
+    const api = expressConstants.GET_ACTIONS_LIST;
+    const option = {
+        method: api.method,
+        url: api.url
+    };
+
+    return dispatch =>
+        AjaxFactory.triggerServerRequest(option)
+            .then((value) => {
+                const data = (value.body && value.body.data) || null;
+                const success = (data && value.body.data.success) || null;
+                const message = (data && value.body.data.message) || null;
+                if (success) {
+                    const { actions = [] } = data.data;
+                    dispatch(ajaxRequestSuccess());
+                    dispatch(setActionsList(actions));
                 } else {
                     dispatch(ajaxRequestFailure({ message }));
                 }
