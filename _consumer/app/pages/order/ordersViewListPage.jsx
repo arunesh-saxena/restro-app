@@ -48,21 +48,31 @@ class ordersViewListPage extends React.Component {
             }
         );
     }
+    getActionStatus(orderStatusId) {
+        const { actions } = this.props.restro;
+        const actionDetails = actions.find(
+            item => item.actionId === parseInt(orderStatusId)
+        );
+        const actionName =
+            (actionDetails && actionDetails.actionName) || orderStatusId;
+        return actionName;
+    }
     render() {
         const { restroCode } = this.state;
         const { restro, orders } = this.props;
-        const restroSelectError = 'Please select the restaurant';
+        const labels = appConstants.labels.orders;
         return (
             <div className="orders-view-list-page">
                 <OrderViewListContainer
+                    labels={labels}
                     restroCode={restroCode}
-                    restroSelectError={restroSelectError}
                     restaurants={restro.restaurants}
                     changeRestroHandler={(value) => {
                         this.changeRestroHandler(value);
                     }}
                     defaultValue={restroCode}
                     orders={(orders && orders.restroOrders) || []}
+                    getActionStatus={orderStatusId => this.getActionStatus(orderStatusId)}
                 />
             </div>
         );

@@ -11,23 +11,27 @@ import AppUrls from '../../appConstants/appUrls';
 const OrderViewListContainer = (props) => {
     const {
         restroCode,
-        restroSelectError,
         labels,
         restaurants = [],
         changeRestroHandler,
         defaultValue,
-        orders = []
+        orders = [],
+        getActionStatus
     } = props;
 
     const renderOrders = () => {
-        const orderElms = orders.map((order, index) => (
-            <OrderStatusTile
-                key={index}
-                tokenId={order.tokenId}
-                orderStatus={order.orderStatus}
-                tableId={order.tableId}
-            />
-        ));
+        const orderElms = orders.map((order, index) => {
+            const status = getActionStatus(order.orderStatus);
+            return (
+                <OrderStatusTile
+                    key={index}
+                    tokenId={order.tokenId}
+                    orderStatus={status}
+                    tableId={order.tableId}
+                    labels={labels}
+                />
+            );
+        });
 
         return orderElms;
     };
@@ -45,7 +49,7 @@ const OrderViewListContainer = (props) => {
             />
             {!restroCode && (
                 <InfoMessage
-                    message={restroSelectError}
+                    message={labels.pleaseSelectTheRestaurant}
                     infoClass="alert-warning"
                 />
             )}
@@ -56,11 +60,11 @@ const OrderViewListContainer = (props) => {
 
 OrderViewListContainer.protoType = {
     restroCode: PropTypes.string,
-    restroSelectError: PropTypes.string,
     restaurants: PropTypes.array,
     changeRestroHandler: PropTypes.func,
     defaultValue: PropTypes.string,
-    orders: PropTypes.array
+    orders: PropTypes.array,
+    labels: PropTypes.object
 };
 
 export default OrderViewListContainer;

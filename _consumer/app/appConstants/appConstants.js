@@ -50,6 +50,12 @@ const appConstants = {
             pleaseSelectTable: 'Please select the table',
             ordersList: 'Orders List'
         },
+        orders: {
+            pleaseSelectTheRestaurant: 'Please select the restaurant',
+            'token#': 'Token #',
+            'status#': 'Status #',
+            'table#': 'Table #'
+        },
         error: {
             required: 'Required',
             invalidEmail: 'Invalid email address',
