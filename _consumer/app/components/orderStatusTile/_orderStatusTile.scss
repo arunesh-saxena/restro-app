@@ -28,4 +28,19 @@
     @include breakpoint(desktop-below) {
         border-radius: 0;
     }
+
+    @keyframes borderRadiusAnim {
+        0% {
+            border-radius: 0%;
+        }
+        50% {
+            border-radius: 50%;
+        }
+        100% {
+            border-radius: 0%;
+        }
+    }
+    animation-name: borderRadiusAnim;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
 }
