@@ -3,8 +3,12 @@ import PropTypes from 'prop-types';
 
 const OrderStatusTile = (props) => {
     const { tokenId, orderStatus, tableId, labels } = props;
+    const tileClass = orderStatus
+        .toLowerCase()
+        .replace(' ', '-')
+        .trim();
     return (
-        <div className="order-status-tile">
+        <div className={`order-status-tile ${tileClass}`}>
             <span>
                 {labels['token#']} {tokenId}
             </span>

@@ -53,6 +53,7 @@ const OrderViewListContainer = (props) => {
                     infoClass="alert-warning"
                 />
             )}
+
             <div className="order-list-Container">{renderOrders()}</div>
         </div>
     );

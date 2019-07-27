@@ -1,4 +1,12 @@
 .order-view-list-container {
     .order-list-Container {
+        margin-top: 25px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        @include breakpoint(desktop-below) {
+            flex-direction: column;
+        }
     }
 }
