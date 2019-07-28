@@ -4,7 +4,11 @@ import { bindActionCreators } from 'redux';
 import commonUtil from '../../utils/commonUtils';
 import { subscribeToMsg, unSubscribeToMsg, emitMsg } from '../../utils/socket';
 import appConstants from '../../appConstants/appConstants';
-import { getRestroList, getRestroOrders } from '../../actions/restroAction';
+import {
+    getRestroList,
+    getRestroOrders,
+    setRestroOrders
+} from '../../actions/restroAction';
 import InfoMessage from '../../components/infoMessage/InfoMessage';
 import OrderViewListContainer from '../../containers/order/OrderViewListContainer';
 import appUrls from '../../appConstants/appUrls';
@@ -20,22 +24,36 @@ class ordersViewListPage extends React.Component {
         const { restroCode } = commonUtil.parseQueryString(
             this.props.location.search
         );
-        console.log(restroCode);
         this.setState({
             restroCode
         });
         if (restroCode) {
             this.props.getRestroOrders(restroCode);
         }
-        // subscribeToMsg((err, data) => {
-        //     console.log(data);
-        // });
+        subscribeToMsg((data, err) => {
+            if (err) {
+                console.log(`Something wentwrong ${err}`);
+            }
+            if (!err) {
+                this.updateTile(data);
+            }
+        });
     }
     componentWillUnmount() {
-        // unSubscribeToMsg();
+        unSubscribeToMsg();
+    }
+    updateTile(tileInfo) {
+        const { restroOrders } = this.props.orders;
+        const { data } = tileInfo;
+        const order = restroOrders.find(
+            item => parseInt(item.tokenId) === parseInt(data.tokenId)
+        );
+        if (order) {
+            order.orderStatus = data.orderStatus;
+            this.props.setRestroOrders(restroOrders);
+        }
     }
     changeRestroHandler(restroCode) {
-        console.log('changeRestroHandler', restroCode);
         this.setState(
             {
                 restroCode
@@ -72,7 +90,9 @@ class ordersViewListPage extends React.Component {
                     }}
                     defaultValue={restroCode}
                     orders={(orders && orders.restroOrders) || []}
-                    getActionStatus={orderStatusId => this.getActionStatus(orderStatusId)}
+                    getActionStatus={orderStatusId =>
+                        this.getActionStatus(orderStatusId)
+                    }
                 />
             </div>
         );
@@ -87,7 +107,8 @@ const mapDispatchToProps = dispatch =>
     bindActionCreators(
         {
             getRestroList,
-            getRestroOrders
+            getRestroOrders,
+            setRestroOrders
         },
         dispatch
     );

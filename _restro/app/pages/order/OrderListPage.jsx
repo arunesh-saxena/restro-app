@@ -24,8 +24,13 @@ class OrderListPage extends Component {
         const { username } = this.props.user;
         this.props.getUserResautants(username);
         this.initPage();
-        subscribeToMsg((err, data) => {
-            console.log(data);
+        subscribeToMsg((data, err) => {
+            if (err) {
+                console.log(`Something wentwrong ${err}`);
+            }
+            if (!err) {
+                console.log(data);
+            }
         });
     }
     componentWillUnmount() {
@@ -33,7 +38,6 @@ class OrderListPage extends Component {
     }
     orderActionHandler(tokenId, actionId) {
         this.props.updateOrder({ tokenId, actionId }, (order) => {
-            console.log('-----updaste sucess fully', order);
             emitMsg({
                 tokenId: order.tokenId,
                 orderStatus: order.orderStatus

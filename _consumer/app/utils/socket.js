@@ -18,7 +18,9 @@ function init() {
 
 function subscribeToMsg(callBack) {
     socket.on(`${socketEvent.subscribeServer}`, (data) => {
-        console.log(data);
+        if (callBack && typeof callBack === 'function') {
+            callBack(data);
+        }
     });
 }
 
