@@ -17,6 +17,7 @@ export const MENU_LIST_FILTERED = 'MENU_LIST_FILTERED';
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const SET_PLACED_ORDER = 'SET_PLACED_ORDER';
 export const SET_RESTRO_CODE = 'SET_RESTRO_CODE';
+export const RESET_CART = 'RESET_CART';
 
 /* ajax request */
 export const AJAX_REQUEST_SUCCESS = 'AJAX_REQUEST_SUCCESS';

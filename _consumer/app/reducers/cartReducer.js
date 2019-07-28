@@ -28,6 +28,11 @@ export default function cart(state = { order: [], restroCode: '' }, action) {
                 restroCode: action.data
             });
         }
+        case types.RESET_CART: {
+            return Object.assign({}, state, {
+                order: []
+            });
+        }
         default: {
             return state;
         }

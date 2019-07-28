@@ -2,14 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import commonUtil from '../../utils/commonUtils';
-import { subscribeToMsg, unSubscribeToMsg, emitMsg } from '../../utils/socket';
+import { subscribeToMsg, unSubscribeToMsg } from '../../utils/socket';
 import appConstants from '../../appConstants/appConstants';
 import {
     getRestroList,
     getRestroOrders,
     setRestroOrders
 } from '../../actions/restroAction';
-import InfoMessage from '../../components/infoMessage/InfoMessage';
 import OrderViewListContainer from '../../containers/order/OrderViewListContainer';
 import appUrls from '../../appConstants/appUrls';
 
@@ -41,6 +40,7 @@ class ordersViewListPage extends React.Component {
     }
     componentWillUnmount() {
         unSubscribeToMsg();
+        this.props.setRestroOrders([]);
     }
     updateTile(tileInfo) {
         const { restroOrders } = this.props.orders;

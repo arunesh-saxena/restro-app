@@ -9,6 +9,11 @@ export const addToCart = data => ({
     data
 });
 
+export const resetCart = data => ({
+    type: types.RESET_CART,
+    data
+});
+
 const setPlacedOrder = data => ({
     type: types.SET_PLACED_ORDER,
     data
@@ -36,6 +41,7 @@ export const placeOrder = (orderData, props = null) => {
                 if (success) {
                     dispatch(ajaxRequestSuccess());
                     const orderDetails = data.data;
+                    dispatch(resetCart());
                     if (props) {
                         props.history.push(
                             `${appUrls.order_status}?tokenId=${orderDetails.tokenId}`
