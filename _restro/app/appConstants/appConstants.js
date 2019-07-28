@@ -87,7 +87,9 @@ const appConstants = {
     },
     socketEvent: {
         subscribeServer: 'emitAll',
-        emitToServer: 'subscribeClient'
+        emitToServer: 'subscribeClient',
+        emitOrderPlaced: 'orderPlaced',
+        subscribeOrderPlaced: 'subscribeOrderPlaced'
     }
 };
 

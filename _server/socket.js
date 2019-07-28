@@ -8,14 +8,14 @@ const { socketEvent } = CONSTANTS;
 io.on('connection', (client) => {
     console.log(`a user connected ${client.id}`);
     clientIds.push(client.id);
-    client.on(`${socketEvent.subscribeClient}`, (data) => {
+    client.on(socketEvent.subscribeClient, (data) => {
         console.log('client is subscribing  ', data, client.id);
         // console.log(data.orderDetails)
         /* send only to just connected client */
         // client.emit('msgFromServer', {msg: `web socket : ${data.msg}`});
 
         /* send to all connected client */
-        io.sockets.emit(`${socketEvent.emitAll}`, {
+        io.sockets.emit(socketEvent.emitAll, {
             clinetId: client.id,
             data
         });
@@ -25,6 +25,14 @@ io.on('connection', (client) => {
 
         /* send to all connected client except sender */
         // client.broadcast.emit('msgFromServer', {msg: `web socket : ${data.msg}`});
+    });
+
+    client.on(socketEvent.subscribeOrderPlaced, (data) => {
+        console.log('client is subscribeOrderPlaced  ', data, client.id);
+        io.sockets.emit(socketEvent.emitOrderPlaced, {
+            clinetId: client.id,
+            data
+        });
     });
 
     client.on('disconnect', (reason) => {

@@ -8,7 +8,7 @@ export const setOrderList = data => ({
     data
 });
 
-export const getOrderList = () => {
+export const getOrderList = (callBack) => {
     const api = expressConstants.ORDER_LIST;
     const option = {
         method: api.method,
@@ -24,6 +24,9 @@ export const getOrderList = () => {
                 if (success) {
                     dispatch(ajaxRequestSuccess());
                     dispatch(setOrderList(list.orders));
+                    if (callBack && typeof callBack === 'function') {
+                        callBack();
+                    }
                 } else {
                     dispatch(ajaxRequestFailure({ message }));
                 }

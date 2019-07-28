@@ -2,7 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import commonUtil from '../../utils/commonUtils';
-import { subscribeToMsg, unSubscribeToMsg } from '../../utils/socket';
+import {
+    subscribeToMsg,
+    unSubscribeToMsg,
+    emitOrderPlaced,
+    subscribeOrderPlaced
+} from '../../utils/socket';
 import appConstants from '../../appConstants/appConstants';
 import {
     getRestroList,
@@ -20,6 +25,29 @@ class ordersViewListPage extends React.Component {
         };
     }
     componentWillMount() {
+        this.initPage();
+        subscribeToMsg((data, err) => {
+            if (err) {
+                console.log(`Something wentwrong ${err}`);
+            }
+            if (!err) {
+                this.updateTile(data);
+            }
+        });
+        subscribeOrderPlaced((data, err) => {
+            if (err) {
+                console.log(`Something wentwrong ${err}`);
+            }
+            if (!err) {
+                this.initPage();
+            }
+        });
+    }
+    componentWillUnmount() {
+        unSubscribeToMsg();
+        this.props.setRestroOrders([]);
+    }
+    initPage() {
         const { restroCode } = commonUtil.parseQueryString(
             this.props.location.search
         );
@@ -29,18 +57,6 @@ class ordersViewListPage extends React.Component {
         if (restroCode) {
             this.props.getRestroOrders(restroCode);
         }
-        subscribeToMsg((data, err) => {
-            if (err) {
-                console.log(`Something wentwrong ${err}`);
-            }
-            if (!err) {
-                this.updateTile(data);
-            }
-        });
-    }
-    componentWillUnmount() {
-        unSubscribeToMsg();
-        this.props.setRestroOrders([]);
     }
     updateTile(tileInfo) {
         const { restroOrders } = this.props.orders;

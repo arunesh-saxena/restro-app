@@ -5,15 +5,22 @@ import { getOrderStatus } from '../../actions/cartAction';
 import OrderStatusContainer from '../../containers/order/OrderStatusContainer';
 import appConstants from '../../appConstants/appConstants';
 import commonUtil from '../../utils/commonUtils';
+import { unSubscribeToMsg, emitOrderPlaced } from '../../utils/socket';
 
 class OrderStatusPage extends React.Component {
-    componentDidMount() {
+    componentWillMount() {
         const { tokenId } = commonUtil.parseQueryString(
             this.props.location.search
         );
         this.props.getOrderStatus({ tokenId });
-    }
 
+        emitOrderPlaced({
+            msg: 'New order has been place'
+        });
+    }
+    componentWillUnmount() {
+        unSubscribeToMsg();
+    }
     render() {
         return (
             <div className="order-status-page">

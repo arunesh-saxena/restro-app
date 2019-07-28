@@ -5,7 +5,11 @@ import appConstants from '../../appConstants/appConstants';
 import OrderListContainer from '../../containers/order/OrderListContainer';
 import appUrls from '../../appConstants/appUrls';
 import commonUtils from '../../utils/commonUtils';
-import { subscribeToMsg, unSubscribeToMsg, emitMsg } from '../../utils/socket';
+import {
+    unSubscribeToMsg,
+    emitMsg,
+    subscribeOrderPlaced
+} from '../../utils/socket';
 import {
     getOrderList,
     updateOrder,
@@ -24,12 +28,14 @@ class OrderListPage extends Component {
         const { username } = this.props.user;
         this.props.getUserResautants(username);
         this.initPage();
-        subscribeToMsg((data, err) => {
+        subscribeOrderPlaced((data, err) => {
             if (err) {
                 console.log(`Something wentwrong ${err}`);
             }
             if (!err) {
-                console.log(data);
+                this.props.getOrderList(() => {
+                    this.initPage();
+                });
             }
         });
     }

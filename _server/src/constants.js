@@ -39,7 +39,9 @@ const CONSTANTS = {
     token_secret: 'iy98hcbh489n38984y4h498',
     socketEvent: {
         subscribeClient: 'subscribeClient',
-        emitAll: 'emitAll'
+        emitAll: 'emitAll',
+        subscribeOrderPlaced: 'orderPlaced',
+        emitOrderPlaced: 'subscribeOrderPlaced'
     }
 };
 
