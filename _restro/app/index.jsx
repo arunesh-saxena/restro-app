@@ -44,7 +44,9 @@ ReactDOM.hydrate(
     <Provider store={store}>
         <BrowserRouter>
             <RouteDataLoader routes={Routes} dispatch={store.dispatch}>
+                {/* <Switch> */}
                 {renderRoutes(Routes)}
+                {/* </Switch> */}
             </RouteDataLoader>
         </BrowserRouter>
     </Provider>,
