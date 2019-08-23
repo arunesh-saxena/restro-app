@@ -14,4 +14,11 @@ _ cd _db
 - cd _consumer
 http://localhost:4040/
 
-node v10.10.0
+Engine node v10.10.0
+
+
+Source code has three main folder _consumer,_app,_server
+
+_consumer has clinet
+ app _app has admin 
+ app _server has node with mongoDB app
