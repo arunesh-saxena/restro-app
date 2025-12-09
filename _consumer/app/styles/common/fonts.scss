@@ -1,0 +1,30 @@
+$typography-font-path: '../fonts' !default;
+
+@import url('https://use.typekit.net/rxl8gtw.css');
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('#{$typography-font-path}/Roboto-Light.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('#{$typography-font-path}/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Roboto';
+    src: url('#{$typography-font-path}/Roboto-Medium.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('#{$typography-font-path}/Roboto-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: normal;
+}

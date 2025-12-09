@@ -1,0 +1,104 @@
+.order-item {
+    @include breakpoint(desktop-below) {
+        flex-direction: column;
+    }
+    display: flex;
+    .item-col {
+        flex: 0 1 100%;
+        @include breakpoint(desktop-above) {
+            border-right: 1px solid;
+            padding: 0 20px;
+
+            flex: 0 1 25%;
+            &:first-child {
+                padding-left: 0;
+            }
+            &:nth-child(2) {
+                flex: 0 1 100%;
+            }
+            &:last-child {
+                padding-right: 0;
+                border-right: none;
+            }
+        }
+        @include breakpoint(desktop-below) {
+            padding: 10px 0;
+            border-top: 1px solid;
+            &:first-child {
+                padding-top: 0;
+                border-top: none;
+            }
+            &:last-child {
+                padding-bottom: 0;
+                border-top: none;
+            }
+        }
+        .id-section {
+            @include breakpoint(desktop-below) {
+                display: flex;
+                justify-content: space-between;
+                strong {
+                    padding: 0 10px 0 0;
+                }
+            }
+            .id-row {
+                display: flex;
+                @include breakpoint(desktop-below) {
+                    flex-direction: column;
+                }
+                > * {
+                    flex: 0 1 100%;
+                    @include breakpoint(desktop-below) {
+                        word-break: break-all;
+                    }
+                }
+            }
+        }
+
+        .item-section {
+            .item-section-header {
+                display: flex;
+                padding-bottom: 5px;
+                > * {
+                    flex: 0 1 100%;
+                }
+            }
+            .item-section-row {
+                display: flex;
+                padding: 5px 0;
+                border-top: 1px solid;
+                align-items: center;
+                &:last-child {
+                    border-bottom: 1px solid;
+                }
+                > * {
+                    flex: 0 1 100%;
+                }
+            }
+        }
+
+        .action-col {
+            display: flex;
+            @include breakpoint(desktop-above) {
+                flex-direction: column;
+            }
+            @include breakpoint(desktop-below) {
+                justify-content: space-between;
+            }
+            align-items: center;
+            height: 100%;
+            > * {
+                @include breakpoint(desktop-above) {
+                    flex: 0 1 auto;
+                }
+            }
+            .action-selector {
+                min-width: 100px;
+                border: 1px solid gray;
+                @include breakpoint(desktop-above) {
+                    flex: 0 1 50px;
+                }
+            }
+        }
+    }
+}

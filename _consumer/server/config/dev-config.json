@@ -1,0 +1,82 @@
+{
+    "menuList": {
+        "default": {
+            "module": "menuList",
+            "url": "http://localhost:3000/api/menu/list",
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
+    },
+    "menuItem": {
+        "default": {
+            "module": "menuItem",
+            "url": "http://localhost:3000/api/menu/getMenuItem/",
+            "method": "GET",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
+    },
+    "changeMenuItemQuantity": {
+        "default": {
+            "module": "changeMenuItemQuantity",
+            "url": "http://localhost:3000/api/menu/changeMenuItemQuantity/",
+            "method": "PUT",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
+    },
+    "placeOrder": {
+        "default": {
+            "module": "placeOrder",
+            "url": "http://localhost:3000/api/placeOrder/",
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
+    },
+    "orderStatus": {
+        "default": {
+            "module": "orderStatus",
+            "url": "http://localhost:3000/api/orderStatus/",
+            "method": "GET",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
+    },
+    "getRestroList": {
+        "default": {
+            "module": "getRestroList",
+            "url": "http://localhost:3000/api/getRestroList",
+            "method": "GET",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
+    },
+    "getRestroOrders": {
+        "default": {
+            "module": "getRestroOrders",
+            "url": "http://localhost:3000/api/getRestroOrders",
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
+    },
+    "getActions": {
+        "default": {
+            "module": "getActions",
+            "url": "http://localhost:3000/api/action/getActions",
+            "method": "GET",
+            "headers": {
+                "Content-Type": "application/json"
+            }
+        }
+    }
+}

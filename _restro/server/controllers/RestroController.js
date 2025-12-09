@@ -1,0 +1,89 @@
+import ServiceFactory from '../utils/ServiceFactory';
+
+const service = require('../config/dev-config.json');
+
+export default (req, res, next) => {
+    const endPoint = service.addRestro.default;
+    const { body } = req;
+    const config = {
+        method: endPoint.method,
+        url: endPoint.url,
+        headers: endPoint.headers,
+        data: {
+            restaurantName: body.restaurantName,
+            noOfTables: body.noOfTables,
+            userName: body.userName
+        }
+    };
+
+    ServiceFactory.triggerserviceRequest(config)
+        .then((response) => {
+            res.json(response.data);
+        })
+        .catch((error) => {
+            console.log(error);
+            res.send(error.data);
+        });
+};
+
+export const getRestroList = (req, res, next) => {
+    const endPoint = service.getRestroList.default;
+    const config = {
+        method: endPoint.method,
+        url: endPoint.url,
+        headers: endPoint.headers
+    };
+
+    ServiceFactory.triggerserviceRequest(config)
+        .then((response) => {
+            res.json(response.data);
+        })
+        .catch((error) => {
+            console.log(error);
+            res.send(error.data);
+        });
+};
+
+export const getRestro = (req, res) => {
+    const restroID = req.params.restroID;
+    const endPoint = service.getRestro.default;
+    const config = {
+        method: endPoint.method,
+        url: `${endPoint.url}?id=${restroID}`,
+        headers: endPoint.headers
+    };
+
+    ServiceFactory.triggerserviceRequest(config)
+        .then((response) => {
+            res.json(response.data);
+        })
+        .catch((error) => {
+            console.log(error);
+            res.send(error.data);
+        });
+};
+
+export const updateRestro = (req, res) => {
+    const endPoint = service.updateRestro.default;
+    const { body } = req;
+    const config = {
+        method: endPoint.method,
+        url: endPoint.url,
+        headers: endPoint.headers,
+        data: {
+            id: body.id,
+            restroDetails: {
+                restaurantName: body.restroDetails.restaurantName,
+                noOfTables: body.restroDetails.noOfTables
+            }
+        }
+    };
+    ServiceFactory.triggerserviceRequest(config)
+        .then((response) => {
+            res.json(response.data);
+        })
+        .catch((error) => {
+            console.log(error);
+            res.send(error.data);
+        });
+};
